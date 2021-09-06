@@ -1,0 +1,1273 @@
+---
+title: "Multivariave distributions"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Conjugate prior Applet -->
+<!-- Copyright (C) 2018  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+```{r}
+library('mvtnorm')
+```
+
+
+# Normal
+
+```{r}
+
+G_x1_sl_def <- 0.0
+G_x2_sl_def <- 0.0
+
+
+
+G_x1_min_def <- -10.0
+G_x1_max_def <- 10.0
+G_x2_min_def <- -10.0
+G_x2_max_def <- 10.0
+
+#G_x1_def <- 0.0
+#G_x2_def <- 0.0
+G_m1_def <- 0.0 
+G_m2_def <-  0.0
+G_s1_def <- 1.0
+G_s2_def <- 1.0
+G_r_def <- 0.0
+
+theta_def <- 45
+phi_def <- 45
+
+
+G_PDF1 <- function(x1,m1,s1) {
+  return (dnorm(x1, mean = m1, sd = s1, log = FALSE))
+}
+
+G_PDF2 <- function(x1,m1,s1) {
+  return (dnorm(x1, mean = m1, sd = s1, log = FALSE))
+}
+
+G_PDF12 <- function(x1,x2,m1,m2,s1,s2,r) {
+  mu <- m1+s1/s2*r*(x2-m2)
+  sig <- sqrt((1-r^2)*s1^2)
+  return (dnorm(x1, mean = mu, sd = sig, log = FALSE))
+}
+
+G_PDF21 <- function(x2,x1,m1,m2,s1,s2,r) {
+  mu <- m2+s2/s1*r*(x1-m1)
+  sig <- sqrt((1-r^2)*s2^2)
+  return (dnorm(x2, mean = mu, sd = sig, log = FALSE))
+}
+
+G_PDF <- function(x1,x2,m1,m2,s1,s2,r) {
+  
+  # x <- x1
+  # y <- x2
+  # mu1 <- m1
+  # mu2 <- m2
+  # sig1 <- s1
+  # sig2 <- s2
+  # rho <-r
+  # 
+  # term1 <- 1 / (2 * pi * sig1 * sig2 * sqrt(1 - rho^2))
+  # term2 <- (x - mu1)^2 / sig1^2
+  # term3 <- -(2 * rho * (x - mu1)*(y - mu2))/(sig1 * sig2)
+  # term4 <- (y - mu2)^2 / sig2^2
+  # z <- term2 + term3 + term4
+  # term5 <- term1 * exp((-z / (2 *(1 - rho^2))))
+  # return (term5)
+  
+  return( G_PDF1(x1,m1,s1)*G_PDF21(x2,x1,m1,m2,s1,s2,r) )
+}
+
+G_plot<- function(x1_sl=G_x1_sl_def,
+                  x2_sl=G_x2_sl_def,
+                  m1=G_m1_def,
+                  m2=G_m2_def,
+                  s1=G_s1_def,
+                  s2=G_s2_def,
+                  r=G_r_def,
+                  x1_min=G_x1_min_def, 
+                  x1_max=G_x1_max_def,
+                  x2_min=G_x2_min_def, 
+                  x2_max=G_x2_max_def,
+                  theta = theta_def,
+                  phi = phi_def
+                  ) {
+
+
+# x1_sl=G_x1_sl_def
+# x2_sl=G_x2_sl_def
+# m1=G_m1_def
+# m2=G_m2_def
+# s1=G_s1_def
+# s2=G_s2_def
+# r=G_r_def
+# x1_min=G_x1_min_def
+# x1_max=G_x1_max_def
+# x2_min=G_x2_min_def
+# x2_max=G_x2_max_def
+# theta = theta_def
+# phi = phi_def
+  
+  
+  fntsz <- 1.5
+  
+  n_grid <- 50
+  x1_grid <- seq(from = x1_min, to = x1_max, length.out=n_grid)
+  x2_grid <- seq(from = x2_min, to = x2_max, length.out=n_grid)
+  
+  
+  aa <-matrix (rep(5,times=2),nrow=1,ncol=2)
+  bb <-matrix (rep(3,times=2),nrow=1,ncol=2)
+  cc <-matrix (rep(2,times=4),nrow=2,ncol=2)
+  dd <-matrix (rep(1,times=4),nrow=2,ncol=2)
+  ee <-matrix (rep(6,times=2),nrow=2,ncol=1)
+  ff <-matrix (rep(4,times=2),nrow=2,ncol=1)
+  eeff <-cbind(ee,ff)
+  AA <- rbind(aa,bb,cc)
+  BB <- rbind(dd,eeff)
+  AAA <- cbind(BB,AA)
+  layout( AAA )
+  rm(aa,bb,cc,ee,ff,eeff,AA,BB,AAA)
+  
+
+# PERSPECTIVE...
+  
+  PDF_local <- function(x1,x2,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r) {
+    G_PDF(x1,x2,m1_,m2_,s1_,s2_,r_)
+  }
+  
+  z_grid <- outer(x1_grid, x2_grid, PDF_local)
+  
+  persp(x = x1_grid,
+    y = x2_grid,
+    z = z_grid, 
+    xlim = c(x1_min,x1_max), 
+    ylim = c(x2_min,x2_max), 
+    xlab = expression('x1'),
+    ylab = expression('x2'),
+    zlab = "PDF",
+    #main = "Gaussian",
+    phi = phi, 
+    theta = theta,
+    cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+  )
+ 
+#COUNTORPLOT..
+  
+  contour(x = x1_grid,
+    y = x2_grid,
+    z = z_grid, 
+    nlevels = 20,
+    xlim = c(x1_min,x1_max), 
+    ylim = c(x2_min,x2_max), 
+    xlab = expression('x1'),
+    ylab = expression('x2'),
+    zlab = "PDF",
+    #main = "Gaussian",
+    cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,
+    method = "edge"
+  )
+  abline(v=x1_sl, col='blue')
+  abline(h=x2_sl, col='green')
+  legend('topright',
+       bg="transparent",
+       c('joint', 'x1', 'x2'),
+       lty=c(1,1),
+       lwd=c(2.5,2.5),
+       col=c('black','blue','green')) 
+  
+#MARGINAL X1
+  
+    PDF_local <- function(x1,
+                          m1_=m1,
+                          s1_=s1) {
+          G_PDF1(x1,m1_,s1_)
+        }
+  
+  z_grid <- apply(matrix(x1_grid,ncol=1), 1, PDF_local)
+  
+  plot(x = x1_grid,
+       y = z_grid,
+       type='l',
+       main="Marg. X1",
+       xlab="",
+       ylab='',
+       xlim=c(x1_min,x1_max),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+#MARGINAL X2
+  
+    PDF_local <- function(x2,
+                          m2_=m2,
+                          s2_=s2) {
+          G_PDF2(x2,m2_,s2_)
+        }
+  
+  z_grid <- apply(matrix(x2_grid,ncol=1), 1, PDF_local)
+  
+  plot(y = x2_grid,
+       x = z_grid,
+       type='l',
+       main="Marg. X2",
+       ylab="",
+       xlab="",
+       ylim=c(x2_min,x2_max),
+       xlim=rev(range(z_grid)),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+#CONDITIONAL X1|X2=x2
+  
+    PDF_local <- function(x1, 
+                            x2_=x2_sl,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r) {
+          return(G_PDF12(x1,x2_,m1_,m2_,s1_,s2_,r_))
+        }
+  
+  z_grid <- apply(matrix(x1_grid,ncol=1), 1, PDF_local)
+  
+  plot(x = x1_grid,
+       y = z_grid,
+       type='l',
+       main="Cond. X1|X2=x2",
+       xlab="",
+       ylab='',
+       xlim=c(x1_min,x1_max),
+       col=c('green'),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+
+  #CONDITIONAL X2|X1=x1
+  
+    PDF_local <- function(x2, 
+                            x1_=x1_sl,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r) {
+          G_PDF21(x2,x1_,m1_,m2_,s1_,s2_,r_)
+        }
+  
+  z_grid <- apply(matrix(x2_grid,ncol=1), 1, PDF_local)
+  
+  plot(y = x2_grid,
+       x = z_grid,
+       type='l',
+       main="Cond. X2|X1=x1",
+       ylab="",
+       xlab='',
+       ylim=c(x2_min,x2_max),
+       xlim=rev(range(z_grid)),
+       col=c('blue'),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+    
+}
+
+
+
+```
+
+
+
+Inputs {.sidebar} 
+-----------------------
+
+
+
+***The distribution***  
+
+\begin{align*}
+X|\mu, \Sigma \sim \text{N}_d(\mu, \Sigma) 
+\end{align*}
+
+
+
+
+***Distr. parameters***
+
+```{r,echo=FALSE}
+sliderInput("G_m1",
+                 "$$\\mu_1:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("G_m2",
+                 "$$\\mu_2:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("G_sig1",
+                 "$$\\sigma_1:$$",
+                  min = 0.001,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 1.0)
+sliderInput("G_sig2",
+                 "$$\\sigma_2:$$",
+                  min = 0.001,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 1.0)
+sliderInput("G_rho",
+                 "$$\\rho:$$",
+                  min = -1.0,
+                  max = 1.0,
+                  step = 0.01,
+                  value = 0.9)
+```
+
+***Slices***
+
+```{r,echo=FALSE}
+sliderInput("G_x1",
+                 "$$x_1:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("G_x2",
+                 "$$x_2:$$",
+                    min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+```
+
+***View***
+
+```{r,echo=FALSE}
+sliderInput("G_theta",
+                 "$$\\theta:$$",
+                  min = 1.0,
+                  max = 90.0,
+                  step = 1,
+                  value = 45.0)
+sliderInput("G_phi",
+                 "$$\\phi:$$",
+                    min = 1.0,
+                  max = 90,
+                  step = 1,
+                  value = 45.0)
+    
+```
+
+Column {.tabset}
+-----------------------
+
+### ***Motivation: A CLT***  
+
+***A CLT, ...***
+
+Motivation comes fromt he following observation:
+
+Assume IID r.v. $\{X_i\}$ such that 
+\[
+X_i\sim \text{d}\pi(\cdot)
+\] 
+with $\mu=\text{E}(X_i)<\infty$ and $\Sigma = \text{Var}(X_i)>0$, for $i=1,...,n$.
+
+Define 
+\[
+Z_n = \sqrt{n}(\bar{X}_n -\mu), \ \ \ \bar{X}_n=\frac{1}{n}\sum_{i=1}^{n}X_i
+\] 
+
+Then, for any $A\subset\mathbb{R}^d$  
+\[
+\lim_{n \rightarrow \infty} \Pr(Z_n\in A) 
+=
+\int_A (2 \pi)^{-\frac{d}{2}} \det(\Sigma)^{-\frac{1}{2}} \exp(-\frac{1}{2}t^{\text{T}}\Sigma^{-1}t) \text{d}t
+\] 
+
+where the results applies for non IID cases under certain conditions...
+
+***More thinking...***
+
++ ooooh...  
+++ look at that dude in the integral can be considered as a PDF of a quite useful distribution (due to the CLT)...
+++ let's define the distribution properly, standardise and study furtehr this new distribution...
+
+
+### ***Description ($d$-D case) *** 
+
+***Introdunctions***  
+
+Consider a r.v. $X\in\mathbb{R}^{d}$ follows a Normal (Gaussian) distribution
+with location parameter $\mu\in\mathbb{R}^{d}$ and scale parameter
+$\Sigma>0$ with dim $d\times d$
+
+***Notation***  
+
+\[
+X\sim\text{N}_{d}(\mu,\Sigma)
+\]
+
+***Probability Density Function***
+
+\begin{align*}
+f_{X}(x|\mu,\Sigma)= & (2\pi)^{-\frac{d}{2}}\det(\Sigma)^{-\frac{1}{2}}\exp(-\frac{1}{2}(t-\mu)^{\text{T}}\Sigma^{-1}(t-\mu))
+\end{align*}
+
+***Cummulative Density Function***
+
+\begin{align*}
+F_{X}(x_{d},...x_{d}|\mu,\Sigma)=&\int_{-\infty}^{x_{1}}\cdots  \int_{-\infty}^{x_{2}}(2\pi)^{-\frac{d}{2}}\det(\Sigma)^{-\frac{1}{2}}\exp(-\frac{1}{2}(t-\mu)^{\text{T}}\Sigma^{-1}(t-\mu))\text{d}t_1\cdots\text{d}t_d
+\end{align*}
+
+***Mean, Mode, Median***
+
+\[
+\text{E(X)} = \mu
+\]
+
+well ... it is symentric, so compute the rest by yourself...
+
+***Variance***
+
+\[
+\text{Var(X)} = \Sigma
+\]
+
+***Moment generating function***
+
+\[
+\text{E}(\exp(t^{\text{T}}X))=\exp(\mu^{\text{T}}t+\frac{1}{2}t^{\text{T}}\Sigma t),\,t\in\mathbb{R}^{d}
+\]
+
+***Characteristic function***
+
+\[
+\text{E}(\exp(it^{\text{T}}X))=\exp(i\mu^{\text{T}}t-\frac{1}{2}t^{\text{T}}\Sigma t),\,t\in\mathbb{R}^{d}
+\]
+
+***Partial distributions***
+
+If $X=(X_{1},X_{2})$ with $X\in\mathbb{R}^{d}$, $X_{1}\in\mathbb{R}^{d_{1}}$,
+$X_{2}\in\mathbb{R}^{d_{2}}$, and 
+\[
+X\sim\text{N}_{d}(\mu,\Sigma)
+\]
+ where 
+\[
+\mu=\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\quad;\quad\Sigma=\begin{bmatrix}\Sigma_{11} & \Sigma_{21}^{\text{T}}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix}
+\]
+then  
+
++ **Marginal distributions:**
+\[
+X_{1}\sim\text{N}_{d_{1}}(\mu_{1},\Sigma_{11})
+\]
+and 
+\[
+X_{2}\sim\text{N}_{d_{2}}(\mu_{2},\Sigma_{22})
+\]  
+
++ **Conditional distributions:**
+\[
+X_{1}|X_{2}=x_{2}\sim\text{N}_{d_{1}}(\mu_{1|2},\Sigma_{1|2})
+\]
+ where $\Sigma_{1|2}=\Sigma_{11}-\Sigma_{21}^{\text{T}}\Sigma_{11}^{-1}\Sigma_{21}$,
+and $\mu_{1|2}=\mu_{1}-\Sigma_{21}^{\text{T}}\Sigma_{22}^{-1}(\mu_{2}-x_{2})$   
+and   
+\[
+X_{2}|X_{1}=x_{1}\sim\text{N}_{d_{2}}(\mu_{2|1},\Sigma_{2|1})
+\]
+ where $\Sigma_{2|1}=\Sigma_{22}-\Sigma_{21}\Sigma_{22}^{-1}\Sigma_{21}^{\text{T}}$,
+and $\mu_{2|1}=\mu_{2}-\Sigma_{21}\Sigma_{11}^{-1}(\mu_{1}-x_{1})$
+
+
+
+
+***Properties***
+
++ If $A\in\mathbb{R}^{q\times q}$, and $b\in\mathbb{R}^{q}$ are constants
+then
+\begin{align*}
+X & \sim\text{N}_{d}(\mu,\Sigma)\;\Longleftrightarrow AX+b\sim\text{N}_{q}(A\mu+b,A\Sigma A^{\text{T}})
+\end{align*}
++ If $L$ the Cholesky lower triangular of $\Sigma>0$ (i.e., $\Sigma=LL^{\text{T}}$
+and constants) then
+\[
+X\sim\text{N}_{d}(\mu,\Sigma)\Longleftrightarrow L^{-1}(X-\mu)\sim\text{N}_{d}(0,I)
+\]
+and
+\[
+X\sim\text{N}_{d}(0,I)\Longleftrightarrow\mu+LX\sim\text{N}_{d}(\mu,\Sigma)
+\]
+
+***Related distributions***
+
++ **Student's t distribution:**  
+if 
+\[
+X\sim\text{N}_{d}(0,\Sigma) \  ,\text{and} \  
+u\sim\chi^2_{\nu},
+\]
+and 
+$\mu\in\mathbb{R}^d$ 
+then 
+$Y=\mu+X(\frac{u}{\nu})^{-\frac{1}{2}}$ 
+follows a 'Student's t distribution' with location parameter $\mu\in\mathbb{R}^d$, scale parameter $\Sigma$, and degrees of freedom $\nu$, i.e.   
+\[
+Y\sim\text{t}_d(\mu,\Sigma,\nu)
+\]  
++ **Non-central $\chi^2$ distribution:**  
+if 
+\[
+X\sim\text{N}_{d}(\mu,I)
+\]
+and then $Y=X^{\text{T}}QX$ where $Q$ is a symmetric projection of rank $r$ follows a 'Non-central $chi^2$ distribution' with non-centrality parameterr $\lambda=\mu^{\text{T}}Q\mu$ and degrees of freedom $\nu$, i.e. 
+\[
+Y\sim\chi^2_\nu(\lambda)
+\]  
+
+
+### ***Description ($2$-D case) *** 
+
+***Introdunctions***  
+
+Consider a r.v. $X\in\mathbb{R}^{2}$ follows a Normal (Gaussian) distribution
+with location parameter $\mu$ and scale parameter
+$\Sigma>0$ with dim $d\times d$
+
+***Notation***  
+
+\[
+X\sim\text{N}_{2}(\mu,\Sigma)
+\]
+
+where
+
+\[
+\mu=\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\quad;\quad\Sigma=\begin{bmatrix}\sigma_{11} & \sigma_{12}\\
+\sigma_{12} & \sigma_{22}
+\end{bmatrix}=\begin{bmatrix}\sigma_{1}^{2} & \rho\sigma_{1}\sigma_{2}\\
+\rho\sigma_{1}\sigma_{2} & \sigma_{2}^{2}
+\end{bmatrix}
+\]
+
+***Probability Density Function***
+
+\begin{align*}
+f_{X}(x|\mu,\Sigma)= & \frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\exp(-\frac{1}{2(1-\rho^{2})}(\frac{(x_{1}-\mu_{1})^{2}}{\sigma_{1}^{2}}\\
+ & \qquad\qquad+\frac{(x_{2}-\mu_{2})^{2}}{\sigma_{2}^{2}}-\frac{2\rho(x_{1}-\mu_{1})(x_{2}-\mu_{2})}{\sigma_{1}\sigma_{2}}))
+\end{align*}
+
+***Cummulative Density Function***
+
+\begin{align*}
+F_{X}(x_{d},...x_{d}|\mu,\Sigma)=&\int_{-\infty}^{x_{1}}  \int_{-\infty}^{x_{2}}\frac{1}{2\pi\sigma_{1}\sigma_{2}\sqrt{1-\rho^{2}}}\exp(-\frac{1}{2(1-\rho^{2})}(\frac{(x_{1}-\mu_{1})^{2}}{\sigma_{1}^{2}}\\
+ & \qquad\qquad+\frac{(x_{2}-\mu_{2})^{2}}{\sigma_{2}^{2}}-\frac{2\rho(x_{1}-\mu_{1})(x_{2}-\mu_{2})}{\sigma_{1}\sigma_{2}}))\text{d}t_1\text{d}t_2
+\end{align*}
+
+***Mean, Mode, Median***
+
+\[
+\text{E(X)} = \begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}
+\]
+
+well ... it is symentric, so compute the rest by yourself...
+
+***Variance***
+
+\[
+\text{Var(X)} = \begin{bmatrix}\sigma_{1}^{2} & \rho\sigma_{1}\sigma_{2}\\
+\rho\sigma_{1}\sigma_{2} & \sigma_{2}^{2}
+\end{bmatrix}
+\]
+
+***Moment generating function***
+
+\[
+\text{E}(\exp(t^{\text{T}}X))=\exp(i(t_{1}\mu_{1}+t_{2}\mu_{2})+\frac{1}{2}(\sigma_{1}^{2}t_{1}^{2}+\sigma_{2}^{2}t_{2}^{2}+2\rho\sigma_{1}\sigma_{2}t_{1}t_{2}))\]
+
+***Characteristic function***
+
+\[
+\text{E}(\exp(it^{\text{T}}X))=\exp(i(t_{1}\mu_{1}+t_{2}\mu_{2})-\frac{1}{2}(\sigma_{1}^{2}t_{1}^{2}+\sigma_{2}^{2}t_{2}^{2}+2\rho\sigma_{1}\sigma_{2}t_{1}t_{2}))
+\]
+
+***Partial distributions***
+
+If $X=(X_{1},X_{2})$ with $X\in\mathbb{R}^{2}$, $X_{1}\in\mathbb{R}$,
+$X_{2}\in\mathbb{R}$, and 
+\[
+X\sim\text{N}_{2}(\mu,\Sigma)
+\]
+ where 
+\[
+\mu=\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\quad;\quad\Sigma=\begin{bmatrix}\sigma_{1}^2 & \rho\sigma_{1}\sigma_{2}\\
+\rho\sigma_{1}\sigma_{2} & \sigma_{2}^2
+\end{bmatrix}
+\]
+then  
+
++ **Marginal distributions:**
+\[
+X_{1}\sim\text{N}(\mu_{1},\sigma_{1}^2)
+\]  
+and 
+\[
+X_{2}\sim\text{N}(\mu_{2},\sigma_{2}^2)
+\]  
+
++ **Conditional distributions:**
+\[
+X_{1}|X_{2}=x_{2}\sim\text{N}(\mu_{1}+\frac{\sigma_{1}}{\sigma_{2}}\rho(x_{2}-\mu_{2}),\,(1-\rho^{2})\sigma_{1}^{2})
+\]
+and
+\[
+X_{2}|X_{1}=x_{1}\sim\text{N}(\mu_{2}+\frac{\sigma_{2}}{\sigma_{1}}\rho(x_{1}-\mu_{1}),\,(1-\rho^{2})\sigma_{2}^{2})
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+### ***Demo***
+
+```{r,echo=FALSE}
+renderPlot({
+    G_plot(
+      x1_sl = input$G_x1, 
+            x2_sl = input$G_x2,
+            m1 = input$G_m1, 
+            m2 = input$G_m2, 
+            s1 = input$G_sig1, 
+            s2 = input$G_sig2, 
+            r = input$G_rho, 
+            theta = input$G_theta,
+            phi = input$G_phi)
+  })
+
+```
+
+
+
+
+# Student's t
+
+
+```{r}
+
+T_x1_sl_def <- 0.0
+T_x2_sl_def <- 0.0
+
+T_x1_min_def <- -10.0
+T_x1_max_def <- 10.0
+T_x2_min_def <- -10.0
+T_x2_max_def <- 10.0
+
+#T_x1_def <- 0.0
+#T_x2_def <- 0.0
+T_m1_def <- 0.0 
+T_m2_def <-  0.0
+T_s1_def <- 1.0
+T_s2_def <- 1.0
+T_r_def <- 0.0
+
+T_theta_def <- 45
+T_phi_def <- 45
+
+T_nu_def <- 1
+
+
+dbvt <-function (x, m, S, v) {
+  
+  d <-length( x )
+  
+  L <- t(chol(S))
+  
+  logdetSig <- sum(2*log(diag(L)))
+                   
+  term1 <- lgamma(0.5*(v+d)) -lgamma(0.5*v)-0.5*d*log(pi) -logdetSig
+  
+  Q <- solve(L,(x-m))
+  Q <- sum(Q*Q)
+  
+  term2 <- -0.5*(v+d)*log(1+Q) 
+  
+  pdf <- exp( term1 + term2 )
+
+  return(pdf)
+}
+
+
+T_PDF1 <- function(x,m,s,nu) {
+  pdf <- dbvt(x,m,s^2,nu)
+  #pdf <-dmvt( rep(x1, 1), delta = rep(0, 1), sigma = diag(1), df = 1)
+  return (pdf)
+}
+
+T_PDF2 <- function(x,m,s,nu) {
+  pdf <- dbvt(x,m,s^2,nu)
+  #pdf <-dmvt( rep(x1, 1), delta = rep(0, 1), sigma = diag(1), df = 1)
+  return (pdf)
+}
+
+T_PDF12 <- function(x1,x2,m1,m2,s1,s2,r,nu) {
+  mu <- m1+s1/s2*r*(x2-m2)
+  sig2 <- (1-r^2)*s1^2
+  sig2 <- (nu+ (x2-m2)^2/s2^2  )/(nu+1) *sig2
+  pdf <- dbvt(x1,mu,sig2,1)
+  return (pdf)
+}
+
+T_PDF21 <- function(x2,x1,m1,m2,s1,s2,r,nu) {
+  mu <- m2+s2/s1*r*(x1-m1)
+  sig2 <- ((1-r^2)*s2^2)
+  sig2 <- (nu +(x1-m1)^2/s1^2  )/(nu+1)* sig2
+  pdf <- dbvt(x2,mu,sig2,1)
+  return (pdf)
+}
+
+
+
+
+
+T_PDF <- function(x1,x2,m1,m2,s1,s2,r,nu) {
+
+  S <- matrix( c(s1*s1,r*s1*s2,r*s1*s2,s2*s2) , nrow=2)
+  
+  pdf <-  dbvt(c(x1,x2),c(m1,m2),S,nu)
+  #pdf <-dmvt( c(x1, x2), delta = c(m1,m2), sigma = S, df = nu)
+  
+    return( pdf )
+}
+
+T_plot<- function(x1_sl=T_x1_sl_def,
+                  x2_sl=T_x2_sl_def,
+                  m1=T_m1_def,
+                  m2=T_m2_def,
+                  s1=T_s1_def,
+                  s2=T_s2_def,
+                  r=T_r_def,
+                  x1_min=T_x1_min_def, 
+                  x1_max=T_x1_max_def,
+                  x2_min=T_x2_min_def, 
+                  x2_max=T_x2_max_def,
+                  theta = T_theta_def,
+                  phi = T_phi_def,
+                  nu = T_nu_def) {
+
+
+ # x1_sl=T_x1_sl_def
+ # x2_sl=T_x2_sl_def
+ # m1=T_m1_def
+ # m2=T_m2_def
+ # s1=T_s1_def
+ # s2=T_s2_def
+ # r=T_r_def
+ # x1_min=T_x1_min_def
+ # x1_max=T_x1_max_def
+ # x2_min=T_x2_min_def
+ # x2_max=T_x2_max_def
+ # theta = T_theta_def
+ # phi = T_phi_def
+ #  nu = T_nu_def
+  
+  fntsz <- 1.5
+  
+  n_grid <- 50
+  x1_grid <- seq(from = x1_min, to = x1_max, length.out=n_grid)
+  x2_grid <- seq(from = x2_min, to = x2_max, length.out=n_grid)
+  
+  
+  aa <-matrix (rep(5,times=2),nrow=1,ncol=2)
+  bb <-matrix (rep(3,times=2),nrow=1,ncol=2)
+  cc <-matrix (rep(2,times=4),nrow=2,ncol=2)
+  dd <-matrix (rep(1,times=4),nrow=2,ncol=2)
+  ee <-matrix (rep(6,times=2),nrow=2,ncol=1)
+  ff <-matrix (rep(4,times=2),nrow=2,ncol=1)
+  eeff <-cbind(ee,ff)
+  AA <- rbind(aa,bb,cc)
+  BB <- rbind(dd,eeff)
+  AAA <- cbind(BB,AA)
+  layout( AAA )
+  rm(aa,bb,cc,ee,ff,eeff,AA,BB,AAA)
+  
+
+# PERSPECTIVE...
+  
+  PDF_local <- function(x1,x2,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r,
+                        nu_=nu) {
+    T_PDF(x1,x2,m1_,m2_,s1_,s2_,r_,nu_)
+  }
+  
+  #z_grid <- outer(x1_grid, x2_grid, PDF_local)
+  
+  z_grid <- matrix(rep(NaN,n_grid*n_grid), nrow=n_grid)
+  for(i in 1:n_grid)
+    for (j in 1:n_grid)
+      z_grid[i,j] <- PDF_local(x1_grid[i],x2_grid[j])
+  
+  persp(x = x1_grid,
+    y = x2_grid,
+    z = z_grid, 
+    xlim = c(x1_min,x1_max), 
+    ylim = c(x2_min,x2_max), 
+    xlab = expression('x1'),
+    ylab = expression('x2'),
+    zlab = "PDF",
+    #main = "Gaussian",
+    phi = phi, 
+    theta = theta,
+    cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+  )
+ 
+#COUNTORPLOT..
+  
+  contour(x = x1_grid,
+    y = x2_grid,
+    z = z_grid, 
+    nlevels = 20,
+    xlim = c(x1_min,x1_max), 
+    ylim = c(x2_min,x2_max), 
+    xlab = expression('x1'),
+    ylab = expression('x2'),
+    zlab = "PDF",
+    #main = "Gaussian",
+    cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,
+    method = "edge"
+  )
+  abline(v=x1_sl, col='blue')
+  abline(h=x2_sl, col='green')
+  legend('topright',
+       bg="transparent",
+       c('joint', 'x1', 'x2'),
+       lty=c(1,1),
+       lwd=c(2.5,2.5),
+       col=c('black','blue','green')) 
+  
+#MARGINAL X1
+  
+    PDF_local <- function(x1,
+                          m1_=m1,
+                          s1_=s1,
+                          nu1_=nu) {
+          T_PDF1(x1,m1_,s1_,nu1_)
+        }
+  
+  z_grid <- apply(matrix(x1_grid,ncol=1), 1,PDF_local)
+    
+  plot(x = x1_grid,
+       y = z_grid,
+       type='l',
+       main="Marg. X1",
+       xlab="",
+       ylab='',
+       xlim=c(x1_min,x1_max),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+#MARGINAL X2
+  
+    PDF_local <- function(x2,
+                          m2_=m2,
+                          s2_=s2,
+                          nu2_=nu) {
+          T_PDF2(x2,m2_,s2_,nu2_)
+        }
+  
+  z_grid <- apply(matrix(x2_grid,ncol=1), 1, PDF_local)
+  
+  plot(y = x2_grid,
+       x = z_grid,
+       type='l',
+       main="Marg. X2",
+       ylab="",
+       xlab="",
+       ylim=c(x2_min,x2_max),
+       xlim=rev(range(z_grid)),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+#CONDITIONAL X1|X2=x2
+  
+    PDF_local <- function(x1, 
+                            x2_=x2_sl,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r,
+                          nu1_=nu) {
+          return(T_PDF12(x1,x2_,m1_,m2_,s1_,s2_,r_,nu1_))
+        }
+  
+  z_grid <- apply(matrix(x1_grid,ncol=1), 1, PDF_local)
+  
+  plot(x = x1_grid,
+       y = z_grid,
+       type='l',
+       main="Cond. X1|X2=x2",
+       xlab="",
+       ylab='',
+       xlim=c(x1_min,x1_max),
+       col=c('green'),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+
+  #CONDITIONAL X2|X1=x1
+  
+    PDF_local <- function(x2, 
+                            x1_=x1_sl,
+                          m1_=m1,
+                          m2_=m2,
+                          s1_=s1,
+                          s2_=s2,
+                          r_=r,
+                          nu_=nu) {
+          T_PDF21(x2,x1_,m1_,m2_,s1_,s2_,r_,nu_)
+        }
+  
+  z_grid <- apply(matrix(x2_grid,ncol=1), 1, PDF_local)
+  
+  plot(y = x2_grid,
+       x = z_grid,
+       type='l',
+       main="Cond. X2|X1=x1",
+       ylab="",
+       xlab='',
+       ylim=c(x2_min,x2_max),
+       xlim=rev(range(z_grid)),
+       col=c('blue'),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+    
+}
+
+```
+
+
+
+
+
+
+Inputs {.sidebar} 
+-----------------------
+
+
+***The distribution***  
+
+\begin{align*}
+X\sim\text{t}_{d}(\mu,\Sigma,\nu)
+\end{align*}
+
+
+
+
+***Distr. parameters***
+
+```{r,echo=FALSE}
+sliderInput("T_m1",
+                 "$$\\mu_1:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("T_m2",
+                 "$$\\mu_2:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("T_sig1",
+                 "$$\\sigma_1:$$",
+                  min = 0.001,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 1.0)
+sliderInput("T_sig2",
+                 "$$\\sigma_2:$$",
+                  min = 0.001,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 1.0)
+sliderInput("T_rho",
+                 "$$\\rho:$$",
+                  min = -1.0,
+                  max = 1.0,
+                  step = 0.01,
+                  value = 0.9)
+sliderInput("T_nu",
+                 "$$\\nu:$$",
+                  min = 1,
+                  max = 10,
+                  step = 1,
+                  value = 1)
+```
+
+***Slices***
+
+```{r,echo=FALSE}
+sliderInput("T_x1",
+                 "$$x_1:$$",
+                  min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+sliderInput("T_x2",
+                 "$$x_2:$$",
+                    min = -5.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 0.0)
+```
+
+***View***
+
+```{r,echo=FALSE}
+sliderInput("T_theta",
+                 "$$\\theta:$$",
+                  min = 1.0,
+                  max = 90.0,
+                  step = 1,
+                  value = 45.0)
+sliderInput("T_phi",
+                 "$$\\phi:$$",
+                    min = 1.0,
+                  max = 90,
+                  step = 1,
+                  value = 45.0)
+    
+```
+
+
+
+Column {.tabset}
+-----------------------
+
+### ***Motivation: Regression?***  
+
+***See the transformation***
+
+Motivation comes fromt he following observation:
+
+if 
+\[
+X\sim\text{N}_{d}(0,\Sigma) \  ,\text{and} \  
+u\sim\chi^2_{\nu},
+\]
+and 
+$\mu\in\mathbb{R}^d$ 
+then 
+$Y=\mu+X(\frac{u}{\nu})^{-\frac{1}{2}}$ 
+follows a 'Student's t distribution' with location parameter $\mu\in\mathbb{R}^d$, scale parameter $\Sigma$, and degrees of freedom $\nu$, i.e.   
+\[
+Y\sim\text{t}_d(\mu,\Sigma,\nu)
+\]  
+
+***More thinking...***
+
++ ooooh...  
+++ It can be used in Bayesian linear models to compute the predictive distribution  
+++ let's define the distribution properly, standardise and study furtehr this new distribution...
+
+
+### ***Description ($d$-D case) *** 
+
+***Introdunctions***  
+
+Consider a r.v. $X\in\mathbb{R}^{d}$ follows a Student's t distribution
+with location parameter $\mu\in\mathbb{R}^{d}$, scale parameter
+$\Sigma>0$ with dim $d\times d$, and degrees of freedom $\nu$.
+
+***Notation***  
+
+\[
+X\sim\text{t}_{d}(\mu,\Sigma,\nu)
+\]
+
+***Probability Density Function***
+
+\begin{align*}
+f_{X}(x|\mu,\Sigma)= & \frac{\Gamma(\frac{\nu+d}{2})}{\Gamma(\frac{\nu}{2})\nu^{\frac{d}{2}}\pi^{\frac{d}{2}}\det(\Sigma)}(1+\frac{1}{2}(t-\mu)^{\text{T}}\Sigma^{-1}(t-\mu))^{-\frac{\nu+d}{2}}
+\end{align*}
+
+***Cummulative Density Function***
+
+\begin{align*}
+F_{X}(x_{d},...x_{d}|\mu,\Sigma,\nu)=\int_{-\infty}^{x_{1}}\cdots & \int_{-\infty}^{x_{2}}\frac{\Gamma(\frac{\nu+d}{2})}{\Gamma(\frac{\nu}{2})\nu^{\frac{d}{2}}\pi^{\frac{d}{2}}\det(\Sigma)}(1+\frac{1}{2}(t-\mu)^{\text{T}}\Sigma^{-1}(t-\mu))^{-\frac{\nu+d}{2}}\text{d}t
+\end{align*}
+
+***Mean, Mode, Median***
+
+\[
+\text{E(X)} = \mu
+\]
+
+well ... it is symentric, so compute the rest by yourself...
+
+***Variance***
+
+\[
+\text{Var(X)} = \begin{cases}
+\frac{\nu}{\nu-2}\Sigma & ,\text{ if }\nu>2\\
+\text{undefined} & ,\text{ else }
+\end{cases}
+\]
+
+***Moment generating function***
+
+XXX
+
+***Characteristic function***
+
+XXX
+
+***Partial distributions***
+
+If $X=(X_{1},X_{2})$ with $X\in\mathbb{R}^{d}$, $X_{1}\in\mathbb{R}^{d_{1}}$,
+$X_{2}\in\mathbb{R}^{d_{2}}$, and 
+\[
+X\sim\text{t}_{d}(\mu,\Sigma,\nu)
+\]
+ where 
+\[
+\mu=\begin{bmatrix}\mu_{1}\\
+\mu_{2}
+\end{bmatrix}\quad;\quad\Sigma=\begin{bmatrix}\Sigma_{11} & \Sigma_{21}^{\text{T}}\\
+\Sigma_{21} & \Sigma_{22}
+\end{bmatrix}
+\]
+then  
+
++ **Marginal distributions:**
+\[
+X_{1}\sim\text{t}_{d_{1}}(\mu_{1},\Sigma_{11},\nu)
+\]
+and 
+\[
+X_{2}\sim\text{t}_{d_{2}}(\mu_{2},\Sigma_{22},\nu)
+\]  
+
++ **Conditional distributions:**
+\[
+X_{1}|X_{2}=x_{2}\sim\text{t}_{d_{1}}(\mu_{1|2},\Sigma_{1|2},\nu_{1|2})
+\]
+with
+\begin{align*}
+\mu_{1|2}= & \mu_{1}-\Sigma_{21}\Sigma_{22}^{-1}(\mu_{2}-x_{2})\\
+\Sigma_{1|2}= & \frac{\nu+(\mu_{2}-x_{2})^{\text{T}}\Sigma_{22}^{-1}(\mu_{2}-x_{2})}{\nu+d_{2}}\Sigma_{11|2}\\
+\Sigma_{11|2}= & \Sigma_{11}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{21}^{\text{T}}\\
+\nu_{1|2}= & \nu+d_{2}
+\end{align*}
+and
+\[
+X_{2}|X_{1}=x_{1}\sim\text{t}_{d_{2}}(\mu_{2|1},\Sigma_{2|1},\nu_{2|1})
+\]
+with
+\begin{align*}
+\mu_{2|1}= & \mu_{2}-\Sigma_{21}\Sigma_{11}^{-1}(\mu_{1}-x_{1})\\
+\Sigma_{2|1}= & \frac{\nu+(\mu_{1}-x_{1})\Sigma_{11}^{-1}(\mu_{1}-x_{1})}{\nu+d_{1}}\Sigma_{22|1}\\
+\Sigma_{22|1}= & \Sigma_{22}-\Sigma_{21}^{\text{T}}\Sigma_{22}^{-1}\Sigma_{21}\\
+\nu_{1|2}= & \nu+d_{1}
+\end{align*}
+
+
+
+***Properties***
+
++ If $A\in\mathbb{R}^{q\times q}$, and $b\in\mathbb{R}^{q}$ are constants
+then
+\begin{align*}
+X & \sim\text{t}_{d}(\mu,\Sigma,\nu)\;\Longleftrightarrow AX+b\sim\text{t}_{d}(A\mu+b,A\Sigma A^{\text{T}},\nu)
+\end{align*}
++ If $L$ the Cholesky lower triangular of $\Sigma>0$ (i.e., $\Sigma=LL^{\text{T}}$
+and constants) then
+\[
+X\sim\text{t}_{d}(\mu,\Sigma,\nu)\Longleftrightarrow L^{-1}(X-\mu)\sim\text{t}_{d}(0,I,\nu)
+\]
+and
+\[
+X\sim\text{t}_{d}(0,I,\nu)\Longleftrightarrow\mu+LX\sim\text{t}_{d}(\mu,\Sigma,\nu)
+\]
+
+### Demo
+
+```{r,echo=FALSE}
+renderPlot({
+    T_plot(
+      x1_sl = input$T_x1, 
+            x2_sl = input$T_x2,
+            m1 = input$T_m1, 
+            m2 = input$T_m2, 
+            s1 = input$T_sig1, 
+            s2 = input$T_sig2, 
+            r = input$T_rho, 
+            theta = input$T_theta,
+            phi = input$T_phi,
+      nu = input$T_nu)
+  })
+
+```

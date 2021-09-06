@@ -1,0 +1,1242 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Distributions"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Distributions Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+# Bernoulli 
+
+```{r,echo=FALSE}
+plot_Bernoulli <- function(p=0.2) {
+  
+  fntsz <- 1.3 ;
+  op <- par(cex = fntsz)
+  
+  x <- c(0,1) ;
+  f_x <- c(1-p,p) ;
+  F_x <- c(1-p,1) ;
+  # F_x <- stepfun(x,c(F_x,1.0))
+  
+  par(mfrow=c(1,2))
+  
+  barplot( f_x,  names = x, xlab = "x", main = "Probability", ylab = "Pr(X=x)", ylim=c(0,1),
+     cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  # plot(F_x ,   main = "Cumulative probability", ylab = "Pr(X<=x)" , ylim=c(0,1), xlim=c(0.0,1.5))
+  
+  barplot( F_x,  names = x, xlab = "x", main = "Cumulative probability", ylab = "Pr(X<=x)", ylim=c(0,1),
+     cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Bernoulli distribution***
+
+$$X\sim\text{Bernoulli}(p)$$  $$p\in(0,1)$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+sliderInput("p_Bern",
+                 "$$p:$$",
+                  min = 0.0,
+                  max = 1,
+                  value = 0.05)
+```
+
+Column
+-----------------------------------------------------------------------
+
+
+### ***Description*** {data-height=400}
+
+Bernoulli bistribution describes a random experiment with exactly two possible outcomes, "success" (coded as 1) and "failure" (coded as 0), in which the probability of success $p$ is the same every time the experiment is conducted
+
+***Probability:*** 
+$$
+\Pr(X=x|p)=
+\begin{cases}
+p^{x}(1-p)^{1-x}   & \text{, if } x\in \{0,1\} \\
+0 & \text{, otherwise}
+\end{cases}
+\  \  
+\text{  ,or  } 
+\  \  
+\Pr(X=x|p)=
+\begin{cases}
+1-p & \text{, if } x=0\\
+p   & \text{, if } x=1 
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = p
+$$
+***Variance:*** 
+$$
+Var(X) = p(1-p)
+$$
+
+### ***Probability and Cummulative probability function plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_Bernoulli(p=input$p_Bern)
+  })
+```
+
+
+
+
+
+# Binomial 
+
+
+```{r,echo=FALSE}
+plot_binomial_withoutNorm <- function(n=10, p=0.2, Qcorrect=FALSE) {
+  
+  fntsz <- 1.4 ;
+op <- par(cex = fntsz)
+
+  
+  xaxis_min <- 0.0 ;
+  xaxis_max <- n ;
+  
+  x <- seq(xaxis_min,xaxis_max ,1) ;
+  f_x <- dbinom(x, size=n, prob=p) ;
+  F_x_val <- pbinom(x, size=n, prob=p) ;
+  F_x <- stepfun(x,c(0.0,F_x_val))
+    
+  xaxis_norm_min = xaxis_min ;
+  xaxis_norm_max = xaxis_max ;
+  
+  
+  assum <- (n*p>10 && n*(1-p)>10)
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, type = "n",  main = "Probability", ylab = "Pr(X=x)", xaxt = "n", ylim=c(0,1.1*max(f_x)) ,
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  boxplot(as.data.frame(rbind(0,f_x)), at = x, names = x,
+          boxwex = 1, medlty = 0, add = TRUE, col = "lightgrey" ,
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  legend('topright',
+         bg="transparent",
+         c('Binomial'),
+         lty=c(1),
+         lwd=c(2.5),
+         col=c('lightgrey'))
+  
+  plot(F_x,  main = "Cumulative probability",   ylab = "Pr(X<=x)" , ylim=c(0,1), xlim=c(0,n+1),col.ver = "bisque", xaxt='n',
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,cex=fntsz,
+pch = 20)
+  
+  y2 <- rep(c(F_x_val), each=2)
+  y2 <- y2[-length(y2)]
+  x2 <- rep(x, each=2)[-1]
+  x3 <- c(min(x2), x2, max(x2))
+  x3[ length(x3)] <- n+1
+  y3 <- c(0, y2, 1.0)
+  
+  polygon(c(x3,n+1), c(y3,0.0), border=NA, col="lightgrey",
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  plot(F_x,  main = "Cumulative probability",  ylab = "Pr(X<=x)" , ylim=c(0,1), xlim=c(0,n+1),col.ver = "bisque", add=TRUE,xaxt='n',
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,cex=fntsz,
+pch = 20)
+axis(side=1,at=x,cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,cex=fntsz)
+  
+  x_norm <- seq(
+            xaxis_min,
+            xaxis_max,
+            length.out=100) ;
+
+  
+  
+}
+```
+```{r,echo=FALSE}
+plot_binomial_withNorm <- function(n=10, p=0.2, Qcorrect=FALSE) {
+  
+  fntsz <- 1.4 ;
+op <- par(cex = fntsz)
+  
+  xaxis_min <- 0.0 ;
+  xaxis_max <- n ;
+  
+  x <- seq(xaxis_min,xaxis_max ,1) ;
+  f_x <- dbinom(x, size=n, prob=p) ;
+  F_x_val <- pbinom(x, size=n, prob=p) ;
+  F_x <- stepfun(x,c(0.0,F_x_val))
+  
+  
+ x_norm <- seq(
+            xaxis_min,
+            xaxis_max,
+            length.out=100) ;
+  
+    
+  xaxis_norm_min = xaxis_min ;
+  xaxis_norm_max = xaxis_max ;
+  
+  
+  assum <- (n*p>10 && n*(1-p)>10)
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, type = "n",  main = "Probability", ylab = "Pr(X=x)", xaxt = "n", ylim=c(0,1.1*max(f_x)) ,
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  if (assum) 
+    boxplot(as.data.frame(rbind(0,f_x)), at = x, names = x,
+            boxwex = 1, medlty = 0, add = TRUE, col = "lightskyblue3",
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz )
+  else
+    boxplot(as.data.frame(rbind(0,f_x)), at = x, names = x,
+          boxwex = 1, medlty = 0, add = TRUE, col = "lightgrey" ,
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  curve(dnorm(x,mean=n*p,sd=sqrt(n*p*(1-p))), from = xaxis_min, to = xaxis_max, n = 101, add = TRUE, lwd=4, col='red',
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  if (assum) 
+    legend('topright',
+         bg="transparent",
+         c('Binomial','Normal'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('lightskyblue3','red'))
+    else
+      legend('topright',
+         bg="transparent",
+             c('Binomial','Normal'),
+             lty=c(1,1),
+             lwd=c(2.5,2.5),
+             col=c('grey','red'))
+  
+  plot(F_x,  main = "Cumulative probability",   ylab = "Pr(X<=x)" , ylim=c(0,1), xlim=c(0,n+1),col.ver = "bisque", xaxt='n',
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,cex=fntsz,
+pch = 20)
+  
+  y2 <- rep(c(F_x_val), each=2)
+  y2 <- y2[-length(y2)]
+  x2 <- rep(x, each=2)[-1]
+  x3 <- c(min(x2), x2, max(x2))
+  x3[ length(x3)] <- n+1
+  y3 <- c(0, y2, 1.0)
+  
+  if (assum) {
+    polygon(c(x3,n+1), c(y3,0.0), border=NA, col="lightskyblue3",
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  }else {
+    polygon(c(x3,n+1), c(y3,0.0), border=NA, col="lightgrey",
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  }
+  plot(F_x,  main = "Cumulative probability",  ylab = "Pr(X<=x)" , ylim=c(0,1), xlim=c(0,n+1),col.ver = "bisque", add=TRUE, xaxt='n',
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz, cex=fntsz,
+pch = 20)
+  
+axis(side=1,at=x,cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz,cex=fntsz)
+
+  x_norm <- seq(
+            xaxis_min,
+            xaxis_max,
+            length.out=100) ;
+
+  if (Qcorrect==FALSE) {
+    F_x_norm <-  pnorm(x_norm, mean=n*p, sd=sqrt(n*p*(1-p)) )
+  } else if (Qcorrect==TRUE){
+    F_x_norm <-  pnorm(x_norm+0.5, mean=n*p, sd=sqrt(n*p*(1-p)) )
+  }
+  lines(x_norm ,F_x_norm, lwd=4,  col='red', ylim=c(0,1), xlim=c(0,n+1),
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+  
+}
+```
+```{r,echo=FALSE}
+plot_binomial <- function(n=10, p=0.2, Qnorm=FALSE, Qcorrect=FALSE) {
+  if(Qnorm) {
+    plot_binomial_withNorm(n, p, Qcorrect) 
+  } else {
+    plot_binomial_withoutNorm(n, p, Qcorrect) 
+  }
+}
+```
+
+
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Binomial distribution***
+
+$$X\sim\text{bin}(n,p)$$ 
+$$n\in\mathbb{N}_{+} , \ p\in [0,1]$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("n_bin",
+                  "n: ",
+                  min = 0.0,
+                  max = 100.0,
+                  value = 10.0,
+                  step = 1.0 )
+      sliderInput("p_bin",
+                  "p :",
+                  min = 0.0,
+                  max = 1,
+                  value = 0.05)
+```
+
+***Check Normal approximation***
+
+```{r,echo=FALSE}
+      checkboxInput("Qnorm_bin", 
+                    label = "add Normal curve", 
+                    value = FALSE)
+```
+                    
+
+If the box is checked: 
+
+  * the bars turn blue if the rull-of-thump assumptions $$np>10$$ and $$np(1-p)>10$$ for the normatilty approximation are satisfied.
+  
+***Apply correction in Normal approx.***
+
+```{r,echo=FALSE}
+      checkboxInput("Qcorrect_bin", 
+                    label = "apply correction", 
+                    value = FALSE)
+```
+                    
+
+If the box is checked: 
+
+  * It applies the correction in the Normal approximation CDF curve, such as: 
+  
+  $P_{\text{bin}}(X\le x)=$ $\   \   P_{\text{Normal}}(X\le x+0.5)$
+  
+  
+
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+  + The binomial distribution models the number of successes after reapeating a Bernulli experiment $n$ times. 
+  + $X\sim\text{bin}(n,p)$ is the distribution of $X=\sum_{i=1}^{n}Y_i$, when $\{Y_i\}_{i=1}^n$ are IID random variables from  $Y_i \sim Bernoulli(p)$.
+
+***Probability:*** 
+$$
+\Pr(X=x|n,p)=
+\begin{cases}
+\binom{n}{x}p^{x}(1-p)^{n-x}& \text{, if } x\in \{0,1,...,n\} \\
+0& \text{, otherwise}  \\
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = np
+$$
+***Variance:*** 
+$$
+Var(X) = np(1-p)
+$$
+
+### ***Probability and Cummulative probability function plots***{data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+     plot_binomial(n=input$n_bin,
+                   p=input$p_bin,
+                   Qnorm=input$Qnorm_bin,
+                   Qcorrect=input$Qcorrect_bin)
+  })
+```
+
+
+
+# Uniform 
+
+```{r,echo=FALSE}
+plot_unif <- function(alpha= 0.0, beta= 1.0, axis_min=-2, axis_max=2) {
+  
+  fntsz <- 1.1 ;
+op <- par(cex = fntsz)
+
+  x <- seq(alpha, beta, length=100) ;
+  
+  f_x <- rep( 1/(beta-alpha), length=100) ;
+  
+  F_x <- punif(x, min = alpha, max = beta) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(c(axis_min,alpha,x,beta,axis_max), c(0.0,0.0,f_x,0.0,0.0), 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(axis_min,axis_max), 
+       ylim=c(0.0, 2.0),
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+  )
+  abline(a = 0, b = 0,col='red')
+  
+  plot(c(axis_min,alpha,x,beta,axis_max), c(0.0,0.0,F_x,1.0,1.0), 
+       type = "l",
+       main="Cumulative density function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(c(axis_min,axis_max)), 
+       ylim=c(0.0, 1.0),
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Uniform distribution***
+
+$$x\sim\text{U}(\alpha,\beta)$$ 
+$$\alpha\in\mathbb{R},\  \beta\in\mathbb{R},\  \alpha<\beta$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("ab_unif",
+                  "$$\\  \\  [\\  \\alpha  \\   , \\  \\beta \\  ]$$ ",
+                  min = -2.0,
+                  max = 2.0,
+                  value = c(-0.0,1.0),
+                  step = 0.05 )
+```
+
+<!-- ***Zoom in/out control*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!--       sliderInput("axis_max_exp", -->
+<!--                   "Zoom axis x :", -->
+<!--                   min = 10^(-10), -->
+<!--                   max = 10.0, -->
+<!--                   value = 5.0) -->
+<!-- ``` -->
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+When somebody asks: "Give me a (continuous) random number from $\alpha$ to $\beta$", he means "Draw/Sample a value from $\text{U}(\alpha,\beta)$"
+
+***Density function:*** 
+$$
+f_X(x|\alpha, \beta)=
+\begin{cases}
+\frac{1}{\beta-\alpha} & \text{, } x \in [\alpha,\beta] \\
+0 & \text{, otherwise}
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = \frac{\beta+\alpha}{2}
+$$
+***Variance:*** 
+$$
+Var(X) = \frac{(\beta-\alpha)^2}{12}
+$$
+
+
+### ***Density and Cummulative probability function plots***{data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_unif(alpha=input$ab_unif[1],
+              beta=input$ab_unif[2])
+  })
+```
+
+
+
+
+# Normal 
+
+```{r,echo=FALSE}
+plot_normal <- function(mu= 0.0, sig2=1.0, xaxis_min=-10.0, xaxis_max=10.0, yaxis_max=1.0) {
+  
+  
+  x <- seq(xaxis_min,xaxis_max,length=100)
+  
+  f_x <- dnorm(x, mean=mu, sd=sqrt(sig2)) ;
+  
+  F_x <- pnorm(x, mean=mu, sd=sqrt(sig2)) ;
+  
+  mydata <- data.frame(x, f_x, F_x) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, yaxis_max)
+  )
+  abline(a = 0, b = 0,col='red')
+  
+  plot(x, F_x, 
+       type = "l",
+       main="Cumulative density function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Normal distribution***
+
+$$X\sim\text{N}(\mu,\sigma^2)$$ 
+$$\mu\in\mathbb{R}, \ \sigma^2>0$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("mu_norm",
+                  "$$\\mu:$$",
+                  min = -6.0,
+                  max = 6.0,
+                  value = 0.0,
+                  step = 0.05 )
+      sliderInput("sig2_norm",
+                  "$$\\sigma^2:$$",
+                  min = 0.1,
+                  max = 9.0,
+                  value = 1.0,
+                  step = 0.05) 
+```
+
+<!-- ***Zoom in/out control*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!--       sliderInput("xaxis_min_norm", -->
+<!--                   "Zoom axis X (left) :", -->
+<!--                   min = -10.0, -->
+<!--                   max = 10.0, -->
+<!--                   value = -4.0) -->
+<!--       sliderInput("xaxis_max_norm", -->
+<!--                   "Zoom axis X (right) :", -->
+<!--                   min = -10.0, -->
+<!--                   max = 10.0, -->
+<!--                   value = 4.0)  -->
+<!--       sliderInput("yaxis_max_norm", -->
+<!--                   "Zoom axis Y :", -->
+<!--                   min = 10^(-10), -->
+<!--                   max = 1.2, -->
+<!--                   value = 1.0, -->
+<!--                   step = ((1.2)-(10^(-10)))/100 ) -->
+<!-- ``` -->
+
+Column
+-----------------------------------------------------------------------
+
+
+### ***Description*** {data-height=400}
+
+***Density function:*** 
+$$
+f_X(x|\mu,\sigma^2)=
+{\frac {1}{\sigma {\sqrt {2\pi }}}}\,e^{-{\frac {(x-\mu )^{2}}{2\sigma ^{2}}}}, \  \  x\in\mathbb{R}
+$$
+***Expectation:*** 
+$$
+E(X) = \mu
+$$
+***Variance:*** 
+$$
+Var(X) = \sigma^2
+$$
+***Properties:***
+
+  * $X\sim\text{N}(\mu,\sigma^{2})$ $\Longleftrightarrow$ $\frac{X-\mu}{\sigma}\sim\text{N}(0,1)$
+  * If $X\sim\text{N}(\mu,\sigma^{2})$ , $a,b\in\mathbb{R}$ and $Y=a+bX$, then $Y\sim\text{N}(a+b\mu,b^{2}\sigma^{2})$
+  * If $X_{i}\overset{IID}{\sim}\text{N}(\mu_{i},\sigma_{i}^{2})$ $a\in\mathbb{R}$, $b_{i}\in\mathbb{R}$ for $i=1,...,N$, and $Y=a+\sum_{i=1}^{N}b_{i}X_{i}$, then $Y\sim\text{N}(a+\sum_{i=1}^{N}b_{i}\mu_{i},\sum_{i=1}^{N}b_{i}^{2}\sigma_{i}^{2})$.
+
+***Central Limit Theorem (CLT):***
+
+Suppose $X_{1},X_{2},...,X_{n}$ are IID random variables (with some distribution) with $E(X_{i})=\mu$ and $Var(X_{i})=\sigma^{2}<\infty$. Let $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$. Then, as $n$ approaches infinity:
+$$
+\sqrt{n}\frac{\bar{X}-\mu}{\sigma}\overset{\text{approx.}}{\sim}\text{N}(0,1).
+$$
+***Implementation to statistics (the quantities):***
+
+  * If random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$,
+then 
+$$
+ \sqrt{n} \frac{\bar{X}-\mu}{ \sigma }  \sim \text{N}(0,1)
+$$
+ where $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$.
+ 
+  * If random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$,
+then  
+$$
+ (n-1)\frac{S^{2}}{\sigma^{2}}\sim\chi_{n-1}^{2}
+$$
+ where $S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$.
+ 
+  * If random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$,
+then  
+$$
+ \frac{\bar{X}-\mu}{\sqrt{S^{2}/n}}\sim t_{n-1}
+$$
+ where $S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$ and $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$.
+ 
+ * Consider a random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu_X,\sigma^{2})$, and a random sample $Y_{1},Y_{2},...,Y_{m}\overset{IID}{\sim}\text{N}(\mu_Y,\sigma^{2})$. The two random samples are independent each other. 
+Then  
+$$
+ \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{S_p\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim t_{n+m-2}
+$$
+ where $S_p^2=\frac{(n-1)S_X^{2}+(m-1)S_Y^{2}}{n+m-2}$, $S_X^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$, $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$, $S_Y^{2}=\frac{1}{m-1}\sum_{i=1}^{m}(Y_{i}-\bar{Y})^{2}$ and $\bar{Y}=\frac{1}{m}\sum_{i=1}^{m}Y_{i}$.
+ 
+ * If $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$, then 
+$$
+ (n-1)\frac{S^{2}}{\sigma^{2}} \sim\chi_{n-1}^{2} 
+$$
+where $S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$.  
+[by Cochran's theorem] 
+ 
+   * Consider a random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu_X,\sigma^{2})$, and 
+   a random sample random sample $Y_{1},Y_{2},...,Y_{M}\overset{IID}{\sim}\text{N}(\mu_Y,\sigma^{2})$. The two random samples are independent each other. Then it is: 
+$$
+ (n+m-2)\frac{S_p^{2}}{\sigma^{2}} \sim\chi^{2}_{n+m-2} 
+$$ 
+where $S_p^2$ is the pool sample variance defined as $S_p^2=\frac{(n-1)S_X^{2}+(m-1)S_Y^{2}}{n+m-2}$, with $S_X^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$, and $S_Y^{2}=\frac{1}{m-1}\sum_{i=1}^{m}(Y_{i}-\bar{Y})^{2}$.  
+    
+    + This result can be generalized to consider more than 2 random samples. (Applications to ANOVA)
+ 
+  * If random samples $X_{1},X_{2},...,X_{n_{X}}\overset{IID}{\sim}\text{N}(\mu_{X},\sigma_{X}^{2})$, and $Y_{1},Y_{2},...,Y_{n_{Y}}\overset{IID}{\sim}\text{N}(\mu_{Y},\sigma_{Y}^{2})$, and if  
+$$
+F=\frac{S_{Y}^{2}/\sigma_{Y}^{2}}{S_{X}^{2}/\sigma_{X}^{2}} 
+$$
+where $S_{X}^{2}=\frac{1}{n_{X}-1}\sum_{i=1}^{n_{X}}(X_{i}-\bar{X})^{2}$, $\bar{X}=\frac{1}{n_{X}}\sum_{i=1}^{n_{X}}X_{i}$,  $S_{Y}^{2}=\frac{1}{n_{Y}-1}\sum_{i=1}^{n_{Y}}(Y_{i}-\bar{Y})^{2}$ and $\bar{Y}=\frac{1}{n_{Y}}\sum_{i=1}^{n_{Y}}Y_{i}$,  
+then 
+$$
+F \sim F_{n_{Y}-1,n_{X}-1}
+$$
+
+### ***Density and Cummulative probability function plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_normal(mu=input$mu_norm,
+                sig2=input$sig2_norm)
+  })
+```
+
+
+
+# Student t 
+
+```{r,echo=FALSE}
+plot_student_t_withoutNorm <- function(df=2.0, xaxis_max=12, yaxis_max=0.45) {
+  
+  xaxis_min <- -xaxis_max ;
+  
+  x <- seq(xaxis_min,xaxis_max,length=100)
+  
+  f_x <- dt(x, df=df) ;
+  
+  F_x <- pt(x, df=df) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, yaxis_max)
+  )
+  
+  legend('topright',
+         bg="transparent",
+         c('t'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('black')) 
+  
+  abline(a = 0, b = 0,col='red')
+  plot(x, F_x, 
+       type = "l",
+       main="Cumulative density function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+}
+```
+
+```{r,echo=FALSE}
+plot_student_t_withNorm <- function(df=2.0, xaxis_max=12, yaxis_max=0.45) {
+  
+  xaxis_min <- -xaxis_max ;
+  
+  x <- seq(xaxis_min,xaxis_max,length=100)
+  
+  f_x <- dt(x, df=df) ;
+  
+  F_x <- pt(x, df=df) ;
+  
+  f_x_norm <- dnorm(x,0,1) ;
+  
+  F_x_norm <- pnorm(x,0,1) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab="f(x)",
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, yaxis_max)
+  )
+  
+    lines(x,f_x_norm,col="blue")
+    legend('topright',
+         bg="transparent",
+           c('t','N(0,1)'),
+           lty=c(1,1),
+           lwd=c(2.5,2.5),
+           col=c('black','blue')) 
+
+  
+  abline(a = 0, b = 0,col='red')
+  plot(x, F_x, 
+       type = "l",
+       main="Cumulative distribution function",
+       xlab="x",
+       ylab="F(x)=Pr(X<=x)",
+       xlim=c(xaxis_min,xaxis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  lines(x,F_x_norm,col="blue")
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+}
+```
+
+```{r,echo=FALSE}
+plot_student_t <- function(df=2.0, xaxis_max=5, yaxis_max=0.45, Qnorm=FALSE) {
+  if(Qnorm) {
+    plot_student_t_withNorm(df, xaxis_max, yaxis_max) 
+    } else {
+    plot_student_t_withoutNorm(df, xaxis_max, yaxis_max) 
+  }
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Student t distribution***
+
+$$X\sim\text{t}_{d}$$ 
+$$d>0$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("d_t",
+                  "$$d: $$",
+                  min = 1.0,
+                  max = 50.0,
+                  value = 1.0,
+                  step = 0.1 )
+```
+
+***Compare with $\text{N}(0,1)$***
+
+```{r,echo=FALSE}
+      checkboxInput("Qnorm_t", 
+                    label = "add Normal curve", 
+                    value = FALSE)
+```
+
+<!-- ***Zoom in/out control*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!--       sliderInput("xaxis_max", -->
+<!--                   "Zoom axis X :", -->
+<!--                   min = 0.0, -->
+<!--                   max = 10.0, -->
+<!--                   value = 4.0) -->
+<!--       sliderInput("yaxis_max", -->
+<!--                   "Zoom axis Y :", -->
+<!--                   min = 10^(-10), -->
+<!--                   max = 0.5, -->
+<!--                   value = 1.0, -->
+<!--                   step = ((0.5)-(10^(-10)))/100 ) -->
+<!-- ``` -->
+
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+***Density function:*** 
+$$
+f_X(x|d)=
+\textstyle\frac{\Gamma \left(\frac{d+1}{2} \right)} {\sqrt{d\pi}\,\Gamma \left(\frac{d}{2} \right)} \left(1+\frac{x^2}{d} \right)^{-\frac{d+1}{2}} , \  \  x\in\mathbb{R}
+$$
+***Expectation:*** 
+$$
+E(X) = 0
+$$
+***Variance:*** 
+$$
+Var(X) = 
+\begin{cases}
+\infty & , 1<d\le  2  \\
+\frac{d}{d-2} &, d>2  \\
+\text{undefined} &\text{, otherwise } 
+\end{cases}
+$$
+***Comments:***
+
+   * Distribution $t_{d}$ can be derived as the distribution of $X:=\frac{Z}{\sqrt{Y/d}}$ when $Z\sim\text{N}(0,1)$, and $Y\sim\chi_{d}^{2}$.
+
+
+***Properties:***
+
+   * PDF of $X\sim\text{t}_d$ is simetric around $0$; 
+      + hence $P(X<-x)=P(X>x)$
+   * PDF & CDF of $\text{t}_d$ have a similar shape to a standard normal $\text{N}(0,1)$ 
+   * PDF of $\text{t}_d$ has "fatter tails"" than  $\text{N}(0,1)$    
+      + more probability is assigned above areas farther from the centre (on the tails)
+      + it has greater spread than a standard normal 
+      + the tails getting fatter when $d$ gets smaller 
+   * In the limit, it is:  $\lim_{d\rightarrow\infty}  \text{t}_d =\text{N}(0,1)$ 
+   * We use tables (or a computer) to find probabilities for $\text{t}_d$.
+
+***Implementation to statistics (the quantities):***
+
+   * If $X_{1}, \ X_{2}, ..., \ X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$, then   
+$$
+ \sqrt{n}\frac{\bar{X}-\mu}{\sqrt{S^{2}}} \sim t_{n-1}
+$$ 
+where $S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$ and $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$.
+
+   * Consider a random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu_X,\sigma^{2})$, and a random sample $Y_{1},Y_{2},...,Y_{m}\overset{IID}{\sim}\text{N}(\mu_Y,\sigma^{2})$. The two random samples are independent each other. Then  
+$$
+ \frac{(\bar{X}-\bar{Y})-(\mu_X-\mu_Y)}{S_p\sqrt{\frac{1}{n}+\frac{1}{m}}}\sim t_{n+m-2}
+$$
+ where $S_p^2=\frac{(n-1)S_X^{2}+(m-1)S_Y^{2}}{n+m-2}$, $S_X^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$, $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$, $S_Y^{2}=\frac{1}{m-1}\sum_{i=1}^{m}(Y_{i}-\bar{Y})^{2}$ and $\bar{Y}=\frac{1}{m}\sum_{i=1}^{m}Y_{i}$.
+
+
+### ***Density and Cummulative probability function plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_student_t(df=input$d_t,
+                   Qnorm=input$Qnorm_t)
+  })
+```
+
+
+
+
+
+
+
+# Exponential 
+
+```{r,echo=FALSE}
+plot_exp <- function(ell= 0.5, axis_max=11) {
+  
+  
+  x <- seq(10^(-10),axis_max,length=100)
+  
+  f_x <- dexp(x, rate = ell) ;
+  
+  F_x <- pexp(x, rate = ell) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(0.0,axis_max), 
+       ylim=c(0.0, 2.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  
+  plot(x, F_x, 
+       type = "l",
+       main="Cumulative distribution function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(0.0,axis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Exponential distribution***
+
+$$x\sim\mathcal{E}(\lambda)$$ 
+$$\lambda>0$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("ell_exp",
+                  "$$\\lambda :$$ ",
+                  min = 0.1,
+                  max = 3.0,
+                  value = 0.5,
+                  step = (3-0)/100 )
+```
+
+<!-- ***Zoom in/out control*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!--       sliderInput("axis_max_exp", -->
+<!--                   "Zoom axis x :", -->
+<!--                   min = 10^(-10), -->
+<!--                   max = 10.0, -->
+<!--                   value = 5.0) -->
+<!-- ``` -->
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+***Density function:*** 
+$$
+f_X(x|\lambda)=
+\begin{cases}
+\lambda e^{-\lambda x} & \text{, } x>0 \\
+0 & \text{, otherwise}
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = \frac{1}{\lambda}
+$$
+***Variance:*** 
+$$
+Var(X) = \frac{1}{\lambda^2}
+$$
+
+
+### ***Density and Cummulative probability function plots***{data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_exp(ell=input$ell_exp)
+  })
+```
+
+
+# Chi squared 
+
+```{r,echo=FALSE}
+plot_chi_sq <- function(df=1.0, xaxis_max=70.0, yaxis_max=0.36) {
+  
+  xaxis_min <- 10^(-5) ;
+  
+  x <- seq(xaxis_min,xaxis_max,length=100)
+  
+  f_x <- dchisq(x, df=df) ;
+  
+  F_x <- pchisq(x, df=df) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(0.0,xaxis_max), 
+       ylim=c(0.0, yaxis_max)
+  )
+  abline(a = 0, b = 0,col='red')
+  
+  plot(x, F_x, 
+       type = "l",
+       main="Cumulative distribution function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(0.0,xaxis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Chi squared***
+
+$$X\sim\chi^2_d$$
+$$d>0 $$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("df_chisq",
+                  "$$d: $$",
+                  min = 1.0,
+                  max = 50.0,
+                  value = 1.0,
+                  step = 0.1 ) 
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+***Density function:*** 
+$$
+f_X(x|d)=
+\begin{cases}
+{\frac {1}{2^{\frac {d}{2}}\Gamma \left({\frac {d}{2}}\right)}}\;x^{{\frac {d}{2}}-1}e^{-{\frac {x}{2}}}\,& \text{, } x>0 \\
+0 & \text{, otherwise}
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = d
+$$
+***Variance:*** 
+$$
+Var(X) = 2d
+$$
+***Comments:***
+
+   * Distribution $\chi_{d}^{2}$ can be derived as the distribution of $X:=\sum_{i=1}^{d}Z_{i}^{2}$ when $Z_{i}\overset{IID}{\sim}\text{N}(0,1)$, for $i=1,...,d$.  
+   
+   * Consider independent random variables $Y_{i}\sim\chi_{d_i}^2$ for $i=1,...,n$. Let random variable $X:=\sum_{i=1}^{n}Y_{i}$. Then $X$ follows distribution $$X\sim\chi_d^2,$$ where $d=\sum_{i=1}^{n}d_i$.
+
+***Implementation to statistics (the quantities):***
+
+   * If $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu,\sigma^{2})$, then 
+$$
+ (n-1)\frac{S^{2}}{\sigma^{2}} \sim\chi_{n-1}^{2} 
+$$
+where $S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$.  
+[by Cochran's theorem]  
+
+   * Consider a random sample $X_{1},X_{2},...,X_{n}\overset{IID}{\sim}\text{N}(\mu_X,\sigma^{2})$, and 
+   a random sample random sample $Y_{1},Y_{2},...,Y_{M}\overset{IID}{\sim}\text{N}(\mu_Y,\sigma^{2})$. The two random samples are independent each other. Then it is: 
+$$
+ (n+m-2)\frac{S_p^{2}}{\sigma^{2}} \sim\chi^{2}_{n+m-2} 
+$$ 
+where $S_p^2$ is the pool sample variance defined as $S_p^2=\frac{(n-1)S_X^{2}+(m-1)S_Y^{2}}{n+m-2}$, with $S_X^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar{X})^{2}$, and $S_Y^{2}=\frac{1}{m-1}\sum_{i=1}^{m}(Y_{i}-\bar{Y})^{2}$.  
+    
+    + This result can be generalized to consider more than 2 random samples. (Applications to ANOVA)
+
+### ***Density and Cummulative probability function plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_chi_sq(df=input$df_chisq)
+  })
+```
+
+
+
+# F
+
+```{r,echo=FALSE}
+plot_F <- function(df1=1.0, df2=1.0, xaxis_max=10.0, yaxis_max=1.0) {
+  
+  xaxis_min <- 10^(-5) ;
+  
+  x <- seq(xaxis_min,xaxis_max,length=100)
+  
+  f_x <- df(x, df1=df1, df2=df2) ;
+  
+  x_cdf <- seq(xaxis_min,5*xaxis_max,length=100)
+  
+  F_x <- pf(x_cdf, df1=df1, df2=df2) ;
+  
+  par(mfrow=c(1,2))
+  
+  plot(x, f_x, 
+       type = "l",
+       main="Probability density function",
+       xlab="x",
+       ylab=expression('f'['X']*'(x)'),
+       xlim=c(0.0,xaxis_max), 
+       ylim=c(0.0, yaxis_max)
+  )
+  abline(a = 0, b = 0,col='red')
+  
+  plot(x_cdf, F_x, 
+       type = "l",
+       main="Cumulative distribution function",
+       xlab="x",
+       ylab=expression('F'['X']*'(x)   =   Pr(X<=x)'),
+       xlim=c(0.0,5*xaxis_max), 
+       ylim=c(0.0, 1.0)
+  )
+  abline(a = 0, b = 0,col='red')
+  abline(a = 1, b = 0,col='red')
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***F distribution***
+
+$$x\sim F_{d_1,d_2}$$
+$$d_1>0, \ d_2>0$$
+
+***Distribution parameters***
+
+```{r,echo=FALSE}
+      sliderInput("df1_F",
+                  "$$d_1:$$ ",
+                  min = 0.5,
+                  max = 50,
+                  value = 1.0,
+                  step = 0.1 ) 
+      sliderInput("df2_F",
+                  "$$d_2:$$ ",
+                  min = 0.5,
+                  max = 50,
+                  value = 1.0,
+                  step = 0.1 )
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Description*** {data-height=400}
+
+***Density function:*** 
+$$
+f_X(x|d_1,d_2)=
+\begin{cases}
+{\frac  {1}{x\,{\mathrm  {B}}\!\left({\frac  {d_{1}}{2}},{\frac  {d_{2}}{2}}\right)}} {\sqrt  {{\frac  {(d_{1}\,x)^{{d_{1}}}\,\,d_{2}^{{d_{2}}}}{(d_{1}\,x+d_{2})^{{d_{1}+d_{2}}}}}}}& \text{, } x>0 \\
+0 & \text{, otherwise}
+\end{cases}
+$$
+***Expectation:*** 
+$$
+E(X) = \frac{d_2}{d_2-2}, d_2>2
+$$
+***Variance:*** 
+$$
+Var(X) = {\frac  {2\,d_{2}^{2}\,(d_{1}+d_{2}-2)}{d_{1}(d_{2}-2)^{2}(d_{2}-4)}},\ \ d_2>4
+$$
+***Comments:***  
+
+   * $F_{d_{1},d_{2}}$ can be derived as the distribution of $X:=\frac{Y_{1}/d_{1}}{Y_{2}/d_{2}}$, when $Y_{1}\sim\chi_{d_{1}}^{2}$, $Y_{2}\sim\chi_{d_{2}}^{2}$.  
+
+   * If $X\sim F_{n,m}$ then $1/X\sim F_{m,n}$  
+
+   * About the quantiles: $$F_{n,m,a}=\frac{1}{F_{m,n,1-a}}$$  
+   
+***Implementation to statistics (the quantities):***
+
+  * If random samples $X_{1},X_{2},...,X_{n_X}\overset{IID}{\sim}\text{N}(\mu_{X},\sigma_X^{2})$, and $Y_{1},Y_{2},...,Y_{n_Y}\overset{IID}{\sim}\text{N}(\mu_{Y},\sigma_Y^{2})$, then 
+$$
+ \frac{S_{Y}^{2}/\sigma_Y^{2}}{S_{X}^{2}/\sigma_X^{2}} \sim F_{n_{Y}-1,n_{X}-1}
+$$
+where $S_{X}^{2}=\frac{1}{n_X-1}\sum_{i=1}^{n_X}(X_{i}-\bar{X})^{2}$, $\bar{X}=\frac{1}{n_X}\sum_{i=1}^{n_X}X_{i}$, $S_{Y}^{2}=\frac{1}{n_Y-1}\sum_{i=1}^{n_Y}(Y_{i}-\bar{Y})^{2}$ and $\bar{Y}=\frac{1}{n_Y}\sum_{i=1}^{n_Y}Y_{i}$.
+
+### ***Density and Cummulative probability function plots***{data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_F(df1=input$df1_F,
+           df2=input$df2_F)
+  })
+
+```

@@ -1,0 +1,737 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Credible sets"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Conjugate prior Applet -->
+<!-- Copyright (C) 2018  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+```{r}
+library('rootSolve')
+```
+
+
+# Unimodal case
+
+```{r}
+
+a_def_uni <- 2.0
+b_def_uni <- 2.0
+
+x_min_def_uni <- 0.0
+x_max_def_uni <- 1.0
+
+k_cut_def_uni <- 0.0018
+alpha_def_uni <- 0.05
+
+fun_pdf_uni <- function ( x, 
+                          a = a_def_uni,
+                          b = b_def_uni) {
+  
+  fx <- dbeta(x, a, b, ncp = 0, log = FALSE)
+  
+  return (fx)
+}
+
+
+
+# get the roots
+
+fun_cost_uni <- function( x , k_cut, a, b ) { 
+  return( fun_pdf_uni(x, a, b)-k_cut ) 
+}
+
+comp_crint_uni <-function(k_cut, x_min, x_max, a, b ) {
+  
+  interval <- c( x_min , x_max )
+  
+  fun <- function (x) fun_cost_uni( x , k_cut, a, b )
+  
+  rootpoints <- uniroot.all(fun, interval)  
+  
+  cr_n <- (0.5*length(rootpoints))
+  
+  cr <- matrix(rootpoints,cr_n,byrow = TRUE)
+  
+  return ( cr)
+}
+
+
+comp_mass_uni <- function (crint, a, b) {
+  
+  fun <- function (x) fun_pdf_uni( x , a, b )
+  
+  n <- dim(crint)[1]
+  
+  mass <- 0.0
+  for(i in 1:n)
+    mass <- mass + integrate( fun, crint[i,1], crint[i,2] )$value
+  
+  return(mass)
+}
+
+
+
+check_alpha_uni <- function( alpha, crint , a, b ) {
+  al_t <- comp_mass_uni(crint , a, b)-1
+  if ( 1-al_t >= 1-alpha ) 
+    return (1)
+  else
+    return (0)
+}
+
+
+
+plot_cr_uni <- function( 
+  alpha = alpha_def_uni,
+  k_cut = k_cut_def_uni,
+  x_min = x_min_def_uni, 
+  x_max = x_max_def_uni,
+  a = a_def_uni, 
+  b = b_def_uni) {
+  
+  fntsz <- 1.5
+  
+  
+  # plot the PDF
+  
+  x_grid <- seq(from = x_min, to = x_max, length.out=1000)
+  
+  fun_pdf <- function (x) fun_pdf_uni( x , a, b )
+  
+  fun_pdf_grid <- apply(matrix(x_grid,1), 1, fun_pdf)
+  
+  plot(x_grid, fun_pdf_grid, 
+       type='l',
+       main = paste('Find the ', toString(format(1-alpha,digits=4)), 'HPD interval'),
+       ylab = 'Density',
+       xlab = 'values',
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz)
+  
+  # plot the ruller
+  
+  abline(h = k_cut, 
+         col='red',
+         lwd = 3,
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz)
+  
+  # find the roots
+  
+  crint <- comp_crint_uni(k_cut, x_min , x_max, a, b )
+  
+  # plot arroes to show the boundaries
+  
+  n <- dim(crint)[1]
+  m <- dim(crint)[2]
+  for(i in 1:n)
+    for(j in 1:m) {
+      xx <-  crint[i,j]
+      fxx <- fun_pdf_uni( xx, a, b )
+      arrows(  xx, fxx, xx, 0.0, col=rgb(0, 1, 0, 1), length = 0.15  )
+    }
+  
+  # compute the CI mass
+  
+  # check if it is a CI
+  alpha_cr <- 1-comp_mass_uni(crint, a, b)
+  if ( 1-alpha_cr>=1-alpha   )
+    text( 0.5, 0.5, 'BINGO!!!'  ,
+        cex=fntsz)
+  else
+    text( 0.5, 0.5, 
+          'NOT BINGO!!!'  ,
+        cex=fntsz)
+  
+    text( x_min+0.1, k_cut+0.05, 
+        paste('k = ',toString(format(k_cut,digits=4) )),
+        cex=fntsz)
+    text( x_min+0.3, k_cut+0.05, 
+        paste('mass=',toString(format(1-alpha_cr,digits=4) )),
+        cex=fntsz)
+  
+  # plot shaded area of the CI
+  
+  n <- dim(crint)[1]
+  for (i in 1:n) {
+    
+    xtick <- seq( from = crint[i,1], to = crint[i,2], length=100)  
+    ytick <- apply(matrix(xtick,1), 1, fun_pdf)
+    
+    xtick <- c(crint[i,1], xtick, crint[i,2])
+    ytick <- c(0.0, ytick, 0.0)
+    
+    polygon( xtick , ytick , col=rgb(0, 0, 1, 0.3))
+  }
+  
+  # plot the legend
+  legend('topright',
+         bg="transparent",
+         c( 
+           paste('Interval mass..: ', toString(format(1-alpha_cr,digits=4)), sep=''), 
+           'Bounbaries', 
+           paste( 'k .....................:',toString(format(k_cut,digits=4) ) ) 
+         ),
+         lty=c(1),
+         lwd=c(2.5),
+         col=c('blue', 'green', 'red'),
+        cex=fntsz
+  ) 
+  
+}
+
+
+
+```
+
+
+
+Inputs {.sidebar} 
+-----------------------
+
+
+
+***The distribution***  
+
+\begin{align*}
+\omega|x_{1:n} \sim \text{Be}(g, h) 
+\end{align*}
+
+... a Beta distribution  
+
+***Credible interval parameters***
+
+```{r,echo=FALSE}
+sliderInput("Uni_alpha",
+                 "$$1-\\alpha:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.8)
+
+sliderInput("Uni_ka",
+                 "$$k_{\\alpha}$$",
+                  min   = 0.001,
+                  max   = 1.99,
+                  step  = 0.01,
+                  value = 0.0018)
+```
+
+***Distr. parameters***
+
+```{r,echo=FALSE}
+sliderInput("Uni_a",
+                 "$$g:$$",
+                  min = 1.1,
+                  max = 5.1,
+                  step = 0.1,
+                  value = 2.0)
+
+sliderInput("Uni_b",
+                 "$$h:$$",
+                  min = 1.1,
+                  max = 5.1,
+                  step  = 0.1,
+                  value = 2.0)
+```
+
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description (posterior) *** 
+
+We present the construction of the credible sets for parametric inference. 
+
+***Definition: Posterior Credible Set***  
+
+Any set $C_{a}\subseteq\Theta$ such that 
+\[
+\pi(\theta\in C_{a}|x_{1:n})=\int_{C_{a}}\pi(\text{d}\theta|x_{1:n})\ge1-a
+\]
+ is called `$100(1-a)\%$' posterior credible set for $\theta$, with
+respect to the posterior distribution $\pi(\text{d}\theta|x_{1:n})$.
+
+
+***Definition: Posterior highest probability density (HPD) Set***  
+
+The $100(1-a)\%$ HPD set for $\theta\in\Theta$ with respect to the posterior distribution $\pi(\text{d}\theta|x_{1:n})$ is the subset $C_{a}$ of $\Theta$ of the form 
+\[
+C_{a}=\{\theta\in\Theta:\pi(\theta|x_{1:n})\ge k_{a}\}
+\]
+ where $k_{a}$ is the largest constant such that 
+\[
+\pi(\theta\in C_{a}|x_{1:n})\ge1-a
+\]
+
+***Theorem: 1D Case of HPD***  
+
+Let $\theta$ be a random variable that admits measure $\pi(\text{d}\theta|x_{1:n})$ with unimodal density $\pi(\theta|x_{1:n})$. If the interval $C_{a}=[L,U]$ satisfies 
+
+1. $\int_{L}^{U}\pi(\theta|x_{1:n})\text{d}\theta=1-a$,
+
+2. $\pi(U|x_{1:n})=\pi(L|x_{1:n})>0$, and 
+
+3. $\theta_{\text{mode}}\in(L,U)$, where $\theta_{\text{mode}}$ is the mode of $\pi(\theta|x_{1:n})$,
+
+then interval $C_{a}=[L,U]$ is the HPD interval of $\theta$ with respect to $\pi(\text{d}\theta|x_{1:n})$.
+
+***Remark***  
+
+HPD sets are the credible sets with the smallest `size'
+
+
+### ***Description (predictive) *** 
+
+We present the construction of the credible sets for predictive inference. 
+
+***Definition: Predictive Credible Set***  
+
+Any set $C_{a}\subseteq\mathcal{X}$ such that 
+\[
+p(y\in C_{a}|x_{1:n})=\int_{C_{a}}p(\text{d} y|x_{1:n})\ge1-a
+\]
+ is called `$100(1-a)\%$' predictive credible set for $y=x_{n+1}$, with
+respect to the predictive distribution $p(\text{d} y|x_{1:n})$.
+
+
+***Definition: Predictive highest probability density (HPD) Set***  
+
+The $100(1-a)\%$ HPD set for $y\in\mathcal{X}$ with respect to the posterior distribution $p(\text{d}y|x_{1:n})$ is the subset $C_{a}$ of $\mathcal{X}$ of the form 
+\[
+C_{a}=\{y\in\mathcal{X}:p(\text{d} y|x_{1:n})\ge k_{a}\}
+\]
+ where $k_{a}$ is the largest constant such that 
+\[
+p(y\in C_{a}|x_{1:n})\ge1-a
+\]
+
+***Theorem: 1D Case of HPD***  
+
+Let $y$ be a random variable that admits measure $p(\text{d}y|x_{1:n})$ with unimodal density $p(y|x_{1:n})$. If the interval $C_{a}=[L,U]$ satisfies 
+
+1. $\int_{L}^{U}p(y|x_{1:n})\text{d}y=1-a$,
+
+2. $p(U|x_{1:n})=p(L|x_{1:n})>0$, and 
+
+3. $y_{\text{mode}}\in(L,U)$, where $y_{\text{mode}}$ is the mode of $p(y|x_{1:n})$,
+
+then interval $C_{a}=[L,U]$ is the HPD interval of $y$ with respect to $\pi(\text{d}y|x_{1:n})$.
+
+***Remark***  
+
+HPD sets are the credible sets with the smallest `size'
+
+### ***Toy example*** 
+
+***Interest lies in*** constructing the  $100(1-a)\%$ HPD interval of $\omega\in\Omega$ of $\omega\sim\pi(\text{d}\omega|x_{1:n})$ with PDF:
+\[
+\pi(\omega|x_{1:n}) = \text{Be}(\omega|g,h)
+\]
+
+... a Beta distribution
+
+
+***This can be***  
++ Posterior distr. for \[\omega=\theta, \text{ and } \Omega=\Theta, \text{ and }, \pi(\text{d}\cdot|x_{1:n})\]  
++ Predictive distr. for \[\omega=y,     \text{ and } \Omega=\mathcal{X}, \text{ and }, p(\text{d}\cdot|x_{1:n})\] 
+
+
+### ***Parametric inferece***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_cr_uni(alpha=1-input$Uni_alpha, 
+                  k_cut=input$Uni_ka, 
+                  a=input$Uni_a, 
+                  b=input$Uni_b
+                  )
+  })
+```
+
+
+
+# Multimodal case
+
+
+```{r}
+w1_def_mult <- 0.6 
+mu1_def_mult <- -43.8
+sig1_def_mult <- 8 
+
+w2_def_mult <- 0.3
+mu2_def_mult <- 0.0
+sig2_def_mult <- 10 
+
+mu3_def_mult <- 40.0
+sig3_def_mult <- 10
+
+x_min_def_mult <- -70
+x_max_def_mult <- 63
+
+k_cut_def_mult <- 0.0018
+
+alpha_def_mult <- 0.05
+
+
+fun_pdf_mult <- function ( x, w1=w1_def_mult, w2=w2_def_mult, 
+                            mu1=mu1_def_mult, sig1=sig1_def_mult, 
+                            mu2=mu2_def_mult, sig2=sig2_def_mult, 
+                            mu3=mu3_def_mult, sig3=sig3_def_mult ) {
+  
+  w3 <- 1-(w1+w2)
+  fx <-     w1*dnorm(x, mean = mu1, sd = sig1, log = FALSE)
+  fx <- fx +w2*dnorm(x, mean = mu2, sd = sig2, log = FALSE)
+  fx <- fx +w3*dnorm(x, mean = mu3, sd = sig3, log = FALSE)
+  
+  return (fx)
+}
+
+
+# get the roots
+
+fun_cost_mult <- function( x , k_cut ) { 
+  return( fun_pdf_mult(x)-k_cut ) 
+}
+
+comp_crint_mult <-function(k_cut, x_min, x_max ) {
+  
+  interval <- c( x_min , x_max )
+  
+  fun <- function (x) fun_cost_mult( x , k_cut )
+  
+  rootpoints <- uniroot.all(fun, interval)  
+  
+  cr_n <- (0.5*length(rootpoints))
+  
+  cr <- matrix(rootpoints,cr_n,byrow = TRUE)
+  
+  return ( cr)
+}
+
+
+
+comp_mass_mult <- function (crint) {
+  
+  n <- dim(crint)[1]
+
+  mass <- 0.0
+  for(i in 1:n)
+    mass <- mass + integrate( fun_pdf_mult, crint[i,1], crint[i,2] )$value
+  
+  return(mass)
+}
+
+
+check_alpha_mult <- function( alpha, crint ) {
+  al_t <- comp_mass_mult(crint)-1
+  if ( 1-al_t >= 1-alpha ) 
+    return (1)
+  else
+    return (0)
+}
+
+plot_cr_mult <- function( 
+                    alpha = alpha_def_mult,
+                    k_cut = k_cut_def_mult,
+                    x_min = x_min_def_mult, 
+                    x_max = x_max_def_mult ) {
+  
+  fntsz <- 1.5
+  
+  # plot the PDF
+  
+  x_grid <- seq(from = x_min, to = x_max, length.out=1000)
+  
+  fun_pdf_grid <- apply(matrix(x_grid,1), 1, fun_pdf_mult)
+  
+  plot(x_grid, fun_pdf_grid, 
+       type='l',
+       main = paste('Find the ', toString(format(1-alpha,digits=4)), 'HPD interval'),
+       ylab = 'Density',
+       xlab = 'values',
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz)
+  
+  # plot the ruller
+  
+  abline(h = k_cut, 
+         col='red',
+         lwd = 3,
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz)
+  
+  # find the roots
+  
+  crint <- comp_crint_mult(k_cut, x_min , x_max )
+  
+  # plot arroes to show the boundaries
+  
+  n <- dim(crint)[1]
+  m <- dim(crint)[2]
+  for(i in 1:n)
+    for(j in 1:m) {
+      xx <-  crint[i,j]
+      fxx <- fun_pdf_mult( xx )
+      arrows(  xx, fxx, xx, 0.0, col=rgb(0, 1, 0, 1), length = 0.15  )
+    }
+  
+  # compute the CI mass
+  
+  # check if it is a CI
+  alpha_cr <- 1-comp_mass_mult(crint)
+  if ( 1-alpha_cr>=1-alpha   )
+    text( 0, 0.02, 'BINGO!!!' , cex=fntsz )
+  else
+    text( 0, 0.02, 'NOT BINGO!!!' , cex=fntsz )
+    
+      text( x_min+10, k_cut+0.001, 
+        paste('k = ',toString(format(k_cut,digits=4) )),
+        cex=fntsz)
+    text( x_min+30, k_cut+0.001, 
+        paste('mass=',toString(format(1-alpha_cr,digits=4) )),
+        cex=fntsz)
+  
+  # plot shaded area of the CI
+ 
+  n <- dim(crint)[1]
+  for (i in 1:n) {
+    
+    xtick <- seq( from = crint[i,1], to = crint[i,2], length=100)  
+    ytick <- apply(matrix(xtick,1), 1, fun_pdf_mult)
+    
+    xtick <- c(crint[i,1], xtick, crint[i,2])
+    ytick <- c(0.0, ytick, 0.0)
+    
+    polygon( xtick , ytick , col=rgb(0, 0, 1, 0.3))
+  }
+  
+  # plot the legend
+  legend('topright',
+         bg="transparent",
+         c( 
+           paste('Interval mass..: ', toString(format(1-alpha_cr,digits=4)), sep=''), 
+           'Bounbaries', 
+           paste( 'k .....................:',toString(format(k_cut,digits=4) ) ) 
+         ),
+         lty=c(1),
+         lwd=c(2.5),
+         col=c('blue', 'green', 'red'),
+        cex=fntsz
+  ) 
+  
+}
+
+```
+
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***The distribution***  
+
+\begin{align*}
+\omega|x_{1:n} \sim \  & 0.6\ \text{N}(-43.8,8^2) \\
+&+0.3\ \text{N}(0,10^2)\\
+&+0.1\ \text{N}(40,10^2)
+\end{align*}
+
+... a mixture of Gaussian distributions  
+
+***Credible interval parameters***
+
+```{r,echo=FALSE}
+sliderInput("Mult_alpha",
+                 "$$1-\\alpha:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.8)
+
+sliderInput("Mult_ka",
+                 "$$k_{\\alpha}$$",
+                  min   = 0.001,
+                  max   = 0.029,
+                  step  = 0.0001,
+                  value = 0.0018)
+```
+
+***Distr. parameters***
+
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description (posterior) *** 
+
+We present the construction of the credible sets for parametric inference. 
+
+***Definition: Posterior Credible Set***  
+
+Any set $C_{a}\subseteq\Theta$ such that 
+\[
+\pi(\theta\in C_{a}|x_{1:n})=\int_{C_{a}}\pi(\text{d}\theta|x_{1:n})\ge1-a
+\]
+ is called `$100(1-a)\%$' posterior credible set for $\theta$, with
+respect to the posterior distribution $\pi(\text{d}\theta|x_{1:n})$.
+
+
+***Definition: Posterior highest probability density (HPD) Set***  
+
+The $100(1-a)\%$ HPD set for $\theta\in\Theta$ with respect to the posterior distribution $\pi(\text{d}\theta|x_{1:n})$ is the subset $C_{a}$ of $\Theta$ of the form 
+\[
+C_{a}=\{\theta\in\Theta:\pi(\theta|x_{1:n})\ge k_{a}\}
+\]
+ where $k_{a}$ is the largest constant such that 
+\[
+\pi(\theta\in C_{a}|x_{1:n})\ge1-a
+\]
+
+***Theorem: 1D Case of HPD***  
+
+Let $\theta$ be a random variable that admits measure $\pi(\text{d}\theta|x_{1:n})$ with unimodal density $\pi(\theta|x_{1:n})$. If the interval $C_{a}=[L,U]$ satisfies 
+
+1. $\int_{L}^{U}\pi(\theta|x_{1:n})\text{d}\theta=1-a$,
+
+2. $\pi(U|x_{1:n})=\pi(L|x_{1:n})>0$, and 
+
+3. $\theta_{\text{mode}}\in(L,U)$, where $\theta_{\text{mode}}$ is the mode of $\pi(\theta|x_{1:n})$,
+
+then interval $C_{a}=[L,U]$ is the HPD interval of $\theta$ with respect to $\pi(\text{d}\theta|x_{1:n})$.
+
+***Remark***  
+
+HPD sets are the credible sets with the smallest `size'
+
+
+### ***Description (predictive) *** 
+
+We present the construction of the credible sets for predictive inference. 
+
+***Definition: Predictive Credible Set***  
+
+Any set $C_{a}\subseteq\mathcal{X}$ such that 
+\[
+p(y\in C_{a}|x_{1:n})\ge1-a
+\]
+ is called `$100(1-a)\%$' predictive credible set for $y=x_{n+1}$, with
+respect to the predictive distribution $p(\text{d} y|x_{1:n})$.
+
+
+***Definition: Predictive highest probability density (HPD) Set***  
+
+The $100(1-a)\%$ HPD set for $y\in\mathcal{X}$ with respect to the posterior distribution $p(\text{d}y|x_{1:n})$ is the subset $C_{a}$ of $\mathcal{X}$ of the form 
+\[
+C_{a}=\{y\in\mathcal{X}:p(\text{d} y|x_{1:n})\ge k_{a}\}
+\]
+ where $k_{a}$ is the largest constant such that 
+\[
+p(y\in C_{a}|x_{1:n})=\int_{C_{a}}p(\text{d} y|x_{1:n})\ge1-a
+\]
+
+***Theorem: 1D Case of HPD***  
+
+Let $y$ be a random variable that admits measure $p(\text{d}y|x_{1:n})$ with unimodal density $p(y|x_{1:n})$. If the interval $C_{a}=[L,U]$ satisfies 
+
+1. $\int_{L}^{U}p(y|x_{1:n})\text{d}y=1-a$,
+
+2. $p(U|x_{1:n})=p(L|x_{1:n})>0$, and 
+
+3. $y_{\text{mode}}\in(L,U)$, where $y_{\text{mode}}$ is the mode of $p(y|x_{1:n})$,
+
+then interval $C_{a}=[L,U]$ is the HPD interval of $y$ with respect to $\pi(\text{d}y|x_{1:n})$.
+
+***Remark***  
+
+HPD sets are the credible sets with the smallest `size'
+
+### ***Toy example*** 
+
+***Interest lies in*** constructing the  $100(1-a)\%$ HPD interval of $\omega\in\Omega$ of $\omega\sim\pi(\text{d}\omega|x_{1:n})$ with PDF:
+\[
+\pi(\omega|x_{1:n}) = 0.6\text{N}(\omega|-43.8,8^2)
++0.3\text{N}(\omega|0,10^2)
++0.1\text{N}(\omega|40,10^2)
+\]
+
+... a mixture of Gaussian distributions  
+
+***This can be***  
++ Posterior distr. for \[\omega=\theta, \text{ and } \Omega=\Theta, \text{ and }, \pi(\text{d}\cdot|x_{1:n})\]  
++ Predictive distr. for \[\omega=y,     \text{ and } \Omega=\mathcal{X}, \text{ and }, p(\text{d}\cdot|x_{1:n})\] 
+
+
+### ***Parametric inferece***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_cr_mult(alpha=1-input$Mult_alpha, 
+                  k_cut=input$Mult_ka
+                  )
+  })
+```
+
+
+
+
+
+
+
+
+

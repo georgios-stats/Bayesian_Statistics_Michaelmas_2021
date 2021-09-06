@@ -1,0 +1,521 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Compare priors/posteriors"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Compare priors Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+```{r}
+get_randnumb <-function(n) {
+  u <- seq(0.001,0.999,length.out = n)
+#  u <- runif(0,1,n = n)
+}
+```
+
+```{r}
+#library(rmutil)
+dbetabinom <- function (y, size, m, s, log = FALSE) {
+  # from rmutil package
+    if (any(y < 0)) 
+        stop("y must contain non-negative values")
+    if (any(size < 0)) 
+        stop("size must contain non-negative values")
+    if (any(m <= 0) || any(m >= 1)) 
+        stop("m must lie between 0 and 1")
+    if (any(s <= 0)) 
+        stop("s must be positive")
+    ly <- max(length(y), length(m), length(s), length(size))
+    if (length(y) != ly) {
+        if (length(y) == 1) 
+            y <- rep(y, ly)
+        else stop("length of y incorrect")
+    }
+    if (length(size) != ly) {
+        if (length(size) == 1) 
+            size <- rep(size, ly)
+        else stop("size must be the same length as y")
+    }
+    if (any(y > size)) 
+        stop("y must be <= size")
+    if (length(m) != ly) {
+        if (length(m) == 1) 
+            m <- rep(m, ly)
+        else stop("m and y must have the same length")
+    }
+    if (length(s) != ly) {
+        if (length(s) == 1) 
+            s <- rep(s, ly)
+        else stop("s and y must have the same length")
+    }
+    t <- s * m
+    u <- s * (1 - m)
+    tmp <- lbeta(y + t, size - y + u) - lbeta(t, u) + lchoose(size, 
+        y)
+    if (!log) 
+        tmp <- exp(tmp)
+    tmp
+}
+
+BinomialBeta_pdf<-function(x,a,b,n) {
+  pdf <- dbetabinom(y=x, size=n, m=a/(a+b), s=a+b) ;
+  return (pdf) 
+}
+```
+
+
+```{r}
+StudentT_pdf<-function(x,mu,lam,al) {
+  pdf <- 0.5*log(lam) -0.5*log(al) -0.5*log(pi) ;
+  pdf <- pdf +lgamma(0.5*(al+1)) -lgamma(0.5*al) ;
+  pdf <- pdf -0.5*(al+1)*log(1+lam/al*(x-mu)^2) ;
+  pdf <- exp(pdf) ;
+  return (pdf)  
+}
+```
+
+
+```{r}
+dinvgamma <- function(x, a, b){
+  return ( exp( a*log(b)-lgamma(a) -(a+1)*log(x) -b/x ) ) ;
+}
+```
+
+
+
+# Bernoulli model
+
+
+```{r,echo=FALSE}
+BernoulliModel_SufStat<-function(x,n) {
+ r <- sum(x[1:n]) ; 
+}
+
+# Conjugate
+
+BernoulliModel_PDF_posterior<-function(theta,r,n,a,b) {
+  pdf <- dbeta(theta, a+r, b+n-r) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_prior<-function(theta,a,b) {
+  pdf <- dbeta(theta, a, b) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_pred<-function(y,r,n,a,b) {
+  pdf <- BinomialBeta_pdf(y, a+r, b+n-r, 1) ;
+   return (pdf)  
+}
+
+# Jeffreys
+
+BernoulliModel_PDF_Jeffreys_prior<-function(theta) {
+  pdf <- dbeta(theta, 0.5, 0.5) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_Jeffreys_posterior<-function(theta,r,n) {
+  pdf <- dbeta(theta, 0.5+r, 0.5+n-r) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_Jeffreys_pred<-function(y,r,n) {
+  pdf <- BinomialBeta_pdf(y, 0.5+r, 0.5+n-r, 1) ;
+   return (pdf)  
+}
+
+# Laplace
+
+BernoulliModel_PDF_Laplace_prior<-function(theta) {
+  pdf <- dbeta(theta, 1.0, 1.0) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_Laplace_posterior<-function(theta,r,n) {
+  pdf <- dbeta(theta, 1.0+r, 1.0+n-r) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_Laplace_pred<-function(y,r,n) {
+  pdf <- BinomialBeta_pdf(y, 1.0+r, 1.0+n-r, 1) ;
+   return (pdf)  
+}
+
+plot_Bernoulli_parampred <- function(theta=0.5, n=10, a=1, b=1) {
+  
+  # theta=0.5; n=10; a=1; b=1
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  # Conjugate
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  theta_prior_pdf <- BernoulliModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- BernoulliModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+  # Jeffreys
+  
+  theta_Jeffreys_prior_pdf <- BernoulliModel_PDF_Jeffreys_prior(x_theta) ;
+  theta_Jeffreys_post_pdf <- BernoulliModel_PDF_Jeffreys_posterior(x_theta, r=r,  n=n) ;
+  
+  xnew_Jeffreys_pred_pdf <- c(BernoulliModel_PDF_Jeffreys_pred(0, r=r,  n=n),
+                              BernoulliModel_PDF_Jeffreys_pred(1, r=r,  n=n));
+  
+  # Laplace
+  
+  theta_Laplace_prior_pdf <- BernoulliModel_PDF_Laplace_prior(x_theta) ;
+  theta_Laplace_post_pdf <- BernoulliModel_PDF_Laplace_posterior(x_theta, r=r,  n=n) ;
+  
+  xnew_Laplace_pred_pdf <- c(BernoulliModel_PDF_Laplace_pred(0, r=r,  n=n),
+                              BernoulliModel_PDF_Laplace_pred(1, r=r,  n=n));
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+  par(mfrow=c(2,2))
+  
+  # posterior
+  
+  y_max <- max(theta_post_pdf,theta_Jeffreys_post_pdf,theta_Laplace_post_pdf)
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior PDFs', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_Jeffreys_post_pdf,
+        col= "black",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_Laplace_post_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  abline(v=theta, 
+         col="purple")
+    
+  legend('topright',
+        c('Conjugate','Jeffrey','Laplace'),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','black','green'),
+        cex=fntsz
+      )
+  
+  # predictive
+
+  bardata <- data.frame(
+                    thezero=c(xnew_pred_pdf[1],
+                              xnew_Jeffreys_pred_pdf[1],
+                              xnew_Laplace_pred_pdf[1]),
+                    theone=c(xnew_pred_pdf[2],
+                             xnew_Jeffreys_pred_pdf[2],
+                             xnew_Laplace_pred_pdf[2])
+                    )
+  
+  names(bardata) <-c("0","1")
+  
+  #attach(bardata)
+  bardata <- as.matrix(bardata) ;
+  
+  barplot(bardata,
+          main="Predictive PMF", 
+          ylab = "x", 
+          beside=TRUE, 
+          ylim=c(0,1),
+          col=c("blue", "black", "green"),
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz) ;
+  
+  legend("topright", 
+         c('Conjugate','Jeffrey','Laplace'),
+        bg="transparent",
+        lwd=c(2.5,2.5),
+        col=c('blue','black','green'),
+        cex=fntsz,
+        bty="n", 
+        fill=c("blue", "black", "green")
+        )
+
+  # prior
+    
+  y_max <- c(theta_prior_pdf,theta_Jeffreys_prior_pdf,theta_Laplace_prior_pdf) ;
+  y_max <- y_max[is.finite(y_max)]
+    y_max <- max(y_max)
+  
+  plot(x_theta, 
+       theta_prior_pdf, 
+       type = "l",  
+       main='Prior PDFs', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_Jeffreys_prior_pdf,
+        col= "black",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_Laplace_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  abline(v=theta, 
+         col="purple")
+    
+  legend('topright',
+        c('Conjugate','Jeffrey','Laplace'),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','black','green'),
+        cex=fntsz
+      )
+  
+  
+    # plot(x_theta, 
+    #    theta_prior_pdf, 
+    #    type = "l",  
+    #    main='Prior PDFs', 
+    #    xlab = expression(theta),
+    #    ylab = expression(paste(pi(theta,"|",x[1:n]))), 
+    #    col="blue" ,
+    #   xlim=c(0,1),
+    #   cex.lab=fntsz, 
+    #   cex.axis=fntsz, 
+    #   cex.main=fntsz, 
+    #   cex.sub=fntsz) ;
+  
+  
+}
+
+
+
+
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.5)
+
+sliderInput("Bern_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 80,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_a",
+                 "$$a:$$",
+                  min = 0.05,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+
+sliderInput("Bern_b",
+                 "$$b:$$",
+                  min = 0.05,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Br}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \pi(\text{d}\theta )
+\end{cases}
+\]
+
+***Conjugate priors***
+
+The priors are $\pi(\text{d}\theta)$ specified are:
+
+\[
+ \theta \sim \text{Be}(a,b)
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(\sum_{i=1}^{n}x_{i}+a,n-\sum_{i=1}^{n}x_{i}+b)
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+ &\sim
+ \text{Bb}(\sum_{i=1}^{n}x_{i}+a,n-\sum_{i=1}^{n}x_{i}+b,1) 
+\end{align*}
+
+***Jeffrey's prior's***
+
+The priors are $\pi(\text{d}\theta)$ specified are:
+
+\[
+ \theta \sim \text{Be}(0.5,0.5)
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(\sum_{i=1}^{n}x_{i}+0.5, n-\sum_{i=1}^{n}x_{i}+0.5)
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+ &\sim
+ \text{Bb}(\sum_{i=1}^{n}x_{i}+0.5, n-\sum_{i=1}^{n}x_{i}+0.5,1) 
+\end{align*}
+
+***Laplace's prior's***
+
+The priors are $\pi(\text{d}\theta)$ specified are:
+
+\[
+ \theta \sim \text{Un}(0,1) \text{  or equiv.  } \text{Be}(1,1)
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(\sum_{i=1}^{n}x_{i}+1, n-\sum_{i=1}^{n}x_{i}+1)
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+ &\sim
+ \text{Bb}(\sum_{i=1}^{n}x_{i}+1, n-\sum_{i=1}^{n}x_{i}+1,1) 
+\end{align*}
+
+
+### ***Parametric and Predictive inferece***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli_parampred(theta=input$Bern_theta, 
+                  n=input$Bern_n, 
+                  a=input$Bern_a, 
+                  b=input$Bern_b
+                  )
+  })
+```
+
+
+

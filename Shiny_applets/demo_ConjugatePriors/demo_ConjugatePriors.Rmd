@@ -1,0 +1,1332 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Conjugate priors/posteriors"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Conjugate prior Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+```{r}
+get_randnumb <-function(n) {
+  u <- seq(0.001,0.999,length.out = n)
+#  u <- runif(0,1,n = n)
+}
+```
+
+```{r}
+#library(rmutil)
+dbetabinom <- function (y, size, m, s, log = FALSE) {
+  # from rmutil package
+    if (any(y < 0)) 
+        stop("y must contain non-negative values")
+    if (any(size < 0)) 
+        stop("size must contain non-negative values")
+    if (any(m <= 0) || any(m >= 1)) 
+        stop("m must lie between 0 and 1")
+    if (any(s <= 0)) 
+        stop("s must be positive")
+    ly <- max(length(y), length(m), length(s), length(size))
+    if (length(y) != ly) {
+        if (length(y) == 1) 
+            y <- rep(y, ly)
+        else stop("length of y incorrect")
+    }
+    if (length(size) != ly) {
+        if (length(size) == 1) 
+            size <- rep(size, ly)
+        else stop("size must be the same length as y")
+    }
+    if (any(y > size)) 
+        stop("y must be <= size")
+    if (length(m) != ly) {
+        if (length(m) == 1) 
+            m <- rep(m, ly)
+        else stop("m and y must have the same length")
+    }
+    if (length(s) != ly) {
+        if (length(s) == 1) 
+            s <- rep(s, ly)
+        else stop("s and y must have the same length")
+    }
+    t <- s * m
+    u <- s * (1 - m)
+    tmp <- lbeta(y + t, size - y + u) - lbeta(t, u) + lchoose(size, 
+        y)
+    if (!log) 
+        tmp <- exp(tmp)
+    tmp
+}
+
+BinomialBeta_pdf<-function(x,a,b,n) {
+  pdf <- dbetabinom(y=x, size=n, m=a/(a+b), s=a+b) ;
+  return (pdf) 
+}
+```
+
+
+```{r}
+StudentT_pdf<-function(x,mu,lam,al) {
+  pdf <- 0.5*log(lam) -0.5*log(al) -0.5*log(pi) ;
+  pdf <- pdf +lgamma(0.5*(al+1)) -lgamma(0.5*al) ;
+  pdf <- pdf -0.5*(al+1)*log(1+lam/al*(x-mu)^2) ;
+  pdf <- exp(pdf) ;
+  return (pdf)  
+}
+```
+
+
+```{r}
+dinvgamma <- function(x, a, b){
+  return ( exp( a*log(b)-lgamma(a) -(a+1)*log(x) -b/x ) ) ;
+}
+```
+
+
+
+# Bernoulli model
+
+
+```{r,echo=FALSE}
+BernoulliModel_SufStat<-function(x,n) {
+ r <- sum(x[1:n]) ; 
+}
+
+BernoulliModel_PDF_posterior<-function(theta,r,n,a,b) {
+  pdf <- dbeta(theta, a+r, b+n-r) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_prior<-function(theta,a,b) {
+  pdf <- dbeta(theta, a, b) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_pred<-function(y,r,n,a,b) {
+  pdf <- BinomialBeta_pdf(y, a+r, b+n-r, 1) ;
+   return (pdf)  
+}
+
+plot_Bernoulli_param <- function(theta=0.5, n=10, a=1, b=1) {
+  
+  # theta=0.5; n=10; a=1; b=1
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  theta_prior_pdf <- BernoulliModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- BernoulliModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+    y_max <- max(theta_post_pdf, theta_prior_pdf)
+  
+  par(mfrow=c(1,1))
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior vs Prior PDF', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]), " and " ,pi(theta))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  abline(v=theta, 
+         col="purple")
+    
+    legend('topright',
+        c('Posterior','Prior',expression(paste(theta, " real value"))),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','green','purple'),
+        cex=fntsz
+    )
+}
+
+
+plot_Bernoulli_pred <- function(theta=0.5, n=10, a=1, b=1) {
+  
+  # theta=0.5; n=10; a=1; b=1
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+  par(mfrow=c(1,1))
+  
+  barplot(xnew_pred_pdf,  
+          names = x_pred, 
+          xlab = "x", 
+          main = "Predictive PMF", 
+          ylab = expression(paste("p(",x[n+1], "|", x["1:n"] , ")")), 
+          ylim=c(0,1.1),
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz) ;
+}  
+  
+  
+
+
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.5)
+
+sliderInput("Bern_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 80,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_a",
+                 "$$a:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+
+sliderInput("Bern_b",
+                 "$$b:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Br}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \text{Be}(a,b)
+\end{cases}
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(a^{*},b^{*})
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+ &\sim
+ \text{Bb}(a^{*},b^{*},1) 
+\end{align*}
+
+Where
+
+\begin{align*}
+ a^{*} 
+ &=
+ \sum_{i=1}^{n}x_{i}+a \\
+ b^{*}
+ &=
+ n-\sum_{i=1}^{n}x_{i}+b
+\end{align*}
+
+
+### ***Parametric inferece***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli_param(theta=input$Bern_theta, 
+                  n=input$Bern_n, 
+                  a=input$Bern_a, 
+                  b=input$Bern_b
+                  )
+  })
+```
+
+### ***Predictive inference***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli_pred(theta=input$Bern_theta, 
+                  n=input$Bern_n, 
+                  a=input$Bern_a, 
+                  b=input$Bern_b
+                  )
+  })
+```
+
+
+
+
+
+
+
+# Bernoulli model (parametrisation 2)
+
+
+```{r,echo=FALSE}
+
+plot_Bernoulli2_param <- function(theta=0.5, n=10,
+                                 tau_0=0, tau_1=0) {
+  
+
+  a = tau_1+1
+  b = tau_0-tau_1+1
+
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  theta_prior_pdf <- BernoulliModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- BernoulliModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+    y_max <- max(theta_post_pdf, theta_prior_pdf)
+  
+  par(mfrow=c(1,1))
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior vs Prior PDF', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]), " and " ,pi(theta))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+  abline(v=theta, 
+         col="purple")
+    
+    legend('topright',
+        c('Posterior','Prior',expression(paste(theta, " real value"))),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','green','purple'),
+        cex=fntsz
+    )
+
+}
+
+
+plot_Bernoulli2_pred <- function(theta=0.5, n=10, 
+                                 tau_0=0, tau_1=0) {
+  
+# theta=0.5
+# n=10
+# a=10
+# b=20
+  
+  
+a = tau_1+1
+b = tau_0-tau_1+1
+
+
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+  par(mfrow=c(1,1))
+  
+  barplot(xnew_pred_pdf,  
+          names = x_pred, 
+          xlab = "x", 
+          main = "Predictive PMF", 
+          ylab = expression(paste("p(",x[n+1], "|", x["1:n"] , ")")), 
+          ylim=c(0,1.1),
+          cex.lab=fntsz, 
+          cex.axis=fntsz, 
+          cex.main=fntsz, 
+          cex.sub=fntsz) ;
+
+
+
+}  
+  
+  
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern2_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.5)
+
+sliderInput("Bern2_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 200,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern2_tau",
+                 "$$\\tau=(\\tau_{1},\\tau_{0}):$$",
+                  min = 0.00,
+                  max = 18,
+                  step = 0.05,
+                  value = c(0,0))
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Br}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \text{Be}(\tau_{1}+1,\tau_{0}-\tau_{1}+1)
+\end{cases}
+\]
+
+Here:
+
+* $\tau_{0}$ is the prior hyperperameter  reflecting the effective number of observations(as replacing the sufficient statistic part $n$ of the likelihood), and   
+* $\tau_{1}$ is the  prior hyperparameter reflecting the total amount that these (prior) pseudo-observations contribute to the sufficint statistice (as replacing the sufficient statistic part $\sum_{i=1}^{n}x_{i}$ of the likelihood).
+
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(\tau^{*}_{1}+1,\tau^{*}_{0}-\tau^{*}_{1}+1)
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+ &\sim
+ \text{Bb}(\tau^{*}_{1}+1,\tau^{*}_{0}-\tau^{*}_{1}+1,1) 
+\end{align*}
+
+Where
+
+\begin{align*}
+ \tau^{*}_{0} 
+ &=
+ n+\tau_{0} \\
+ \tau^{*}_{1}
+ &=
+ \sum_{i=1}^{n}x_{i}+\tau_{1} 
+\end{align*}
+
+
+
+### ***Parametric inferece***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli2_param(theta=input$Bern2_theta, 
+                  n=input$Bern2_n, 
+                  tau_0=input$Bern2_tau[2], 
+                  tau_1=input$Bern2_tau[1]
+                  )
+  })
+```
+
+### ***Predictive inference***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli2_pred(theta=input$Bern2_theta, 
+                  n=input$Bern2_n,
+                  tau_0=input$Bern2_tau[2], 
+                  tau_1=input$Bern2_tau[1]
+                  )
+  })
+```
+
+
+
+
+
+
+
+
+
+
+
+# Normal  model
+
+
+```{r,echo=FALSE}
+
+NormalModel_SufStat<-function(x,n) {
+  xx <- mean(x[1:n])
+  yy <- mean((x[1:n]-xx)^2)
+ sufstat <- c(xx,yy) ; 
+}
+
+NormalModel_PDF_meanvar_prior<-function(mu,vu,mu0,n0,a0,b0) {
+  vu0 <- vu/n0 ;
+  pdf <- dnorm( mu, mean=mu0, sd=sqrt(vu0)) * dinvgamma(vu, a0, b0) ;
+   return (pdf)  
+}
+
+NormalModel_PDF_meanvar_post<-function(mu,vu,n,sufstat,mu0,n0,a0,b0) {
+  
+      if (n==0) {
+    pdf <- NormalModel_PDF_meanvar_prior(mu,vu,mu0,n0,a0,b0) ;
+    return (pdf) ;
+    }
+  
+  x_mean <- sufstat[1] ;
+  
+  x_var <- sufstat[2] ;
+  
+  n_hat <- n0+n ;
+  
+  a_hat <-a0+0.5*n ;
+  
+  b_hat <- b0+0.5*n*x_var+0.5*n0*n*((mu0-x_mean)^2)/(n0+n) ;
+  
+  mu_hat <- (n0*mu0+n*x_mean)/(n0+n) ;
+  
+  vu_hat <- vu/n_hat
+  
+  pdf <- dnorm( mu, mean=mu_hat, sd=sqrt(vu_hat) )*dinvgamma(vu,a_hat,b_hat) ;
+   return (pdf)  
+}
+
+NormalModel_PDF_var_prior<-function(vu,a0,b0) {
+  pdf <- dinvgamma(vu,a0,b0) ;
+   return (pdf)  
+}
+
+NormalModel_PDF_var_post<-function(vu,n,sufstat,mu0,n0,a0,b0) {
+  
+    if (n==0) {
+    pdf <- NormalModel_PDF_var_prior(vu,a0,b0) ;
+    return (pdf) ;
+    }
+  
+  x_mean <- sufstat[1] ;
+  
+  x_var <- sufstat[2] ;
+  
+  a_hat <-a0+0.5*n ;
+  
+  b_hat <- b0+0.5*n*x_var+0.5*n0*n*((mu0-x_mean)^2)/(n0+n) ;
+  
+  pdf <- dinvgamma( vu, a_hat, b_hat) ;
+  
+  return (pdf)  
+}
+
+NormalModel_PDF_mean_prior<-function(mu,mu0,n0,a0,b0) {
+  pdf <- StudentT_pdf(mu, mu0, n0*a0/b0, 2*a0) ;
+   return (pdf)  
+}
+
+NormalModel_PDF_mean_post<-function(mu,n,sufstat,mu0,n0,a0,b0) {
+  
+  if (n==0) {
+    pdf <- NormalModel_PDF_mean_prior(mu,mu0,n0,a0,b0) ;
+    return (pdf) ;
+    } 
+  
+  x_mean <- sufstat[1] ;
+  
+  x_var <- sufstat[2] ;
+  
+  n_hat <- n0+n ;
+  
+  a_hat <-a0+0.5*n ;
+  
+  b_hat <- b0+0.5*n*x_var+0.5*n0*n*((mu0-x_mean)^2)/(n0+n) ;
+  
+  mu_hat <- (n0*mu0+n*x_mean)/(n0+n) ;
+  
+  pdf <- StudentT_pdf(mu, mu_hat, (n+n0)*a_hat/b_hat, 2*a_hat) ;
+   return (pdf)  
+}
+
+NormalModel_PDF_pred<-function(x,n,sufstat,mu0,n0,a0,b0) {
+  
+    if (n==0) {
+      pdf <- StudentT_pdf(x, mu0, n0/(n0+1)*a0/b0, 2*a0) ;    
+      return (pdf) ;
+    } 
+  
+  x_mean <- sufstat[1] ;
+  
+  x_var <- sufstat[2] ;
+  
+  n_hat <- n0+n ;
+  
+  a_hat <-a0+0.5*n ;
+  
+  b_hat <- b0+0.5*n*x_var+0.5*n0*n*((mu0-x_mean)^2)/(n0+n) ;
+  
+  mu_hat <- (n0*mu0+n*x_mean)/(n0+n) ;
+  
+  pdf <- StudentT_pdf(x, mu_hat, (n+n0)/(n+n0+1)*a_hat/b_hat, 2*a_hat) ;
+   return (pdf)  
+}
+
+plot_Normal_param <- function(mu=0.0,
+                        vu=1.0,
+                        n=10,
+                        mu0=0.0,
+                        n0=1.0,
+                        a0=1.5,
+                        b0=1.5) {
+ # mu=0.0;
+ # vu=1.0;
+ # n=10;
+ # mu0=0.0;
+ # n0=1.0;
+ # a0=1.5;
+ # b0=1.5;
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- mu+sqrt(vu)*qnorm(obs,mean=0.0,sd=1.0) ;
+  sufstat <- NormalModel_SufStat(obs,n) ;
+
+  x_vu <- seq(from = 0.00, to = 10, length.out = 50) ;
+  vu_prior_pdf <- NormalModel_PDF_var_prior(x_vu,a0,b0) ;
+  vu_post_pdf <- NormalModel_PDF_var_post(x_vu,n,sufstat,mu0,n0,a0,b0) ;
+  
+  x_mu <- seq(from = -6, to = 6, length.out = 50) ;
+  mu_prior_pdf <- NormalModel_PDF_mean_prior(x_mu,mu0,n0,a0,b0) ;
+  mu_post_pdf <- NormalModel_PDF_mean_post(x_mu,n,sufstat,mu0,n0,a0,b0) ;
+  
+  
+  muvu_prior_pdf <- matrix(rep(NaN,50*50),50,50) ;
+  muvu_post_pdf <- muvu_prior_pdf ;
+  for (i in 1:50)
+    for (j in 1:50) {
+      muvu_prior_pdf[i,j] <- NormalModel_PDF_meanvar_prior(x_mu[i],x_vu[j],mu0,n0,a0,b0) ;
+      muvu_post_pdf[i,j] <- NormalModel_PDF_meanvar_post(x_mu[i],x_vu[j],n,sufstat,mu0,n0,a0,b0) ;
+    }
+  
+  x_pred <- seq(from = -6, to = 6, length.out = 50) ;
+  xnew_pred_pdf <- NormalModel_PDF_pred(x_pred,n,sufstat,mu0,n0,a0,b0) ;
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+
+  
+  par(mfrow = c(2 , 2) )
+  
+  # about mu
+  
+       y_max <- c(mu_post_pdf, mu_prior_pdf) ;
+  y_max <- y_max[is.finite(y_max)]
+    y_max <- max(y_max)
+  
+  plot(x_mu, 
+       mu_post_pdf, 
+       type = "l",  
+       main='Marginal Posterior vs Prior PDF', 
+       xlab = expression(mu),
+       ylab = expression(paste(pi,"(",mu,"|",x[1:n],")", " and " ,pi,"(",mu,")")), 
+       col="blue" ,
+       ylim = c(0,y_max+0.3) ,
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_mu, 
+       mu_prior_pdf, 
+       type = "l",  
+       xlab = expression(mu),
+       ylab = expression(paste(pi,"(",mu,"|",x[1:n],")", " and " ,pi,"(",mu,")")), 
+       col="green" ,
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  abline(v=mu, 
+         col="purple")
+    
+  legend('topright',
+        c('Posterior','Prior',expression(paste(mu, " real value"))),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','green','purple'),
+        cex=fntsz
+    )
+
+  # about sigma
+  
+  
+     y_max <- c(vu_post_pdf, vu_prior_pdf) ;
+  y_max <- y_max[is.finite(y_max)]
+    y_max <- max(y_max)
+
+  
+  plot(x_vu, 
+       vu_post_pdf, 
+       type = "l",  
+       main='Marginal Posterior vs Prior PDF', 
+       xlab = expression(sigma^2),
+       ylab = expression(paste(pi,"(",sigma^2,"|",x[1:n],")", " and ",pi,"(",sigma^2,")")), 
+       col="blue" ,
+       ylim = c(0,y_max+0.3) ,
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_vu, 
+       vu_prior_pdf, 
+       type = "l",  
+       col="green" ,
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  abline(v=vu, 
+         col="purple")
+    
+  legend('topright',
+        c('Posterior','Prior',expression(paste(sigma^2, " real value"))),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(2.5,2.5),
+        col=c('blue','green','purple'),
+        cex=fntsz
+    )
+ 
+  
+  # about joint prior
+
+  contour(x = x_mu,
+         y = x_vu,
+         z = muvu_prior_pdf,
+         col="green",
+         plot.title = title(main = "Joint Prior PDF",
+                            xlab = expression(mu),
+                            ylab = expression(sigma^2),
+                            cex.lab=fntsz, 
+                            cex.axis=fntsz, 
+                            cex.main=fntsz, 
+                            cex.sub=fntsz
+                            ),
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz,
+        labcex=fntsz
+        ) ;
+  
+  
+  contour(x = x_mu,
+         y = x_vu,
+         z = muvu_post_pdf,
+         col="blue",
+         plot.title = title(main = "Joint Posterior PDF",
+                            xlab = expression(mu),
+                            ylab = expression(sigma^2),
+                            cex.lab=fntsz, 
+                            cex.axis=fntsz, 
+                            cex.main=fntsz, 
+                            cex.sub=fntsz
+                            ),
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz,
+        labcex=fntsz
+        ) ;
+  points(c(mu),c(vu),pch = "+", col="purple")
+  
+    legend('topright',
+        c('PDF',expression(paste(theta, "=", "(", mu,sigma^2, ")"))),
+        bg="transparent",
+        lty=c(1,NA),
+        pch=c(NA,"+"),
+        lwd=c(2.5,2.5),
+        col=c('blue','purple'),
+        cex=fntsz
+    )
+
+}
+
+
+plot_Normal_pred <- function(mu=0.0,
+                        vu=1.0,
+                        n=10,
+                        mu0=0.0,
+                        n0=1.0,
+                        a0=1.5,
+                        b0=1.5) {
+#  mu=0.0;
+#  vu=1.0;
+#  n=10;
+#  mu0=0.0;
+#  n0=1.0;
+#  a0=1.5;
+#  b0=1.5;
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- mu+sqrt(vu)*qnorm(obs,mean=0.0,sd=1.0) ;
+  sufstat <- NormalModel_SufStat(obs,n) ;
+
+  x_vu <- seq(from = 0.00, to = 10, length.out = 50) ;
+  
+  x_mu <- seq(from = -3, to = 3, length.out = 50) ;
+  
+  x_pred <- seq(from = -6, to = 6, length.out = 50) ;
+  xnew_pred_pdf <- NormalModel_PDF_pred(x_pred,n,sufstat,mu0,n0,a0,b0) ;
+  
+  par(mfrow = c(1,1) )
+  
+  # about xnew_pred_pdf
+  
+  plot(x_pred, 
+       xnew_pred_pdf, 
+       type = "l",  
+       main='Predictive PDF', 
+       xlab = expression( x[n+1] ),
+       ylab = expression(paste(p(x[n+1], "|",x[1:n]))), 
+       col="blue" ,
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  }
+
+
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Normal_n",
+                 "$$n:$$",
+                  min = 0,
+                  max = 100,
+                  step = 2,
+                  value = 5.0)
+
+sliderInput("Normal_mu",
+                 "$$\\mu:$$",
+                  min = -3.0,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 0.0)
+
+sliderInput("Normal_vu",
+                 "$$\\sigma^2:$$",
+                  min = 0.01,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 0.1)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+
+sliderInput("Normal_mu0",
+                 "$$\\mu_0:$$",
+                  min = -3.0,
+                  max = 3.0,
+                  step = 0.05,
+                  value = 0.0)
+
+sliderInput("Normal_n0",
+                 "$$n_0:$$",
+                  min = 1.0,
+                  max = 100.0,
+                  step = 2,
+                  value = 1)
+
+sliderInput("Normal_a0",
+                 "$$a:$$",
+                  min = 0.0,
+                  max = 5.0,
+                  step = 0.05,
+                  value = 1)
+
+sliderInput("Normal_b0",
+                 "$$b:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\mu,\sigma^2 
+& \overset{\text{iid}}{\sim}\text{N}(\mu,\sigma^{2}),\,\,\forall i=1:n\\
+\mu|\sigma^2 
+&\sim \text{N}(\mu_{0},\frac{\lambda_0}{\sigma^{2}}) \\
+\sigma^2 
+& \sim \text{IG}(a_0,b_0)
+\end{cases}
+\]
+
+The joint posterior distribution for $(\mu,\sigma^2)|x_{1:n}$ is: 
+\begin{align*}
+\begin{cases}
+\mu|x_{1:n},\sigma^2 
+&\sim \text{N}(\mu^{*},\frac{\lambda^{*}}{\sigma^{2}}) \\
+\sigma^2|x_{1:n} 
+& \sim \text{IG}(a^{*},b^{*})
+\end{cases}
+\end{align*}
+
+The marginal posterior distribution for $\mu|x_{1:n}$ is: 
+\begin{align*}
+\mu|x_{1:n} 
+&\sim
+\text{St}(\mu^{*},\frac{\lambda^{*}a^{*}}{b^{*}},2a^{*})
+\end{align*}
+
+The marginal posterior distribution for $\sigma^2|x_{1:n}$ is: 
+\begin{align*}
+\sigma^2|x_{1:n} 
+& \sim 
+\text{IG}(a^{*},b^{*})
+\end{align*}
+
+The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is
+
+\begin{align*}
+x_{\text{new}}|x_{1:n} 
+&\sim
+\text{St}(\mu^{*},\frac{\lambda^{*}a^{*}}{(\lambda^{*}+1)b^{*}},2a^{*})
+\end{align*}
+
+Where:
+
+\begin{align*}
+\mu^{*} 
+&= 
+\frac{\lambda_{0}\mu_{0}+n\bar{x}}{\lambda_{0}+n} \\
+\lambda^{*} 
+&=
+\lambda_{0}+n \\
+a^{*}
+&=
+a+\frac{1}{2}n \\
+b^{*}
+&=
+b
++\frac{1}{2}ns^{2}
++\frac{1}{2}\frac{\lambda_{0}n(\mu_{0}-\bar{x})^{2}}{\lambda_{0}+n} 
+\end{align*}
+
+
+### ***Parametric inference***
+
+```{r,echo=FALSE}
+renderPlot({
+  plot_Normal_param(mu=input$Normal_mu,
+              vu=input$Normal_vu,
+              n=input$Normal_n,
+              mu0=input$Normal_mu0,
+              n0=input$Normal_n0,
+              a0=input$Normal_a0,
+              b0=input$Normal_b0)
+  })
+```
+
+### ***Predictive inference***
+
+```{r,echo=FALSE}
+renderPlot({
+  plot_Normal_pred(mu=input$Normal_mu,
+              vu=input$Normal_vu,
+              n=input$Normal_n,
+              mu0=input$Normal_mu0,
+              n0=input$Normal_n0,
+              a0=input$Normal_a0,
+              b0=input$Normal_b0)
+  })
+```
+
+
+
+
+
+
+
+<!-- # Normal  model (parametrisation 2) -->
+
+
+<!-- ```{r,echo=FALSE} -->
+
+<!-- plot_Normal2_param <- function(mu=0.0, -->
+<!--                         vu=1.0, -->
+<!--                         n=10, -->
+<!--                         tau0=1.0, -->
+<!--                         tau1=0.0, -->
+<!--                         tau2=2) { -->
+<!--  # mu=0.0; -->
+<!--  # vu=1.0; -->
+<!--  # n=10; -->
+<!--  # mu0=0.0; -->
+<!--  # n0=1.0; -->
+<!--  # a0=1.5; -->
+<!--  # b0=1.5; -->
+
+<!--   mu0 <- tau1/tau0 ; -->
+<!--   n0 <- tau0 ; -->
+<!--   a0 <- 0.5*(tau0+1); -->
+<!--   b0 <- 0.5*tau2- tau1*tau1/tau0 ; -->
+
+<!--  plot_Normal_param(mu,vu,n,mu0,n0,a0,b0) -->
+
+<!-- } -->
+
+
+<!-- plot_Normal2_pred <- function(mu=0.0, -->
+<!--                         vu=1.0, -->
+<!--                         n=10, -->
+<!--                         tau0=1.0, -->
+<!--                         tau1=0.0, -->
+<!--                         tau2=2) { -->
+<!--   mu0 <- tau1/tau0 ; -->
+<!--   n0 <- tau0 ; -->
+<!--   a0 <- 0.5*(tau0+1); -->
+<!--   b0 <- 0.5*tau2- tau1*tau1/tau0 ; -->
+<!--   plot_Normal_pred(mu,vu,n,mu0,n0,a0,b0) -->
+<!--   } -->
+
+
+<!-- ``` -->
+
+
+<!-- Inputs {.sidebar}  -->
+<!-- ----------------------- -->
+
+<!-- ***Parametric model parameters*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!-- sliderInput("Normal2_n", -->
+<!--                  "$$n:$$", -->
+<!--                   min = 0, -->
+<!--                   max = 100, -->
+<!--                   step = 2, -->
+<!--                   value = 5.0) -->
+
+<!-- sliderInput("Normal2_mu", -->
+<!--                  "$$\\mu:$$", -->
+<!--                   min = -3.0, -->
+<!--                   max = 3.0, -->
+<!--                   step = 0.05, -->
+<!--                   value = 0.0) -->
+
+<!-- sliderInput("Normal2_vu", -->
+<!--                  "$$\\sigma^2:$$", -->
+<!--                   min = 0.01, -->
+<!--                   max = 3.0, -->
+<!--                   step = 0.05, -->
+<!--                   value = 0.1) -->
+<!-- ``` -->
+
+<!-- ***Prior hyper-parameters*** -->
+
+<!-- Note that it should be $2\tau_1^2<\tau_2+\tau_0$. -->
+
+<!-- ```{r,echo=FALSE} -->
+
+<!-- sliderInput("Normal2_tau0", -->
+<!--                  "$$\\tau_0:$$", -->
+<!--                   min = 1.0, -->
+<!--                   max = 100.0, -->
+<!--                   step = 0.05, -->
+<!--                   value = 1.0) -->
+
+<!-- sliderInput("Normal2_tau1", -->
+<!--                  "$$\\tau_1:$$", -->
+<!--                   min = -300, -->
+<!--                   max = 300.0, -->
+<!--                   step = 2, -->
+<!--                   value = 0.0) -->
+
+<!-- sliderInput("Normal2_tau2", -->
+<!--                  "$$\\tau_2:$$", -->
+<!--                   min = 0.0, -->
+<!--                   max = 150.0, -->
+<!--                   step = 0.1, -->
+<!--                   value = 100) -->
+<!-- ``` -->
+
+
+<!-- Column {.tabset} -->
+<!-- ----------------------- -->
+
+
+<!-- ### ***Description***  -->
+
+<!-- We consider the Bayesian model -->
+
+<!-- \[ -->
+<!-- \begin{cases} -->
+<!-- x_{i}|\mu,\sigma^2  -->
+<!-- & \overset{\text{iid}}{\sim}\text{N}(\mu,\sigma^{2}),\,\,\forall i=1:n\\ -->
+<!-- \mu|\sigma^2  -->
+<!-- &\sim \text{N}(\mu_{0},\frac{\lambda_0}{\sigma^{2}}) \\ -->
+<!-- \sigma^2  -->
+<!-- & \sim \text{IG}(a_0,b_0) -->
+<!-- \end{cases} -->
+<!-- \] -->
+
+<!-- The joint posterior distribution for $(\mu,\sigma^2)|x_{1:n}$ is:  -->
+<!-- \begin{align*} -->
+<!-- \begin{cases} -->
+<!-- \mu|x_{1:n},\sigma^2  -->
+<!-- &\sim \text{N}(\mu^{*},\frac{\lambda^{*}}{\sigma^{2}}) \\ -->
+<!-- \sigma^2|x_{1:n}  -->
+<!-- & \sim \text{IG}(a^{*},b^{*}) -->
+<!-- \end{cases} -->
+<!-- \end{align*} -->
+
+<!-- The marginal posterior distribution for $\mu|x_{1:n}$ is:  -->
+<!-- \begin{align*} -->
+<!-- \mu|x_{1:n}  -->
+<!-- &\sim -->
+<!-- \text{St}(\mu^{*},\frac{\lambda^{*}a^{*}}{b^{*}},2a^{*}) -->
+<!-- \end{align*} -->
+
+<!-- The marginal posterior distribution for $\sigma^2|x_{1:n}$ is:  -->
+<!-- \begin{align*} -->
+<!-- \sigma^2|x_{1:n}  -->
+<!-- & \sim  -->
+<!-- \text{IG}(a^{*},b^{*}) -->
+<!-- \end{align*} -->
+
+<!-- The predictive distribution for a future observation $x_{\text{new}}|x_{1:n}$ is -->
+
+<!-- \begin{align*} -->
+<!-- x_{\text{new}}|x_{1:n}  -->
+<!-- &\sim -->
+<!-- \text{St}(\mu^{*},\frac{\lambda^{*}a^{*}}{(\lambda^{*}+1)b^{*}},2a^{*}) -->
+<!-- \end{align*} -->
+
+<!-- Where: -->
+
+<!-- \begin{align*} -->
+<!-- \mu^{*}  -->
+<!-- &=  -->
+<!-- \frac{\lambda_{0}\mu_{0}+n\bar{x}}{\lambda_{0}+n} \\ -->
+<!-- \lambda^{*}  -->
+<!-- &= -->
+<!-- \lambda_{0}+n \\ -->
+<!-- a^{*} -->
+<!-- &= -->
+<!-- a+\frac{1}{2}n \\ -->
+<!-- b^{*} -->
+<!-- &= -->
+<!-- b -->
+<!-- +\frac{1}{2}ns^{2} -->
+<!-- +\frac{1}{2}\frac{\lambda_{0}n(\mu_{0}-\bar{x})^{2}}{\lambda_{0}+n}  -->
+<!-- \end{align*} -->
+
+
+<!-- ### ***Parametric inference*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!-- renderPlot({ -->
+<!--   plot_Normal2_param(mu=input$Normal2_mu, -->
+<!--               vu=input$Normal2_vu, -->
+<!--               n=input$Normal2_n, -->
+<!--             tau0=input$Normal2_tau0, -->
+<!--               tau1=input$Normal2_tau1, -->
+<!--               tau2=input$Normal2_tau2) -->
+<!--   }) -->
+<!-- ``` -->
+
+<!-- ### ***Predictive inference*** -->
+
+<!-- ```{r,echo=FALSE} -->
+<!-- renderPlot({ -->
+<!--   plot_Normal2_pred(mu=input$Normal2_mu, -->
+<!--               vu=input$Normal2_vu, -->
+<!--               n=input$Normal2_n, -->
+<!--             tau0=input$Normal2_tau0, -->
+<!--               tau1=input$Normal2_tau1, -->
+<!--               tau2=input$Normal2_tau2) -->
+<!--   }) -->
+<!-- ``` -->
+
+
+
+
+

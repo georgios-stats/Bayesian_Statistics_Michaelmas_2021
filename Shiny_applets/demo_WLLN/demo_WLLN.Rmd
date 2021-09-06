@@ -1,0 +1,534 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Weak Law of Large Numbers"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Weak law of large numbers Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+# Normal distribution  
+```{r,echo=FALSE}
+plot_wlln_normal <- function(mu= 0.0, sig2=1.0, N=1000, fresh=0) {
+  
+  K = 100 ;
+  
+  n <- seq(1,N) ;
+  
+  # write( rnorm(10^5,0,1) , file = "./z_rnorm.dat")
+  
+  if (fresh==1) {
+    z <- matrix(rnorm(N*K, mean = 0, sd = 1),N,K) ;
+    # write(z,file = "./z_rnorm.dat") ;
+  }
+  else {
+    z <- scan(file = "./z_rnorm.dat",nmax=N*K) ;
+    z <- matrix(z ,N,K) ; 
+  }
+  
+  x <- mu+sqrt(sig2)*z[1:N,] ;
+  x_bar <- matrix(rep(NaN,N*K),N,K) ;
+  
+  for (j in 1:K) x_bar[,j] <- cumsum(x[,j])/n ;
+  CI_x_bar <- t(t(apply(x_bar, 1, sort)) [ ,c( ceiling(2.5/100*K), ceiling(97.5/100*K))] )
+  
+  x_min_exp <- mu -3.5*sqrt(sig2/N) ;
+  x_max_exp <- mu +3.5*sqrt(sig2/N) ;
+  
+  x_min <-  0 -2.5*sqrt(1000) ;
+  x_max <- 0 +2.5*sqrt(1000) ;
+  
+  n_min = 1 ;
+  n_max = 400
+  
+  x_eval <- seq(x_min,x_max,length=100) ;
+  Pr_x <- dnorm(x_eval,mu,sqrt(sig2)) ;
+  
+  layout( matrix( c(1,1,2,2,2,2,2,2),nrow=2,ncol=4) )
+  
+  plot(Pr_x, x_eval, 
+       ylim=c(x_min,x_max), 
+       xlim=rev(range(Pr_x)), 
+       type='l',
+       ylab='X',
+       xlab='PDF f(X)')
+  abline(a=mu, b=0, col='red')
+  
+  plot(n, x_bar[,1], 
+       type='l',
+       main="Trace plot of the sample mean",
+       xlab="Sample size",
+       ylab= 'Sample average of X',
+       xlim=c(n_min,n_max), 
+       ylim=c(x_min,x_max),
+       col='lightgrey'
+  )
+  #for (j in 2:min(10,K))
+  for (j in 2:K)
+    lines(n, x_bar[,j], 
+         type='l',
+         col='lightgrey')
+  lines(n, CI_x_bar[1,], 
+        type='l',
+        col='blue', 
+        lwd=2
+        )
+  lines(n, CI_x_bar[2,], 
+        type='l',
+        col='blue', 
+        lwd=2
+  )
+  abline(a=mu, b=0, col='red', 
+         lwd=2
+         )
+  
+  legend('topright',
+         bg="transparent",
+         c('Sample mean','95% CI of sample mean','Population mean'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('lightgrey','blue','red')) 
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Sample***
+
+$$X_i\sim\text{N}(\mu,\sigma^2)$$
+$$\text{E}(X_i) = \mu$$
+$$\text{Var}(X_i) = \sigma^2$$
+$$ i=1,...,N$$
+
+***Parameters***
+```{r,echo=FALSE}
+      sliderInput("mu_norm",
+                  "$$\\mu$$",
+                  min = -10.0,
+                  max = 10.0,
+                  value = 0.0,
+                  step = ((3)-(-3))/100 )
+      sliderInput("sig2_norm",
+                  "$$\\text{Var}(X)=\\sigma^2$$",
+                  min = 10^(-10),
+                  max = 1000,
+                  value = 100.0,
+                  step = 1)
+      sliderInput("N_norm",
+                  "N :",
+                  min = 2,
+                  max = 400,
+                  value = 200)  
+      selectInput("fresh_norm", "Fresh:",
+                  c("Yes" = 1,
+                    "No" = 0))
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Theorems*** {data-height=400}
+
+***Chebyshev's inequality:*** 
+Let $X$ be a r.v. with mean $\text{E}(X)=\mu$ and variance
+$\text{Var}(X)=\sigma^{2}<\infty$. Then, 
+$$
+\Pr(|X-\mu|\ge \epsilon)\le\frac{\sigma^{2}}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Chebyshev's inequality (For the average):*** 
+Let $X_{1},...,X_{N}$ be i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then, 
+$$
+\Pr(|\bar{X}-\mu|\ge \epsilon)\le\frac{\sigma^{2}/N}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Weak Law of Large Numbers (WLLN):*** 
+Let $X_{1},...,X_{N}$ be a sequence of i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then as $N\rightarrow\infty$,  
+$$
+\lim_{n\rightarrow\infty}\Pr(|\bar{X}-\mu|\ge\epsilon)=0, \text{ for any } \epsilon>0.
+$$
+
+### ***Simulation plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_wlln_normal(mu=input$mu_norm,
+                     sig2=input$sig2_norm,
+                     N=input$N_norm,
+                     fresh=input$fresh_norm)
+  })
+```
+
+
+
+
+
+
+
+
+
+# Bernoulli distribution 
+```{r,echo=FALSE}
+plot_wlln_Bernoulli <- function(sig2=0.1, N=1000, fresh=0) {
+  
+  pr = 0.2*(1-sqrt(1-4*sig2)) ;
+  # pr = 0.2*(1-sqrt(1+4*sig2)) ;
+  
+  K = 100 ;
+  
+  n <- seq(1,N) ;
+  
+  # write( rnorm(10^5,0,1) , file = "./z_rnorm.dat")
+  
+  if (fresh==1) {
+    z <- runif(N*K);
+    # write(z,file = "./z_runif.dat") ;
+  }
+  else {
+    z <- scan(file = "./z_runif.dat",nmax=N*K) ;
+  }
+  x <- matrix(as.integer(z<pr),N,K) ;
+  
+  x_bar <- matrix(rep(NaN,N*K),N,K) ;
+  for (j in 1:K) x_bar[,j] <- cumsum(x[,j])/n ;
+  CI_x_bar <- t(t(apply(x_bar, 1, sort)) [ ,c( ceiling(2.5/100*K), ceiling(97.5/100*K))] )
+  
+  x_min <-  0 ;
+  x_max <- 1 ;
+
+  n_min = 1 ;
+  n_max = 400
+  
+  x_eval <- c(0.0,1.0) ;
+  Pr_x <- c(1-pr,pr) ;
+  
+  layout( matrix( c(1,1,2,2,2,2,2,2),nrow=2,ncol=4) )
+  
+  barplot(Pr_x, names=c(0,1), 
+          horiz=TRUE, 
+          xlim = rev(c(0,1)),
+          xlab="Pr(X)",
+          ylab= 'X',
+          main = 'Prob. of X'
+          )
+  
+  plot(n, x_bar[,1], 
+       type='l',
+       main="Trace plot of the sample mean",
+       xlab="Sample size",
+       ylab= 'Sample average of X',
+       xlim=c(n_min,n_max), 
+       ylim=c(x_min,x_max),
+       col='lightgrey'
+  )
+  #for (j in 2:min(10,K))
+  for (j in 2:K)
+    lines(n, x_bar[,j], 
+          type='l',
+          col='lightgrey')
+  lines(n, CI_x_bar[1,], 
+        type='l',
+        col='blue', 
+        lwd=2
+  )
+  lines(n, CI_x_bar[2,], 
+        type='l',
+        col='blue', 
+        lwd=2
+  )
+  abline(a=pr, b=0, col='red', 
+         lwd=2
+  )
+  
+  legend('topright',
+         bg="transparent",
+         c('Sample mean','95% CI of sample mean','Population mean'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('lightgrey','blue','red')) 
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Sample***
+
+$$X_i\sim\text{Bernoulli}(p)$$
+$$\text{E}(X_i) = p$$
+$$\text{Var}(X_i) = p(1-p)$$
+$$ i=1,...,N$$
+
+***Parameters***
+```{r,echo=FALSE}
+      sliderInput("sig2_Bern",
+                  "$$\\text{Var}(X): $$",
+                  min = 0,
+                  max = 0.25,
+                  value = 0.1,
+                  step = 0.001)
+      sliderInput("N_Bern",
+                  "$$N :$$",
+                  min = 2,
+                  max = 400,
+                  value = 200) 
+      selectInput("fresh_Bern", "Fresh:",
+                  c("Yes" = 1,
+                    "No" = 0))
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Theorems*** {data-height=400}
+
+***Chebyshev's inequality:*** 
+Let $X$ be a r.v. with mean $\text{E}(X)=\mu$ and variance
+$\text{Var}(X)=\sigma^{2}<\infty$. Then, 
+$$
+\Pr(|X-\mu|\ge \epsilon)\le\frac{\sigma^{2}}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Chebyshev's inequality (For the average):*** 
+Let $X_{1},...,X_{N}$ be i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then, 
+$$
+\Pr(|\bar{X}-\mu|\ge \epsilon)\le\frac{\sigma^{2}/N}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Weak Law of Large Numbers (WLLN):*** 
+Let $X_{1},...,X_{N}$ be a sequence of i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then as $N\rightarrow\infty$,  
+$$
+\lim_{n\rightarrow\infty}\Pr(|\bar{X}-\mu|\ge\epsilon)=0, \text{ for any } \epsilon>0.
+$$
+
+### ***Simulation plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_wlln_Bernoulli(sig2=input$sig2_Bern,
+                     N=input$N_Bern,
+                     fresh=input$fresh_Bern)
+  })
+```
+
+
+
+
+
+# Exponential distribution  
+```{r,echo=FALSE}
+plot_wlln_exponential <- function(  sig2=1.0, N=1000, fresh=0) {
+  
+  ell <- 1.0/sqrt(sig2)
+  mu <- 1.0/ell ; 
+  
+  K = 100 ;
+  
+  n <- seq(1,N) ;
+  
+  # write( rnorm(10^5,0,1) , file = "./z_rnorm.dat")
+  
+  if (fresh==1) {
+    z <- runif(N*K);
+    # write(z,file = "./z_runif.dat") ;
+  }
+  else {
+    z <- scan(file = "./z_runif.dat",nmax=N*K) ;
+  }
+  z = -log(1-z) ;
+  
+  x <- matrix(1/ell*z,N,K) ;
+  
+  x_bar <- matrix(rep(NaN,N*K),N,K) ;
+  
+  for (j in 1:K) x_bar[,j] <- cumsum(x[,j])/n ;
+  CI_x_bar <- t(t(apply(x_bar, 1, sort)) [ ,c( ceiling(2.5/100*K), ceiling(97.5/100*K))] )
+  
+  x_min_exp <- 0.0 ;
+  x_max_exp <- 6.0 ;
+  
+  x_min <-  0.0 ;
+  x_max <- 6.0 ;
+  
+  n_min = 1 ;
+  n_max = 400
+  
+  x_eval <- seq(x_min,x_max,length=100) ;
+  Pr_x <- dexp(x_eval,rate=ell) ;
+  
+  layout( matrix( c(1,1,2,2,2,2,2,2),nrow=2,ncol=4) )
+  
+  plot(Pr_x, x_eval, 
+       ylim=c(x_min,x_max), 
+       xlim=rev(range(Pr_x)), 
+       type='l',
+       ylab='X',
+       xlab='PDF f(X)')
+  abline(a=mu, b=0, col='red')
+  
+  plot(n, x_bar[,1], 
+       type='l',
+       main="Trace plot of the sample mean",
+       xlab="Sample size",
+       ylab= 'Sample average of X',
+       xlim=c(n_min,n_max), 
+       ylim=c(x_min,x_max),
+       col='lightgrey'
+  )
+  #for (j in 2:min(10,K))
+  for (j in 2:K)
+    lines(n, x_bar[,j], 
+          type='l',
+          col='lightgrey')
+  lines(n, CI_x_bar[1,], 
+        type='l',
+        col='blue', 
+        lwd=2
+  )
+  lines(n, CI_x_bar[2,], 
+        type='l',
+        col='blue', 
+        lwd=2
+  )
+  abline(a=mu, b=0, col='red', 
+         lwd=2
+  )
+  
+  legend('topright',
+         bg="transparent",
+         c('Sample mean','95% CI of sample mean','Population mean'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('lightgrey','blue','red')) 
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Sample***
+
+$$X_i\sim\mathcal{E}(\lambda) $$
+$$\text{E}(X_i) = 1/\lambda$$
+$$\text{Var}(X_i) = 1/\lambda^2$$
+$$ i=1,...,N$$
+
+***Parameters***
+```{r,echo=FALSE}
+      sliderInput("sig2_exp",
+                  "$$\\text{Var}(X):$$",
+                  min = 10^(-5),
+                  max = 16.0,
+                  value = 1.0,
+                  step = 0.1)
+      sliderInput("N_exp",
+                  "N :",
+                  min = 2,
+                  max = 400,
+                  value = 200)
+      selectInput("fresh_exp", "Fresh:",
+                  c("Yes" = 1,
+                    "No" = 0))
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Theorems*** {data-height=400}
+
+***Chebyshev's inequality:*** 
+Let $X$ be a r.v. with mean $\text{E}(X)=\mu$ and variance
+$\text{Var}(X)=\sigma^{2}<\infty$. Then, 
+$$
+\Pr(|X-\mu|\ge \epsilon)\le\frac{\sigma^{2}}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Chebyshev's inequality (For the average):*** 
+Let $X_{1},...,X_{N}$ be i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then, 
+$$
+\Pr(|\bar{X}-\mu|\ge \epsilon)\le\frac{\sigma^{2}/N}{\epsilon^{2}}, \text{ for any } \epsilon>0.
+$$
+
+***Weak Law of Large Numbers (WLLN):*** 
+Let $X_{1},...,X_{N}$ be a sequence of i.i.d. r.v., with
+ mean $\text{E}(X_{i})=\mu$ and variance $\text{Var}(X_{i})=\sigma^{2}<\infty$.
+Let $\bar{X}=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then as $N\rightarrow\infty$,  
+$$
+\lim_{n\rightarrow\infty}\Pr(|\bar{X}-\mu|\ge\epsilon)=0, \text{ for any } \epsilon>0.
+$$
+
+### ***Simulation plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_wlln_exponential(sig2=input$sig2_exp,
+                     N=input$N_exp,
+                     fresh=input$fresh_exp)
+  })
+```
+
+
+
+
+
+
+
+
+
+
+

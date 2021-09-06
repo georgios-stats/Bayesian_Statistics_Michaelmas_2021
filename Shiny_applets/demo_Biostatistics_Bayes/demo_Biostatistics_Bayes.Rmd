@@ -1,0 +1,392 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Biostatistics (Bayes theorem)"
+# output: html_document
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+
+```{r}
+library(ggplot2)
+library(shiny)
+```
+
+```{r,echo=FALSE}
+multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
+  library(grid)
+  
+  # Make a list from the ... arguments and plotlist
+  plots <- c(list(...), plotlist)
+  
+  numPlots = length(plots)
+  
+  # If layout is NULL, then use 'cols' to determine layout
+  if (is.null(layout)) {
+    # Make the panel
+    # ncol: Number of columns of plots
+    # nrow: Number of rows needed, calculated from # of cols
+    layout <- matrix(seq(1, cols * ceiling(numPlots/cols)),
+                     ncol = cols, nrow = ceiling(numPlots/cols))
+  }
+  
+  if (numPlots==1) {
+    print(plots[[1]])
+    
+  } else {
+    # Set up the page
+    grid.newpage()
+    pushViewport(viewport(layout = grid.layout(nrow(layout), ncol(layout))))
+    
+    # Make each plot, in the correct location
+    for (i in 1:numPlots) {
+      # Get the i,j matrix positions of the regions that contain this subplot
+      matchidx <- as.data.frame(which(layout == i, arr.ind = TRUE))
+      
+      print(plots[[i]], vp = viewport(layout.pos.row = matchidx$row,
+                                      layout.pos.col = matchidx$col))
+    }
+  }
+}
+```
+
+
+# Sensitivity \& Specitivity
+
+```{r,echo=FALSE}
+plot_posterior_SS <- function(Pr_prior_Dplus = 1.0/270.0, 
+                           Pr_Tplus_Dplus = 0.89, 
+                           Pr_Tminus_Dminus = 0.75) {
+  
+  
+  # Prior
+  #Pr_prior_Dplus <- 1.0/270.0
+  Pr_prior_Dminus <- 1.0 - Pr_prior_Dplus
+  
+  # Sensitivity
+  #Pr_Tplus_Dplus <- 0.89 ;
+  
+  # Specificity
+  #Pr_Tminus_Dminus <- 0.75 ;
+  
+  # False positive
+  Pr_Tminus_Dplus <- 1.0 -Pr_Tplus_Dplus  ;
+  
+  #False negative
+  Pr_Tplus_Dminus <- 1.0 -Pr_Tminus_Dminus  ;
+  
+  
+  Pr_post_Dplus_Tplus <- (Pr_Tplus_Dplus*Pr_prior_Dplus)/(Pr_Tplus_Dplus*Pr_prior_Dplus
+                                                          +Pr_Tplus_Dminus*Pr_prior_Dminus) ;
+  Pr_post_Dminus_Tplus <- 1.0 - Pr_post_Dplus_Tplus ;
+  
+  Pr_post_Dplus_Tminus <- (Pr_Tminus_Dplus*Pr_prior_Dplus)/(Pr_Tminus_Dplus*Pr_prior_Dplus
+                                                            + Pr_Tminus_Dminus*Pr_prior_Dminus) ;
+  Pr_post_Dminus_Tminus <- 1.0 - Pr_post_Dplus_Tminus ;
+  
+  data_Tplus <- data.frame( Disease = c("D+","D-"),
+                  Pr = c(Pr_post_Dplus_Tplus, Pr_post_Dminus_Tplus) )
+  
+  plt1 <- ggplot(data_Tplus, aes(factor(Disease), Pr) )+ 
+            geom_bar(stat="identity", position = "dodge") + 
+            ggtitle("Given test result: T+") +
+            xlab( "Disease" ) +
+            ylab("Post. Prob. Pr(.|T+)")+
+            ylim(0,1)+
+            theme(text = element_text(size=20)) 
+  
+  data_Tminus <- data.frame(Disease = c("D+","D-"),
+                Pr = c(Pr_post_Dplus_Tminus, Pr_post_Dminus_Tminus) )
+  
+  plt2 <- ggplot(data_Tminus, aes(factor(Disease), Pr)) + 
+            geom_bar(stat="identity", position = "dodge") + 
+            ggtitle("Given test result: T-") +
+            xlab( "Disease" ) +
+            ylab("Post. Prob. Pr(.|T-)")+
+            ylim(0,1)+
+            theme(text = element_text(size=20)) 
+  
+    multiplot(plt1, plt2, cols=2)
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Notation:*** 
+
+Has the disease?
+$$
+D =
+\begin{cases}
+D+ & \text{, if yes} \\
+D- & \text{, if no} 
+\end{cases}
+$$ 
+
+Test result ?
+$$
+T =
+\begin{cases}
+T+ & \text{, if positive } \\
+T- & \text{, if negative } 
+\end{cases}
+$$
+
+***Probabilities***
+
+
+```{r,echo=FALSE}
+      sliderInput("Pr_prior_Dplus_SS",
+                  "$$\\text{Prior } \\Pr(D+):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 1.0/2.0)
+      sliderInput("Pr_Tplus_Dplus_SS",
+                  "$$\\text{Sensitivity } \\Pr(T+|D+):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 0.8)
+      sliderInput("Pr_Tminus_Dminus_SS",
+                   "$$\\text{Specificity } \\Pr(T-|D-):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 0.7) 
+```
+
+Column 
+-----------------------------------------------------------------------
+
+### ***Posterior distribution*** {data-height=700}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_posterior_SS(Pr_prior_Dplus=input$Pr_prior_Dplus_SS, 
+                   Pr_Tplus_Dplus=input$Pr_Tplus_Dplus_SS, 
+                   Pr_Tminus_Dminus=input$Pr_Tminus_Dminus_SS)
+  })
+```
+
+### ***Bayes formula*** {data-height=300}
+
+<!-- ***Symbols:***  -->
+<!-- $$ -->
+<!-- D = -->
+<!-- \begin{cases} -->
+<!-- D+ & \text{, if diseased} \\ -->
+<!-- D- & \text{, if not diseased}  -->
+<!-- \end{cases} -->
+<!-- $$  -->
+<!-- $$ -->
+<!-- T = -->
+<!-- \begin{cases} -->
+<!-- T+ & \text{, if positive test result} \\ -->
+<!-- T- & \text{, if negative test result}  -->
+<!-- \end{cases} -->
+<!-- $$ -->
+
+***Positive test result (T+):*** 
+$$
+\Pr(D|T+) = 
+\begin{cases}
+\frac{\Pr(T+|D+)\Pr(D+)}{\Pr(T+|D+)\Pr(D+)\ \ +\ \ \Pr(T+|D-)\Pr(D-)} & \text{, if } D=D+\\
+\frac{\Pr(T+|D-)\Pr(D-)}{\Pr(T+|D+)\Pr(D+)\ \ +\ \ \Pr(T+|D-)\Pr(D-)} & \text{, if } D=D-
+\end{cases}
+$$
+
+***Negative test result (T-):*** 
+$$
+\Pr(D|T-) = 
+\begin{cases}
+\frac{\Pr(T-|D+)\Pr(D+)}{\Pr(T-|D+)\Pr(D+)\ \ +\ \ \Pr(T-|D-)\Pr(D-)} & \text{, if } D=D+\\
+\frac{\Pr(T-|D-)\Pr(D-)}{\Pr(T-|D+)\Pr(D+)\ \ +\ \ \Pr(T-|D-)\Pr(D-)} & \text{, if } D=D-
+\end{cases}
+$$
+
+
+
+
+# False Negetive/Positive
+
+```{r,echo=FALSE}
+plot_posterior_FNP <- function(Pr_prior_Dplus = 1.0/270.0, 
+                           Pr_Tminus_Dplus = 0.89, 
+                           Pr_Tplus_Dminus = 0.75) {
+  
+  
+  # Prior
+  #Pr_prior_Dplus <- 1.0/270.0
+  Pr_prior_Dminus <- 1.0 - Pr_prior_Dplus
+  
+  # Sensitivity
+  Pr_Tplus_Dplus <- 1.0 - Pr_Tminus_Dplus ;
+  
+  # Specificity
+  Pr_Tminus_Dminus <- 1.0 - Pr_Tplus_Dminus ;
+  
+  Pr_post_Dplus_Tplus <- (Pr_Tplus_Dplus*Pr_prior_Dplus)/(Pr_Tplus_Dplus*Pr_prior_Dplus
+                                                          +Pr_Tplus_Dminus*Pr_prior_Dminus) ;
+  Pr_post_Dminus_Tplus <- 1.0 - Pr_post_Dplus_Tplus ;
+  
+  Pr_post_Dplus_Tminus <- (Pr_Tminus_Dplus*Pr_prior_Dplus)/(Pr_Tminus_Dplus*Pr_prior_Dplus
+                                                            + Pr_Tminus_Dminus*Pr_prior_Dminus) ;
+  Pr_post_Dminus_Tminus <- 1.0 - Pr_post_Dplus_Tminus ;
+  
+  data_Tplus <- data.frame(
+    Disease = c("D-","D+"),
+    Pr = c(Pr_post_Dminus_Tplus, Pr_post_Dplus_Tplus) )
+  
+  plt1 <- ggplot(data_Tplus, aes(factor(Disease), Pr)) + 
+    geom_bar(stat="identity", position = "dodge") + 
+    ggtitle("Given test result: T+") +
+    xlab( "Disease" ) +
+    ylab("Post. Prob. Pr(.|T+)")+
+    ylim(0,1)+
+    theme(text = element_text(size=20)) 
+  
+  data_Tminus <- data.frame(
+    Disease = c("D-","D+"),
+    Pr = c(Pr_post_Dminus_Tminus, Pr_post_Dplus_Tminus) )
+  
+  plt2 <- ggplot(data_Tminus, aes(factor(Disease), Pr)) + 
+    geom_bar(stat="identity", position = "dodge") + 
+    ggtitle("Given test result: T-") +
+    xlab( "Disease" ) +
+    ylab("Post. Prob. Pr(.|T-)")+
+    ylim(0,1)+
+    theme(text = element_text(size=20)) 
+  
+  multiplot(plt1, plt2, cols=2)
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+***Notation:*** 
+
+Has the disease?
+$$
+D =
+\begin{cases}
+D+ & \text{, if yes} \\
+D- & \text{, if no} 
+\end{cases}
+$$ 
+
+Test result ?
+$$
+T =
+\begin{cases}
+T+ & \text{, if positive } \\
+T- & \text{, if negative } 
+\end{cases}
+$$
+
+***Probabilities***
+
+
+```{r,echo=FALSE}
+      sliderInput("Pr_prior_Dplus_FNP",
+                  "$$\\text{Prior } \\Pr(D+):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 1.0/2.0)
+      sliderInput("Pr_Tminus_Dplus_FNP",
+                  "$$\\text{False negative } \\Pr(T-|D+):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 0.2) 
+      sliderInput("Pr_Tplus_Dminus_FNP",
+                  "$$\\text{False positive } \\Pr(T+|D-):$$",
+                  min = 0.0,
+                  max = 1.0,
+                  value = 0.3)
+```
+
+Column
+-----------------------------------------------------------------------
+
+### ***Posterior distribution*** {data-height=700}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_posterior_FNP(Pr_prior_Dplus=input$Pr_prior_Dplus_FNP, 
+                   Pr_Tminus_Dplus=input$Pr_Tminus_Dplus_FNP, 
+                   Pr_Tplus_Dminus=input$Pr_Tplus_Dminus_FNP)
+  })
+```
+
+### ***Bayes formula*** {data-height=300}
+
+<!-- ***Symbols:***  -->
+<!-- $$ -->
+<!-- D = -->
+<!-- \begin{cases} -->
+<!-- D+ & \text{, if diseased} \\ -->
+<!-- D- & \text{, if not diseased}  -->
+<!-- \end{cases} -->
+<!-- $$  -->
+<!-- $$ -->
+<!-- T = -->
+<!-- \begin{cases} -->
+<!-- T+ & \text{, if positive test result} \\ -->
+<!-- T- & \text{, if negative test result}  -->
+<!-- \end{cases} -->
+<!-- $$ -->
+
+
+***Positive test result (T+):*** 
+$$
+\Pr(D|T+) = 
+\begin{cases}
+\frac{\Pr(T+|D+)\Pr(D+)}{\Pr(T+|D+)\Pr(D+)\ \ +\ \ \Pr(T+|D-)\Pr(D-)} & \text{, if } D=D+\\
+\frac{\Pr(T+|D-)\Pr(D-)}{\Pr(T+|D+)\Pr(D+)\ \ +\ \ \Pr(T+|D-)\Pr(D-)} & \text{, if } D=D-
+\end{cases}
+$$
+
+***Negative test result (T-):*** 
+$$
+\Pr(D|T-) = 
+\begin{cases}
+\frac{\Pr(T-|D+)\Pr(D+)}{\Pr(T-|D+)\Pr(D+)\ \ +\ \ \Pr(T-|D-)\Pr(D-)} & \text{, if } D=D+\\
+\frac{\Pr(T-|D-)\Pr(D-)}{\Pr(T-|D+)\Pr(D+)\ \ +\ \ \Pr(T-|D-)\Pr(D-)} & \text{, if } D=D-
+\end{cases}
+$$
+
+
+
+
+
+
+
+
+
+

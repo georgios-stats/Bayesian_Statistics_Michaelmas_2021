@@ -1,0 +1,1164 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Parametric & predictive point estimation"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+<!-- Point estimation Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+```{r}
+get_randnumb <-function(n) {
+  u <- seq(0.001,0.999,length.out = n)
+#  u <- runif(0,1,n = n)
+}
+```
+
+```{r}
+#library(rmutil)
+dbetabinom <- function (y, size, m, s, log = FALSE) {
+  # from rmutil package
+    if (any(y < 0)) 
+        stop("y must contain non-negative values")
+    if (any(size < 0)) 
+        stop("size must contain non-negative values")
+    if (any(m <= 0) || any(m >= 1)) 
+        stop("m must lie between 0 and 1")
+    if (any(s <= 0)) 
+        stop("s must be positive")
+    ly <- max(length(y), length(m), length(s), length(size))
+    if (length(y) != ly) {
+        if (length(y) == 1) 
+            y <- rep(y, ly)
+        else stop("length of y incorrect")
+    }
+    if (length(size) != ly) {
+        if (length(size) == 1) 
+            size <- rep(size, ly)
+        else stop("size must be the same length as y")
+    }
+    if (any(y > size)) 
+        stop("y must be <= size")
+    if (length(m) != ly) {
+        if (length(m) == 1) 
+            m <- rep(m, ly)
+        else stop("m and y must have the same length")
+    }
+    if (length(s) != ly) {
+        if (length(s) == 1) 
+            s <- rep(s, ly)
+        else stop("s and y must have the same length")
+    }
+    t <- s * m
+    u <- s * (1 - m)
+    tmp <- lbeta(y + t, size - y + u) - lbeta(t, u) + lchoose(size, 
+        y)
+    if (!log) 
+        tmp <- exp(tmp)
+    tmp
+}
+
+BinomialBeta_pdf<-function(x,a,b,n) {
+  pdf <- dbetabinom(y=x, size=n, m=a/(a+b), s=a+b) ;
+  return (pdf) 
+}
+```
+
+```{r}
+Cbeta<-function (a, b, log = !missing(base), base = exp(1)) 
+{
+    if (log) {
+        if (missing(base)) {
+            lbeta(a, b)
+        }
+        else {
+            lbeta(a, b)/log(base)
+        }
+    }
+    else {
+        beta(a, b)
+    }
+}
+
+Rbeta<-function (x, a, b, lower = TRUE, log = !missing(base), base = exp(1)) 
+{
+    if (log) {
+        if (missing(base)) {
+            pbeta(x, shape1 = a, shape2 = b, lower.tail = lower, 
+                log.p = TRUE)
+        }
+        else {
+            pbeta(x, shape1 = a, shape2 = b, lower.tail = lower, 
+                log.p = TRUE)/log(base)
+        }
+    }
+    else {
+        pbeta(x, shape1 = a, shape2 = b, lower.tail = lower, 
+            log.p = FALSE)
+    }
+}
+
+Ibeta.inv <-function (y, a, b, lower = TRUE, log = !missing(base), base = exp(1)) 
+{
+    if (log) {
+        Rbeta.inv(y - Cbeta(a, b, log = TRUE, base = base), a, 
+            b, lower = lower, log = TRUE, base = base)
+    }
+    else {
+        Rbeta.inv(y/Cbeta(a, b, log = FALSE), a, b, lower = lower, 
+            log = FALSE)
+    }
+}
+beta.mean <- function(a,b){
+  return(a/(a+b))
+}
+beta.mode <- function(a,b){
+  if (a<1) return(-1) ;
+  if (b<1) return(-1) ;
+  return((a-1)/(a+b-2)) ;
+}
+beta.median <- function(a,b){
+  #return( Ibeta.inv(0.5, a, b) )
+  return(qbeta(0.5,1,b))
+}
+beta.quantile <- function(p,a,b){
+  #return( Ibeta.inv(0.5, a, b) )
+  return(qbeta(p,a,b))
+}
+
+```
+
+
+```{r}
+gammagamma_pdf<-function(x,a,b,n){
+  pdf <- a*log(b)-lgamma(a)+lgamma(a+n)-lgamma(n)+(n-1)*log(x)-(a+n)*log(b+x)
+  pdf <- exp(pdf)
+  return(pdf)
+}
+gammagamma_cdf<-function(q,a,b,n){
+  if (n==1) {
+    pdf <- 1.0/( a*(b^a) - 1.0/(a*((b+q)^a)) )
+  } else { 
+    f1 <- function(x,a=a,b=b,n=n) gammagamma_pdf(x,a,b,n)
+    f <- function(x) f1(x)
+    pdf<-integrate(f, lower = 0, upper = q)
+  }
+  return(pdf)
+}
+gammagamma_inv<-function(p,a,b,n){
+  if (n==1) {
+     q <- b*( 1/(1-p) -1) ;
+  } else {
+   f1 <- function(x,a=a,b=b,n=n) gammagamma_cdf(x,a,b,n)
+   f <- function(x) f1(x)
+   q <- uniroot(f,interval=c(0,p))
+  }
+  return(q)
+}
+gammagamma_mean<-function(a,b,n) {
+  if(a<=1) return(-1) ;
+  return(n*b/(a-1))
+}
+gammagamma_mode<-function(a,b,n) {
+  return((n-1)*b/(a+1))
+}
+```
+
+
+```{r}
+StudentT_pdf<-function(x,mu,lam,al) {
+  pdf <- 0.5*log(lam) -0.5*log(al) -0.5*log(pi) ;
+  pdf <- pdf +lgamma(0.5*(al+1)) -lgamma(0.5*al) ;
+  pdf <- pdf -0.5*(al+1)*log(1+lam/al*(x-mu)^2) ;
+  pdf <- exp(pdf) ;
+  return (pdf)  
+}
+```
+
+
+```{r}
+dinvgamma <- function(x, a, b){
+  return ( exp( a*log(b)-lgamma(a) -(a+1)*log(x) -b/x ) ) ;
+}
+```
+
+
+
+# Bernoulli model
+
+
+```{r,echo=FALSE}
+BernoulliModel_SufStat<-function(x,n) {
+ r <- sum(x[1:n]) ; 
+}
+
+BernoulliModel_PDF_posterior<-function(theta,r,n,a,b) {
+  pdf <- dbeta(theta, a+r, b+n-r) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_prior<-function(theta,a,b) {
+  pdf <- dbeta(theta, a, b) ;
+   return (pdf)  
+}
+
+BernoulliModel_PDF_pred<-function(y,r,n,a,b) {
+  pdf <- BinomialBeta_pdf(y, a+r, b+n-r, 1) ;
+   return (pdf)  
+}
+
+
+beta.post.mean <- function(r,n,a,b){
+  return( beta.mean(a+r, b+n-r) )
+}
+beta.post.mode <- function(r,n,a,b){
+  if (a+r<1) return(-1) ;
+  if (b+n-r<1) return(-1) ;
+  return(  beta.mode(a+r, b+n-r) )  ;
+}
+beta.post.median <- function(r,n,a,b){
+  #return( Ibeta.inv(0.5, a, b) )
+  return(qbeta(0.5,a+r, b+n-r))
+}
+beta.post.quantile <- function(p,r,n,a,b){
+   return(  beta.quantile(p,a+r, b+n-r) )  ;
+}
+
+plot_Bernoulli_param <- function(theta=0.5, n=10, a=1, b=1, c1=1, c2=2) {
+  
+  # theta=0.5;
+  # n=10;
+  # a=1;
+  # b=1 ;
+  # c1=1 ;
+  # c2=2 ;
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  theta_prior_pdf <- BernoulliModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- BernoulliModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+
+  
+  
+  theta_mean <- beta.post.mean(r,n,a,b) ;
+  theta_mode <- beta.post.mode(r,n,a,b) ;
+  theta_median <- beta.post.median(r,n,a,b) ;
+  theta_quantile <- beta.post.quantile(c2/(c1+c2),r,n,a,b) ;
+  
+  
+  y_max <- max(theta_post_pdf, theta_prior_pdf)
+  
+  par(mfrow=c(1,1))
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior vs Prior PDF', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]), " and " ,pi(theta))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+    abline(v=theta, col="red",lwd=3)
+  
+  legend('topright',
+        c('Posterior','Prior'),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(3,3),
+        col=c('blue','green'),
+        cex=fntsz
+    )
+  
+  if (theta_mode < 0) {
+    
+  abline(v=theta_mean, col="blue",lwd=3) ;
+  abline(v=theta_median, col="palegreen4",lwd=3) ;
+  abline(v=0.5, col="white",lwd=3) ;
+  abline(v=theta_quantile, col="black",lwd=3) ;
+  abline(v=theta, col="red",lwd=3)
+  
+  legend('topleft',
+        c(
+          expression(paste(theta, " real value")),
+          'Post. mean','Post. median','Post. mode',
+          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+        bg="transparent",
+        lty=c(1,1,1,1,1),
+        lwd=c(3,3,3,3,3),
+        col=c('red','blue','palegreen4','white','black'),
+        cex=fntsz
+    )
+    
+  } else {
+  
+  abline(v=theta_mean, col="blue",lwd=3) ;
+  abline(v=theta_median, col="palegreen4",lwd=3) ;
+  abline(v=theta_mode, col="sienna",lwd=3) ;
+  abline(v=theta_quantile, col="black",lwd=3) ;
+      abline(v=theta, col="red",lwd=3)
+  
+  legend('topleft',
+        c(
+          expression(paste(theta, " real value")),
+          'Post. mean','Post. median','Post. mode',
+          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+        bg="transparent",
+        lty=c(1,1,1,1,1),
+        lwd=c(3,3,3,3,3),
+        col=c('red','blue','palegreen4','sienna','black'),
+        cex=fntsz
+    )
+  }
+  
+}
+
+
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.5)
+
+sliderInput("Bern_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 80,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_a",
+                 "$$a:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+
+sliderInput("Bern_b",
+                 "$$b:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1)
+```
+
+***Loss funct. -parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern_c1",
+                 "$$c_1:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+
+sliderInput("Bern_c2",
+                 "$$c_2:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Br}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \text{Be}(a,b)
+\end{cases}
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(a^{*},b^{*})
+\end{align*}
+
+The predictive distribution for $x_{n+1}|x_{1:n}$ is: 
+\begin{align*}
+x_{n+1}|x_{1:n}
+&\sim
+\text{Bb}(a^{*},b^{*},1)
+\end{align*}
+
+Where
+
+\begin{align*}
+ a^{*} 
+ &=
+ \sum_{i=1}^{n}x_{i}+a \\
+ b^{*}
+ &=
+ n-\sum_{i=1}^{n}x_{i}+b
+\end{align*}
+
+
+***Point parametric estimation***
+
+If $\mathcal{D}=\Theta\subset\mathbb{R}^{k}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $\theta$ with respect to 
+
+1. the quadratic loss function  $\ell(\theta,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{\pi(d\theta|x_{1;n})}(\theta|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(\theta,\delta)=w(\theta)(\theta-\delta)^{2}$, where $w(\theta)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{\pi(d\theta|x_{1:n})}(w(\theta)\theta|x_{1:n})}{E^{\pi(d\theta|x_{1:n})}(w(\theta)|x_{1:n})}$$
+
+3. the  linear loss function $\ell(\theta,\delta)=c_{1}(\delta-\theta)I_{\theta\le\delta}(\delta)+c_{2}(\theta-\delta)I_{\theta>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$\pi(\theta\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(\theta,\delta)=|\theta-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(\theta,\delta)=1-I_{B_{\epsilon}(\delta)}(\theta)$, where $B_{\epsilon}(\delta)=(\theta\in\Theta\,|\,\text{dist}(\theta,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}\pi(\theta\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+
+***Point predictive estimation***
+
+If $\mathcal{D}=\mathcal{X}\subset\mathbb{R}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $y=x_{n+1}$ with respect to 
+
+1. the quadratic loss function  $\ell(y,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{p(dy|x_{1;n})}(y|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(y,\delta)=w(y)(y-\delta)^{2}$, where $w(y)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{p(dy|x_{1;n})}(w(y)y|x_{1:n})}{E^{p(dy|x_{1:n})}(w(y))}$$
+
+3. the  linear loss function $\ell(y,\delta)=c_{1}(\delta-\theta)I_{y\le\delta}(\delta)+c_{2}(y-\delta)I_{y>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$p(y\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(y,\delta)=|y-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{p(dy|x_{1;n})}(y|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(y,\delta)=1-I_{B_{\epsilon}(\delta)}(y)$, where $B_{\epsilon}(\delta)=(y\in\Theta\,|\,\text{dist}(y,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}p(y\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{p(dy|x_{1;n})}(p|x_{1:n})$$.
+
+
+
+
+
+
+### ***Parametric point estimation***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli_param(theta=input$Bern_theta, 
+                  n=input$Bern_n, 
+                  a=input$Bern_a, 
+                  b=input$Bern_b,
+                  c1=input$Bern_c1,
+                  c2=input$Bern_c2
+                  )
+  })
+```
+
+
+
+
+
+# Bernoulli model (parametrisation 2)
+
+
+```{r,echo=FALSE}
+
+plot_Bernoulli2_param <- function(theta=0.5, n=10,
+                                 tau_0=0, tau_1=0,
+                                 c1=1, c2=2) {
+  
+
+  a = tau_1+1
+  b = tau_0-tau_1+1
+
+  # c1=1 ;
+  # c2=2 ;
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- 1*(obs<theta) ;
+  
+  r <- BernoulliModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0, to = 1, length.out = 50) ;
+  theta_prior_pdf <- BernoulliModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- BernoulliModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  x_pred <- c(0,1) ;
+  xnew_pred_pdf <- c(BernoulliModel_PDF_pred(0, r=r,  n=n, a=a, b=b),
+                     BernoulliModel_PDF_pred(1, r=r,  n=n, a=a, b=b));
+  
+
+  #layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4) , matrix(4,4,4) ) )
+  
+
+  
+  
+  theta_mean <- beta.post.mean(r,n,a,b) ;
+  theta_mode <- beta.post.mode(r,n,a,b) ;
+  theta_median <- beta.post.median(r,n,a,b) ;
+  theta_quantile <- beta.post.quantile(c2/(c1+c2),r,n,a,b) ;
+  
+  
+  y_max <- max(theta_post_pdf, theta_prior_pdf)
+  
+  par(mfrow=c(1,1))
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior vs Prior PDF', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]), " and " ,pi(theta))), 
+       col="blue" ,
+      xlim=c(0,1),
+      ylim=c(0,y_max+1),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+    abline(v=theta, col="red",lwd=3)
+  
+  legend('topright',
+        c('Posterior','Prior'),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(3,3),
+        col=c('blue','green'),
+        cex=fntsz
+    )
+  
+  if (theta_mode < 0) {
+    
+  abline(v=theta_mean, col="blue",lwd=3) ;
+  abline(v=theta_median, col="palegreen4",lwd=3) ;
+  abline(v=0.5, col="white",lwd=3) ;
+  abline(v=theta_quantile, col="black",lwd=3) ;
+  abline(v=theta, col="red",lwd=3)
+  
+  legend('topleft',
+        c(
+          expression(paste(theta, " real value")),
+          'Post. mean','Post. median','Post. mode',
+          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+        bg="transparent",
+        lty=c(1,1,1,1,1),
+        lwd=c(3,3,3,3,3),
+        col=c('red','blue','palegreen4','white','black'),
+        cex=fntsz
+    )
+    
+  } else {
+  
+  abline(v=theta_mean, col="blue",lwd=3) ;
+  abline(v=theta_median, col="palegreen4",lwd=3) ;
+  abline(v=theta_mode, col="sienna",lwd=3) ;
+  abline(v=theta_quantile, col="black",lwd=3) ;
+      abline(v=theta, col="red",lwd=3)
+  
+  legend('topleft',
+        c(
+          expression(paste(theta, " real value")),
+          'Post. mean','Post. median','Post. mode',
+          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+        bg="transparent",
+        lty=c(1,1,1,1,1),
+        lwd=c(3,3,3,3,3),
+        col=c('red','blue','palegreen4','sienna','black'),
+        cex=fntsz
+    )
+  }
+  
+}
+
+
+  
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern2_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 0.9999,
+                  step = 0.05,
+                  value = 0.5)
+
+sliderInput("Bern2_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 200,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern2_tau",
+                 "$$\\tau=(\\tau_{1},\\tau_{0}):$$",
+                  min = 0.00,
+                  max = 18,
+                  step = 0.05,
+                  value = c(0,0))
+```
+
+***Loss funct. -parameters***
+
+```{r,echo=FALSE}
+sliderInput("Bern2_c1",
+                 "$$c_1:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+
+sliderInput("Bern2_c2",
+                 "$$c_2:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Br}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \text{Be}(\tau_{1}+1,\tau_{0}-\tau_{1}+1)
+\end{cases}
+\]
+
+Here:
+
+* $\tau_{0}$ is the prior hyperperameter  reflecting the effective number of observations(as replacing the sufficient statistic part $n$ of the likelihood), and   
+* $\tau_{1}$ is the  prior hyperparameter reflecting the total amount that these (prior) pseudo-observations contribute to the sufficint statistice (as replacing the sufficient statistic part $\sum_{i=1}^{n}x_{i}$ of the likelihood).
+
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Be}(\tau^{*}_{1}+1,\tau^{*}_{0}-\tau^{*}_{1}+1)
+\end{align*}
+
+The predictive distribution for $x_{n+1}|x_{1:n}$ is: 
+\begin{align*}
+x_{n+1}|x_{1:n}
+&\sim
+\text{Bb}(\tau^{*}_{1}+1,\tau^{*}_{0}-\tau^{*}_{1}+1,1)
+\end{align*}
+
+Where
+
+\begin{align*}
+ \tau^{*}_{0} 
+ &=
+ n+\tau_{0} \\
+ \tau^{*}_{1}
+ &=
+ \sum_{i=1}^{n}x_{i}+\tau_{1} 
+\end{align*}
+
+***Point parametric estimation***
+
+If $\mathcal{D}=\Theta\subset\mathbb{R}^{k}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $\theta$ with respect to 
+
+1. the quadratic loss function  $\ell(\theta,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{\pi(d\theta|x_{1;n})}(\theta|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(\theta,\delta)=w(\theta)(\theta-\delta)^{2}$, where $w(\theta)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{\pi(d\theta|x_{1:n})}(w(\theta)\theta|x_{1:n})}{E^{\pi(d\theta|x_{1:n})}(w(\theta)|x_{1:n})}$$
+
+3. the  linear loss function $\ell(\theta,\delta)=c_{1}(\delta-\theta)I_{\theta\le\delta}(\delta)+c_{2}(\theta-\delta)I_{\theta>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$\pi(\theta\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(\theta,\delta)=|\theta-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(\theta,\delta)=1-I_{B_{\epsilon}(\delta)}(\theta)$, where $B_{\epsilon}(\delta)=(\theta\in\Theta\,|\,\text{dist}(\theta,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}\pi(\theta\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+
+***Point predictive estimation***
+
+If $\mathcal{D}=\mathcal{X}\subset\mathbb{R}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $y=x_{n+1}$ with respect to 
+
+1. the quadratic loss function  $\ell(y,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{p(dy|x_{1;n})}(y|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(y,\delta)=w(y)(y-\delta)^{2}$, where $w(y)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{p(dy|x_{1;n})}(w(y)y|x_{1:n})}{E^{p(dy|x_{1:n})}(w(y))}$$
+
+3. the  linear loss function $\ell(y,\delta)=c_{1}(\delta-\theta)I_{y\le\delta}(\delta)+c_{2}(y-\delta)I_{y>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$p(y\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(y,\delta)=|y-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{p(dy|x_{1;n})}(y|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(y,\delta)=1-I_{B_{\epsilon}(\delta)}(y)$, where $B_{\epsilon}(\delta)=(y\in\Theta\,|\,\text{dist}(y,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}p(y\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{p(dy|x_{1;n})}(p|x_{1:n})$$.
+
+
+
+### ***Parametric point estimation***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Bernoulli2_param(theta=input$Bern2_theta, 
+                  n=input$Bern2_n, 
+                  tau_0=input$Bern2_tau[2], 
+                  tau_1=input$Bern2_tau[1],
+                  c1=input$Bern2_c1,
+                  c2=input$Bern2_c2
+                  )
+  })
+```
+
+
+
+
+
+
+
+# Exponential model
+
+
+```{r,echo=FALSE}
+ExponentialModel_SufStat<-function(x,n) {
+ r <- sum(x[1:n]) ; 
+}
+
+ExponentialModel_PDF_posterior<-function(theta,r,n,a,b) {
+  pdf <- dgamma(theta, a+n, rate= b+r) ;
+   return (pdf)  
+}
+
+ExponentialModel_PDF_prior<-function(theta,a,b) {
+  pdf <- dgamma(theta, a, rate = b) ;
+   return (pdf)  
+}
+
+ExponentialModel_PDF_pred<-function(y,r,n,a,b) {
+  pdf <- gammagamma_pdf(y, a+n, b+r, 1) ;
+   return (pdf)  
+}
+
+
+Exponential.post.mean <- function(r,n,a,b){
+  return(  (a+n)/(b+r) )
+}
+Exponential.post.mode <- function(r,n,a,b){
+  if (a+r<1) return(-1) ;
+  return((a+n-1)/(b+r) )  ;
+}
+Exponential.post.median <- function(r,n,a,b){
+  return(qgamma(0.5,a+n, b+r))
+}
+Exponential.post.quantile <- function(p,r,n,a,b){
+   return(qgamma(p,a+n, b+r))
+}
+
+Exponential.pred.mean <- function(r,n,a,b){
+  return(  gammagamma_mean(a+n,b+r,1)  )
+}
+#Exponential.pred.mode <- function(r,n,a,b){
+#  return( gammagamma.mode(a+n,b+r,1)  )  ;
+#}
+Exponential.pred.median <- function(r,n,a,b){
+  return( gammagamma_inv(0.5,a+n,b+r,1)  )  ;
+}
+Exponential.pred.quantile <- function(p,r,n,a,b){
+  return( gammagamma_inv(p,a+n,b+r,1)  )  ;
+}
+
+
+plot_Exponential_parampred <- function(theta=0.5, n=10, a=1, b=1, c1=1, c2=2) {
+  
+  # theta=1.5;
+  # n=10;
+  # a=1.5;
+  # b=1.5 ;
+  # c1=1 ;
+  # c2=2 ;
+  
+  fntsz <- 1.5;
+  op <- par(cex = fntsz)
+  
+  obs <-get_randnumb(n) ;
+  obs <- -log(1-obs)/theta ;
+  
+  x_max = 10
+  
+  r <- ExponentialModel_SufStat(obs,n) ;
+
+  x_theta <- seq(from = 0.001, to = x_max, length.out = 50) ;
+  theta_prior_pdf <- ExponentialModel_PDF_prior(x_theta, a=a, b=b) ;
+  theta_post_pdf <- ExponentialModel_PDF_posterior(x_theta, r=r,  n=n, a=a, b=b) ;
+  
+  
+  x_pred <- seq(from = 0.001, to = x_max, length.out = 50) ;
+  xnew_pred_pdf <- ExponentialModel_PDF_pred(x_pred,r=r,  n=n, a=a, b=b) ;
+  
+
+  
+  theta_mean <- Exponential.post.mean(r,n,a,b) ;
+  theta_mode <- Exponential.post.mode(r,n,a,b) ;
+  theta_median <- Exponential.post.median(r,n,a,b) ;
+  theta_quantile <- Exponential.post.quantile(c1/(c1+c2),r,n,a,b) ;
+  
+  xnew_mean <- Exponential.pred.mean(r,n,a,b) ;
+  #xnew_mode <- Exponential.pred.mode(r,n,a,b) ;
+  xnew_median <- Exponential.pred.median(r,n,a,b) ;
+  xnew_quantile <- Exponential.pred.quantile(c1/(c1+c2),r,n,a,b) ;
+  
+  
+  y_max <- max(theta_post_pdf, theta_prior_pdf)
+  y_max <- max(theta_post_pdf)
+  
+  # layout( cbind( matrix(1,4,4), matrix(2,4,4) ) )
+  
+  # POSTERIOR
+  
+  plot(x_theta, 
+       theta_post_pdf, 
+       type = "l",  
+       main='Posterior vs Prior PDF', 
+       xlab = expression(theta),
+       ylab = expression(paste(pi(theta,"|",x[1:n]), " and " ,pi(theta))), 
+       col="blue" ,
+      xlim=c(0,x_max),
+      ylim=c(0,y_max+0.2),
+      cex.lab=fntsz, 
+      cex.axis=fntsz, 
+      cex.main=fntsz, 
+      cex.sub=fntsz) ;
+  
+  lines(x_theta, 
+        theta_prior_pdf,
+        col= "green",
+        cex.lab=fntsz, 
+        cex.axis=fntsz, 
+        cex.main=fntsz, 
+        cex.sub=fntsz) ;
+  
+    abline(v=theta, col="red",lwd=3)
+  
+  legend('topright',
+        c('Posterior','Prior'),
+        bg="transparent",
+        lty=c(1,1),
+        lwd=c(3,3),
+        col=c('blue','green'),
+        cex=fntsz
+    )
+    
+  abline(v=theta_mean, col="blue",lwd=3) ;
+  abline(v=theta_median, col="palegreen4",lwd=3) ;
+  abline(v=theta_quantile, col="black",lwd=3) ;
+  abline(v=theta, col="red",lwd=3)
+  
+  legend('topleft',
+        c(
+          expression(paste(theta, " real value")),
+          'Post. mean','Post. median',
+          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+        bg="transparent",
+        lty=c(1,1,1,1),
+        lwd=c(3,3,3,3),
+        col=c('red','blue','palegreen4','black'),
+        cex=fntsz
+    )
+    
+
+  
+ # # PREDICTION
+ #  
+ #    plot(x_pred, 
+ #       xnew_pred_pdf, 
+ #       type = "l",  
+ #       main='Predictive PDF', 
+ #       xlab = expression(x[new]),
+ #       ylab = expression(paste(p(x[new],"|",x[1:n]))), 
+ #       col="blue" ,
+ #      xlim=c(0,x_max),
+ #      ylim=c(0,y_max+0.2),
+ #      cex.lab=fntsz, 
+ #      cex.axis=fntsz, 
+ #      cex.main=fntsz, 
+ #      cex.sub=fntsz) ;
+ # 
+ #  
+ # 
+ #    
+ #  abline(v=xnew_mean, col="blue",lwd=3) ;
+ #  abline(v=xnew_median, col="palegreen4",lwd=3) ;
+ #  abline(v=xnew_quantile, col="black",lwd=3) ;
+ # 
+ #  legend('topleft',
+ #        c(
+ #          'Pred. mean','Pred. median',
+ #          eval(expression(paste(c2/(c2+c1), " -th Quantile")))),
+ #        bg="transparent",
+ #        lty=c(1,1,1),
+ #        lwd=c(3,3,3),
+ #        col=c('blue','palegreen4','black'),
+ #        cex=fntsz
+ #    )
+ #    
+  
+}
+
+
+```
+
+
+Inputs {.sidebar} 
+-----------------------
+
+***Parametric model parameters***
+
+```{r,echo=FALSE}
+sliderInput("Expo_theta",
+                 "$$\\theta:$$",
+                  min = 0.0001,
+                  max = 10,
+                  step = 0.05,
+                  value = 4)
+
+sliderInput("Expo_n",
+                 "$$n:$$",
+                  min = 1,
+                  max = 80,
+                  step = 1,
+                  value = 10)
+```
+
+***Prior hyper-parameters***
+
+```{r,echo=FALSE}
+sliderInput("Expo_a",
+                 "$$a:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 6)
+
+sliderInput("Expo_b",
+                 "$$b:$$",
+                  min = 0.0,
+                  max = 10.0,
+                  step = 0.05,
+                  value = 1.8)
+```
+
+***Loss funct. -parameters***
+
+```{r,echo=FALSE}
+sliderInput("Expo_c1",
+                 "$$c_1:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+
+sliderInput("Expo_c2",
+                 "$$c_2:$$",
+                  min = 0.001,
+                  max = 10.0,
+                  step = 0.1,
+                  value = 1)
+```
+
+
+Column {.tabset}
+-----------------------
+
+
+### ***Description*** 
+
+We consider the Bayesian model
+
+\[
+\begin{cases}
+x_{i}|\theta & \overset{\text{iid}}{\sim}\text{Ex}(\theta),\,\,\forall i=1:n\\
+\theta & \sim \text{Ga}(a,b)
+\end{cases}
+\]
+
+The posterior distribution for $\theta|x_{1:n}$ is: 
+\begin{align*}
+\theta|x_{1:n}
+&\sim
+\text{Ga}(a^{*},b^{*})
+\end{align*}
+
+The predictive distribution for $x_{n+1}|x_{1:n}$ is: 
+\begin{align*}
+x_{n+1}|x_{1:n}
+&\sim
+\text{Gg}(a^{*},b^{*},1)
+\end{align*}
+
+
+Where
+
+\begin{align*}
+ a^{*} 
+ &=
+ a+n \\
+ b^{*}
+ &=
+b+\sum_{i=1}^{n}x_{i}
+\end{align*}
+
+***Point parametric estimation***
+
+If $\mathcal{D}=\Theta\subset\mathbb{R}^{k}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $\theta$ with respect to 
+
+1. the quadratic loss function  $\ell(\theta,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{\pi(d\theta|x_{1;n})}(\theta|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(\theta,\delta)=w(\theta)(\theta-\delta)^{2}$, where $w(\theta)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{\pi(d\theta|x_{1:n})}(w(\theta)\theta|x_{1:n})}{E^{\pi(d\theta|x_{1:n})}(w(\theta)|x_{1:n})}$$
+
+3. the  linear loss function $\ell(\theta,\delta)=c_{1}(\delta-\theta)I_{\theta\le\delta}(\delta)+c_{2}(\theta-\delta)I_{\theta>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$\pi(\theta\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(\theta,\delta)=|\theta-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(\theta,\delta)=1-I_{B_{\epsilon}(\delta)}(\theta)$, where $B_{\epsilon}(\delta)=(\theta\in\Theta\,|\,\text{dist}(\theta,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}\pi(\theta\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{\pi(d\theta|x_{1:n})}(\theta|x_{1:n})$$.
+
+
+***Point predictive estimation***
+
+If $\mathcal{D}=\mathcal{X}\subset\mathbb{R}$, the Bayesian predictive point estimate $\delta(x_{1:n})$ of $y=x_{n+1}$ with respect to 
+
+1. the quadratic loss function  $\ell(y,\delta)=(\theta-\delta)^{T}H(\theta-\delta)$, where $H^{-1}$ exists, is the posterior mean $$\delta(x_{1:n})=E^{p(dy|x_{1;n})}(y|x_{1:n})$$
+
+2. the weighted quadratic loss function $\ell(y,\delta)=w(y)(y-\delta)^{2}$, where $w(y)$ is a non negative function, is $$\delta(x_{1:n})=\frac{E^{p(dy|x_{1;n})}(w(y)y|x_{1:n})}{E^{p(dy|x_{1:n})}(w(y))}$$
+
+3. the  linear loss function $\ell(y,\delta)=c_{1}(\delta-\theta)I_{y\le\delta}(\delta)+c_{2}(y-\delta)I_{y>\delta}(\delta)$ is the posterior $\frac{c_{2}}{c_{1}+c_{2}}$-th quantile $$p(y\in(-\infty,\delta(x_{1:n}))|x_{1:n})=\frac{c_{2}}{c_{1}+c_{2}}$$
+
+    * the  absolute loss function $\ell(y,\delta)=|y-\delta|$ is the posterior median $$\delta(x_{1:n})=\text{median}^{p(dy|x_{1;n})}(y|x_{1:n})$$.
+
+4. the  zero-one loss function $\ell(y,\delta)=1-I_{B_{\epsilon}(\delta)}(y)$, where $B_{\epsilon}(\delta)=(y\in\Theta\,|\,\text{dist}(y,\delta)<\epsilon)$ and $\text{dist}(\cdot,\cdot)$ is a distance (e.g. the Euclidean), is $$\delta(x_{1:n})=\arg\max_{\forall\delta}p(y\in B_{\epsilon}(\delta)|x_{1:n})$$
+
+    * For small $\epsilon\rightarrow0$, it is the mode of the predictive distribution $$\delta(x_{1:n})=\text{mode}^{p(dy|x_{1;n})}(p|x_{1:n})$$.
+
+
+### ***Parametric point estimation***
+
+```{r,echo=FALSE}
+renderPlot({
+   plot_Exponential_parampred(theta=input$Expo_theta, 
+                  n=input$Expo_n, 
+                  a=input$Expo_a, 
+                  b=input$Expo_b,
+                  c1=input$Expo_c1,
+                  c2=input$Expo_c2
+                  )
+  })
+```
+
+

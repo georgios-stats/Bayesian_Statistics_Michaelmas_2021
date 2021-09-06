@@ -1,0 +1,478 @@
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+---
+title: "Central Limit Theorem"
+output: flexdashboard::flex_dashboard
+runtime: shiny
+---
+
+
+
+<!-- Central Limit Theorem Applet -->
+<!-- Copyright (C) 2017  Georgios Karagiannis -->
+<!-- georgios.karagiannis@durham.ac.uk -->
+
+<!-- This program is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation, either version 3 of the License, or -->
+<!-- (at your option) any later version. -->
+
+<!-- This program is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with this program. If not, see <http://www.gnu.org/licenses/>. -->
+
+
+# Bernoulli distribution 
+```{r,echo=FALSE}
+plot_clt_Bernoulli <- function( pr=0.4, en=10) {
+  
+  # pr = 0.4;
+  # en = 100 ;
+  
+
+fntsz <- 2 ;
+op <- par(cex = fntsz)
+
+mu <- pr ; 
+sig2 <- pr*(1-pr) ;
+
+mu_xbar <- mu ;
+sig2_xbar <- sig2/en ;
+
+r_xbar_exact <- (1/en) * rbinom(1000, size=en, prob = pr)
+r_xbar_approx <- rnorm(1000, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+
+x_min <- min(rbind(r_xbar_exact,r_xbar_approx)) ;
+x_max <- max(rbind(r_xbar_exact,r_xbar_approx)) ;
+
+xbar_exact_min <-x_min
+xbar_exact_max <- x_max
+#xbar_exact <- seq(xbar_exact_min, xbar_exact_max, length=100) ;
+xbar_exact <- seq(0, en, by=1)/en ;
+
+xbar_approx_min <-x_min
+xbar_approx_max <-x_max
+xbar_approx <- seq(xbar_approx_min, xbar_approx_max, length=100) ;
+
+f_xbar_exact <- en*dbinom(round(xbar_exact*en), size=en, prob = pr) ;
+f_xbar_approx <- dnorm(xbar_approx, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+
+xbar_approx_F <- seq(0, 1, length=100) ;
+xbar_exact_F <- seq(0,1,by=1/en) ;
+F_xbar_exact <- pbinom(round(xbar_exact_F*en), size=en, prob = pr) ;
+F_xbar_approx <- pnorm(xbar_approx_F, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+
+q_xbar_exact <- (1/en)*qbinom(seq(0.001,0.999,length=100), size=en, prob = pr) ;
+q_xbar_approx <- qnorm(seq(0.001,0.999,length=100), mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+
+layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,2)  ) )
+
+# plot(xbar_exact, f_xbar_exact,
+#      ylim = c(0,1.3*max(c(f_xbar_exact,f_xbar_approx))),
+#      type='h',
+#      main='Probability density function',
+#      xlab = 'x.bar',
+#      ylab = 'density',
+#      col=rgb(1, 0, 0, 0.4),
+#      lwd=5,
+#      cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+# )
+
+plot(xbar_exact*en, f_xbar_exact, type = "n",  main='Probability density function', xlab = 'x.bar',ylab = "density", xaxt = "n",
+     ylim=c(0,1.1*max(f_xbar_approx)),
+     cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+boxplot(as.data.frame(rbind(0,f_xbar_exact)), at = xbar_exact*en, names = round(xbar_exact,2),
+            boxwex = 1, medlty = 0, add = TRUE,
+            col=rgb(1, 0, 0, 0.4),
+        cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+
+polygon(c(min(xbar_approx), xbar_approx, max(xbar_approx))*en,
+        c(0.0,f_xbar_approx,0.0) ,
+        col=rgb(0, 0, 1, 0.2),
+        cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+)
+legend('topright',
+         bg="transparent",
+       c('Asymptotic distribution','Exact distribution'),
+       lty=c(1,1),
+       lwd=c(2.5,2.5),
+       col=c('blue','red'),
+       cex=fntsz
+)
+
+# plot(xbar_exact_F, F_xbar_exact,
+#      ylim = c(0.0,1.1),
+#      type='h',
+#      main='Cumulative distribution function',
+#      xlab = 'x.bar',
+#      ylab = 'density',
+#      col=rgb(1, 0, 0, 0.4),
+#      lwd=5,
+#      cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+# )
+
+F_x <- stepfun(xbar_exact_F,c(0.0,F_xbar_exact))
+plot(F_x,   main='Cumulative distribution function',   ylab = "Pr(X<=x)" , ylim = c(0.0,1.1),
+     col.ver = "bisque",  col.hor = rgb(1, 0, 0, 0.7), 
+cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz, 
+lwd=5.5,pch = 20)
+
+
+# polygon(c(0.0,xbar_approx_F,1.0),c(0.0,F_xbar_approx,0.0) ,
+#         col=rgb(0, 0, 1, 0.2),
+#         cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+# )
+
+lines(c(0.0,xbar_approx_F),c(0.0,F_xbar_approx) ,
+        col= rgb(0, 0, 1, 0.7),
+        cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz, 
+lwd=5.5
+)
+
+# legend('topright',
+#        c('Asymptotic distribution','Exact distribution'),
+#        lty=c(1,1),
+#        lwd=c(2.5,2.5),
+#        col=c('blue','red'),
+#        cex=fntsz
+# ) 
+
+
+boxplot(cbind(r_xbar_exact, r_xbar_approx),
+        col=c('red','blue'),
+        names=c('Exact','Approx.'),
+        cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+)
+
+  
+}
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Sample***
+
+$$X_i\sim\text{Bernoulli}(p)$$
+$$X_i\in\{0,1\}$$
+$$\text{E}(X_i) = p$$
+$$\text{Var}(X_i) = p(1-p)$$
+$$ i=1,...,N$$
+
+***Parameters***
+```{r,echo=FALSE}
+      sliderInput("pr_Bern",
+                  "$$p :$$",
+                  min = 0.0001,
+                  max = 0.999,
+                  value = 0.1,
+                  step = 0.01)
+      sliderInput("en_Bern",
+                  "N :",
+                  min = 2,
+                  max = 100,
+                  value = 5)
+```
+
+***Average***
+
+$$
+\bar{X}_N  = \frac{1}{N}\sum_{i=1}^{N} X_i
+$$
+
+Exact distr.:
+$$\bar{X}_N \overset{\text{exact}}{\sim} \frac{1}{N}\times\text{Binomial}(N,p)$$
+
+Approx distr.:
+$$\bar{X}_N \overset{\text{approx.}}{\sim} \text{N}(p,\frac{1}{N}p(1-p))$$
+
+
+Column
+-----------------------------------------------------------------------
+
+### ***Theorems*** {data-height=400}
+
+***Central Limit Theorem (CLT):*** 
+
+Suppose $\{X_{1},X_{2},...,X_{N}\}$ is a collection of i.i.d. r.v. with $\text{E}(X_{i})=\mu$ and $\text{Var}(X_{i})=\sigma^{2}<\infty$, for $i=1,...,N$.
+
+
+Let $\bar{X}_N=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then, as $N$ goes to infinity :
+$$
+\frac{\bar{X}_N-\mu}{\sigma/\sqrt{N}}\overset{\text{approx.}}{\sim}\text{N}(0,1).
+$$
+***Comments:*** 
+
+  * In simple words, CLT allow as to compute (approximately) probabilities of the (unseen yet) sample mean; e.g. : 
+  $$P_\text{exact distr.}(\bar{X}<k) 
+  \approx P_{\text{N}(\mu,\sigma^2/N)}(\bar{X}<k) 
+  = P_{\text{N}(0,1)}(Z<\frac{k-\mu}{\sigma/\sqrt{N}})
+  $$
+  * As a rule of thumb, the approximation is considered satisfactory if $N\ge 10$ (... in the Statistics 1 universe).
+
+***CLT in real life:*** 
+
+The central limit theorem provides a plausible explanation why the distributions of many random variables studied in physical
+or psychological experiments are  *approximately* Normal. 
+
+E.g.,:
+
+  * A person's height, is influenced by many random *factors* (heredity, diet, etc.). 
+  * These factors combine to give the person's height -- in a regression model for height these factors are *added*. 
+  * Because of such addition of independent factors, We would expect to see a Normal distribution of heights in a large number of people, and indeed we do.
+
+### ***Simulation plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_clt_Bernoulli(pr=input$pr_Bern,
+                         en=input$en_Bern)
+  })
+```
+
+
+
+
+
+
+
+
+
+
+# Exponential distribution 
+```{r,echo=FALSE}
+plot_clt_exponential <- function( ell=1.0, en=10) {
+  
+ #  ell=1.0;
+ # en=100 ;
+  
+  fntsz <- 2 ;
+  
+  mu <- 1.0/ell ; 
+  sig2 <- 1.0/ell^2 ;
+  
+  mu_xbar <- mu ;
+  sig2_xbar <- sig2/en ;
+  
+  # xbar_exact_min <- 0.0 ;
+  # xbar_exact_max <- 2.0 ;
+  
+  
+  r_xbar_exact <- rgamma(1000, shape=en, rate = ell*en)
+  r_xbar_approx <- rnorm(1000, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+  
+  x_min <- min(rbind(r_xbar_exact,r_xbar_approx)) ;
+  x_max <- max(rbind(r_xbar_exact,r_xbar_approx)) ;
+  
+  xbar_exact_min <-x_min
+  xbar_exact_max <- x_max
+  xbar_exact <- seq(xbar_exact_min, xbar_exact_max, length=100) ;
+  
+  xbar_approx_min <-x_min
+  xbar_approx_max <-x_max
+  xbar_approx <- seq(xbar_approx_min, xbar_approx_max, length=100) ;
+    
+  f_xbar_exact <- dgamma(xbar_exact, shape=en, rate = ell*en) ;
+  f_xbar_approx <- dnorm(xbar_approx, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+  
+  
+  xbar_approx_F <- seq(x_min, x_max, length=100) ;
+  xbar_exact_F <- seq(x_min,x_max, length=100) ;
+  F_xbar_exact <- pgamma(xbar_exact_F, shape=en, rate = ell*en)
+  F_xbar_approx <- pnorm(xbar_approx_F, mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+  
+  q_xbar_exact <- qgamma(seq(0.001,0.999,length=100), shape=en, rate = ell*en)
+  q_xbar_approx <- qnorm(seq(0.001,0.999,length=100), mean=mu_xbar, sd = sqrt(sig2_xbar)) ;
+  
+  layout( cbind( matrix(1,4,4), matrix(2,4,4), matrix(3,4,4)  ) )
+  
+  plot(xbar_exact, f_xbar_exact,
+       type='l',
+       main='Probability density function',
+       xlab = 'x.bar',
+       ylab = 'density',
+       xlim=c(x_min,x_max),
+       ylim=c(0,1.2*max(c(f_xbar_exact,f_xbar_approx))),
+       cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+       )
+  polygon(xbar_exact,f_xbar_exact, 
+          col=rgb(1, 0, 0, 0.4))
+  polygon(xbar_approx,f_xbar_approx ,
+          col=rgb(0, 0, 1, 0.4))
+  legend('topright',
+         bg="transparent",
+         c('Asymptotic distribution','Exact distribution'),
+         lty=c(1,1),
+         lwd=c(2.5,2.5),
+         col=c('blue','red'), 
+         cex=fntsz
+         ) 
+  
+  plot(c(0.0,xbar_exact_F), c(0.0,F_xbar_exact),
+     ylim = c(0.0,1.1),
+     type='l',
+     main='Cumulative distribution function',
+     xlab = 'x.bar',
+     ylab = 'density',
+     col=rgb(1, 0, 0, 0.7),
+     lwd=5.5,
+     cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+)
+lines(c(0.0,xbar_approx_F ),c(0.0,F_xbar_approx ) ,
+        col=rgb(0, 0, 1, 0.7),
+     lwd=5.5,
+        cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+)
+  
+# polygon(c(0.0,xbar_exact_F,x_max),c(0.0,F_xbar_exact,0.0) ,
+#         col=rgb(1, 0, 0, 0.2),
+#         cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+# )
+# polygon(c(0.0,xbar_approx_F,x_max),c(0.0,F_xbar_approx,0.0) ,
+#         col=rgb(0, 0, 1, 0.2),
+#         cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+# )
+# legend('topright',
+#        c('Asymptotic distribution','Exact distribution'),
+#        lty=c(1,1),
+#        lwd=c(2.5,2.5),
+#        col=c('blue','red'),
+#        cex=fntsz
+# ) 
+  
+  qqplot(q_xbar_exact, q_xbar_approx,
+         main="QQ-plot",
+         ylab="Approx. quantile: Normal",
+         xlab="Exact quantile: Gamma",
+         cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz
+         )
+  abline(0,1,col='red')
+  
+  # boxplot(cbind(r_xbar_exact, r_xbar_approx),
+  #         col=c('red','blue'),
+  #         names=c('Exact','Approx.'),
+  #         cex.lab=fntsz, cex.axis=fntsz, cex.main=fntsz, cex.sub=fntsz)
+  
+}
+
+```
+
+Column {.sidebar}
+-----------------------------------------------------------------------
+
+***Sample***
+
+$$X_i\sim\mathcal{E}(\lambda)$$
+$$X_i\in(0,\infty)$$
+$$\text{E}(X_i) = 1/\lambda$$
+$$\text{Var}(X_i) = 1/\lambda^2$$
+$$ i=1,...,N$$
+
+***Parameters***
+```{r,echo=FALSE}
+      sliderInput("ell_exp",
+                  "$$\\lambda :$$",
+                  min = 0.0001,
+                  max = 3.0,
+                  value = 1.0,
+                  step = 0.01)
+      sliderInput("en_exp",
+                  "N :",
+                  min = 2,
+                  max = 200,
+                  value = 5)
+```
+
+***Average***
+
+$$
+\bar{X}_N  = \frac{1}{N}\sum_{i=1}^{N} X_i
+$$
+
+Exact distr.:
+$$\bar{X}_N \overset{\text{exact}}{\sim} \text{G}(N,N\times\lambda)$$
+
+Approx distr.:
+$$\bar{X}_N \overset{\text{approx.}}{\sim} \text{N}(\frac{1}{\lambda},\frac{1}{N}\frac{1}{\lambda^2})$$
+
+
+Column
+-----------------------------------------------------------------------
+
+### ***Theorems*** {data-height=400}
+
+***Central Limit Theorem (CLT):*** 
+
+Suppose $\{X_{1},X_{2},...,X_{N}\}$ is a collection of i.i.d. r.v. with $\text{E}(X_{i})=\mu$ and $\text{Var}(X_{i})=\sigma^{2}<\infty$, for $i=1,...,N$.
+
+
+Let $\bar{X}_N=\frac{1}{N}\sum_{i=1}^{N}X_{i}$. Then, as $N$ goes to infinity :
+$$
+\frac{\bar{X}_N-\mu}{\sigma/\sqrt{N}}\overset{\text{approx.}}{\sim}\text{N}(0,1).
+$$
+
+***Comments:*** 
+
+  * In simple words, CLT allow as to compute (approximately) probabilities of the (unseen yet) sample mean; e.g. : 
+  $$P_\text{exact distr.}(\bar{X}<k) 
+  \approx P_{\text{N}(\mu,\sigma^2/N)}(\bar{X}<k) 
+  = P_{\text{N}(0,1)}(Z<\frac{k-\mu}{\sigma/\sqrt{N}})
+  $$
+  * As a rule of thumb, the approximation is considered satisfactory if $N\ge 10$ (... in the Statistics 1 universe).
+
+***CLT in real life:*** 
+
+The central limit theorem provides a plausible explanation why the distributions of many random variables studied in physical
+or psychological experiments are  *approximately* Normal. 
+
+E.g.,:
+
+  * A person's height, is influenced by many random *factors* (heredity, diet, etc.). 
+  * These factors combine to give the person's height -- in a regression model for height these factors are *added*. 
+  * Because of such addition of independent factors, We would expect to see a Normal distribution of heights in a large number of people, and indeed we do.
+
+### ***Simulation plots*** {data-height=600}
+
+```{r,echo=FALSE}
+renderPlot({
+    plot_clt_exponential(ell=input$ell_exp,
+                          en=input$en_exp)
+  })
+```
+
+
+
+
+
+
+
