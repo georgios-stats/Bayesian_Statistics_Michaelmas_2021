@@ -71,7 +71,7 @@ This repository contains the teaching material for the module ***MATH3341/4031 B
 
 ### Computer practical classes
 
--   '[Computer_practicals](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/master/Computer_practicals#details-about-computer-practicals)' folder contains the material for your computer practicals
+-   '[Computer_practical](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)' folder contains the material for your computer practicals
 
 ### Homework
 
@@ -115,7 +115,7 @@ This repository contains the teaching material for the module ***MATH3341/4031 B
 
 Ways:
 
-1. You can click [[HERE](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/archive/master.zip)].
+1. You can click [[HERE](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/archive/refs/heads/main.zip)].
 
 2. You can click the green button 'Clone or download' and download it as a zip file
 
@@ -167,7 +167,7 @@ Ways:
 
 2. You can use 'git' (<https://git-scm.com/>). 
 
-    E.g., assume you wish to download the sub-folder 'ComputerPractical':
+    E.g., assume you wish to download the sub-folder 'Computer_practical':
 
     -   run in the terminal the following:
         
@@ -176,7 +176,7 @@ Ways:
         git init  
         git remote add -f origin https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git  
         git config core.sparseCheckout true  
-        echo "ComputerPracticals/*" >> .git/info/sparse-checkout  
+        echo "Computer_practical/*" >> .git/info/sparse-checkout  
         git pull origin master*
 
 ### How to download a specific file

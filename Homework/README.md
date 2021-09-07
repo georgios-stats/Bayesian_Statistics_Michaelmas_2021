@@ -71,21 +71,21 @@
 
 -   Homework 1
 
-    [Homework_1_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_1_complete.pdf) & [Homework_1_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_1_questions.pdf):
+    [Homework_1_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_1_complete.pdf) & [Homework_1_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_1_questions.pdf)  
 
 -   Homework 2
 
-    [Homework_2_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_2_complete.pdf) & [Homework_2_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_2_questions.pdf):
+    [Homework_2_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_2_complete.pdf) & [Homework_2_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_2_questions.pdf)  
 
 
 -   Homework 3
 
-    [Homework_3_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_3_complete.pdf) & [Homework_3_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_3_questions.pdf):
+    [Homework_3_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_3_complete.pdf) & [Homework_3_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_3_questions.pdf)  
 
 
 -   Homework 4
 
-    [Homework_4_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_4_complete.pdf) & [Homework_4_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_4_questions.pdf):
+    [Homework_4_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_4_complete.pdf) & [Homework_4_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Homework/Homework_4_questions.pdf)  
 
 
 

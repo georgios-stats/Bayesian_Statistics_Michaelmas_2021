@@ -73,39 +73,39 @@ Students will be able to:
 Preview:
 ========
 
--   [Monte Carlo approximation: An intoduction for practical use in
-    R](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Monte_Carlo_approximation/MCapproximators.nb.html)
+-   [Monte Carlo approximation: An introduction for practical use in
+    R](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Monte_Carlo_approximation/MC_approximators.nb.html)
 
 -   Case study: Space shuttle Challenger disaster
 
     -   [Bernoulli model with conjugate priors
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_model_with_conjugate_priors/BernoulliModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_model_with_conjugate_priors/Bernoulli_Model_practical.nb.html)
 
     -   [Bernoulli model with conjugate priors
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_model_with_conjugate_priors/BernoulliModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_model_with_conjugate_priors/Bernoulli_Model_full.nb.html)
 
     -   [Bernoulli regression model
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_regression_model/BernoulliRegressionModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_regression_model/Bernoulli_Regression_Model_practical.nb.html)
 
     -   [Bernoulli regression model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_regression_model/BernoulliRegressionModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_regression_model/Bernoulli_Regression_Model_full.nb.html)
 
     -   [Bernoulli regression model -variable selection
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_regression_model_variable_selection/BernoulliRegressionModelVS_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_regression_model_variable_selection/Bernoulli_Regression_Model_VS_practical.nb.html)
 
     -   [Bernoulli regression model -variable selection
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Bernoulli_regression_model_variable_selection/BernoulliRegressionModelVS_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Bernoulli_regression_model_variable_selection/Bernoulli_Regression_Model_VS_full.nb.html)
 
     -   [Normal Mixture model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Normal_Mixture_model/BayesianNormalMixtureModel.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_Model.nb.html)
 
 -   Exercises for practise :
 
     -   [Normal model
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Normal_model_with_conjugate_priors/NormalModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_practical.nb.html)
 
     -   [Normal model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/ComputerPracticals/Normal_model_with_conjugate_priors/NormalModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_full.nb.html)
 
 ------------------------------------------------------------------------
 
