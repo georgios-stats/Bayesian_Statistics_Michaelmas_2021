@@ -176,36 +176,63 @@ Briefly, you need to do the following:
     -   Debian: *sudo apt install r-base*  
     -   Fedora: *yum install -y R*  
     -   windows: download it from <https://cran.r-project.org/>
-        -   I recomend tyou to install *Rtools* as well, for you to be
-            able to instal R packages.  
+        -   I recommend you to install *Rtools* as well, for you to be
+            able to install R packages.  
     -   macos: download it from <https://www.tug.org/mactex/>
 3.  Install the latest Rstudio (recommended)
     -   Any OS: Download it from here:
         <https://www.rstudio.com/products/rstudio/download/>
 
-### How to download and use it in Rstudio cloud 
 
-1. Go to the website [ <https://rstudio.cloud> ] , if you already have an account log in, otherwise register and then log in.  
+<!--
+### How to download and use it in Rstudio cloud
 
-2. After logging in,  
+1. Go to the website [ <https://rstudio.cloud> ] , if you already have an account log in, otherwise register and then log in.
+
+2. After logging in,
+
+    1. go to Projects tab,
+
+    2. click on the *v* next to the *New Project* button to expand the pop-up menu list
+
+    3. click on the choice *New Project from Git Repo*
+
+    4. in the *URL of your Git repository* section insert the link:
+
+        <https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git>
+
+        ... this will gonna download the whole Bayesian learning teaching material.
+
+    5. In R terminal run
+
+        setwd('./ComputerPracticals/Bernoulli_model_with_conjugate_priors/') # to set your working directory
+
+        ... and click on the suitable *.Rmd* file in the  *'./ComputerPracticals/Bernoulli_model_with_conjugate_priors/'* directory.
+
+-->
+
+### How to download and use it in Rstudio in AppsAnywhare 
+
+To download it:
+
+1. Go to the website [ <https://appsanywhere.durham.ac.uk/> ] , log in by writing your username, writing your password, and approving access from your token.  
+
+2. Search for *RStudio 1.3.1093* and hit *Lunch Web*. Approve the action from your token.  
+
+3. In RStudio, go to File > New Project > Version Control > Git.  
+
+    + Copy/paste <https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git> in section *Repository URL*  
     
-    1. go to Projects tab, 
+    + Leave section *Project directory name* uncahnged  
     
-    2. click on the *v* next to the *New Project* button to expand the pop-up menu list  
-    
-    3. click on the choice *New Project from Git Repo*  
-    
-    4. in the *URL of your Git repository* section insert the link: 
-        
-        <https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git> 
-        
-        ... this will gonna download the whole Bayesian learning teaching material.  
-    
-    5. In R terminal run  
-        
-        setwd('./ComputerPracticals/Bernoulli_model_with_conjugate_priors/') # to set your working directory  
-        
-        ... and click on the suitable *.Rmd* file in the *'./ComputerPracticals/Bernoulli_model_with_conjugate_priors/'* directory.  
+    + Set the path to store the downloading in section *Create projects as subdirectory of*. 
+
+4. To use it, in R terminal run
+
+    setwd('./ComputerPracticals/Bernoulli_model_with_conjugate_priors/') # to set your working directory
+
+    ... and click on the suitable *.Rmd* file in the  *'./ComputerPracticals/Bernoulli_model_with_conjugate_priors/'* directory.
+
 
 ### How to download and use it in Rstudio on your computer
 
