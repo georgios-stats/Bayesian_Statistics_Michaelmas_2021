@@ -148,13 +148,11 @@ From AppHub, load the modules:
 
 1.  Google Chrome
 
-2.  LaTex
+2.  rstudio
 
-3.  rstudio
+### Your personal computers  
 
-### Your personal computers (Do not do it on CIS computers)
-
-There is not need to do this in CIS computers as the required foftware
+There is not need to do this in CIS computers as the required software
 is (supposed to be) properly installed.
 
 The instructions below are at your own risk…

@@ -148,7 +148,11 @@
     
         Example in R
 
--   [17_Asymptotic_posterior.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/17_Asymptotic_posterior.pdf):
+-   [17_Empirical_Bayes.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/17_Empirical_Bayes.pdf):
+
+    Asymptotic behavior of the posterior (descrete and continuous case)
+
+-   [18_Asymptotic_posterior.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/18_Asymptotic_posterior.pdf):
 
     Asymptotic behavior of the posterior (descrete and continuous case)
 
@@ -157,6 +161,7 @@
 
 ### Problem classes
 
+<!--
 
 -   [Problem_class_1_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_complete.pdf)  &   [Problem_class_1_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_questions.pdf):
 
@@ -168,13 +173,20 @@
 
 ... Problem class exercises are appended in the Exercise sheet
 
+-->
+
 ------------------------------------------------------------------------
 
+
 ### Revision
+
+<!--
 
 -   [Revision.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Revision.pdf):  
 
 ... Revision exercises are appended in the Exercise sheet
+
+-->
 
 ------------------------------------------------------------------------
 
