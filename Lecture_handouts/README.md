@@ -88,7 +88,7 @@
 
     Interpretations of probability, constructions of subjective probability, the Bayesian paradigm, sequential use of Bayes theorem, prior model
 
--   [04_Exchangeability.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/04_Exchangeability.pdf):
+-   [04_Exchangeability_and_the_Bayesian_model.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/04_Exchangeability_and_the_Bayesian_model.pdf):
 
     Exchangeability, and connections to the Bayesian paradigm
  
