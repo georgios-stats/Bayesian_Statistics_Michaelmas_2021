@@ -1,5 +1,32 @@
 <!-- -------------------------------------------------------------------------------- -->
 
+<!-- Copyright 2021 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Associate Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics_Michaelmas_2021 (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics_Michaelmas_2021 is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics_Michaelmas_2021 is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics_Michaelmas_2021  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
 <!-- Copyright 2019 Georgios Karagiannis -->
 
 <!-- georgios.karagiannis@durham.ac.uk -->
@@ -47,38 +74,38 @@ Preview:
 ========
 
 -   [Monte Carlo approximation: An intoduction for practical use in
-    R](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Monte_Carlo_approximation/MCapproximators.nb.html)
+    R](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Monte_Carlo_approximation/MC_approximators.nb.html)
 
 -   Case study: Space shuttle Challenger disaster
 
     -   [Bernoulli model with conjugate priors
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_model_with_conjugate_priors/BernoulliModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_model_with_conjugate_priors/Bernoulli_Model_practical.nb.html)
 
     -   [Bernoulli model with conjugate priors
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_model_with_conjugate_priors/BernoulliModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_model_with_conjugate_priors/Bernoulli_Model_full.nb.html)
 
     -   [Bernoulli regression model
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_regression_model/BernoulliRegressionModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_regression_model/Bernoulli_Regression_Model_practical.nb.html)
 
     -   [Bernoulli regression model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_regression_model/BernoulliRegressionModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_regression_model/Bernoulli_Regression_Model_full.nb.html)
 
     -   [Bernoulli regression model -variable selection
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_regression_model_variable_selection/BernoulliRegressionModelVS_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_regression_model_variable_selection/Bernoulli_Regression_Model_VS_practical.nb.html)
 
     -   [Bernoulli regression model -variable selection
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Bernoulli_regression_model_variable_selection/BernoulliRegressionModelVS_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_regression_model_variable_selection/Bernoulli_Regression_Model_VS_full.nb.html)
 
     -   [Normal Mixture model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Normal_Mixture_model/BayesianNormalMixtureModel.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_Model.nb.html)
 
 -   Exercises for practise :
 
     -   [Normal model
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Normal_model_with_conjugate_priors/NormalModel_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_practical.nb.html)
 
     -   [Normal model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics/blob/master/ComputerPracticals/Normal_model_with_conjugate_priors/NormalModel_full.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_full.nb.html)
 
 ------------------------------------------------------------------------
 
@@ -170,7 +197,7 @@ Briefly, you need to do the following:
     
     4. in the *URL of your Git repository* section insert the link: 
         
-        <https://github.com/georgios-stats/Bayesian_Statistics.git> 
+        <https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git> 
         
         ... this will gonna download the whole Bayesian learning teaching material.  
     
@@ -188,7 +215,7 @@ To download this handout, run rstudio, and do the following
 
 2.  In the section *Repository URL* write
     
-    + <https://github.com/georgios-stats/Bayesian_Statistics.git>
+    + <https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021.git>
     
     + ... and complete the rest as you wish
 
