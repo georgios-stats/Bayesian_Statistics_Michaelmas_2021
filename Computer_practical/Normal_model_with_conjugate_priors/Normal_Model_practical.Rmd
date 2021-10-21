@@ -38,7 +38,7 @@ output:
     number_sections: true
   pdf_document: default
 ---
-[Back to README](https://github.com/georgios-stats/Bayesian_Statistics/tree/master/ComputerPracticals#aim)
+[Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
 
 
 
@@ -107,7 +107,7 @@ Richard DeVeaux owned a Nissan Maxima for 8 years. Being a statistician, He reco
 ```{r}
 # load the data
 #mydata <- read.csv("./nissan.csv")
-mydata <- read.csv("https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics/master/ComputerPracticals/Normal_model_with_conjugate_priors/nissan.csv")
+mydata <- read.csv("https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/main/Computer_practical/Normal_model_with_conjugate_priors/nissan.csv")
 # print data 
 cat(mydata$mpg)
 

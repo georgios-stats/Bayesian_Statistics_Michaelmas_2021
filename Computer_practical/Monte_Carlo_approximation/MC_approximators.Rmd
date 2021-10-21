@@ -36,7 +36,7 @@ output:
     df_print: paged
   pdf_document: default
 ---
-[Back to README](https://github.com/georgios-stats/Bayesian_Statistics/tree/master/ComputerPracticals#aim)
+[Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
 
 ***Aim***
 

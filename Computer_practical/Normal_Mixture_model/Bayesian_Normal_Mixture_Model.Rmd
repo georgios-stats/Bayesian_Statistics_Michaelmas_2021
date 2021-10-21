@@ -43,7 +43,7 @@ header-includes:
   - \usepackage{tikz}
   - \usepackage{pgfplots}
 ---
-[Back to README](https://github.com/georgios-stats/Bayesian_Statistics/tree/master/ComputerPracticals#aim)
+[Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
 
 ```{r, results="hide"}
 rm(list=ls())
@@ -117,7 +117,7 @@ For simplicity, let's assume that all groups are Normally distributed but with d
 
 ```{r}
 # load the data
-mydata <- scan('https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics/master/ComputerPracticals/Normal_Mixture_model/enz.dat')
+mydata <- scan('https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/main/Computer_practical/Normal_Mixture_model/enz.dat')
 y_obs <- mydata
 ```
 

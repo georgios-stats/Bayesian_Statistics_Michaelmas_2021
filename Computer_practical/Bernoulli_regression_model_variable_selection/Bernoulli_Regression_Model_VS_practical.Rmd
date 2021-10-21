@@ -40,7 +40,7 @@ output:
     number_sections: true
   pdf_document: default
 ---
-[Back to README](https://github.com/georgios-stats/Bayesian_Statistics/tree/master/ComputerPracticals#aim)
+[Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
 
 ```{r, results="hide"}
 rm(list=ls())
@@ -120,7 +120,7 @@ library(kableExtra)
 ```{r}
 # load the data
 #mydata <- read.csv("./challenger_data.csv")
-mydata <- read.csv("https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics/master/ComputerPracticals/Bernoulli_regression_model_variable_selection/challenger_data.csv")
+mydata <- read.csv("https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/main/Computer_practical/Bernoulli_regression_model/challenger_data.csv")
 # print data 
 ## (that's a sophisticated command with fancy output, feel free to ignore it)
 kable(mydata)%>%
