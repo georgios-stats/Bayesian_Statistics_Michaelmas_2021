@@ -1,3 +1,17 @@
+---
+title: "Bernoulli model with conjugate priors"
+subtitle: "Case study: Space shuttle Challenger disaster"
+author: "Georgios P. Karagiannis @ MATH3341/4031 Bayesian statistics III/IV (practical implementation)"
+output:
+  html_notebook: 
+    number_sections: true
+  word_document: default
+  html_document:
+    df_print: paged
+    number_sections: true
+  pdf_document: default
+---
+
 <!-- -------------------------------------------------------------------------------- -->
 
 <!-- Copyright 2019 Georgios Karagiannis -->
@@ -25,19 +39,6 @@
 
 <!-- -------------------------------------------------------------------------------- -->
 
----
-title: "Bernoulli model with conjugate priors"
-subtitle: "Case study: Space shuttle Challenger disaster"
-author: "Georgios P. Karagiannis @ MATH3341/4031 Bayesian statistics III/IV (practical implementation)"
-output:
-  html_notebook: 
-    number_sections: true
-  word_document: default
-  html_document:
-    df_print: paged
-    number_sections: true
-  pdf_document: default
----
 [Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
 
 ```{r, results="hide"}
