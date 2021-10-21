@@ -97,15 +97,15 @@ Preview:
         (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Bernoulli_regression_model_variable_selection/Bernoulli_Regression_Model_VS_full.nb.html)
 
     -   [Normal Mixture model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Normal_Mixture_model/BayesianNormalMixtureModel.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_Model.nb.html)
 
 -   Exercises for practise :
 
     -   [Normal model
-        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_model_practical.nb.html)
+        (questions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_practical.nb.html)
 
     -   [Normal model
-        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_Model.nb.html)
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_model_with_conjugate_priors/Normal_Model_full.nb.html)
 
 ------------------------------------------------------------------------
 
