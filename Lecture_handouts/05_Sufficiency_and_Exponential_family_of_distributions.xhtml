@@ -1,0 +1,5312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="LyX 2.3.6" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>LyX Document</title>
+<style type='text/css'>
+/* LyX Provided Styles */
+mstyle.math { font-style: italic; }
+
+/* Layout-provided Styles */
+del.strikeout {
+  text-decoration: line-through;
+}
+div.standard {
+	margin-bottom: 2ex;
+}
+div.plain_layout {
+text-align: left;
+
+}
+h3.subsection_ {
+font-weight: bold;
+font-size: large;
+margin-top: 0.9ex;
+margin-bottom: 0.5ex;
+text-align: left;
+
+}
+ul.itemize {
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+margin-left: 3ex;
+text-align: left;
+
+}
+h2.section {
+font-weight: bold;
+font-size: x-large;
+margin-top: 1.3ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+h3.subsection {
+font-weight: bold;
+font-size: large;
+margin-top: 0.9ex;
+margin-bottom: 0.5ex;
+text-align: left;
+
+}
+div.theorem {
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.theorem_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+div.definition {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.definition_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+div.notation {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.notation_label {
+font-weight: normal;
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+
+}
+div.note {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.note_label {
+font-weight: normal;
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+
+}
+div.example {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.example_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+div.proof {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.proof_label {
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+
+}
+div.proposition {
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.proposition_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+dl.description dt { font-weight: bold; }
+div.remark {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.remark_label {
+font-weight: normal;
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+
+}
+div.question {
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.question_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+
+
+</style>
+</head>
+<body dir="auto">
+
+
+<div class="standard" id='magicparlabel-1'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-10'>Bayesian Statistics III/IV (MATH3341/4031)&nbsp;&nbsp;Michaelmas term, 2021<div style='height:3ex'></div></div>
+
+<div class="plain_layout" style='text-align: center;' id='magicparlabel-11'> Handout 5: Sufficiency and Exponential family of distributions<div style='height:3ex'></div></div>
+
+<div class="plain_layout" id='magicparlabel-60'>Lecturer &amp; author: Georgios P. Karagiannis <a href="georgios.karagiannis@durham.ac.uk">georgios.karagiannis@durham.ac.uk</a></div>
+
+<div class="plain_layout" id='magicparlabel-61'><hr />
+
+<div style='height:3ex'></div></div>
+<h3 class="subsection_" id='magicparlabel-62'>Aim</h3>
+<div class="plain_layout" id='magicparlabel-63'>To explain, extend, and apply sufficiency concepts in the Bayesian framework, as well as the exponential family of distributions.</div>
+
+<div class="plain_layout" id='magicparlabel-64'><hr />
+
+</div>
+<h3 class="subsection_" id='magicparlabel-65'>References:</h3>
+
+<ul class="itemize" id='magicparlabel-66'><li class="itemize_item">Raiffa, H., &amp; Schlaifer, R. (1961; Chapter 2). Applied statistical decision theory.</li>
+<li class="itemize_item">Casella, G., &amp; Berger, R. L. (2002; Section 3.4, Chapter 6). Statistical inference (Vol. 2). Pacific Grove, CA: Duxbury.</li>
+</ul>
+</div></div>
+
+<div class="standard" id='magicparlabel-68'>&nbsp;</div>
+<h2 class="section" id='magicparlabel-69'><span class="section_label">1</span> Sufficiency </h2>
+<div class="standard" id='magicparlabel-70'>It is often of interest to simplify the Bayesian model by reducing the complexity of the observables (data-set) <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math>. This can be for computational purposes: the data-set may involve large number of observations (large <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>n</mi>
+ </mrow></math>) or high-dimensional observables (high <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>d</mi>
+ </mrow></math>); or this can be for theoretical purposes: study how the information for the experiment affects the Bayesian model.</div>
+
+<div class="standard" id='magicparlabel-71'>Key concepts to address data-set complexity are</div>
+
+<ul class="itemize" id='magicparlabel-72'><li class="itemize_item">Summary statistic (or statistic) aims to summarize part or all the relevant information supplied by the sample.</li>
+<li class="itemize_item">Sufficient statistic aims to summarize the whole of relevant information supplied by the sample.</li>
+</ul>
+<h3 class="subsection" id='magicparlabel-74'><span class="subsection_label">1.1</span> Summary statistics</h3>
+<div class="standard" id='magicparlabel-75'>A statistic (or summary statistic) is a function of observations summarizing the main features of a sequence of observable quantities, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+
+<div class="definition" id='magicparlabel-76'><div class="definition_item"><span class="definition_label">Definition 1.</span>
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> be observable quantities such that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math>, and let function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <msup>
+    <mrow>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mi>k</mi>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math> with <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>k</mi><mo> &le; </mo><mi>n</mi>
+  </mrow>
+ </mrow></math>. The quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is called a Statistic. The function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> (or mapping <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <msup>
+    <mrow>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mi>k</mi>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math>) will be called statistic too. </div>
+</div>
+
+<div class="standard" id='magicparlabel-77'><br />
+
+</div>
+
+<div class="notation" id='magicparlabel-78'><div class="notation_item"><span class="notation_label">Notation 2.</span>
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle><mo>=</mo>{<mi>t</mi><mo>:</mo><mi>t</mi><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="10px" />
+   <mstyle mathvariant='normal'>
+    <mrow><mi>f</mi><mi>o</mi><mi>r</mi>&nbsp;<mi>s</mi><mi>o</mi><mi>m</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mspace width="10px" /><mi>y</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle>}
+  </mrow>
+ </mrow></math> be the image of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> under <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+<div class="standard" id='magicparlabel-79'><br />
+
+</div>
+
+<div class="notation" id='magicparlabel-80'><div class="notation_item"><span class="notation_label">Notation 3.</span>
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>t</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>{<mi>y</mi><mo>:</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi>t</mi>}
+  </mrow>
+ </mrow></math> is the set comprising all <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math>'s such that the (the uncertain) <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> assumes value <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>. Essentially, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> partitions the sample space <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> into <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow>
+    <mstyle mathvariant='script'><mi>X</mi>
+    </mstyle>
+   </mrow>
+   <mrow><mi>t</mi>
+   </mrow>
+  </msub>
+ </mrow></math> for all <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+<div class="note" id='magicparlabel-81'><div class="note_item"><span class="note_label">Note 4.</span>
+The definition of statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> as a function of the observable quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> induces a probability distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>t</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> (of course it depends on the experiment <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>e</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>E</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math>as well but conditioning is omitted here) labeled by unknown parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math>, which is determined by sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Given a prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>, the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>t</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> can be calculated from the Bayesian theorem. Hence:<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+  <mtable>
+   <mtr>
+    <mtd>
+     <mrow><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mi>t</mi><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow><mo> &sim; </mo><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi>t</mi><mo>|</mo><mi> &theta; </mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mi> &theta; </mi>
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow><mo> &sim; </mo><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+ </mrow></math></div>
+</div>
+
+<div class="standard" id='magicparlabel-87'><br />
+
+</div>
+<h3 class="subsection" id='magicparlabel-88'><span class="subsection_label">1.2</span> Bayesian sufficiency</h3>
+
+<div class="note" id='magicparlabel-89'><div class="note_item"><span class="note_label">Note 5.</span>
+Sufficient statistic is a statistic that aims at summarizing the whole of relevant information supplied by the sample. We extend the concept of sufficiency and sufficient statistic (learned in SC2) to the Bayesian statistics.</div>
+</div>
+
+<div class="standard" id='magicparlabel-90'><br />
+
+</div>
+
+<div class="standard" id='magicparlabel-91'>Recall from SC2 that:</div>
+
+<div class="definition" id='magicparlabel-92'><div class="definition_item"><span class="definition_label">Definition 6.</span>
+<a id="def_In_the_Frequentist" />
+In the Frequentist statistics: A statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math> is efficient statistic for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> (in the Frequentist sense) if the conditional distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi>t</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. I.e., ...iff the PDF/PMF is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi>t</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. </div>
+</div>
+
+<div class="standard" id='magicparlabel-93'><br />
+
+</div>
+
+<div class="note" id='magicparlabel-94'><div class="note_item"><span class="note_label">Note 7.</span>
+In the Bayesian framework, it is reasonable to assume that, given the same prior info in <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>, the coarser information from <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> and the richer information in <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> (regarding the outcome of an experiment) will lead to the some believes about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> if they lead to identical posterior probabilities.</div>
+</div>
+
+<div class="standard" id='magicparlabel-103'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-104'><div class="example_item"><span class="example_label">Example 8.</span>
+<a id="_Bernoulli_model__For" />
+(Bernoulli model) For instance, in the Example with the Bernoulli-Beta model [HLN-3], the posterior of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> given the data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> was <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo>+</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo>-</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo>+</mo><mi>b</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mn>.</mn>
+  </mrow>
+ </mrow></math>This is equivalent to <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo>|</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover><mo>+</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo>-</mo><mi>n</mi>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover><mo>+</mo><mi>b</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>Hence suffices to know <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. A benefit is that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> has lower dimensionality (just <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>2</mn>
+ </mrow></math> numbers) compared to <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow><mi>n</mi><mo>,</mo><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> (<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mn>1</mn><mo>+</mo><mi>n</mi>
+  </mrow>
+ </mrow></math> numbers). So <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is easier/cheaper to store in the computer. </div>
+</div>
+
+<div class="standard" id='magicparlabel-105'><br />
+
+</div>
+
+<div class="definition" id='magicparlabel-106'><div class="definition_item"><span class="definition_label">Definition 9.</span>
+<a id="def_The_statistic_" />
+The statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math>  is (parametric) sufficient for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> if and only if for any prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with pdf/pmf <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> we get<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>t</mi><mo>=</mo><mi>t</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi><mo>=</mo><mi>y</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="20px" />
+   <mstyle mathvariant='normal'>
+    <mrow><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mspace width="20px" /><mi>t</mi><mo>'</mo><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> for some observed data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>'</mo>
+  </mrow>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>'</mo><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Both the quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> and the function/mapping <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mo> &sdot; </mo>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, as well as their realizations/values, will be called sufficient statistics. </div>
+</div>
+
+<div class="example" id='magicparlabel-111'><div class="example_item"><span class="example_label">Example 10.</span>
+<a id="_Bernoulli_model__cont_" />
+(Bernoulli model, cont. Example <a href="#_Bernoulli_model__For">8</a>) The statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is a parametric sufficient statistic. </div>
+</div>
+
+<div class="standard" id='magicparlabel-112'><br />
+
+</div>
+
+<div class="note" id='magicparlabel-113'><div class="note_item"><span class="note_label">Note 11.</span>
+The following Theorem <a href="#thm_Let__be">12</a> provides a manner to identify a sufficient statistic in the sense of Definition <a href="#def_The_statistic_">9</a>. It examines the kernel-residue factorization of the likelihood function, and implies that the derived posterior can be determined by the kernel of the likelihood while it is invariant to the residue. </div>
+</div>
+
+<div class="theorem" id='magicparlabel-114'><div class="theorem_item"><span class="theorem_label">Theorem 12.</span>
+<a id="thm_Let__be" />
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math> be a statistic. Then <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is a parametric sufficient statistic for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> in the sense of Definition <a href="#def_The_statistic_">9</a> if and only if the likelihood function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>L</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo> &sdot; </mo><mo>|</mo><mo> &sdot; </mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &times; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math> can be factorized as the product of a kernel function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>k</mi>
+ </mrow></math> on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &times; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math> and a residue function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &rho; </mi>
+ </mrow></math> on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo> &Theta; </mo>
+ </mrow></math> as <a id="eq_xcgnxcgjhzsfh" />
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>L</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mi>k</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &rho; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mn>.</mn>
+    </mrow>
+   </mtd>
+   <mtd>(1)
+   </mtd>
+  </mtr>
+ </mtable></math></div>
+</div>
+
+<div class="proof" id='magicparlabel-115'><div class="proof_item"><span class="proof_label">Proof.</span>
+Exercise <a href="#exer____9_1_2">exer:()-9-1-2</a> in Exercise sheet</div>
+</div>
+
+
+
+<div class="standard" id='magicparlabel-135'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-136'><div class="example_item"><span class="example_label">Example 13.</span>
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi> &theta; </mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'><mi>U</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> be iid for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>
+  </mrow>
+ </mrow></math>. Then by factorization criterion<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup>
+     <mstyle mathvariant='normal'><mi>U</mi>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub><mo>,</mo>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+     <mrow>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow>
+        <mrow>
+         <msub>
+          <mrow><mi> &theta; </mi>
+          </mrow>
+          <mrow><mn>2</mn>
+          </mrow>
+         </msub><mo>-</mo>
+         <msub>
+          <mrow><mi> &theta; </mi>
+          </mrow>
+          <mrow><mn>1</mn>
+          </mrow>
+         </msub>
+        </mrow>
+       </mrow>
+      </mfrac>
+      <mstyle mathvariant='normal'><mn>1</mn>
+      </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow>
+       <msub>
+        <mrow><mi>y</mi>
+        </mrow>
+        <mrow><mi>i</mi>
+        </mrow>
+       </msub><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+       <mrow>
+        <msub>
+         <mrow><mi> &theta; </mi>
+         </mrow>
+         <mrow><mn>1</mn>
+         </mrow>
+        </msub><mo>,</mo>
+        <msub>
+         <mrow><mi> &theta; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msub>
+       </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+<mo>=</mo>
+     <msup>
+      <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow>
+         <mrow>
+          <msub>
+           <mrow><mi> &theta; </mi>
+           </mrow>
+           <mrow><mn>2</mn>
+           </mrow>
+          </msub><mo>-</mo>
+          <msub>
+           <mrow><mi> &theta; </mi>
+           </mrow>
+           <mrow><mn>1</mn>
+           </mrow>
+          </msub>
+         </mrow>
+        </mrow>
+       </mfrac>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msup>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+      <mrow>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>1</mn>
+        </mrow>
+       </msub><mo>,</mo>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msub>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <msup>
+      <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow>
+         <mrow>
+          <msub>
+           <mrow><mi> &theta; </mi>
+           </mrow>
+           <mrow><mn>2</mn>
+           </mrow>
+          </msub><mo>-</mo>
+          <msub>
+           <mrow><mi> &theta; </mi>
+           </mrow>
+           <mrow><mn>1</mn>
+           </mrow>
+          </msub>
+         </mrow>
+        </mrow>
+       </mfrac>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msup>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mo> min </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi> &forall; </mi><mi>i</mi><mo>=</mo><mn>1</mn><mo>:</mo><mi>n</mi>
+        </mrow>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+      <mrow>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>1</mn>
+        </mrow>
+       </msub><mo>,</mo>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msub>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mo> max </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi> &forall; </mi><mi>i</mi><mo>=</mo><mn>1</mn><mo>:</mo><mi>n</mi>
+        </mrow>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+      <mrow>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>1</mn>
+        </mrow>
+       </msub><mo>,</mo>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msub>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math>Then the sufficient statistic is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msub>
+     <mrow><mo> min </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi> &forall; </mi><mi>i</mi><mo>=</mo><mn>1</mn><mo>:</mo><mi>n</mi>
+      </mrow>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    <msub>
+     <mrow><mo> max </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi> &forall; </mi><mi>i</mi><mo>=</mo><mn>1</mn><mo>:</mo><mi>n</mi>
+      </mrow>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+<div class="standard" id='magicparlabel-137'><br />
+
+</div>
+
+<div class="note" id='magicparlabel-138'><div class="note_item"><span class="note_label">Note 14.</span>
+The following Proposition <a href="#prop_Let__be">15</a> suggests that; the concepts of Bayesian parametric sufficiency and Frequentist sufficiency are equivalent.</div>
+</div>
+
+<div class="proposition" id='magicparlabel-139'><div class="proposition_item"><span class="proposition_label">Proposition 15.</span>
+<a id="prop_Let__be" />
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math> be a statistic. Then <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is a parametric sufficient statistic in the sense of Definition <a href="#def_The_statistic_">9</a> (in the Bayesian sense) if and only if <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is sufficient statistic in the sense of Definition <a href="#def_In_the_Frequentist">6</a> (Frequentist sense). </div>
+
+<div class="proof" id='magicparlabel-140'><div class="proof_item"><span class="proof_label">Proof.</span>
+This is straightforward. According to the Neyman factorization theorem: <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is sufficient statistic of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> in the Frequentist if and only if the likelihood can be decomposed as in <a href="#eq_xcgnxcgjhzsfh">(1)</a> of Theorem <a href="#thm_Let__be">12</a>. </div>
+</div>
+</div>
+
+<div class="definition" id='magicparlabel-141'><div class="definition_item"><span class="definition_label">Definition 16.</span>
+<a id="def_The_statistic__1" />
+The statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &rarr; </mo>
+   <mstyle mathvariant='script'><mi>T</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math> is predictive sufficient for the next outcome <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mi>f</mi>
+   </mrow>
+  </msub>
+ </mrow></math> given the Bayesian model <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="6px" /><mi>y</mi><mo> &sim; </mo><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="6px" /><mi> &theta; </mi><mo> &sim; </mo><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> if and only if  the predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>f</mi>
+     </mrow>
+    </msub><mo>|</mo><mi>t</mi><mo>=</mo><mi>t</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of a future outcome <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mi>f</mi>
+   </mrow>
+  </msub>
+ </mrow></math> given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> and the predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>f</mi>
+     </mrow>
+    </msub><mo>|</mo><mi>t</mi><mo>=</mo><mi>t</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of a future outcome <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mi>f</mi>
+   </mrow>
+  </msub>
+ </mrow></math> given the whole data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> are equal; i.e.<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>f</mi>
+     </mrow>
+    </msub><mo>|</mo><mi>t</mi><mo>=</mo><mi>t</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>f</mi>
+     </mrow>
+    </msub><mo>|</mo><mi>y</mi><mo>=</mo><mi>y</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="20px" />
+   <mstyle mathvariant='normal'>
+    <mrow><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mspace width="20px" /><mi>t</mi><mo>'</mo><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>'</mo>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mn>.</mn>
+  </mrow>
+ </mrow></math></div>
+</div>
+
+<div class="standard" id='magicparlabel-150'><br />
+
+</div>
+
+<div class="definition" id='magicparlabel-151'><div class="definition_item"><span class="definition_label">Definition 17.</span>
+A sufficient statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is called minimal sufficient statistic if for any other sufficient statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mover>
+    <mrow><mi>t</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo>=</mo>
+   <mover>
+    <mrow><mi>t</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is a function of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mover>
+    <mrow><mi>t</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo>=</mo>
+   <mover>
+    <mrow><mi>t</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. </div>
+</div>
+
+<div class="proposition" id='magicparlabel-152'><div class="proposition_item"><span class="proposition_label">Proposition 18.</span>
+<a id="prop_sdghdfgadfg" />
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mn>...</mn>
+  </mrow>
+ </mrow></math> be an infinitely exchangeable sequence of random quantities. Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> be a statistic for a finite <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo> &ge; </mo><mn>1</mn>
+  </mrow>
+ </mrow></math>. Then <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is <i>predictive sufficient if, and only if, it is parametric sufficient.</i></div>
+
+<div class="proof" id='magicparlabel-153'><div class="proof_item"><span class="proof_label">Proof.</span>
+See Exercise <a href="#exer____9_1_2_1">exer:()-9-1-2-1</a> in the Exercise sheet.</div>
+</div>
+</div>
+
+<div class="example" id='magicparlabel-154'><div class="example_item"><span class="example_label">Example 19.</span>
+(Bernoulli model, cont. Examples <a href="#_Bernoulli_model__For">8</a>&amp;<a href="#_Bernoulli_model__cont_">10</a>) Statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is both predictive and parametric statistic in the Bernoulli model in Example <a href="#_Bernoulli_model__For">8</a>&amp;<a href="#_Bernoulli_model__cont_">10</a>), as the Bayesian model considered in exchangeable. It is also minimal sufficient statistic.</div>
+</div>
+
+<h2 class="section" id='magicparlabel-161'><span class="section_label">2</span> Exponential family of distributions</h2>
+<div class="standard" id='magicparlabel-162'>An important family of distributions which admits a reduction by means of sufficient statistics is the exponential family</div>
+
+<div class="definition" id='magicparlabel-163'><div class="definition_item"><span class="definition_label">Definition 20.</span>
+<a id="_Sufficient_statistics_for" />
+ A probability distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with pmf/pdf, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> labeled by <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math> , is said to belong to the <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>k</mi>
+ </mrow></math>-parameter exponential family of distributions if it is of the form <a id="eq_exponential_distr_def" />
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <msub>
+      <mrow>
+       <mstyle mathvariant='normal'>
+        <mrow><mi>E</mi><mi>f</mi>
+        </mrow>
+       </mstyle>
+      </mrow>
+      <mrow><mi>k</mi>
+      </mrow>
+     </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>y</mi><mo>|</mo><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &phi; </mi><mo>,</mo><mi> &theta; </mi><mo>,</mo><mi>c</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>k</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>c</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+      <msub>
+       <mrow><mi> &phi; </mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      <msub>
+       <mrow><mi>h</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>(2)
+   </mtd>
+  </mtr>
+ </mtable></math>for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math> where <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>h</mi><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &phi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi> &phi; </mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi> &phi; </mi>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and given the functions <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>u</mi>
+ </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>h</mi>
+ </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math>, and constants <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>{
+   <msub>
+    <mrow><mi>c</mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>}
+  </mrow>
+ </mrow></math>, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>g</mi><mo>(</mo><mi> &theta; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mo>-</mo><mn>1</mn>
+     </mrow>
+    </mrow>
+   </msup><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+   <mtable>
+    <mtr>
+     <mtd>
+      <mrow>
+       <msub>
+        <mrow><mo> &int; </mo>
+        </mrow>
+        <mrow>
+         <mstyle mathvariant='script'><mi>Y</mi>
+         </mstyle>
+        </mrow>
+       </msub><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mrow>
+        <msubsup>
+         <mrow><mo> &sum; </mo>
+         </mrow>
+         <mrow>
+          <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+          </mrow>
+         </mrow>
+         <mrow><mi>k</mi>
+         </mrow>
+        </msubsup>
+        <msub>
+         <mrow><mi>c</mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub>
+        <msub>
+         <mrow><mi> &phi; </mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        <msub>
+         <mrow><mi>h</mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       <mstyle mathvariant='normal'><mi>d</mi>
+       </mstyle><mi>y</mi><mo>&lt;</mo><mi> &infin; </mi>
+      </mrow>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo>
+       <mstyle mathvariant='normal'>
+        <mrow><mi>i</mi><mi>f</mi>&nbsp;
+         <mstyle class='math'><mi>y</mi>
+         </mstyle>&nbsp;<mi>i</mi><mi>s</mi>&nbsp;<mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi>
+        </mrow>
+       </mstyle>
+      </mrow>
+     </mtd>
+    </mtr>
+    <mtr>
+     <mtd>
+      <mrow>
+       <msub>
+        <mrow><mo> &sum; </mo>
+        </mrow>
+        <mrow>
+         <mrow><mi>y</mi><mo> &isin; </mo>
+          <mstyle mathvariant='script'><mi>Y</mi>
+          </mstyle>
+         </mrow>
+        </mrow>
+       </msub><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mrow>
+        <msubsup>
+         <mrow><mo> &sum; </mo>
+         </mrow>
+         <mrow>
+          <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+          </mrow>
+         </mrow>
+         <mrow><mi>k</mi>
+         </mrow>
+        </msubsup>
+        <msub>
+         <mrow><mi>c</mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub>
+        <msub>
+         <mrow><mi> &phi; </mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        <msub>
+         <mrow><mi>h</mi>
+         </mrow>
+         <mrow><mi>j</mi>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>&lt;</mo><mi> &infin; </mi>
+      </mrow>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo>
+       <mstyle mathvariant='normal'>
+        <mrow><mi>i</mi><mi>f</mi>&nbsp;
+         <mstyle class='math'><mi>y</mi>
+         </mstyle>&nbsp;<mi>i</mi><mi>s</mi>&nbsp;<mi>d</mi><mi>i</mi><mi>s</mi><mi>c</mi>
+        </mrow>
+       </mstyle>
+      </mrow>
+     </mtd>
+    </mtr>
+   </mtable>
+  </mrow>
+ </mrow></math></div>
+</div>
+
+<div class="standard" id='magicparlabel-164'><br />
+
+</div>
+
+<div class="definition" id='magicparlabel-165'><div class="definition_item"><span class="definition_label">Definition 21.</span>
+The Exponential family of distributions is called regular if <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>; otherwise it is called non-regular.</div>
+</div>
+
+<div class="standard" id='magicparlabel-166'><br />
+
+</div>
+
+<div class="definition" id='magicparlabel-167'><div class="definition_item"><span class="definition_label">Definition 22.</span>
+If <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi> &eta; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo>=</mo>
+   <msub>
+    <mrow><mi>c</mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is taken to be the parameter in <a href="#eq_exponential_distr_def">(2)</a>, so that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &eta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>E</mi><mi>f</mi>
+      </mrow>
+     </mstyle>
+    </mrow>
+    <mrow><mi>k</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &eta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   <mover>
+    <mrow><mi>g</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &eta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi> &eta; </mi>
+     </mrow>
+     <mrow><mi>j</mi>
+     </mrow>
+    </msub>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mi>j</mi>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with normalizing constant <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mover>
+    <mrow><mi>g</mi>
+    </mrow><mo stretchy="true">&tilde;</mo>
+   </mover><mo>(</mo><mi> &eta; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mo>-</mo><mn>1</mn>
+     </mrow>
+    </mrow>
+   </msup><mo>&lt;</mo><mi> &infin; </mi>
+  </mrow>
+ </mrow></math>, we say that the exponential family has been given the natural particularization. </div>
+</div>
+
+<div class="standard" id='magicparlabel-168'><br />
+
+</div>
+
+<div class="theorem" id='magicparlabel-169'><div class="theorem_item"><span class="theorem_label">Theorem 23.</span>
+<a id="_Sufficient_statistics_for_1" />
+If <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> are generated from a regular <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>k</mi>
+ </mrow></math>-parameter exponential family of distributions <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &phi; </mi><mo>,</mo><mi> &theta; </mi><mo>,</mo><mi>c</mi><mo> &sim; </mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>E</mi><mi>f</mi>
+      </mrow>
+     </mstyle>
+    </mrow>
+    <mrow><mi>k</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &phi; </mi><mo>,</mo><mi> &theta; </mi><mo>,</mo><mi>c</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="10px" />
+   <mstyle mathvariant='normal'>
+    <mrow><mi>f</mi><mi>o</mi><mi>r</mi>&nbsp;
+    </mrow>
+   </mstyle><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>
+  </mrow>
+ </mrow></math> then  <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo><mo>=</mo><mi>t</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mn>...</mn><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is a sufficient statistic.</div>
+</div>
+
+<div class="proof" id='magicparlabel-178'><div class="proof_item"><span class="proof_label">Proof.</span>
+The likelihood is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>E</mi><mi>f</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &phi; </mi><mo>,</mo><mi> &theta; </mi><mo>,</mo><mi>c</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>k</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>c</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+      <msub>
+       <mrow><mi> &phi; </mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>n</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>h</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msubsup>
+       <mrow><mo> &prod; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>n</mi>
+       </mrow>
+      </msubsup><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>(</mo><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msup><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>k</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>c</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+      <msub>
+       <mrow><mi> &phi; </mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>n</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>h</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math> and from Neyman factorization criterion it is implied that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mn>...</mn><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>h</mi>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math></div>
+</div>
+
+<div class="example" id='magicparlabel-179'><div class="example_item"><span class="example_label">Example 24.</span>
+(Exponential distribution) Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi> &theta; </mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>E</mi><mi>x</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Then, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>E</mi><mi>x</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi> &theta; </mi><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo>-</mo><mi> &theta; </mi><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="6px" /><mspace width="6px" /><mi>y</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &equiv; </mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mo>+</mo>
+    </mrow>
+   </msub><mo>,</mo><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mi> &theta; </mi><mo> &isin; </mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mo>+</mo>
+    </mrow>
+   </msub>
+  </mrow>
+ </mrow></math> with <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>1</mn><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mi> &theta; </mi><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>h</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mi>y</mi><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi> &phi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mi> &theta; </mi><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>c</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo>-</mo><mn>1.</mn>
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math> It is in the regular exponential family because <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. From Theorem <a href="#_Sufficient_statistics_for_1">23</a> the sufficient statistic is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>t</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> or equiv. <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo><mi>n</mi>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+<div class="standard" id='magicparlabel-180'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-181'><div class="example_item"><span class="example_label">Example 25.</span>
+(Bernoulli distribution) Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi> &theta; </mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>r</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> iid for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>
+  </mrow>
+ </mrow></math>. Then, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>r</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msup>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow>
+       <msub>
+        <mrow><mi>y</mi>
+        </mrow>
+        <mrow><mi>i</mi>
+        </mrow>
+       </msub>
+      </mrow>
+     </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mrow><mn>1</mn><mo>-</mo>
+        <msub>
+         <mrow><mi>y</mi>
+         </mrow>
+         <mrow><mi>i</mi>
+         </mrow>
+        </msub>
+       </mrow>
+      </mrow>
+     </msup><mspace width="10px" /><mo>=</mo><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>+</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mn>1</mn><mo>-</mo>
+       <msub>
+        <mrow><mi>y</mi>
+        </mrow>
+        <mrow><mi>i</mi>
+        </mrow>
+       </msub>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mspace width="6px" /><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mfrac>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow>
+        <mrow><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+        </mrow>
+       </mrow>
+      </mfrac>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math> with <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &equiv; </mo>{<mn>0</mn><mo>,</mo><mn>1</mn>}
+  </mrow>
+ </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+   <mrow><mn>0</mn><mo>,</mo><mn>1</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+  </mrow>
+ </mrow></math>, and <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>1</mn><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>h</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi> &phi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mfrac>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow>
+       <mrow><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+       </mrow>
+      </mrow>
+     </mfrac>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>c</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>1</mn>
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math>It is in the regular exponential family because <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. From Theorem <a href="#_Sufficient_statistics_for_1">23</a> the sufficient statistic is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>t</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> or equiv. <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo><mi>n</mi>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+
+
+<div class="standard" id='magicparlabel-192'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-193'><div class="example_item"><span class="example_label">Example 26.</span>
+(Normal distribution) Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi> &theta; </mi><mo>=</mo>
+   <mstyle mathvariant='normal'><mi>N</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &mu; </mi><mo>,</mo>
+    <msup>
+     <mrow><mi> &sigma; </mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msup>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Then <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mstyle mathvariant='normal'><mi>N</mi>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>|</mo><mi> &mu; </mi><mo>,</mo>
+      <msup>
+       <mrow><mi> &sigma; </mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msup>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msqrt>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow>
+        <mrow><mn>2</mn><mi> &pi; </mi>
+         <msup>
+          <mrow><mi> &sigma; </mi>
+          </mrow>
+          <mrow><mn>2</mn>
+          </mrow>
+         </msup>
+        </mrow>
+       </mrow>
+      </mfrac>
+     </msqrt><mo> exp </mo><mo>(</mo><mo>-</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <mrow><mn>2</mn>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mrow>
+     </mfrac><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>-</mo><mi> &mu; </mi>
+      <msup>
+       <mrow><mo>)</mo>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msup>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mspace width="6px" />
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <mrow><mn>2</mn><mi> &pi; </mi>
+       </mrow>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <msup>
+        <mrow><mi> &sigma; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msup>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+      <msubsup>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msubsup><mo>+</mo>
+      <mfrac>
+       <mrow><mi> &mu; </mi>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+      <mfrac>
+       <mrow>
+        <msup>
+         <mrow><mi> &mu; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <mrow><mn>2</mn><mi> &pi; </mi>
+       </mrow>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <msup>
+        <mrow><mi> &sigma; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msup>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+      <mfrac>
+       <mrow>
+        <msup>
+         <mrow><mi> &mu; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+      <msubsup>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msubsup><mo>+</mo>
+      <mfrac>
+       <mrow><mi> &mu; </mi>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <mrow><mn>2</mn><mi> &pi; </mi>
+       </mrow>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo>(</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <msup>
+        <mrow><mi> &sigma; </mi>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </msup>
+      </mrow>
+     </mfrac>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mfrac>
+        <mrow><mn>1</mn>
+        </mrow>
+        <mrow><mn>2</mn>
+        </mrow>
+       </mfrac>
+      </mrow>
+     </msup><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+      <mfrac>
+       <mrow>
+        <msup>
+         <mrow><mi> &mu; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>h</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>,</mo>
+      <msubsup>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msubsup>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi> &phi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <mfrac>
+       <mrow><mi> &mu; </mi>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac><mo>,</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow>
+        <msup>
+         <mrow><mi> &sigma; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msup>
+       </mrow>
+      </mfrac>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>c</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mn>1</mn><mo>,</mo><mo>-</mo>
+      <mfrac>
+       <mrow><mn>1</mn>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </mfrac>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>;</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>k</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>2</mn><mo>,</mo>
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math>It is in the <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>2</mn>
+ </mrow></math> parameter regular exponential family because <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. From theorem <a href="#_Sufficient_statistics_for_1">23</a>, the sufficient statistic is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>:</mo><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo>,</mo>
+    <msubsup>
+     <mrow><mo> &sum; </mo>
+     </mrow>
+     <mrow>
+      <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msubsup>
+    <msubsup>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msubsup>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> or equiv <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>,</mo>
+    <mover>
+     <mrow><mi>y</mi>
+     </mrow><mo stretchy="true">&OverBar;</mo>
+    </mover><mo>,</mo>
+    <msubsup>
+     <mrow><mi>s</mi>
+     </mrow>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msubsup>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</div>
+</div>
+
+<div class="standard" id='magicparlabel-202'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-203'><div class="example_item"><span class="example_label">Example 27.</span>
+(Uniform distribution)Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>|</mo><mi> &theta; </mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'><mi>U</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Then<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mstyle mathvariant='normal'><mi>U</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo>|</mo>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mfrac>
+    <mrow><mn>1</mn>
+    </mrow>
+    <mrow>
+     <mrow>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msub><mo>-</mo>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub>
+     </mrow>
+    </mrow>
+   </mfrac>
+   <mstyle mathvariant='normal'><mn>1</mn>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>i</mi>
+     </mrow>
+    </msub><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+    <mrow>
+     <msub>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow><mn>1</mn>
+      </mrow>
+     </msub><mo>,</mo>
+     <msub>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow><mn>2</mn>
+      </mrow>
+     </msub>
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mspace width="6px" /><mspace width="6px" />
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>Y</mi>
+   </mstyle><mo> &equiv; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo>
+    <msub>
+     <mrow><mi> &theta; </mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+<mo>,</mo><mspace width="6px" /><mspace width="6px" /><mspace width="6px" />
+   <msub>
+    <mrow><mi> &theta; </mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi> &theta; </mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo> &isin; </mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mo>+</mo>
+    </mrow>
+   </msub>
+  </mrow>
+ </mrow></math><del class='strikeout'><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>u</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>1</mn><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <mrow>
+        <msub>
+         <mrow><mi> &theta; </mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msub><mo>-</mo>
+        <msub>
+         <mrow><mi> &theta; </mi>
+         </mrow>
+         <mrow><mn>1</mn>
+         </mrow>
+        </msub>
+       </mrow>
+      </mrow>
+     </mfrac><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi>h</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>x</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>0</mn><mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mi> &phi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub><mo>,</mo>
+      <msub>
+       <mrow><mi> &theta; </mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>c</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mn>0</mn><mo>,</mo><mn>0</mn>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo>
+    </mrow>
+   </mtd>
+   <mtd><mi>k</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mn>2</mn>
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math></del> It is a 2-parameter non-regular exponential family because <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mstyle mathvariant='script'><mi>Y</mi>
+  </mstyle>
+ </mrow></math> depends on <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>. I cannot use Theorem <a href="#_Sufficient_statistics_for_1">23</a> to find the sufficient statistic because it is a non-regular exponential distribution family. I can use Neyman factorization criterion.</div>
+</div>
+
+<div class="standard" id='magicparlabel-243'><br />
+
+</div>
+
+<div class="theorem" id='magicparlabel-244'><div class="theorem_item"><span class="theorem_label">Theorem 28.</span>
+Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo> &sim; </mo>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>E</mi><mi>f</mi>
+      </mrow>
+     </mstyle>
+    </mrow>
+    <mrow><mi>k</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>u</mi><mo>,</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo>,</mo><mi> &phi; </mi><mo>,</mo><mi> &theta; </mi><mo>,</mo><mi>c</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>
+  </mrow>
+ </mrow></math> an i.i.d. sample. The distribution of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>s</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>s</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>s</mi>
+     </mrow>
+     <mrow><mi>k</mi>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>s</mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <msubsup>
+    <mrow><mo> &sum; </mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+     </mrow>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msubsup>
+   <msub>
+    <mrow><mi>h</mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> has pdf/pmf of the form <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>s</mi><mo>|</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mover>
+      <mrow><mi>u</mi>
+      </mrow><mo stretchy="true">&tilde;</mo>
+     </mover><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>s</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msubsup>
+       <mrow><mo> &sum; </mo>
+       </mrow>
+       <mrow>
+        <mrow><mi>j</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+       </mrow>
+       <mrow><mi>k</mi>
+       </mrow>
+      </msubsup>
+      <msub>
+       <mrow><mi>c</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+      <msub>
+       <mrow><mi> &phi; </mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      <msub>
+       <mrow><mi>s</mi>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math></div>
+</div>
+<h2 class="section" id='magicparlabel-245'><span class="section_label">3</span> Likelihood principle</h2>
+<div class="standard" id='magicparlabel-246'>Consider two experiments <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>, one yielding data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> and the other yielding data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>. If the two likelihoods <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> are identical up to multiplication by arbitrary functions of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> or <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>, then they contain identical information about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> and lead to identical posterior distributions. The experiments might be very different in other respects, but those differences are irrelevant for inference about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>.</div>
+
+<dl class='description' id='magicparlabel-247'><dt class="description_label">Likelihood&nbsp;Principle</dt>
+<dd class="description_item"> In making inferences or decisions about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> after <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> is observed, all relevant experimental information is contained in the likelihood function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>L</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> for the observed <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math>. Furthermore, two likelihood functions contain the same information about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> if they are proportional to each other (as functions of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>), e.g. <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi>c</mi>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> for every <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math>; hence they must lead to identical inferences for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math>.</dd>
+</dl>
+
+<div class="remark" id='magicparlabel-248'><div class="remark_item"><span class="remark_label">Remark 29.</span>
+Likelihood Principle:</div>
+
+<ul class="itemize" id='magicparlabel-249'><li class="itemize_item">... implies that in order to draw any conclusion from an experiment only the actual observation matters and not the other possible outcomes that might have occurred but were not.</li>
+<li class="itemize_item">... does not say that all information about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> is contained in likelihood function <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>L</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>; but just the experimental information. Other information relevant to the statistical analysis, such as prior information may exist.</li>
+</ul>
+</div>
+
+<div class="standard" id='magicparlabel-255'><br />
+
+</div>
+
+<div class="remark" id='magicparlabel-256'><div class="remark_item"><span class="remark_label">Remark 30.</span>
+Bayesian methods always satisfy the Likelihood principle. This is because, posterior knowledge about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> is expressed from the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> derived by the Bayesian theorem where all the knowledge regarding the experiment is expressed in the likelihood <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>L</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, and all the prior knowledge is expressed in the prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> exclusively.</div>
+</div>
+
+<div class="theorem" id='magicparlabel-257'><div class="theorem_item"><span class="theorem_label">Theorem 31.</span>
+The likelihood principle is satisfied in the Bayesian framework.</div>
+
+<div class="proof" id='magicparlabel-258'><div class="proof_item"><span class="proof_label">Proof.</span>
+Your belief about the uncertain parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> is represented by the posterior distribution. Consider two experiments <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>, one yielding data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> and the other yielding data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>y</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>, and assume that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi>c</mi>
+   <msub>
+    <mrow><mi>L</mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Then if <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mo> &Pi; </mo>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mo> &Pi; </mo>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> have PDF/PMFs <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi> &pi; </mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi> &pi; </mi>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>2</mn>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>:<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mfrac>
+      <mrow>
+       <mrow>
+        <msub>
+         <mrow><mi>L</mi>
+         </mrow>
+         <mrow><mn>1</mn>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow>
+         <msub>
+          <mrow><mi>y</mi>
+          </mrow>
+          <mrow><mn>1</mn>
+          </mrow>
+         </msub><mo>|</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+      <mrow>
+       <mrow>
+        <msub>
+         <mrow><mo> &int; </mo>
+         </mrow>
+         <mrow><mo> &Theta; </mo>
+         </mrow>
+        </msub>
+        <msub>
+         <mrow><mi>L</mi>
+         </mrow>
+         <mrow><mn>1</mn>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow>
+         <msub>
+          <mrow><mi>y</mi>
+          </mrow>
+          <mrow><mn>1</mn>
+          </mrow>
+         </msub><mo>|</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        <mstyle mathvariant='normal'><mi>d</mi>
+        </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+     </mfrac><mo>=</mo>
+     <mfrac>
+      <mrow>
+       <mrow>
+        <menclose notation='updiagonalstrike'><mi>c</mi>
+        </menclose>
+        <msub>
+         <mrow><mi>L</mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow>
+         <msub>
+          <mrow><mi>y</mi>
+          </mrow>
+          <mrow><mn>2</mn>
+          </mrow>
+         </msub><mo>|</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+      <mrow>
+       <mrow>
+        <msub>
+         <mrow><mo> &int; </mo>
+         </mrow>
+         <mrow><mo> &Theta; </mo>
+         </mrow>
+        </msub>
+        <menclose notation='updiagonalstrike'><mi>c</mi>
+        </menclose>
+        <msub>
+         <mrow><mi>L</mi>
+         </mrow>
+         <mrow><mn>2</mn>
+         </mrow>
+        </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow>
+         <msub>
+          <mrow><mi>y</mi>
+          </mrow>
+          <mrow><mn>2</mn>
+          </mrow>
+         </msub><mo>|</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        <mstyle mathvariant='normal'><mi>d</mi>
+        </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &theta; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+     </mfrac><mo>=</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo>
+      <msub>
+       <mrow><mi>y</mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math></div>
+</div>
+</div>
+
+<div class="example" id='magicparlabel-267'><div class="example_item"><span class="example_label">Example 32.</span>
+(Binomial vs Negative Binomial experiment) <a id="While_working_on" />
+We are given a coin and are interested in the success frequency <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> of having it come up heads when flipped. An experiment <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>e</mi>
+ </mrow></math> is conducted by flipping the coin (independently) in a series of trials, the result of which is the observation of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>3</mn>
+ </mrow></math> heads and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>9</mn>
+ </mrow></math> tails (hence <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>12</mn>
+ </mrow></math> flips in total). This is not yet enough information to specify <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>x</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, since the 'series of trials' was not explained. Two possibilities are:</div>
+
+<dl class='description' id='magicparlabel-296'><dt class="description_label"><math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>M</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math>:</dt>
+<dd class="description_item"> the experiment <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math> consisted of a predetermined <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo>=</mo><mn>12</mn>
+  </mrow>
+ </mrow></math> flips, so that the number of heads <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>r</mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>n</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>=</mo><mn>12</mn><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with observed <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>r</mi><mo>=</mo><mn>3</mn>
+  </mrow>
+ </mrow></math>. (Binomial experiment) <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>n</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo>|</mo><mi>n</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo fence='true' stretchy='true' form='prefix'>(</mo><mfrac linethickness='0'><mi>n</mi><mi>r</mi></mfrac><mo fence='true' stretchy='true' form='postfix'>)</mo>
+   <msup>
+    <mrow><mi> &theta; </mi>
+    </mrow>
+    <mrow><mi>r</mi>
+    </mrow>
+   </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+     </mrow>
+    </mrow>
+   </msup>
+   <mstyle mathvariant='normal'><mn>1</mn>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo> &isin; </mo>{<mn>0</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>}
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math></dd>
+<dt class="description_label"><math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>M</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>:</dt>
+<dd class="description_item"> the experiment <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>e</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math> consisted of flipping the coin until <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>r</mi><mo>=</mo><mn>3</mn>
+  </mrow>
+ </mrow></math> heads were observed, so that the number of trials <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>N</mi><mi>b</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo>=</mo><mn>3</mn><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with observed <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo>=</mo><mn>12</mn>
+  </mrow>
+ </mrow></math>. (Negative binomial experiment)<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>N</mi><mi>b</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>|</mo><mi>r</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo fence='true' stretchy='true' form='prefix'>(</mo><mfrac linethickness='0'>
+   <mrow><mi>n</mi><mo>-</mo><mn>1</mn>
+   </mrow>
+   <mrow><mi>r</mi><mo>-</mo><mn>1</mn>
+   </mrow></mfrac><mo fence='true' stretchy='true' form='postfix'>)</mo>
+   <msup>
+    <mrow><mi> &theta; </mi>
+    </mrow>
+    <mrow><mi>r</mi>
+    </mrow>
+   </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+     </mrow>
+    </mrow>
+   </msup>
+   <mstyle mathvariant='normal'><mn>1</mn>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo> &isin; </mo>{<mi>r</mi><mo>,</mo><mi>r</mi><mo>+</mo><mn>1</mn><mo>,</mo><mn>...</mn>}
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math></dd>
+</dl>
+<div class="standard" id='magicparlabel-298'>The two models/experiments, the likelihoods are such as<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>n</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo>|</mo><mi>n</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &vprop; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>N</mi><mi>b</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>|</mo><mi>r</mi><mo>,</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &vprop; </mo>
+   <msup>
+    <mrow><mi> &theta; </mi>
+    </mrow>
+    <mrow><mi>r</mi>
+    </mrow>
+   </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+     </mrow>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math></div>
+
+<div class="standard" id='magicparlabel-299'>In the Bayesian framework, one could assign a prior <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &sim; </mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>e</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>a</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo>=</mo><mn>1</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &equiv; </mo>
+   <mstyle mathvariant='normal'><mi>U</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mn>0</mn><mo>,</mo><mn>1</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and get the Bayesian models: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow>
+     <msub>
+      <mrow><mi>M</mi>
+      </mrow>
+      <mrow><mn>1</mn>
+      </mrow>
+     </msub><mo>:</mo>
+    </mrow>
+   </mtd>
+   <mtd><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+    <mtable>
+     <mtr>
+      <mtd><mi>x</mi>
+      </mtd>
+      <mtd>
+       <mrow><mo> &sim; </mo>
+        <mstyle mathvariant='normal'>
+         <mrow><mi>B</mi><mi>n</mi>
+         </mrow>
+        </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>n</mi><mo>=</mo><mn>12</mn><mo>,</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd><mi> &theta; </mi>
+      </mtd>
+      <mtd>
+       <mrow><mo> &sim; </mo>
+        <mstyle mathvariant='normal'>
+         <mrow><mi>B</mi><mi>e</mi>
+         </mrow>
+        </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>a</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mtd>
+     </mtr>
+    </mtable>
+   </mtd>
+   <mtd>
+    <mrow>
+     <msub>
+      <mrow><mi>M</mi>
+      </mrow>
+      <mrow><mn>2</mn>
+      </mrow>
+     </msub><mo>:</mo>
+    </mrow>
+   </mtd>
+   <mtd><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+    <mtable>
+     <mtr>
+      <mtd><mi>n</mi>
+      </mtd>
+      <mtd>
+       <mrow><mo> &sim; </mo>
+        <mstyle mathvariant='normal'>
+         <mrow><mi>N</mi><mi>b</mi>
+         </mrow>
+        </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>r</mi><mo>=</mo><mn>3</mn><mo>,</mo><mi> &theta; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mtd>
+     </mtr>
+     <mtr>
+      <mtd><mi> &theta; </mi>
+      </mtd>
+      <mtd>
+       <mrow><mo> &sim; </mo>
+        <mstyle mathvariant='normal'>
+         <mrow><mi>B</mi><mi>e</mi>
+         </mrow>
+        </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>a</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>b</mi><mo>=</mo><mn>1</mn>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mtd>
+     </mtr>
+    </mtable>
+   </mtd>
+  </mtr>
+ </mtable></math>The two Bayesian models lead to the same posterior inference, since the posterior PDFs of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> are<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>n</mi><mo>,</mo><mi>r</mi><mo>,</mo>
+      <msub>
+       <mrow><mi>M</mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo> &vprop; </mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>n</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>r</mi><mo>|</mo><mi>n</mi><mo>,</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>a</mi><mo>,</mo><mi>b</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo> &vprop; </mo>
+     <msup>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow><mi>r</mi>
+      </mrow>
+     </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+       </mrow>
+      </mrow>
+     </msup>
+     <msup>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow>
+       <mrow><mi>a</mi><mo>-</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+     </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>b</mi><mo>-</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+     </msup><mo> &vprop; </mo>
+     <msup>
+      <mrow><mi> &theta; </mi>
+      </mrow>
+      <mrow>
+       <mrow><mi>r</mi><mo>+</mo><mi>a</mi><mo>-</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+     </msup><mo>(</mo><mn>1</mn><mo>-</mo><mi> &theta; </mi>
+     <msup>
+      <mrow><mo>)</mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>n</mi><mo>-</mo><mi>r</mi><mo>+</mo><mi>b</mi><mo>-</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+     </msup>
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo> &vprop; </mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>r</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo>-</mo><mi>r</mi><mo>+</mo><mi>b</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mn>4</mn><mo>,</mo><mn>10</mn>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd>
+    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>n</mi><mo>,</mo><mi>r</mi><mo>,</mo>
+      <msub>
+       <mrow><mi>M</mi>
+       </mrow>
+       <mrow><mn>2</mn>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo> &vprop; </mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>N</mi><mi>b</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>n</mi><mo>|</mo><mi>r</mi><mo>,</mo><mi> &theta; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>a</mi><mo>,</mo><mi>b</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &vprop; </mo><mn>...</mn>
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo> &vprop; </mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mi>r</mi><mo>+</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo>-</mo><mi>r</mi><mo>+</mo><mi>b</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <mstyle mathvariant='normal'>
+      <mrow><mi>B</mi><mi>e</mi>
+      </mrow>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo>|</mo><mn>4</mn><mo>,</mo><mn>10</mn>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math> meaning that we learn the same thing from both experiments.</div>
+
+<ul class="itemize" id='magicparlabel-304'><li class="itemize_item">[The derivation of hypothesis test in this bullet is out of the scope; You are not required to know it]. In the Frequentist framework, if we wish to do the hypothesis test for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='normal'><mi>H</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mn>0</mn>
+    </mrow>
+   </msub><mo>:</mo><mi> &theta; </mi><mo>=</mo><mn>0.5</mn>
+  </mrow>
+ </mrow></math> vs. <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow>
+     <mstyle mathvariant='normal'><mi>H</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>:</mo><mi> &theta; </mi><mo>&lt;</mo><mn>0.5</mn>
+  </mrow>
+ </mrow></math>, (i.) in case <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>M</mi>
+   </mrow>
+   <mrow><mn>1</mn>
+   </mrow>
+  </msub>
+ </mrow></math>: we get p-value <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo>=</mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>n</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo> &le; </mo><mn>3</mn><mo>|</mo><mi>n</mi><mo>=</mo><mn>12</mn><mo>,</mo><mi> &theta; </mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <msubsup>
+    <mrow><mo> &sum; </mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>i</mi><mo>=</mo><mn>0</mn>
+     </mrow>
+    </mrow>
+    <mrow><mn>3</mn>
+    </mrow>
+   </msubsup>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>B</mi><mi>n</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo>|</mo><mi>n</mi><mo>=</mo><mn>12</mn><mo>,</mo><mi> &theta; </mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mn>0.073</mn><mo>&gt;</mo><mn>5</mn>%
+  </mrow>
+ </mrow></math> (I do not reject <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow>
+    <mstyle mathvariant='normal'><mi>H</mi>
+    </mstyle>
+   </mrow>
+   <mrow><mn>0</mn>
+   </mrow>
+  </msub>
+ </mrow></math>) (ii.) while in case <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>M</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msub>
+ </mrow></math>: we get p-value <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo>=</mo>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>N</mi><mi>b</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo> &ge; </mo><mn>12</mn><mo>|</mo><mi> &theta; </mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mn>1</mn><mo>-</mo>
+   <msubsup>
+    <mrow><mo> &sum; </mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>n</mi><mo>=</mo><mn>0</mn>
+     </mrow>
+    </mrow>
+    <mrow><mn>11</mn>
+    </mrow>
+   </msubsup>
+   <mstyle mathvariant='normal'>
+    <mrow><mi>N</mi><mi>b</mi>
+    </mrow>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>n</mi><mo>|</mo><mi>r</mi><mo>=</mo><mn>9</mn><mo>,</mo><mi> &theta; </mi><mo>=</mo><mn>1</mn><mo>/</mo><mn>2</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mn>0.032</mn><mo>&lt;</mo><mn>5</mn>%
+  </mrow>
+ </mrow></math> (I reject <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow>
+    <mstyle mathvariant='normal'><mi>H</mi>
+    </mstyle>
+   </mrow>
+   <mrow><mn>0</mn>
+   </mrow>
+  </msub>
+ </mrow></math>) !!! The two models lead to quite different conclusions (in Frequentist stats), and are in contradiction to the Likelihood Principle.</li>
+</ul>
+</div>
+<div class="standard" id='magicparlabel-317'><hr />
+
+</div>
+
+<div class="question" id='magicparlabel-318'><div class="question_item"><span class="question_label">Question 33.</span>
+For practice try the Exercises <a href="#exer____9">exer:()-9</a>,  <a href="#exer____9_1">exer:()-9-1</a> from the Exercise Sheet.</div>
+</div>
+</body>
+</html>
