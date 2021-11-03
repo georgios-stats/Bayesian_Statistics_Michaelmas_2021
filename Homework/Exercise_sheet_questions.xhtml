@@ -148,6 +148,10 @@ div.foot:hover div.foot_inner {
 	margin: 0em 1em;
 	padding: 1em;
 }
+div.Doublebox {
+	border: double thick black;
+	padding: 0.5ex;
+}
 div.marginal {
 	border: 2px solid black;
 	padding: 1ex;
@@ -8128,7 +8132,7 @@ It is <math xmlns="http://www.w3.org/1998/Math/MathML">
 
   </mrow>
  </mrow></math> Then
-<div style = "text-align: center;"><img src="lyxpreviewUYFkWK1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewjszxWS1.png" alt="Mathematical Equation" />
 </div>
 </div>
 </dd></dl>
@@ -20212,7 +20216,833 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 
-<div class="exercise" id='magicparlabel-639'><div class="exercise_item"><span class="exercise_label">Exercise 25.</span>
+<div class="standard" style='text-align: center;' id='magicparlabel-639'>The following exercise is about Bayesian treatment in problems with nuisance unknown parameters</div>
+
+
+<div class="standard" id='magicparlabel-640'><div class='Doublebox'><ul class="itemize" id='magicparlabel-644'><li class="itemize_item">Assume observable quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. Assume that the sampling distribution is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> labeled by an unknown parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo>
+  </mrow>
+ </mrow></math>. Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo>=</mo><mo>(</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow><mi> &top; </mi>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math> with <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &phi; </mi><mo> &isin; </mo><mo> &Phi; </mo>
+  </mrow>
+ </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &lambda; </mi><mo> &isin; </mo><mo> &Lambda; </mo>
+  </mrow>
+ </mrow></math>. Assume You are interested in learning parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &phi; </mi><mo> &isin; </mo><mo> &Phi; </mo>
+  </mrow>
+ </mrow></math>, and You are not interested in learning the unknown parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &lambda; </mi><mo> &isin; </mo><mo> &Lambda; </mo>
+  </mrow>
+ </mrow></math>; but both <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+  </mrow>
+ </mrow></math> are parts of the statistical model parameterisation. The unknown quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &lambda; </mi><mo> &isin; </mo><mo> &Lambda; </mo>
+  </mrow>
+ </mrow></math> is called <u>nuisance parameter</u>. We an call <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &phi; </mi><mo> &isin; </mo><mo> &Phi; </mo>
+  </mrow>
+ </mrow></math> <u>parameter of interest</u>. </li>
+<li class="itemize_item">In Bayesian Stats, learning (or quantifying uncertainty about) parameter of interest <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math> under the presence of a nuisance parameter <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &lambda; </mi><mo> &isin; </mo><mo> &Lambda; </mo>
+  </mrow>
+ </mrow></math> is performed according to the Bayesian paradigm as usual: You specify a prior <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> with PDF/PMF <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi> &lambda; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &lambda; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> on the joint space of ALL Your unknown parameters <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo>=</mo><mo>(</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow><mi> &top; </mi>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math>; you compute the joint posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &theta; </mi><mo>=</mo><mo>(</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow><mi> &top; </mi>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math> via the Bayesian theorem. Reasonably, Your posterior degree of believe about the parameter of interest <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math> given the data <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mn>1</mn>
+     </mrow>
+     <mrow><mn>1</mn>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow><mi>n</mi>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is given through the marginal posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>.</li>
+<li class="itemize_item">To summarize; Specify the Bayesian model as:<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+  <mtable>
+   <mtr>
+    <mtd>
+     <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+      <mover>
+       <mrow>
+        <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+        </mrow>
+       </mrow><mo stretchy="true">&OverBrace;</mo>
+      </mover>
+      <mrow><mo>=</mo><mi> &theta; </mi>
+      </mrow></mover><mo> &sim; </mo>
+      <mstyle mathvariant='normal'><mi>d</mi>
+      </mstyle><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+       <mover>
+        <mrow>
+         <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+         </mrow>
+        </mrow><mo stretchy="true">&OverBrace;</mo>
+       </mover>
+       <mrow><mo>=</mo><mi> &theta; </mi>
+       </mrow></mover>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow><mo>,</mo><mspace />
+      <mstyle mathvariant='normal'>
+       <mrow><mi>t</mi><mi>h</mi><mi>e</mi>&nbsp;<mi>s</mi><mi>t</mi><mi>a</mi><mi>t</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>c</mi><mi>a</mi><mi>l</mi>&nbsp;<mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi>
+       </mrow>
+      </mstyle>
+     </mrow>
+    </mtd>
+   </mtr>
+   <mtr>
+    <mtd>
+     <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<munder accent='false'>
+      <munder>
+       <mrow>
+        <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+        </mrow>
+       </mrow><mo stretchy="true">&UnderBrace;</mo>
+      </munder>
+      <mrow><mo>=</mo><mi> &theta; </mi>
+      </mrow></munder>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &sim; </mo>
+      <mstyle mathvariant='normal'><mi>d</mi>
+      </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<munder accent='false'>
+      <munder>
+       <mrow>
+        <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+        </mrow>
+       </mrow><mo stretchy="true">&UnderBrace;</mo>
+      </munder>
+      <mrow><mo>=</mo><mi> &theta; </mi>
+      </mrow></munder>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mtd>
+    <mtd>
+     <mrow><mo>,</mo><mspace width="6px" />
+      <mstyle mathvariant='normal'>
+       <mrow><mi>t</mi><mi>h</mi><mi>e</mi>&nbsp;<mi>p</mi><mi>r</mi><mi>i</mi><mi>o</mi><mi>r</mi>&nbsp;<mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi>
+       </mrow>
+      </mstyle>
+     </mrow>
+    </mtd>
+   </mtr>
+  </mtable>
+ </mrow></math>The joint posterior of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &theta; </mi>
+ </mrow></math> given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &lambda; </mi><mo>|</mo><mi>y</mi><mo>,</mo><mi> &phi; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is with PDF/PMF </li>
+<li class="itemize_item"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mover accent='false'>
+      <mover>
+       <mrow>
+        <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+        </mrow>
+       </mrow><mo stretchy="true">&OverBrace;</mo>
+      </mover>
+      <mrow><mo>=</mo><mi> &theta; </mi>
+      </mrow></mover><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mfrac>
+      <mrow>
+       <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+         <mover>
+          <mrow>
+           <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+           </mrow>
+          </mrow><mo stretchy="true">&OverBrace;</mo>
+         </mover>
+         <mrow><mo>=</mo><mi> &theta; </mi>
+         </mrow></mover>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mover accent='false'>
+        <mover>
+         <mrow>
+          <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+          </mrow>
+         </mrow><mo stretchy="true">&OverBrace;</mo>
+        </mover>
+        <mrow><mo>=</mo><mi> &theta; </mi>
+        </mrow></mover>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+      <mrow>
+       <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+     </mfrac><mo>=</mo><munder accent='false'>
+     <munder>
+      <mrow>
+       <mfrac>
+        <mrow>
+         <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi> &lambda; </mi><mo>|</mo><mi> &phi; </mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+        <mrow>
+         <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+       </mfrac>
+      </mrow><mo stretchy="true">&UnderBrace;</mo>
+     </munder>
+     <mrow><mo>=</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi> &lambda; </mi><mo>|</mo><mi>y</mi><mo>,</mo><mi> &phi; </mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow></munder><munder accent='false'>
+     <munder>
+      <mrow>
+       <mfrac>
+        <mrow>
+         <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &phi; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+        <mrow>
+         <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+       </mfrac>
+      </mrow><mo stretchy="true">&UnderBrace;</mo>
+     </munder>
+     <mrow><mo>=</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow></munder><mo>=</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &lambda; </mi><mo>|</mo><mi>y</mi><mo>,</mo><mi> &phi; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math>The (marginal) likelihood <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math> is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><munder accent='false'>
+     <munder>
+      <mrow>
+       <mrow>
+        <msub>
+         <mrow><mo> &int; </mo>
+         </mrow>
+         <mrow><mo> &Lambda; </mo>
+         </mrow>
+        </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+         <mover>
+          <mrow>
+           <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+           </mrow>
+          </mrow><mo stretchy="true">&OverBrace;</mo>
+         </mover>
+         <mrow><mo>=</mo><mi> &theta; </mi>
+         </mrow></mover>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        <mstyle mathvariant='normal'><mi>d</mi>
+        </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mi> &lambda; </mi><mo>|</mo><mi> &phi; </mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow><mo stretchy="true">&UnderBrace;</mo>
+     </munder>
+     <mrow><mo>=</mo>
+      <msub>
+       <mrow>
+        <mstyle mathvariant='normal'><mi>E</mi>
+        </mstyle>
+       </mrow>
+       <mrow>
+        <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+         <mrow><mi> &lambda; </mi><mo>|</mo><mi> &phi; </mi>
+         </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        </mrow>
+       </mrow>
+      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+       </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>|</mo><mi> &phi; </mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow></munder><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+     <mtable>
+      <mtr>
+       <mtd>
+        <mrow>
+         <msub>
+          <mrow><mo> &int; </mo>
+          </mrow>
+          <mrow><mo> &Lambda; </mo>
+          </mrow>
+         </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+         <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+         </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+         <mrow><mi> &lambda; </mi><mo>|</mo><mi> &phi; </mi>
+         </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         <mstyle mathvariant='normal'><mi>d</mi>
+         </mstyle><mi> &lambda; </mi>
+        </mrow>
+       </mtd>
+       <mtd>
+        <mrow><mo>,</mo>
+         <mstyle mathvariant='normal'>
+          <mrow><mi>i</mi><mi>f</mi>
+          </mrow>
+         </mstyle><mspace width="6px" /><mi> &lambda; </mi><mspace width="6px" />
+         <mstyle mathvariant='normal'>
+          <mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>t</mi>
+          </mrow>
+         </mstyle>
+        </mrow>
+       </mtd>
+      </mtr>
+      <mtr>
+       <mtd><mspace width="6px" />
+       </mtd>
+       <mtd><mrow/>
+       </mtd>
+      </mtr>
+      <mtr>
+       <mtd>
+        <mrow>
+         <msub>
+          <mrow><mo> &sum; </mo>
+          </mrow>
+          <mrow>
+           <mrow><mi> &forall; </mi><mi> &lambda; </mi><mo> &isin; </mo><mo> &Lambda; </mo>
+           </mrow>
+          </mrow>
+         </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+         <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+         </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+         <mrow><mi> &lambda; </mi><mo>|</mo><mi> &phi; </mi>
+         </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+        </mrow>
+       </mtd>
+       <mtd>
+        <mrow><mo>,</mo>
+         <mstyle mathvariant='normal'>
+          <mrow><mi>i</mi><mi>f</mi>
+          </mrow>
+         </mstyle><mspace width="6px" /><mi> &lambda; </mi><mspace width="6px" />
+         <mstyle mathvariant='normal'>
+          <mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>c</mi><mi>r</mi>
+          </mrow>
+         </mstyle>
+        </mrow>
+       </mtd>
+      </mtr>
+     </mtable>
+    </mrow>
+   </mtd>
+  </mtr>
+ </mtable></math>The PDF/PMF <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of marginal posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math> is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><munder accent='false'>
+   <munder>
+    <mrow>
+     <mrow>
+      <msub>
+       <mrow><mo> &int; </mo>
+       </mrow>
+       <mrow><mo> &Lambda; </mo>
+       </mrow>
+      </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mover accent='false'>
+       <mover>
+        <mrow>
+         <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+         </mrow>
+        </mrow><mo stretchy="true">&OverBrace;</mo>
+       </mover>
+       <mrow><mo>=</mo><mi> &theta; </mi>
+       </mrow></mover><mo>|</mo><mi>y</mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      <mstyle mathvariant='normal'><mi>d</mi>
+      </mstyle><mi> &lambda; </mi>
+     </mrow>
+    </mrow><mo stretchy="true">&UnderBrace;</mo>
+   </munder>
+   <mrow><mo>=</mo>
+    <msub>
+     <mrow>
+      <mstyle mathvariant='normal'><mi>E</mi>
+      </mstyle>
+     </mrow>
+     <mrow>
+      <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mrow><mi> &lambda; </mi><mo>|</mo><mi>y</mi>
+       </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      </mrow>
+     </mrow>
+    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi><mo>,</mo><mi> &lambda; </mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow></munder><mspace width="40px" />
+   <mstyle mathvariant='normal'>
+    <mrow><mi>o</mi><mi>r</mi>&nbsp;<mi>e</mi><mi>q</mi><mi>u</mi><mi>i</mi><mi>v</mi><mi>a</mi><mi>l</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>l</mi><mi>y</mi>&nbsp;
+    </mrow>
+   </mstyle><mspace width="40px" /><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi> &phi; </mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+   <mfrac>
+    <mrow>
+     <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mi>y</mi><mo>|</mo><mi> &phi; </mi>
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &phi; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mrow>
+    <mrow>
+     <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mrow>
+   </mfrac>
+  </mrow>
+ </mrow></math>The predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>z</mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> of the next outcome <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>z</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow>
+      <mrow><mi>n</mi><mo>+</mo><mn>1</mn>
+      </mrow>
+     </mrow>
+    </msub><mo>,</mo><mn>...</mn>
+    <msub>
+     <mrow><mi>y</mi>
+     </mrow>
+     <mrow>
+      <mrow><mi>n</mi><mo>+</mo><mi>m</mi>
+      </mrow>
+     </mrow>
+    </msub>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math> has pdf/pmf<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>z</mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo> &int; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+    <mover>
+     <mrow>
+      <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+      </mrow>
+     </mrow><mo stretchy="true">&OverBrace;</mo>
+    </mover>
+    <mrow><mo>=</mo><mi> &theta; </mi>
+    </mrow></mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mover accent='false'>
+    <mover>
+     <mrow>
+      <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+      </mrow>
+     </mrow><mo stretchy="true">&OverBrace;</mo>
+    </mover>
+    <mrow><mo>=</mo><mi> &theta; </mi>
+    </mrow></mover><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> and the marginal likelihood <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi>y</mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo> &int; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>y</mi><mo>|</mo><mover accent='false'>
+    <mover>
+     <mrow>
+      <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+      </mrow>
+     </mrow><mo stretchy="true">&OverBrace;</mo>
+    </mover>
+    <mrow><mo>=</mo><mi> &theta; </mi>
+    </mrow></mover>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mover accent='false'>
+   <mover>
+    <mrow>
+     <mrow><mi> &phi; </mi><mo>,</mo><mi> &lambda; </mi>
+     </mrow>
+    </mrow><mo stretchy="true">&OverBrace;</mo>
+   </mover>
+   <mrow><mo>=</mo><mi> &theta; </mi>
+   </mrow></mover>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi> &phi; </mi>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi> &lambda; </mi>
+  </mrow>
+ </mrow></math></li>
+</ul>
+</div></div>
+
+<div class="exercise" id='magicparlabel-669'><div class="exercise_item"><span class="exercise_label">Exercise 25.</span>
 <a id="exer____7" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -20220,10 +21050,8 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-641'>(Nuisance parameters are involved)<div class="marginal"><div class="plain_layout" id='magicparlabel-645'>&lt;-story</div>
-</div> </div>
-
-<div class="standard" id='magicparlabel-646'>Assume observable quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-671'>Assume <div class="marginal"><div class="plain_layout" id='magicparlabel-675'>&lt;-story</div>
+</div> observable quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -20297,7 +21125,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </msup>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-647'>Assume You specify a Bayesian model<div class="marginal"><div class="plain_layout" id='magicparlabel-651'>&lt;-set-up</div>
+<div class="standard" id='magicparlabel-676'>Assume You specify a Bayesian model<div class="marginal"><div class="plain_layout" id='magicparlabel-680'>&lt;-set-up</div>
 </div><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
@@ -20433,7 +21261,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mtable>
  </mrow></math></div>
 
-<ol class="enumerate" id='magicparlabel-652'><li class="enumerate_item">Show that<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-681'><li class="enumerate_item">Show that<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msubsup>
@@ -20787,7 +21615,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math>
 
-<dl class='description' id='magicparlabel-662'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-691'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo>-</mo>
@@ -21134,7 +21962,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>
 
-<dl class='description' id='magicparlabel-664'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-693'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -21244,7 +22072,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>
 
-<dl class='description' id='magicparlabel-667'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-696'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> Consider that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -21454,10 +22282,10 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </li></ol>
 
 
-<div class="solution_" id='magicparlabel-674'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-703'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-675'><li class="enumerate_item">It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-704'><li class="enumerate_item">It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -24427,16 +25255,16 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-684'><hr />
+<div class="standard" id='magicparlabel-713'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-685'>The following is about the Normal linear model of regression.<!-- Output Error: Closing tag `div' when other tags are pending. Discarded pending tags:
+<div class="standard" style='text-align: center;' id='magicparlabel-714'>The following is about the Normal linear model of regression.<!-- Output Error: Closing tag `div' when other tags are pending. Discarded pending tags:
 &lt;del class='strikeout'&gt;
  -->
 </div>
 
-<div class="exercise" id='magicparlabel-690'><div class="exercise_item"><span class="exercise_label">Exercise 26.</span>
+<div class="exercise" id='magicparlabel-719'><div class="exercise_item"><span class="exercise_label">Exercise 26.</span>
 <a id="exer____6" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -24444,11 +25272,11 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-696'>(Normal linear regression model with unknown error variance)<div class="marginal"><div class="plain_layout" id='magicparlabel-704'>&lt;-story</div>
+ </mrow></math>)<div class="standard" id='magicparlabel-725'>(Normal linear regression model with unknown error variance)<div class="marginal"><div class="plain_layout" id='magicparlabel-733'>&lt;-story</div>
 </div></div>
 
-<div class="standard" id='magicparlabel-705'>Consider we are interested in recovering the mapping 
-<div style = "text-align: center;"><img src="lyxpreviewHdmljt1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-734'>Consider we are interested in recovering the mapping 
+<div style = "text-align: center;"><img src="lyxpreviewthitgi1.png" alt="Mathematical Equation" />
 </div>
 in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
@@ -24456,7 +25284,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> which is the independent variable (input quantity) in a procedure; E.g.:, </div>
 
-<ul class="itemize" id='magicparlabel-706'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-735'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
  </mrow></math>: precipitation in log scale </li>
 <li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -24478,7 +25306,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>: geographical coordinates. </li>
 </ul>
-<div class="standard" id='magicparlabel-708'>It is believed that the mapping <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-737'>It is believed that the mapping <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &eta; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi>x</mi>
@@ -24599,7 +25427,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math> is unknown.</div>
 
-<div class="standard" id='magicparlabel-709'>Assume observable quantities (data) in pairs <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-738'>Assume observable quantities (data) in pairs <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
   <mrow>
@@ -24719,7 +25547,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </msup>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-710'>You are interested in learning <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-739'>You are interested in learning <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &beta; </mi>
  </mrow></math>, but you do not care about <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -24747,7 +25575,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </msub>
  </mrow></math> (i.e. the precipitation at any other location). </div>
 
-<div class="standard" id='magicparlabel-711'>Consider the Bayesian model <div class="marginal"><div class="plain_layout" id='magicparlabel-715'>&lt;-set-up</div>
+<div class="standard" id='magicparlabel-740'>Consider the Bayesian model <div class="marginal"><div class="plain_layout" id='magicparlabel-744'>&lt;-set-up</div>
 </div><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -24898,7 +25726,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.</div>
 
-<ol class="enumerate" id='magicparlabel-716'><li class="enumerate_item">Show that the joint posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-745'><li class="enumerate_item">Show that the joint posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='normal'><mi>d</mi>
@@ -25256,7 +26084,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>
 
-<dl class='description' id='magicparlabel-717'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-746'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -26119,16 +26947,16 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math>
 
-<dl class='description' id='magicparlabel-725'><dt class="description_label">Hint-2:</dt>
+<dl class='description' id='magicparlabel-754'><dt class="description_label">Hint-2:</dt>
 <dd class="description_item"> The definition of Student T is considered as known</dd>
 </dl>
 </li></ol>
 
 
-<div class="solution_" id='magicparlabel-731'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-760'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-732'><li class="enumerate_item">I use the Bayes theorem<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-761'><li class="enumerate_item">I use the Bayes theorem<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -29426,22 +30254,22 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-744'><hr />
+<div class="standard" id='magicparlabel-773'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-745'><br />
+<div class="standard" id='magicparlabel-774'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-746'><div class="exercise_item"><span class="exercise_label">Exercise 27.</span>
+<div class="exercise" id='magicparlabel-775'><div class="exercise_item"><span class="exercise_label">Exercise 27.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-748'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-777'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -29505,7 +30333,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-754'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-783'><div class="solution__item"><span class="solution__label">Solution.</span>
 The sampling distribution is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -29788,7 +30616,7 @@ The sampling distribution is <math display="block" xmlns="http://www.w3.org/1998
    </msub>
   </mrow>
  </mrow></math>. </div>
-<div class="standard" id='magicparlabel-755'>The corresponding conjugate prior has pdf such as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-784'>The corresponding conjugate prior has pdf such as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -30145,22 +30973,22 @@ The sampling distribution is <math display="block" xmlns="http://www.w3.org/1998
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-761'><hr />
+<div class="standard" id='magicparlabel-790'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-762'><br />
+<div class="standard" id='magicparlabel-791'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-763'><div class="exercise_item"><span class="exercise_label">Exercise 28.</span>
+<div class="exercise" id='magicparlabel-792'><div class="exercise_item"><span class="exercise_label">Exercise 28.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_2" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-765'>If the sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-794'>If the sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -30191,7 +31019,7 @@ The sampling distribution is <math display="block" xmlns="http://www.w3.org/1998
 
 
 
-<div class="solution_" id='magicparlabel-771'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-800'><div class="solution__item"><span class="solution__label">Solution.</span>
 It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -30269,7 +31097,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-772'><br />
+<div class="standard" id='magicparlabel-801'><br />
 
 </div>
 
@@ -30280,17 +31108,17 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-779'><br />
+<div class="standard" id='magicparlabel-808'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-780'><div class="exercise_item"><span class="exercise_label">Exercise 29.</span>
+<div class="exercise" id='magicparlabel-809'><div class="exercise_item"><span class="exercise_label">Exercise 29.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_2_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-782'>If the sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-811'>If the sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -30321,7 +31149,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-788'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-817'><div class="solution__item"><span class="solution__label">Solution.</span>
 It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &int; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -30421,19 +31249,19 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>'s with 'probability' zero. </div>
 </div>
 
-<div class="standard" id='magicparlabel-797'><br />
+<div class="standard" id='magicparlabel-826'><br />
 
 </div>
 
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-803'><hr />
+<div class="standard" id='magicparlabel-832'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-804'><br />
+<div class="standard" id='magicparlabel-833'><br />
 
 </div>
 
@@ -30441,7 +31269,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="standard" id='magicparlabel-805'><div class="flex_color_box"><dl class='description' id='magicparlabel-819'><dt class="description_label">General:</dt>
+<div class="standard" id='magicparlabel-834'><div class="flex_color_box"><dl class='description' id='magicparlabel-848'><dt class="description_label">General:</dt>
 <dd class="description_item"> Let integrable functions <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -30461,7 +31289,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow><mi>x</mi><mo> &ge; </mo><mi>a</mi>
   </mrow>
  </mrow></math> . 
-<div class="plain_layout" id='magicparlabel-824'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="plain_layout" id='magicparlabel-853'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mn>0</mn><mo> &le; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi>x</mi>
@@ -30477,7 +31305,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>Then</div>
 
-<div class="plain_layout" id='magicparlabel-825'><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="plain_layout" id='magicparlabel-854'><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msubsup>
@@ -30565,7 +31393,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
   </mrow>
  </mrow></math> be positive. 
-<div class="plain_layout" id='magicparlabel-831'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="plain_layout" id='magicparlabel-860'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -30595,7 +31423,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>Then</div>
 
-<ul class="itemize" id='magicparlabel-832'><li class="itemize_item">If <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-861'><li class="itemize_item">If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>c</mi><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -30733,7 +31561,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
   </mrow>
  </mrow></math> be positive. 
-<div class="plain_layout" id='magicparlabel-840'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="plain_layout" id='magicparlabel-869'>Let <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -30769,7 +31597,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>Then</div>
 
-<ul class="itemize" id='magicparlabel-841'><li class="itemize_item">If <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-870'><li class="itemize_item">If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>c</mi><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -30944,13 +31772,13 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 </div></div>
 
-<div class="exercise" id='magicparlabel-845'><div class="exercise_item"><span class="exercise_label">Exercise 30.</span>
+<div class="exercise" id='magicparlabel-874'><div class="exercise_item"><span class="exercise_label">Exercise 30.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-847'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-876'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -31009,7 +31837,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. Show that the posterior distribution is not defined always. </div>
 
-<ul class="itemize" id='magicparlabel-848'><li class="itemize_item">HINT: Precisely, show that the posterior is not defined in the case that you collect only one observation <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-877'><li class="itemize_item">HINT: Precisely, show that the posterior is not defined in the case that you collect only one observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo>=</mo><mn>0</mn>
   </mrow>
@@ -31017,18 +31845,18 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </ul>
 
 
-<div class="solution_" id='magicparlabel-854'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-883'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; &nbsp;</div>
-<div class="standard" id='magicparlabel-855'>It is 
-<div style = "text-align: center;"><img src="lyxpreviewFvUWCw1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-884'>It is 
+<div style = "text-align: center;"><img src="lyxpreviewtIBJlg1.png" alt="Mathematical Equation" />
 </div>
  We will use a convergence criteria in order to check if 
-<span style = "text-align: center;"><img src="lyxpreviewOyAiTc1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewBnKdxC1.png" alt="Mathematical Equation" />
 </span>
 . </div>
 
-<div class="standard" id='magicparlabel-856'>I will use the Limit Comparison Test to check if 
-<span style = "text-align: center;"><img src="lyxpreviewOyAiTc1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-885'>I will use the Limit Comparison Test to check if 
+<span style = "text-align: center;"><img src="lyxpreviewBnKdxC1.png" alt="Mathematical Equation" />
 </span>
 . Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -31144,10 +31972,10 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
    </mfrac><mo>=</mo><mn>1</mn><mo> &ne; </mo><mn>0</mn>
   </mrow>
  </mrow></math> and 
-<div style = "text-align: center;"><img src="lyxpreviewBnKFdj1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewXyitcZ1.png" alt="Mathematical Equation" />
 </div>
 Therefore, it will be 
-<div style = "text-align: center;"><img src="lyxpreviewqzEnFu1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewVihAom1.png" alt="Mathematical Equation" />
 </div>
  as well.</div>
 </div>
@@ -31158,17 +31986,17 @@ Therefore, it will be
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-863'><br />
+<div class="standard" id='magicparlabel-892'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-864'><div class="exercise_item"><span class="exercise_label">Exercise 31.</span>
+<div class="exercise" id='magicparlabel-893'><div class="exercise_item"><span class="exercise_label">Exercise 31.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_6" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-866'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-895'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -31249,10 +32077,10 @@ Therefore, it will be
 
 
 
-<div class="solution_" id='magicparlabel-872'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-901'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; </div>
-<div class="standard" id='magicparlabel-873'>We will check the properness condition. It is 
-<div style = "text-align: center;"><img src="lyxpreviewzKCYvw1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-902'>We will check the properness condition. It is 
+<div style = "text-align: center;"><img src="lyxpreviewPSkuVc1.png" alt="Mathematical Equation" />
 </div>
  for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -31265,31 +32093,31 @@ Therefore, it will be
    </msup>
   </mrow>
  </mrow></math>. It is 
-<div style = "text-align: center;"><img src="lyxpreviewwdDCWj1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewtuQaCZ1.png" alt="Mathematical Equation" />
 </div>
  So the posterior is defined.</div>
 </div>
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-879'><hr />
+<div class="standard" id='magicparlabel-908'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-880'><br />
+<div class="standard" id='magicparlabel-909'><br />
 
 </div>
 
-<div class="standard" style='text-align: center;' id='magicparlabel-881'>The Following exercise is part of Homework 1</div>
+<div class="standard" style='text-align: center;' id='magicparlabel-910'>The Following exercise is part of Homework 1</div>
 
-<div class="exercise" id='magicparlabel-882'><div class="exercise_item"><span class="exercise_label">Exercise 32.</span>
+<div class="exercise" id='magicparlabel-911'><div class="exercise_item"><span class="exercise_label">Exercise 32.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-884'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-913'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> be an observation. Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
@@ -31358,7 +32186,7 @@ Therefore, it will be
   </mrow>
  </mrow></math>. Show that the posterior distribution is not always defined. </div>
 
-<dl class='description' id='magicparlabel-885'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-914'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> It suffices to show that the posterior is not defined in the case that you collect only one observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo>=</mo><mn>0</mn>
@@ -31423,7 +32251,7 @@ Therefore, it will be
 </dl>
 
 
-<div class="solution_" id='magicparlabel-898'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-927'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp; The prior with <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -31455,25 +32283,25 @@ Therefore, it will be
    </mstyle><mi> &theta; </mi><mo>=</mo><mi> &infin; </mi>
   </mrow>
  </mrow></math>So I need to check the proneness condition, 
-<div style = "text-align: center;"><img src="lyxpreviewobbuyj1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewkLEIgv1.png" alt="Mathematical Equation" />
 </div>
  I will show that the posterior distribution is not defined given that I have collected a single observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo>=</mo><mn>0</mn>
   </mrow>
  </mrow></math>. So I need to show that 
-<div style = "text-align: center;"><img src="lyxpreviewMUQvyH1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewDIfrMW1.png" alt="Mathematical Equation" />
 </div>
 It is </div>
 
-<div class="standard" id='magicparlabel-899'><div style = "text-align: center;"><img src="lyxpreviewWtJTny1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-928'><div style = "text-align: center;"><img src="lyxpreviewWTwntw1.png" alt="Mathematical Equation" />
 </div>
  We will use a convergence criteria in order to check if 
-<span style = "text-align: center;"><img src="lyxpreviewTGfZxP1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewrSmlcU1.png" alt="Mathematical Equation" />
 </span>
 . </div>
 
-<div class="standard" id='magicparlabel-900'>Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-929'>Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>h</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi> &theta; </mi>
@@ -31587,10 +32415,10 @@ It is </div>
    </mfrac><mo>=</mo><mn>1</mn><mo> &ne; </mo><mn>0</mn>
   </mrow>
  </mrow></math> and 
-<div style = "text-align: center;"><img src="lyxpreviewCNJoAD1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewAIddpa1.png" alt="Mathematical Equation" />
 </div>
 Therefore, it will be 
-<div style = "text-align: center;"><img src="lyxpreviewvKVrcu1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewrasSVe1.png" alt="Mathematical Equation" />
 </div>
  as well.</div>
 </div>
@@ -31601,19 +32429,19 @@ Therefore, it will be
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-907'><br />
+<div class="standard" id='magicparlabel-936'><br />
 
 </div>
 
-<div class="standard" id='magicparlabel-908'>The next exercise is about the Sequential processing of data via Bayes theorem</div>
+<div class="standard" id='magicparlabel-937'>The next exercise is about the Sequential processing of data via Bayes theorem</div>
 
-<div class="exercise" id='magicparlabel-909'><div class="exercise_item"><span class="exercise_label">Exercise 33.</span>
+<div class="exercise" id='magicparlabel-938'><div class="exercise_item"><span class="exercise_label">Exercise 33.</span>
 <a id="exer____9_1_2_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-911'>Assume that observable quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-940'>Assume that observable quantities <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -31658,7 +32486,7 @@ Therefore, it will be
  <mrow><mi> &mu; </mi>
  </mrow></math>. </div>
 
-<ol class="enumerate" id='magicparlabel-912'><li class="enumerate_item">Assume that you have collected an observation <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-941'><li class="enumerate_item">Assume that you have collected an observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>x</mi>
@@ -31720,7 +32548,7 @@ Therefore, it will be
   </mrow>
  </mrow></math> are known. 
 
-<ul class="itemize" id='magicparlabel-913'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-942'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -31737,7 +32565,7 @@ Therefore, it will be
   </mrow>
  </mrow></math>. </li>
 </ul>
-<div class="standard" id='magicparlabel-914'>Next assume that you additionally aobserve an additional observation <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-943'>Next assume that you additionally aobserve an additional observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>x</mi>
@@ -31772,7 +32600,7 @@ Therefore, it will be
  <mrow><mi> &theta; </mi>
  </mrow></math>. </div>
 
-<ul class="itemize" id='magicparlabel-915'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-944'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -31876,7 +32704,7 @@ Therefore, it will be
   </mrow>
  </mrow></math> are known. 
 
-<ul class="itemize" id='magicparlabel-917'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-946'><li class="itemize_item">Derive the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -31921,7 +32749,7 @@ Therefore, it will be
 </li><li class="enumerate_item">What do you observe:</li>
 </ol>
 
-<dl class='description' id='magicparlabel-919'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-948'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> We considered the identity<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -32312,10 +33140,10 @@ Therefore, it will be
 </dl>
 
 
-<div class="solution_" id='magicparlabel-925'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-954'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-926'><li class="enumerate_item">the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-955'><li class="enumerate_item">the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -32828,7 +33656,7 @@ Therefore, it will be
 
   </mrow>
  </mrow></math>
-<div class="standard" id='magicparlabel-927'>Then the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-956'>Then the posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -34242,18 +35070,18 @@ Therefore, it will be
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-935'><hr />
+<div class="standard" id='magicparlabel-964'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-936'><br />
+<div class="standard" id='magicparlabel-965'><br />
 </div>
-<h1 class="part" id='magicparlabel-937'><span class="part_label">Part V</span> Exchangeability</h1>
+<h1 class="part" id='magicparlabel-966'><span class="part_label">Part V</span> Exchangeability</h1>
 
 
-<div class="standard" id='magicparlabel-938'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-963'>We work on the proofs of the following theorems:</div>
+<div class="standard" id='magicparlabel-967'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-992'>We work on the proofs of the following theorems:</div>
 
-<ul class="itemize" id='magicparlabel-964'><li class="itemize_item">Marginal distributions of finite exchangeable sequences <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-993'><li class="itemize_item">Marginal distributions of finite exchangeable sequences <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -34612,10 +35440,10 @@ Therefore, it will be
  </mtable></math></li>
 </ul>
 
-<dl class='description' id='magicparlabel-968'><dt class="description_label">Just&nbsp;for&nbsp;your&nbsp;information</dt>
+<dl class='description' id='magicparlabel-997'><dt class="description_label">Just&nbsp;for&nbsp;your&nbsp;information</dt>
 <dd class="description_item"> The properties above are implied by the following general theorem. However, you should not use this theorem, directly, to solve the exercises below...
 
-<div class="theorem_" id='magicparlabel-969'><div class="theorem__item"><span class="theorem__label">Theorem.</span>
+<div class="theorem_" id='magicparlabel-998'><div class="theorem__item"><span class="theorem__label">Theorem.</span>
 Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -34762,7 +35590,7 @@ Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathM
 </dd></dl>
 </div></div>
 
-<div class="standard" id='magicparlabel-970'><hr />
+<div class="standard" id='magicparlabel-999'><hr />
 
  This is not an exercise to solve. Feel free to read the solution of this exercise, as it may help you understand the the Interpretation of the `representation Theorem with <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -34770,7 +35598,7 @@ Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathM
   </mrow>
  </mrow></math> quantities'.</div>
 
-<div class="exercise" id='magicparlabel-971'><div class="exercise_item"><span class="exercise_label">Exercise 34.</span>
+<div class="exercise" id='magicparlabel-1000'><div class="exercise_item"><span class="exercise_label">Exercise 34.</span>
 <a id="exer___" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -34782,7 +35610,7 @@ Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathM
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-973'>(Representation Theorem with <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1002'>(Representation Theorem with <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mn>0</mn><mo>-</mo><mn>1</mn>
   </mrow>
@@ -35039,7 +35867,7 @@ Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathM
  <mrow><mn>1</mn>
  </mrow></math>s, by SLLN</div>
 
-<dl class='description' id='magicparlabel-974'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-1003'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> (Helly's theorem [modified]) Given a sequence of distribution functions <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>{
@@ -35137,13 +35965,13 @@ Consider an exchangeable sequence <math xmlns="http://www.w3.org/1998/Math/MathM
  </mrow></math>. </dd>
 </dl>
 
-<div class="standard" id='magicparlabel-975'><br />
+<div class="standard" id='magicparlabel-1004'><br />
 
 </div>
 
 
 
-<div class="solution_" id='magicparlabel-981'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1010'><div class="solution__item"><span class="solution__label">Solution.</span>
 Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -35946,7 +36774,7 @@ Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/Mat
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
   </mrow>
- </mrow></math>. This is because it describes a Hypergeometric experiment<div class="foot"><span class="foot_label">2</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-998'><span class="flex_url">https://en.wikipedia.org/wiki/Hypergeometric_distribution</span></div>
+ </mrow></math>. This is because it describes a Hypergeometric experiment<div class="foot"><span class="foot_label">2</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-1027'><span class="flex_url">https://en.wikipedia.org/wiki/Hypergeometric_distribution</span></div>
 </div></div>. i.e., <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -36693,17 +37521,17 @@ Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/Mat
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1017'><hr />
+<div class="standard" id='magicparlabel-1046'><hr />
 
  </div>
 
-<div class="exercise" id='magicparlabel-1018'><div class="exercise_item"><span class="exercise_label">Exercise 35.</span>
+<div class="exercise" id='magicparlabel-1047'><div class="exercise_item"><span class="exercise_label">Exercise 35.</span>
 <a id="exer____1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1020'>Clearly a set of independent and identically distributed random variables form an exchangeable sequence. Thus sampling with replacement generates an exchangeable sequence. What about sampling without replacement? Prove that sampling <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1049'>Clearly a set of independent and identically distributed random variables form an exchangeable sequence. Thus sampling with replacement generates an exchangeable sequence. What about sampling without replacement? Prove that sampling <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>n</mi>
  </mrow></math> items from <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>N</mi>
@@ -36715,7 +37543,7 @@ Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/Mat
 
 
 
-<div class="solution_" id='magicparlabel-1026'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1055'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;Sampling without replacement is clearly not iid. However, it is exchangeable. Assume that we sample <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>n</mi>
  </mrow></math> items from <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -36781,24 +37609,24 @@ Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/Mat
  </mtable></math>Clearly, the probability mass function does not depend on the ordering of the sequence. Therefore the sequence is exchangeable.</div>
 </div>
 
-<div class="standard" id='magicparlabel-1035'><br />
+<div class="standard" id='magicparlabel-1064'><br />
 
 </div>
 
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1041'><hr />
+<div class="standard" id='magicparlabel-1070'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1042'><div class="exercise_item"><span class="exercise_label">Exercise 36.</span>
+<div class="exercise" id='magicparlabel-1071'><div class="exercise_item"><span class="exercise_label">Exercise 36.</span>
 <a id="exer____2" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1044'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1073'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>Y</mi>
@@ -36899,7 +37727,7 @@ Let the sum of random quantities be <math xmlns="http://www.w3.org/1998/Math/Mat
 
 
 
-<div class="solution_" id='magicparlabel-1050'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1079'><div class="solution__item"><span class="solution__label">Solution.</span>
 For ease of exposition, we show that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -36937,24 +37765,24 @@ For ease of exposition, we show that <math xmlns="http://www.w3.org/1998/Math/Ma
 
   </mrow>
  </mrow></math>. The general case follows similarly. 
-<div style = "text-align: center;"><img src="lyxpreviewwRLIkg1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewfZCreR1.png" alt="Mathematical Equation" />
 </div>
  </div>
 </div>
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1056'><hr />
+<div class="standard" id='magicparlabel-1085'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1057'><div class="exercise_item"><span class="exercise_label">Exercise 37.</span>
+<div class="exercise" id='magicparlabel-1086'><div class="exercise_item"><span class="exercise_label">Exercise 37.</span>
 <a id="exer____3" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1059'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1088'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>Y</mi>
@@ -37085,7 +37913,7 @@ For ease of exposition, we show that <math xmlns="http://www.w3.org/1998/Math/Ma
 
 
 
-<div class="solution_" id='magicparlabel-1065'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1094'><div class="solution__item"><span class="solution__label">Solution.</span>
 By the usual properties of variance, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -37205,17 +38033,17 @@ By the usual properties of variance, <math display="block" xmlns="http://www.w3.
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1072'><hr />
+<div class="standard" id='magicparlabel-1101'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1073'><div class="exercise_item"><span class="exercise_label">Exercise 38.</span>
+<div class="exercise" id='magicparlabel-1102'><div class="exercise_item"><span class="exercise_label">Exercise 38.</span>
 <a id="exer____4" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1075'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1104'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>Y</mi>
@@ -37317,9 +38145,9 @@ By the usual properties of variance, <math display="block" xmlns="http://www.w3.
 
 
 
-<div class="solution_" id='magicparlabel-1081'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1110'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;It is 
-<div style = "text-align: center;"><img src="lyxpreviewOYnUlD1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewASRnSA1.png" alt="Mathematical Equation" />
 </div>
 where the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -37364,7 +38192,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mo>/</mo><mn>2</mn>
   </mrow>
  </mrow></math> terms in the sum.</div>
-<div class="standard" id='magicparlabel-1082'>Consequently, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1111'>Consequently, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -37462,15 +38290,15 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1088'><hr />
+<div class="standard" id='magicparlabel-1117'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1089'><div class="exercise_item"><span class="exercise_label">Exercise 39.</span>
+<div class="exercise" id='magicparlabel-1118'><div class="exercise_item"><span class="exercise_label">Exercise 39.</span>
 <a id="exer____5" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1091'>What does<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1120'>What does<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>c</mi><mi>o</mi><mi>v</mi>
    <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -37518,7 +38346,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1097'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1126'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;The correlation must be non-negative: because, as <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>n</mi><mo> &rarr; </mo><mi> &infin; </mi>
@@ -37555,24 +38383,24 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1103'><hr />
+<div class="standard" id='magicparlabel-1132'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-1104'><br />
+<div class="standard" id='magicparlabel-1133'><br />
 </div>
-<h1 class="part" id='magicparlabel-1105'><span class="part_label">Part VI</span> Sufficiency</h1>
-<div class="standard" id='magicparlabel-1106'><hr />
+<h1 class="part" id='magicparlabel-1134'><span class="part_label">Part VI</span> Sufficiency</h1>
+<div class="standard" id='magicparlabel-1135'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1107'><div class="exercise_item"><span class="exercise_label">Exercise 40.</span>
+<div class="exercise" id='magicparlabel-1136'><div class="exercise_item"><span class="exercise_label">Exercise 40.</span>
 <a id="exer____8" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1109'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1138'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -37622,7 +38450,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtable>
  </mrow></math></div>
 
-<dl class='description' id='magicparlabel-1118'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-1147'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> The PDF of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -37731,7 +38559,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></dd>
 </dl>
 
-<ol class="enumerate" id='magicparlabel-1128'><li class="enumerate_item">Show that the parametric model is member of the Exponential family, and the sufficient statistic for a sample of observables <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1157'><li class="enumerate_item">Show that the parametric model is member of the Exponential family, and the sufficient statistic for a sample of observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -37864,10 +38692,10 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 </ol>
 
 
-<div class="solution_" id='magicparlabel-1148'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1177'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1149'><li class="enumerate_item">The parametric model is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1178'><li class="enumerate_item">The parametric model is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -38678,11 +39506,11 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1179'><hr />
+<div class="standard" id='magicparlabel-1208'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1180'><div class="exercise_item"><span class="exercise_label">Exercise 41.</span>
+<div class="exercise" id='magicparlabel-1209'><div class="exercise_item"><span class="exercise_label">Exercise 41.</span>
 <a id="exer____9" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -38690,7 +39518,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1186'>Consider the Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1215'>Consider the Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -38814,7 +39642,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<dl class='description' id='magicparlabel-1187'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-1216'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -39061,7 +39889,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>
 
-<ol class="enumerate" id='magicparlabel-1189'><li class="enumerate_item">Show that the parametric model <a href="#eq_dasgsdg">(26)</a> is a member of the <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1218'><li class="enumerate_item">Show that the parametric model <a href="#eq_dasgsdg">(26)</a> is a member of the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>k</mi><mo>-</mo><mn>1</mn>
   </mrow>
@@ -39126,7 +39954,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math> in closed form.
 
-<dl class='description' id='magicparlabel-1198'><dt class="description_label">Hint</dt>
+<dl class='description' id='magicparlabel-1227'><dt class="description_label">Hint</dt>
 <dd class="description_item"> <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Gamma; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -39150,10 +39978,10 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 </dd></dl>
 
 
-<div class="solution_" id='magicparlabel-1316'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1345'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1317'><li class="enumerate_item">There are <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1346'><li class="enumerate_item">There are <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>k</mi><mo>-</mo><mn>1</mn>
   </mrow>
@@ -39244,7 +40072,7 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub>
   </mrow>
  </mrow></math>. 
-<div class="standard" id='magicparlabel-1318'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1347'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -41160,17 +41988,17 @@ where the <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1339'><hr />
+<div class="standard" id='magicparlabel-1368'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1340'><div class="exercise_item"><span class="exercise_label">Exercise 42.</span>
+<div class="exercise" id='magicparlabel-1369'><div class="exercise_item"><span class="exercise_label">Exercise 42.</span>
 <a id="exer____9_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1342'><a id="exer_Suppose_that_the" />
+ </mrow></math>)<div class="standard" id='magicparlabel-1371'><a id="exer_Suppose_that_the" />
 Suppose that the vector <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><!-- mathfontold -->
@@ -41249,7 +42077,7 @@ Suppose that the vector <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1348'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1377'><div class="solution__item"><span class="solution__label">Solution.</span>
 It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -41544,15 +42372,15 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1354'><hr />
+<div class="standard" id='magicparlabel-1383'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1355'><div class="exercise_item"><span class="exercise_label">Exercise 43.</span>
+<div class="exercise" id='magicparlabel-1384'><div class="exercise_item"><span class="exercise_label">Exercise 43.</span>
 <a id="exer____9_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1357'>Establish the formula <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1386'>Establish the formula <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo>(</mo>
    <msubsup>
@@ -41691,11 +42519,11 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-1358'>This formula is often used to 'complete the square' in quadratiforms.</div>
+<div class="standard" id='magicparlabel-1387'>This formula is often used to 'complete the square' in quadratiforms.</div>
 
 
 
-<div class="solution_" id='magicparlabel-1364'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1393'><div class="solution__item"><span class="solution__label">Solution.</span>
 Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -41988,15 +42816,15 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1370'><hr />
+<div class="standard" id='magicparlabel-1399'><hr />
 
 </div>
 
 
 
-<div class="standard" id='magicparlabel-1372'>The following is a proof of a theorem</div>
+<div class="standard" id='magicparlabel-1401'>The following is a proof of a theorem</div>
 
-<div class="exercise" id='magicparlabel-1373'><div class="exercise_item"><span class="exercise_label">Exercise 44.</span>
+<div class="exercise" id='magicparlabel-1402'><div class="exercise_item"><span class="exercise_label">Exercise 44.</span>
 <a id="exer____9_1_2_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -42004,7 +42832,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1375'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1404'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -42051,7 +42879,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 
 
-<div class="solution_" id='magicparlabel-1381'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1410'><div class="solution__item"><span class="solution__label">Solution.</span>
  Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -42688,13 +43516,13 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1399'><hr />
+<div class="standard" id='magicparlabel-1428'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-1400'>The following is a proof of a theorem</div>
+<div class="standard" id='magicparlabel-1429'>The following is a proof of a theorem</div>
 
-<div class="exercise" id='magicparlabel-1401'><div class="exercise_item"><span class="exercise_label">Exercise 45.</span>
+<div class="exercise" id='magicparlabel-1430'><div class="exercise_item"><span class="exercise_label">Exercise 45.</span>
 <a id="exer____9_1_2" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -42702,9 +43530,9 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1403'>(This is a theorem in Handout 5) Prove the following statement.</div>
+ </mrow></math>)<div class="standard" id='magicparlabel-1432'>(This is a theorem in Handout 5) Prove the following statement.</div>
 
-<div class="standard" id='magicparlabel-1404'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1433'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>t</mi><mo>:</mo>
    <mstyle mathvariant='script'><mi>Y</mi>
@@ -42778,10 +43606,10 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 
 
-<div class="solution_" id='magicparlabel-1410'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1439'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<dl class='description' id='magicparlabel-1416'><dt class="description_label">(<math xmlns="http://www.w3.org/1998/Math/MathML">
+<dl class='description' id='magicparlabel-1445'><dt class="description_label">(<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &#x27F8; </mo>
  </mrow></math>)</dt>
 <dd class="description_item"> I need to show that for any set <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -42810,7 +43638,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
   </mrow>
  </mrow></math>.
-<div class="standard" id='magicparlabel-1417'>For any <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1446'>For any <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Theta; </mo><mo>'</mo>
   </mrow>
@@ -42879,7 +43707,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
   </mrow>
  </mrow></math> .</div>
 
-<div class="standard" id='magicparlabel-1422'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1451'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -43243,8 +44071,8 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
   </mtr>
  </mtable></math></div>
 
-<div class="standard" id='magicparlabel-1423'>(
-<span style = "text-align: center;"><img src="lyxpreviewyWJvcF1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-1452'>(
+<span style = "text-align: center;"><img src="lyxpreviewnGaane1.png" alt="Mathematical Equation" />
 </span>
 ) I ll construct a `kernel' <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -43556,22 +44384,22 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1429'><hr />
+<div class="standard" id='magicparlabel-1458'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-1430'><br />
+<div class="standard" id='magicparlabel-1459'><br />
 </div>
-<h1 class="part" id='magicparlabel-1431'><span class="part_label">Part VII</span> Priors</h1>
+<h1 class="part" id='magicparlabel-1460'><span class="part_label">Part VII</span> Priors</h1>
 
 
-<div class="exercise" id='magicparlabel-1433'><div class="exercise_item"><span class="exercise_label">Exercise 46.</span>
+<div class="exercise" id='magicparlabel-1462'><div class="exercise_item"><span class="exercise_label">Exercise 46.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1435'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1464'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -43775,7 +44603,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
   </mtr>
  </mtable></math></div>
 
-<ol class="enumerate" id='magicparlabel-1440'><li class="enumerate_item">Show that the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1469'><li class="enumerate_item">Show that the posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -43998,7 +44826,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
  </mtable></math> The operation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo>*</mo>
  </mrow></math> here is addition 
-<span style = "text-align: center;"><img src="lyxpreviewYqhFwr1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewkdPaPN1.png" alt="Mathematical Equation" />
 </span>
 </li>
 <li class="enumerate_item">Show that the predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -44175,10 +45003,10 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 </ol>
 
 
-<div class="solution_" id='magicparlabel-1459'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1488'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1460'><li class="enumerate_item">According to the Bayes theorem, where <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1489'><li class="enumerate_item">According to the Bayes theorem, where <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -44882,19 +45710,19 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1467'><hr />
+<div class="standard" id='magicparlabel-1496'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1468'><div class="exercise_item"><span class="exercise_label">Exercise 47.</span>
+<div class="exercise" id='magicparlabel-1497'><div class="exercise_item"><span class="exercise_label">Exercise 47.</span>
 <a id="exer____9_1_2_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1470'>&nbsp;</div>
+ </mrow></math>)<div class="standard" id='magicparlabel-1499'>&nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1471'><li class="enumerate_item">Show that the skew-logistic family of distributions, with <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1500'><li class="enumerate_item">Show that the skew-logistic family of distributions, with <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -45236,10 +46064,10 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 </ol>
 
 
-<div class="solution_" id='magicparlabel-1497'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1526'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1498'><li class="enumerate_item">&nbsp;It is<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1527'><li class="enumerate_item">&nbsp;It is<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -45745,7 +46573,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
   </mrow>
  </mrow></math>. 
-<div class="standard" id='magicparlabel-1500'>Also <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1529'>Also <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>K</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi> &tau; </mi>
@@ -46718,13 +47546,13 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1509'><hr />
+<div class="standard" id='magicparlabel-1538'><hr />
 
 </div>
 
-<div class="standard" id='magicparlabel-1510'>The exercise below is theoretical, and very challenging. </div>
+<div class="standard" id='magicparlabel-1539'>The exercise below is theoretical, and very challenging. </div>
 
-<div class="exercise" id='magicparlabel-1511'><div class="exercise_item"><span class="exercise_label">Exercise 48.</span>
+<div class="exercise" id='magicparlabel-1540'><div class="exercise_item"><span class="exercise_label">Exercise 48.</span>
 <a id="exer____9_1_2_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -46732,9 +47560,9 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1513'>Prove the following statement.</div>
+ </mrow></math>)<div class="standard" id='magicparlabel-1542'>Prove the following statement.</div>
 
-<div class="standard" id='magicparlabel-1514'>Consider a PDF/PMF <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1543'>Consider a PDF/PMF <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -46793,10 +47621,10 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
   </mrow>
  </mrow></math> is number of the exponential family. </div>
 
-<dl class='description' id='magicparlabel-1515'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-1544'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> &nbsp;&nbsp;Use the Pitman-Koopman Lemma:
 
-<div class="lemma_" id='magicparlabel-1516'><div class="lemma__item"><span class="lemma__label">Lemma.</span>
+<div class="lemma_" id='magicparlabel-1545'><div class="lemma__item"><span class="lemma__label">Lemma.</span>
 (Pitman-Koopman Lemma) If a family of distributions is such that for a large enough sample size there exist a sufficient statistic of constant dimension, then the family is an exponential family if the support does not depend on <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math>.</div>
@@ -46806,7 +47634,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1532'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1561'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;Assume <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &exist; </mi>
@@ -47144,23 +47972,23 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
   </mrow>
  </mrow></math> is a member of the exponential family.</div>
 
-<ul class="itemize" id='magicparlabel-1533'><li class="itemize_item">Before that, we knew that parametric models which are members of the exponential family have conjugate priors. The result above says that if there is a conjugate prior for a parametric model whose sample space does not depend on the unknown parameter, then the parametric model is member of the exponential family. Of course it does not apply to Uniform or Pareto parametric models whose sample space depends on the unknown parameter.</li>
+<ul class="itemize" id='magicparlabel-1562'><li class="itemize_item">Before that, we knew that parametric models which are members of the exponential family have conjugate priors. The result above says that if there is a conjugate prior for a parametric model whose sample space does not depend on the unknown parameter, then the parametric model is member of the exponential family. Of course it does not apply to Uniform or Pareto parametric models whose sample space depends on the unknown parameter.</li>
 </ul>
 </div>
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1539'><hr />
+<div class="standard" id='magicparlabel-1568'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1540'><div class="exercise_item"><span class="exercise_label">Exercise 49.</span>
+<div class="exercise" id='magicparlabel-1569'><div class="exercise_item"><span class="exercise_label">Exercise 49.</span>
 <a id="exer____9_1_2_1_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1542'>Suppose that you have a prior distribution for the probability <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1571'>Suppose that you have a prior distribution for the probability <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math> of success in a certain kind of gambling game which has mean <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>0.4</mn>
@@ -47176,7 +48004,7 @@ Elementary manipulation gives <math display="block" xmlns="http://www.w3.org/199
 
 
 
-<div class="solution_" id='magicparlabel-1548'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1577'><div class="solution__item"><span class="solution__label">Solution.</span>
 I will make Bayesian Statistical Inference. The parametric model is the Bernoulli distribution, because the experiment is a Bernoulli experiment. The limiting frequency of successes, aka <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &theta; </mi><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -47191,7 +48019,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
  </mrow></math>, I will assign a prior distribution. For my computational convenience, I will try to see if there exist a conjugate prior. If it exists, I will assign a conjugate prior for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math>. So...</div>
-<div class="standard" id='magicparlabel-1549'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1578'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -47241,8 +48069,8 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
   </mrow>
  </mrow></math>. </div>
 
-<ul class="itemize" id='magicparlabel-1550'><li class="itemize_item">I will try to find a conjugate prior in order to do it
-<div class="standard" id='magicparlabel-1551'>The likelihood is such that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-1579'><li class="itemize_item">I will try to find a conjugate prior in order to do it
+<div class="standard" id='magicparlabel-1580'>The likelihood is such that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -47443,7 +48271,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
   </mrow>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-1552'>The corresponding conjugate prior has pdf such as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1581'>The corresponding conjugate prior has pdf such as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -47656,7 +48484,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
   </mrow>
  </mrow></math></div>
 
-<div class="standard" id='magicparlabel-1553'>Since we recognize that the prior distribution is Beta, we perform a re-parametrization, as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1582'>Since we recognize that the prior distribution is Beta, we perform a re-parametrization, as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -47703,7 +48531,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
  </mrow></math>. </div>
 </li><li class="itemize_item">According to my prior info:
 
-<ul class="itemize" id='magicparlabel-1555'><li class="itemize_item">my prior info worth <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-1584'><li class="itemize_item">my prior info worth <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>12</mn>
  </mrow></math> trials, so the effective number of observations that the prior distribution contributes is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -47739,7 +48567,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
   </mrow>
  </mrow></math>. So 
 
-<ul class="itemize" id='magicparlabel-1557'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-1586'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -47910,17 +48738,17 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1565'><hr />
+<div class="standard" id='magicparlabel-1594'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1566'><div class="exercise_item"><span class="exercise_label">Exercise 50.</span>
+<div class="exercise" id='magicparlabel-1595'><div class="exercise_item"><span class="exercise_label">Exercise 50.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1568'>Find a (two-dimensional) sufficient statistic for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1597'>Find a (two-dimensional) sufficient statistic for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
   <mrow><mi> &alpha; </mi><mo>,</mo><mi> &beta; </mi>
@@ -48018,7 +48846,7 @@ I will make Bayesian Statistical Inference. The parametric model is the Bernoull
 
 
 
-<div class="solution_" id='magicparlabel-1574'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1603'><div class="solution__item"><span class="solution__label">Solution.</span>
 Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -48190,17 +49018,17 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1580'><hr />
+<div class="standard" id='magicparlabel-1609'><hr />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1581'><div class="exercise_item"><span class="exercise_label">Exercise 51.</span>
+<div class="exercise" id='magicparlabel-1610'><div class="exercise_item"><span class="exercise_label">Exercise 51.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1583'>Suppose that your prior for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1612'>Suppose that your prior for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math> with PDF <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -48254,8 +49082,8 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>?</div>
 
-<dl class='description' id='magicparlabel-1584'><dt class="description_label">Hint&nbsp;&nbsp;&nbsp;</dt>
-<dd class="description_item"> <div class='Boxed' style='width: 80%; '><div class="plain_layout" id='magicparlabel-1588'>We should use the following identity, discussed in the Lecture notes, :<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<dl class='description' id='magicparlabel-1613'><dt class="description_label">Hint&nbsp;&nbsp;&nbsp;</dt>
+<dd class="description_item"> <div class='Boxed' style='width: 80%; '><div class="plain_layout" id='magicparlabel-1617'>We should use the following identity, discussed in the Lecture notes, :<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -48634,7 +49462,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1594'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1623'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;The prior is of the form <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -48722,7 +49550,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.</div>
 
-<ul class="itemize" id='magicparlabel-1595'><li class="itemize_item">The posterior pdf will be of the form <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-1624'><li class="itemize_item">The posterior pdf will be of the form <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -49135,7 +49963,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
    </mtd>
   </mtr>
  </mtable></math>
-<div class="standard" id='magicparlabel-1597'>For the <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1626'>For the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>2</mn>
  </mrow></math>nd component, it is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -49477,7 +50305,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mstyle>
  </mrow></math>.</div>
 
-<div class="standard" id='magicparlabel-1598'>So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1627'>So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -51689,23 +52517,23 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1623'><br />
+<div class="standard" id='magicparlabel-1652'><br />
 
 </div>
 
-<div class="standard" id='magicparlabel-1624'><hr />
+<div class="standard" id='magicparlabel-1653'><hr />
 
 </div>
 
-<div class="standard" style='text-align: center;' id='magicparlabel-1625'>The Exercise below has been set as Homework</div>
+<div class="standard" style='text-align: center;' id='magicparlabel-1654'>The Exercise below has been set as Homework 2</div>
 
-<div class="exercise" id='magicparlabel-1630'><div class="exercise_item"><span class="exercise_label">Exercise 52.</span>
+<div class="exercise" id='magicparlabel-1655'><div class="exercise_item"><span class="exercise_label">Exercise 52.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1632'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1657'>Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -51770,7 +52598,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mtable>
  </mrow></math></div>
 
-<dl class='description' id='magicparlabel-1633'><dt class="description_label">Hint-1</dt>
+<dl class='description' id='magicparlabel-1658'><dt class="description_label">Hint-1</dt>
 <dd class="description_item"> Poisson distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -52000,7 +52828,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</dd>
 </dl>
 
-<ol class="enumerate" id='magicparlabel-1640'><li class="enumerate_item">Compute the likelihood in the aforesaid Bayesian model.</li>
+<ol class="enumerate" id='magicparlabel-1665'><li class="enumerate_item">Compute the likelihood in the aforesaid Bayesian model.</li>
 <li class="enumerate_item">Show that the sampling distribution is a member of the exponential family.</li>
 <li class="enumerate_item">Specify the PDF of the conjugate prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -52087,28 +52915,28 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </ol>
 
 
-<div class="solution_" id='magicparlabel-1650'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1675'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;</div>
 </div>
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-1679'><hr />
+<div class="standard" id='magicparlabel-1704'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-1680'><br />
+<div class="standard" id='magicparlabel-1705'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1681'><div class="exercise_item"><span class="exercise_label">Exercise 53.</span>
+<div class="exercise" id='magicparlabel-1706'><div class="exercise_item"><span class="exercise_label">Exercise 53.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1683'>Consider the Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1708'>Consider the Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -52222,7 +53050,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<dl class='description' id='magicparlabel-1684'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-1709'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -52467,22 +53295,22 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></dd>
 </dl>
 
-<ol class="enumerate" id='magicparlabel-1686'><li class="enumerate_item">Derive the conjugate prior distribution for <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1711'><li class="enumerate_item">Derive the conjugate prior distribution for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math>, and recognize that it is a Dirichlet distribution family of distributions. </li>
 <li class="enumerate_item">Verify that the prior distribution you derived above is indeed conjugate by using the definition.</li>
 </ol>
 
 
-<div class="solution_" id='magicparlabel-1693'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1718'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-1694'><li class="enumerate_item">&nbsp;There are two alternative ways to derive the conjugate prior here.
+<ol class="enumerate" id='magicparlabel-1719'><li class="enumerate_item">&nbsp;There are two alternative ways to derive the conjugate prior here.
 
-<ol class="enumerate" id='magicparlabel-1695'><li class="enumerate_item">[Way (a)] I can factorize the likelihood in a form that the likelihood kernel is a function of a sufficient statistic whose dimension is independent on the sample size <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-1720'><li class="enumerate_item">[Way (a)] I can factorize the likelihood in a form that the likelihood kernel is a function of a sufficient statistic whose dimension is independent on the sample size <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>n</mi>
  </mrow></math>, and then derive the conjugate by substituting the sufficient statistic elements by prior hyper-parameters. 
-<div class="standard" id='magicparlabel-1696'>There are <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1721'>There are <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>k</mi><mo>-</mo><mn>1</mn>
   </mrow>
@@ -52574,7 +53402,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-1697'>The likelihood is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1722'>The likelihood is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -53030,7 +53858,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
    </mrow>
   </msub>
  </mrow></math> does not depend on the parameters. So we can show that the sampling distribution is an exponential family of distributions, identify its components, and then derive the conjugate prior.
-<div class="standard" id='magicparlabel-1699'>There are <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1724'>There are <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>k</mi><mo>-</mo><mn>1</mn>
   </mrow>
@@ -53122,7 +53950,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-1700'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1725'>It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -53514,7 +54342,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math></div>
 </li></ol>
-<div class="standard" id='magicparlabel-1701'>Then either by substituting the sufficient statistics in way (a), or by using the components of the exponential family of distributions in way (b) Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1726'>Then either by substituting the sufficient statistics in way (a), or by using the components of the exponential family of distributions in way (b) Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &tau; </mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -54121,22 +54949,22 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1709'><br />
+<div class="standard" id='magicparlabel-1734'><br />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-1710'><br />
+<div class="standard" id='magicparlabel-1735'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1711'><div class="exercise_item"><span class="exercise_label">Exercise 54.</span>
+<div class="exercise" id='magicparlabel-1736'><div class="exercise_item"><span class="exercise_label">Exercise 54.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1713'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1738'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -54239,10 +55067,10 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1719'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1744'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; </div>
-<div class="standard" id='magicparlabel-1720'>It is 
-<div style = "text-align: center;"><img src="lyxpreviewdfteOu1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-1745'>It is 
+<div style = "text-align: center;"><img src="lyxpreviewFjzrfz1.png" alt="Mathematical Equation" />
 </div>
  so <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -54273,22 +55101,19 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1727'><br />
+<div class="standard" id='magicparlabel-1752'><br />
 
 </div>
 
+<div class="standard" style='text-align: center;' id='magicparlabel-1753'>The Exercise below has been set as Homework 2</div>
 
-<div class="standard" id='magicparlabel-1728'><br />
-
-</div>
-
-<div class="exercise" id='magicparlabel-1729'><div class="exercise_item"><span class="exercise_label">Exercise 55.</span>
+<div class="exercise" id='magicparlabel-1754'><div class="exercise_item"><span class="exercise_label">Exercise 55.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_2" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1731'>Assume observation <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1756'>Assume observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> sampled from a Maxwell distribution with density<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -54344,7 +55169,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1737'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1762'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; </div>
 </div>
 
@@ -54354,22 +55179,22 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1748'><br />
+<div class="standard" id='magicparlabel-1773'><br />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-1749'><br />
+<div class="standard" id='magicparlabel-1774'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1750'><div class="exercise_item"><span class="exercise_label">Exercise 56.</span>
+<div class="exercise" id='magicparlabel-1775'><div class="exercise_item"><span class="exercise_label">Exercise 56.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_3" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1752'>Consider the trinomial distribution<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1777'>Consider the trinomial distribution<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -54456,7 +55281,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
  </mrow></math>.</div>
 
-<dl class='description' id='magicparlabel-1753'><dt class="description_label">HINT:</dt>
+<dl class='description' id='magicparlabel-1778'><dt class="description_label">HINT:</dt>
 <dd class="description_item"> It is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -54479,9 +55304,9 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1759'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1784'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; </div>
-<div class="standard" id='magicparlabel-1760'>It is<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1785'>It is<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -54869,22 +55694,22 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1767'><br />
+<div class="standard" id='magicparlabel-1792'><br />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-1768'><br />
+<div class="standard" id='magicparlabel-1793'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1769'><div class="exercise_item"><span class="exercise_label">Exercise 57.</span>
+<div class="exercise" id='magicparlabel-1794'><div class="exercise_item"><span class="exercise_label">Exercise 57.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_4" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1771'>Suppose that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1796'>Suppose that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> has a Pareto distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -54946,9 +55771,9 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1777'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1802'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; </div>
-<div class="standard" id='magicparlabel-1778'>It is <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1803'>It is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &part; </mi><mi>p</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -55015,22 +55840,22 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1785'><br />
+<div class="standard" id='magicparlabel-1810'><br />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-1786'><br />
+<div class="standard" id='magicparlabel-1811'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1787'><div class="exercise_item"><span class="exercise_label">Exercise 58.</span>
+<div class="exercise" id='magicparlabel-1812'><div class="exercise_item"><span class="exercise_label">Exercise 58.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_5" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1789'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1814'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -55109,7 +55934,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<dl class='description' id='magicparlabel-1790'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-1815'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> Gamma distr.: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -55209,7 +56034,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>1</mn>
  </mrow></math>'. Ie,
 
-<ul class="itemize" id='magicparlabel-1792'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-1817'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msup>
@@ -55319,7 +56144,7 @@ Because <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
 
 
-<div class="solution_" id='magicparlabel-1832'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1857'><div class="solution__item"><span class="solution__label">Solution.</span>
 It is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -55550,7 +56375,7 @@ It is <math xmlns="http://www.w3.org/1998/Math/MathML">
    </mstyle><mspace width="10px" />
   </mrow>
  </mrow></math>So 
-<div style = "text-align: center;"><img src="lyxpreviewrvjusm1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewjKPsGu1.png" alt="Mathematical Equation" />
 </div>
 So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -56350,11 +57175,11 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1848'><br />
+<div class="standard" id='magicparlabel-1873'><br />
 
 </div>
 
-<div class="exercise" id='magicparlabel-1849'><div class="exercise_item"><span class="exercise_label">Exercise 59.</span>
+<div class="exercise" id='magicparlabel-1874'><div class="exercise_item"><span class="exercise_label">Exercise 59.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_6_1" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
@@ -56362,7 +57187,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1851'>Consider the the model of Normal linear regression where the observables are pairs <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1876'>Consider the the model of Normal linear regression where the observables are pairs <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
   <mrow>
@@ -56528,7 +57353,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 
  </mrow></math>.</div>
 
-<dl class='description' id='magicparlabel-1852'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-1877'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> Recall your AMV: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -56729,7 +57554,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1859'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1884'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;Let's set <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &xi; </mi><mo>=</mo>
@@ -58233,19 +59058,19 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1866'><br />
+<div class="standard" id='magicparlabel-1891'><br />
 
 </div>
 
 
 
-<div class="exercise" id='magicparlabel-1872'><div class="exercise_item"><span class="exercise_label">Exercise 60.</span>
+<div class="exercise" id='magicparlabel-1897'><div class="exercise_item"><span class="exercise_label">Exercise 60.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_7" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1874'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1899'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -58304,7 +59129,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math>.</div>
 
-<dl class='description' id='magicparlabel-1875'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-1900'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> Poisson&nbsp;distribution: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -58363,10 +59188,10 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1881'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1906'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;</div>
-<div class="standard" id='magicparlabel-1882'>It is 
-<div style = "text-align: center;"><img src="lyxpreviewElRsGY1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-1907'>It is 
+<div style = "text-align: center;"><img src="lyxpreviewWZpnzC1.png" alt="Mathematical Equation" />
 </div>
  so <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -58405,19 +59230,19 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1889'><br />
+<div class="standard" id='magicparlabel-1914'><br />
 
 </div>
 
 
 
-<div class="exercise" id='magicparlabel-1895'><div class="exercise_item"><span class="exercise_label">Exercise 61.</span>
+<div class="exercise" id='magicparlabel-1920'><div class="exercise_item"><span class="exercise_label">Exercise 61.</span>
 <a id="exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8" />
 (<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
  </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &starf; </mo>
- </mrow></math>)<div class="standard" id='magicparlabel-1897'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>)<div class="standard" id='magicparlabel-1922'>Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -58473,7 +59298,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> is the Poisson distribution with expected value <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math>. Specify a Maximum entropy prior under the constrain 
-<span style = "text-align: center;"><img src="lyxpreviewZPBmyP1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewqpkAvX1.png" alt="Mathematical Equation" />
 </span>
  and reference measure such as <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -58498,7 +59323,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.  In particular, you also have to state the name of the derived Maximum entropy prior distribution and report the values of its parameters.</div>
 
-<dl class='description' id='magicparlabel-1904'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-1929'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> Poisson&nbsp;distribution: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -58622,10 +59447,10 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-1911'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-1936'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;</div>
-<div class="standard" id='magicparlabel-1912'>It is 
-<span style = "text-align: center;"><img src="lyxpreviewNqGFPC1.png" alt="Mathematical Equation" />
+<div class="standard" id='magicparlabel-1937'>It is 
+<span style = "text-align: center;"><img src="lyxpreviewWmYVfo1.png" alt="Mathematical Equation" />
 </span>
 . The maximum entropy prior is such that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -58689,7 +59514,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </div>
 
-<div class="standard" id='magicparlabel-1913'>The expected value of the Gamma distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-1938'>The expected value of the Gamma distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='normal'>
@@ -58817,7 +59642,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
    </mfrac>
   </mrow>
  </mrow></math>Because 
-<span style = "text-align: center;"><img src="lyxpreviewWvqZWE1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewlGpadU1.png" alt="Mathematical Equation" />
 </span>
  , it is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -58863,7 +59688,7 @@ So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-1929'><br />
+<div class="standard" id='magicparlabel-1954'><br />
 
 </div>
 
