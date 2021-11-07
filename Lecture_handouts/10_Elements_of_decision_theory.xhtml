@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.6" />
+<meta name="GENERATOR" content="LyX 2.3.5-1" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -197,7 +197,7 @@ font-size: medium;
 <body dir="auto">
 
 
-<div class="standard" id='magicparlabel-1'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-10'>Bayesian Statistics III/IV (MATH3341/4031)&nbsp;&nbsp;Michaelmas term, 2019<div style='height:3ex'></div></div>
+<div class="standard" id='magicparlabel-1'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-10'>Bayesian Statistics III/IV (MATH3341/4031)&nbsp;&nbsp;Michaelmas term, 2021<div style='height:3ex'></div></div>
 
 <div class="plain_layout" style='text-align: center;' id='magicparlabel-11'> Handout 10: Elements of decision theory<div style='height:3ex'></div></div>
 
@@ -214,31 +214,29 @@ font-size: medium;
 </div>
 <h4 class="subsubsection_" id='magicparlabel-37'>References:</h4>
 
-<ul class="itemize" id='magicparlabel-38'><li class="itemize_item">Berger, J. O. (2013; Sections 1.3, 4.4, and 4.8.3). Statistical decision theory and Bayesian analysis. Springer Science &amp; Business Media.</li>
-<li class="itemize_item">Robert, C. (2007; Chapter 2, pp. 52-102). The Bayesian choice: from decision-theoretic foundations to computational implementation. Springer Science &amp; Business Media. </li>
+<ul class="itemize" id='magicparlabel-38'><li class="itemize_item">Berger, J. O. (2013; Sections 1.3, 1.5, 1.6, 2, 4.4, and 4.8). Statistical decision theory and Bayesian analysis. Springer Science &amp; Business Media.</li>
+<li class="itemize_item">Robert, C. (2007; Chapter 2). The Bayesian choice: from decision-theoretic foundations to computational implementation. Springer Science &amp; Business Media. </li>
 <li class="itemize_item">Raiffa, H., &amp; Schlaifer, R. (1961; Chapter 1). Applied statistical decision theory.</li>
-<li class="itemize_item">Ferguson, T. S. (1967; Chapter 1 &amp; 2). Mathematical statistics: A decision theoretic approach (Vol. 1). Academic press.</li>
+<li class="itemize_item">DeGroot, M. H. (2005; Chapter 8). Optimal statistical decisions (Vol. 82). John Wiley &amp; Sons.</li>
+<li class="itemize_item">Ferguson, T. S. (1967; Chapter 1 &amp; 2). Mathematical statistics: A decision theoretic approach. Academic press.</li>
 </ul>
-<div class="plain_layout" id='magicparlabel-42'><hr />
-
-</div>
 </div></div>
 
-<div class="standard" id='magicparlabel-52'>&nbsp;</div>
+<div class="standard" id='magicparlabel-56'>&nbsp;</div>
 
 
-<div class="standard" id='magicparlabel-53'><br />
+<div class="standard" id='magicparlabel-57'><br />
 
 </div>
-<h2 class="section" id='magicparlabel-54'><span class="section_label">1</span> Why do we need decision theory in Bayesian Stats?</h2>
-<div class="standard" id='magicparlabel-55'> Another important purpose of statistical analysis, apart from qualifying uncertainty via posterior probability distributions, is to make inference about unknown quantities (e.g., parameters, future outcomes, etc...). In the Bayesian framework, the derivation of inferential tools (such as, estimators, hypothesis tests, etc...) is addressed as a decision theory problem, aka we get decisions about the unknown quantities.</div>
+<h2 class="section" id='magicparlabel-58'><span class="section_label">1</span> Why do we need decision theory in Bayesian Stats?</h2>
+<div class="standard" id='magicparlabel-59'> Another important purpose of statistical analysis, apart from qualifying uncertainty via posterior probability distributions, is to make inference about unknown quantities (e.g., parameters, future outcomes, etc...). In the Bayesian framework, the derivation of inferential tools (such as, estimators, hypothesis tests, etc...) is addressed as a decision theory problem, aka we get decisions about the unknown quantities.</div>
 
-<div class="standard" id='magicparlabel-60'>A decision is certainly a function of our knowledge quantified by probabilities. For example, a doctor deciding on the best treatment for a patient will certainly use their knowledge of what illness the patient has. Different illnesses may have different probabilities based on the symptoms, test results, and so on, and it would be foolish to concentrate on the most improbable illness and treat for that. Such questions constitute a decision theory problems.</div>
+<div class="standard" id='magicparlabel-64'>A decision is certainly a function of our knowledge quantified by probabilities. For example, a doctor deciding on the best treatment for a patient will certainly use their knowledge of what illness the patient has. Different illnesses may have different probabilities based on the symptoms, test results, and so on, and it would be foolish to concentrate on the most improbable illness and treat for that. Such questions constitute a decision theory problems.</div>
 
-<div class="standard" id='magicparlabel-61'>In statistics, the overall purpose of most inferential studies is to provide the statistician (or a client) with a decision (E.g, what estimator to use? Shall I reject a hypothesis?), it seems reasonable to ask for an evaluation criterion of decision procedures that assesses the consequences of each decision and depends on the parameters of the model, i.e., the true state of the world (or of Nature). As we will see such a criterion is the so called loss function (or more rigorously the utility function) introduced in what follows.</div>
-<h2 class="section" id='magicparlabel-66'><span class="section_label">2</span> Set-up of the decision problem (intro)</h2>
+<div class="standard" id='magicparlabel-65'>In statistics, the overall purpose of most inferential studies is to provide the statistician (or a client) with a decision (E.g, what estimator to use? Shall I reject a hypothesis?), it seems reasonable to ask for an evaluation criterion of decision procedures that assesses the consequences of each decision and depends on the parameters of the model, i.e., the true state of the world (or of Nature). As we will see such a criterion is the so called loss function (or more rigorously the utility function) introduced in what follows.</div>
+<h2 class="section" id='magicparlabel-70'><span class="section_label">2</span> Set-up of the decision problem (intro)</h2>
 
-<div class="definition" id='magicparlabel-67'><div class="definition_item"><span class="definition_label">Definition 1.</span>
+<div class="definition" id='magicparlabel-71'><div class="definition_item"><span class="definition_label">Definition 1.</span>
 The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -250,14 +248,14 @@ The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
 
  </mrow></math> involves the following basic elements</div>
 
-<ul class="itemize" id='magicparlabel-68'><li class="itemize_item">Decision space: <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-72'><li class="itemize_item">Decision space: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='script'><mi>D</mi>
    </mstyle><mo>=</mo>{<mi>d</mi>}
   </mrow>
  </mrow></math>
-<div class="standard" id='magicparlabel-69'>The decision maker wishes to select a single decision <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-73'>The decision maker wishes to select a single decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>d</mi><mo> &isin; </mo>
    <mstyle mathvariant='script'><mi>D</mi>
@@ -273,7 +271,7 @@ The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow><mo> &Theta; </mo><mo>=</mo>{<mi> &theta; </mi>}
   </mrow>
  </mrow></math>
-<div class="standard" id='magicparlabel-71'>The decision process is assumed to be affected by the unknown (uncertain) quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-75'>The decision process is assumed to be affected by the unknown (uncertain) quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo>
   </mrow>
@@ -297,7 +295,7 @@ The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
    </mstyle><mo> &rarr; </mo>
    <msub>
     <mrow>
-     <mstyle mathvariant='double-struck'><mi>R</mi>
+     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mo>+</mo>
@@ -305,7 +303,7 @@ The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub>
   </mrow>
  </mrow></math>
-<div class="standard" id='magicparlabel-73'>The decision maker assigns a loss function (or error) <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-77'>The decision maker assigns a loss function (or error) <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &ell; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -322,11 +320,11 @@ The decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
 </li></ul>
 </div>
 
-<div class="standard" id='magicparlabel-79'><br />
+<div class="standard" id='magicparlabel-83'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-80'><div class="definition_item"><span class="definition_label">Definition 2.</span>
+<div class="definition" id='magicparlabel-84'><div class="definition_item"><span class="definition_label">Definition 2.</span>
 Statistical decision problem is a decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -372,11 +370,11 @@ Statistical decision problem is a decision problem <math xmlns="http://www.w3.or
  </mrow></math> chosen by nature. </div>
 </div>
 
-<div class="standard" id='magicparlabel-81'><br />
+<div class="standard" id='magicparlabel-85'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-82'><div class="note_item"><span class="note_label">Note 3.</span>
+<div class="note" id='magicparlabel-86'><div class="note_item"><span class="note_label">Note 3.</span>
 The main aim in a statistical decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -410,11 +408,11 @@ The main aim in a statistical decision problem <math xmlns="http://www.w3.org/19
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-83'><br />
+<div class="standard" id='magicparlabel-87'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-84'><div class="example_item"><span class="example_label">Example 4.</span>
+<div class="example" id='magicparlabel-88'><div class="example_item"><span class="example_label">Example 4.</span>
 Statistical inference consists of taking a decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>d</mi><mo>=</mo><mi>d</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -456,7 +454,7 @@ Statistical inference consists of taking a decision <math xmlns="http://www.w3.o
  </mrow></math> will be a procedure performing: Point estimation (what type of estimator to use?), Credible regions (how to find the bounds?), Hypothesis tests (how to reject the hypothesis?), model selection (which model is the `best'?).</div>
 </div>
 
-<div class="definition" id='magicparlabel-85'><div class="definition_item"><span class="definition_label">Definition 5.</span>
+<div class="definition" id='magicparlabel-89'><div class="definition_item"><span class="definition_label">Definition 5.</span>
 Decision rule is a function which maps the observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo> &isin; </mo>
@@ -516,14 +514,14 @@ Decision rule is a function which maps the observables <math xmlns="http://www.w
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-86'><br />
+<div class="standard" id='magicparlabel-90'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-87'><div class="note_item"><span class="note_label">Note 6.</span>
+<div class="note" id='magicparlabel-91'><div class="note_item"><span class="note_label">Note 6.</span>
 Briefly and more rigorously speaking about statistical decision problems, </div>
 
-<ul class="itemize" id='magicparlabel-88'><li class="itemize_item">The decision maker assigns a utility function <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-92'><li class="itemize_item">The decision maker assigns a utility function <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>u</mi><mo>:</mo>
    <mstyle mathvariant='script'><mi>E</mi>
@@ -532,7 +530,7 @@ Briefly and more rigorously speaking about statistical decision problems, </div>
    </mstyle><mo> &times; </mo>
    <mstyle mathvariant='script'><mi>D</mi>
    </mstyle><mo> &times; </mo><mo> &Theta; </mo><mo> &rarr; </mo>
-   <mstyle mathvariant='double-struck'><mi>R</mi>
+   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
    </mstyle>
   </mrow>
  </mrow></math> with <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -691,9 +689,9 @@ Briefly and more rigorously speaking about statistical decision problems, </div>
 </ul>
 </div>
 
-<h2 class="section" id='magicparlabel-205'><span class="section_label">3</span> Finding Bayesian optimal decision rules (intro)</h2>
+<h2 class="section" id='magicparlabel-209'><span class="section_label">3</span> Finding Bayesian optimal decision rules (intro)</h2>
 
-<div class="question" id='magicparlabel-206'><div class="question_item"><span class="question_label">Question 7.</span>
+<div class="question" id='magicparlabel-210'><div class="question_item"><span class="question_label">Question 7.</span>
 Given a statistical decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -715,11 +713,11 @@ Given a statistical decision problem <math xmlns="http://www.w3.org/1998/Math/Ma
  </mrow></math>?</div>
 </div>
 
-<div class="standard" id='magicparlabel-207'><br />
+<div class="standard" id='magicparlabel-211'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-208'><div class="note_item"><span class="note_label">Note 8.</span>
+<div class="note" id='magicparlabel-212'><div class="note_item"><span class="note_label">Note 8.</span>
 To get an optimal decision there is a need to derive an effective comparison criterion that orders the possible decisions <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>d</mi><mo> &isin; </mo>
@@ -747,11 +745,11 @@ To get an optimal decision there is a need to derive an effective comparison cri
  </mrow></math>).</div>
 </div>
 
-<div class="standard" id='magicparlabel-217'><br />
+<div class="standard" id='magicparlabel-221'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-218'><div class="definition_item"><span class="definition_label">Definition 9.</span>
+<div class="definition" id='magicparlabel-222'><div class="definition_item"><span class="definition_label">Definition 9.</span>
 <a id="def__Frequentist__Risk_function" />
 (Frequentist) Risk function <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -851,13 +849,13 @@ To get an optimal decision there is a need to derive an effective comparison cri
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-223'><br />
+<div class="standard" id='magicparlabel-227'><br />
 
 </div>
 
 
 
-<div class="note" id='magicparlabel-238'><div class="note_item"><span class="note_label">Note 10.</span>
+<div class="note" id='magicparlabel-242'><div class="note_item"><span class="note_label">Note 10.</span>
 <a id="note_In_frequentist_parametric" />
  For the derivation of inferential tools for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
@@ -893,7 +891,7 @@ To get an optimal decision there is a need to derive an effective comparison cri
   </mrow>
  </mrow></math>. The objections are the following:</div>
 
-<ul class="itemize" id='magicparlabel-239'><li class="itemize_item">Risk function <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-243'><li class="itemize_item">Risk function <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>R</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -985,11 +983,11 @@ To get an optimal decision there is a need to derive an effective comparison cri
 
 
 
-<div class="standard" id='magicparlabel-265'><br />
+<div class="standard" id='magicparlabel-269'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-266'><div class="note_item"><span class="note_label">Note 11.</span>
+<div class="note" id='magicparlabel-270'><div class="note_item"><span class="note_label">Note 11.</span>
 To address the decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -1084,11 +1082,11 @@ To address the decision problem <math xmlns="http://www.w3.org/1998/Math/MathML"
  </mrow></math> is the prior predictive distr.</div>
 </div>
 
-<div class="standard" id='magicparlabel-267'><br />
+<div class="standard" id='magicparlabel-271'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-268'><div class="note_item"><span class="note_label">Note 12.</span>
+<div class="note" id='magicparlabel-272'><div class="note_item"><span class="note_label">Note 12.</span>
 To derive a quantity able to order decisions in the Bayesian paradigm, it is reasonable to integrate out the loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &ell; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -1113,11 +1111,11 @@ To derive a quantity able to order decisions in the Bayesian paradigm, it is rea
  </mrow></math> is known/observed. </div>
 </div>
 
-<div class="standard" id='magicparlabel-269'><br />
+<div class="standard" id='magicparlabel-273'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-270'><div class="definition_item"><span class="definition_label">Definition 13.</span>
+<div class="definition" id='magicparlabel-274'><div class="definition_item"><span class="definition_label">Definition 13.</span>
 The posterior expected loss of a decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>d</mi><mo> &isin; </mo>
@@ -1188,11 +1186,11 @@ The posterior expected loss of a decision <math xmlns="http://www.w3.org/1998/Ma
  </mtable></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-271'><br />
+<div class="standard" id='magicparlabel-275'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-272'><div class="note_item"><span class="note_label">Note 14.</span>
+<div class="note" id='magicparlabel-276'><div class="note_item"><span class="note_label">Note 14.</span>
 Posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &rhov; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -1231,21 +1229,21 @@ Posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> is known (as it is observed). </div>
 </div>
 
-<div class="standard" id='magicparlabel-273'><br />
+<div class="standard" id='magicparlabel-277'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-274'><div class="note_item"><span class="note_label">Note 15.</span>
+<div class="note" id='magicparlabel-278'><div class="note_item"><span class="note_label">Note 15.</span>
 It is reasonable for a Bayesian Statistician to consider as optimal decision the one that minimizes <a href="#eq_dstghsdfgadgasdfg">(2)</a> for a given observable <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
  </mrow></math>. </div>
 </div>
 
-<div class="standard" id='magicparlabel-275'><br />
+<div class="standard" id='magicparlabel-279'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-276'><div class="definition_item"><span class="definition_label">Definition 16.</span>
+<div class="definition" id='magicparlabel-280'><div class="definition_item"><span class="definition_label">Definition 16.</span>
 The Bayes risk of a decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>d</mi><mo> &isin; </mo>
@@ -1352,11 +1350,11 @@ The Bayes risk of a decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-277'><br />
+<div class="standard" id='magicparlabel-281'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-278'><div class="remark_item"><span class="remark_label">Remark 17.</span>
+<div class="remark" id='magicparlabel-282'><div class="remark_item"><span class="remark_label">Remark 17.</span>
 Bayes risk <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -1391,11 +1389,11 @@ Bayes risk <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-279'><br />
+<div class="standard" id='magicparlabel-283'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-280'><div class="note_item"><span class="note_label">Note 18.</span>
+<div class="note" id='magicparlabel-284'><div class="note_item"><span class="note_label">Note 18.</span>
 In the Bayesian framework an optimal decision for the decision problem <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -1407,7 +1405,7 @@ In the Bayesian framework an optimal decision for the decision problem <math xml
 
  </mrow></math> can be found in two ways:</div>
 
-<ol class="enumerate" id='magicparlabel-281'><li class="enumerate_item">the extensive form of analysis: it minimizes the posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-285'><li class="enumerate_item">the extensive form of analysis: it minimizes the posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &rhov; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -1506,15 +1504,15 @@ In the Bayesian framework an optimal decision for the decision problem <math xml
 </ol>
 </div>
 
-<div class="standard" id='magicparlabel-283'><br />
+<div class="standard" id='magicparlabel-287'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-284'><div class="note_item"><span class="note_label">Note 19.</span>
+<div class="note" id='magicparlabel-288'><div class="note_item"><span class="note_label">Note 19.</span>
 Theorem <a href="#An_estimator_minimizing">20</a> provides a constructive tool and a reasonable justification that the two ways are equivalent. </div>
 </div>
 
-<div class="theorem" id='magicparlabel-289'><div class="theorem_item"><span class="theorem_label">Theorem 20.</span>
+<div class="theorem" id='magicparlabel-293'><div class="theorem_item"><span class="theorem_label">Theorem 20.</span>
 <a id="An_estimator_minimizing" />
 A decision minimizing the integrated risk <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1694,7 +1692,7 @@ A decision minimizing the integrated risk <math xmlns="http://www.w3.org/1998/Ma
  </mrow></math></i></div>
 </div>
 
-<div class="proof" id='magicparlabel-294'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-298'><div class="proof_item"><span class="proof_label">Proof.</span>
 For this proof assume that the loss function is bounded ( <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &ell; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2042,11 +2040,11 @@ For this proof assume that the loss function is bounded ( <math xmlns="http://ww
  </mrow></math> <a href="#eq_thmequivbayserisk2_1">(8)</a>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-299'><br />
+<div class="standard" id='magicparlabel-303'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-300'><div class="definition_item"><span class="definition_label">Definition 21.</span>
+<div class="definition" id='magicparlabel-304'><div class="definition_item"><span class="definition_label">Definition 21.</span>
 <a id="_Bayes_estimator__A" />
 A Bayes rule associated with a prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -2130,11 +2128,11 @@ A Bayes rule associated with a prior distribution <math xmlns="http://www.w3.org
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-301'><br />
+<div class="standard" id='magicparlabel-305'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-302'><div class="definition_item"><span class="definition_label">Definition 22.</span>
+<div class="definition" id='magicparlabel-306'><div class="definition_item"><span class="definition_label">Definition 22.</span>
 The Minimum Bayes risk is defined as the value <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2164,11 +2162,11 @@ The Minimum Bayes risk is defined as the value <math xmlns="http://www.w3.org/19
  </mrow></math> is a Bayes rule.</div>
 </div>
 
-<div class="standard" id='magicparlabel-303'><br />
+<div class="standard" id='magicparlabel-307'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-304'><div class="remark_item"><span class="remark_label">Remark 23.</span>
+<div class="remark" id='magicparlabel-308'><div class="remark_item"><span class="remark_label">Remark 23.</span>
 Operationally, to find the Bayes rule <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -2194,11 +2192,11 @@ Operationally, to find the Bayes rule <math xmlns="http://www.w3.org/1998/Math/M
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-305'><br />
+<div class="standard" id='magicparlabel-309'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-306'><div class="remark_item"><span class="remark_label">Remark 24.</span>
+<div class="remark" id='magicparlabel-310'><div class="remark_item"><span class="remark_label">Remark 24.</span>
 From a strictly Bayesian point of view, only the posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &rhov; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2211,11 +2209,11 @@ From a strictly Bayesian point of view, only the posterior expected loss <math x
  </mrow></math> is important, because the Bayesian paradigm is based on the conditional approach (conditional on the observations).</div>
 </div>
 
-<div class="standard" id='magicparlabel-307'><br />
+<div class="standard" id='magicparlabel-311'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-308'><div class="remark_item"><span class="remark_label">Remark 25.</span>
+<div class="remark" id='magicparlabel-312'><div class="remark_item"><span class="remark_label">Remark 25.</span>
 The `reasonable' way to view the situation is that minimizing the posterior expected loss <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &rhov; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2249,11 +2247,11 @@ The `reasonable' way to view the situation is that minimizing the posterior expe
  </mrow></math> seems bizarre from this perspective.</div>
 </div>
 
-<div class="standard" id='magicparlabel-309'><br />
+<div class="standard" id='magicparlabel-313'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-310'><div class="remark_item"><span class="remark_label">Remark 26.</span>
+<div class="remark" id='magicparlabel-314'><div class="remark_item"><span class="remark_label">Remark 26.</span>
 Unlike the Frequentist one, the Bayesian approach is sufficiently reductive to reach an effective decision <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
@@ -2305,11 +2303,11 @@ Unlike the Frequentist one, the Bayesian approach is sufficiently reductive to r
  </mrow></math>) which in fact allows a direct comparison of estimators. </div>
 </div>
 
-<div class="standard" id='magicparlabel-311'><br />
+<div class="standard" id='magicparlabel-315'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-312'><div class="remark_item"><span class="remark_label">Remark 27.</span>
+<div class="remark" id='magicparlabel-316'><div class="remark_item"><span class="remark_label">Remark 27.</span>
 The Bayesian approach works conditional upon the actual observation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
  </mrow></math>, as well as it incorporates the probabilistic properties of the sampling distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2330,11 +2328,11 @@ The Bayesian approach works conditional upon the actual observation <math xmlns=
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-313'><br />
+<div class="standard" id='magicparlabel-317'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-314'><div class="definition_item"><span class="definition_label">Definition 28.</span>
+<div class="definition" id='magicparlabel-318'><div class="definition_item"><span class="definition_label">Definition 28.</span>
 <a id="_Generalized_Bayes_estimator_" />
  Generalized Bayes rule is called any <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -2390,11 +2388,11 @@ The Bayesian approach works conditional upon the actual observation <math xmlns=
  </mrow></math> is improper.</div>
 </div>
 
-<div class="standard" id='magicparlabel-315'><br />
+<div class="standard" id='magicparlabel-319'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-316'><div class="remark_item"><span class="remark_label">Remark 29.</span>
+<div class="remark" id='magicparlabel-320'><div class="remark_item"><span class="remark_label">Remark 29.</span>
 <a id="Definition___and" />
 Definition <a href="#_Bayes_estimator__A">21</a>, and Theorem <a href="#An_estimator_minimizing">20</a> are valid for proper and improper priors, provided that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -2405,10 +2403,10 @@ Definition <a href="#_Bayes_estimator__A">21</a>, and Theorem <a href="#An_estim
   </mrow>
  </mrow></math>, otherwise other treatments exist.</div>
 </div>
-<h2 class="section" id='magicparlabel-329'><span class="section_label">4</span> Admissibility </h2>
-<div class="standard" id='magicparlabel-330'>Contrary to the Bayesian approach, the frequentist approach is not reductive enough to lead to a single optimal rule/estimator, and for this reason frequentist use additional optimality concepts such as admissibility. Here, we study Bayes rules/estimators with respect to the frequentist optimality criterion of admissibility.</div>
+<h2 class="section" id='magicparlabel-333'><span class="section_label">4</span> Admissibility </h2>
+<div class="standard" id='magicparlabel-334'>Contrary to the Bayesian approach, the frequentist approach is not reductive enough to lead to a single optimal rule/estimator, and for this reason frequentist use additional optimality concepts such as admissibility. Here, we study Bayes rules/estimators with respect to the frequentist optimality criterion of admissibility.</div>
 
-<div class="definition" id='magicparlabel-331'><div class="definition_item"><span class="definition_label">Definition 30.</span>
+<div class="definition" id='magicparlabel-335'><div class="definition_item"><span class="definition_label">Definition 30.</span>
 A decision rule <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -2532,18 +2530,18 @@ A decision rule <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> is said to be admissible.</div>
 </div>
 
-<div class="remark" id='magicparlabel-332'><div class="remark_item"><span class="remark_label">Remark 31.</span>
+<div class="remark" id='magicparlabel-336'><div class="remark_item"><span class="remark_label">Remark 31.</span>
 Well, I wouldn't use an inadmissible estimator <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &delta; </mi>
  </mrow></math> because a decision rule with a lower risk could be found... </div>
 </div>
 
-<div class="standard" id='magicparlabel-333'><br />
+<div class="standard" id='magicparlabel-337'><br />
 
 </div>
-<h3 class="subsection_" id='magicparlabel-334'>Admissibility in Bayesian rules</h3>
+<h3 class="subsection_" id='magicparlabel-338'>Admissibility in Bayesian rules</h3>
 
-<div class="note" id='magicparlabel-335'><div class="note_item"><span class="note_label">Note 32.</span>
+<div class="note" id='magicparlabel-339'><div class="note_item"><span class="note_label">Note 32.</span>
 One may expect Bayes rule to be admissible because if a rule with better risk <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>R</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2587,13 +2585,13 @@ One may expect Bayes rule to be admissible because if a rule with better risk <m
  </mrow></math> is improper (non-informative).</div>
 </div>
 
-<div class="theorem" id='magicparlabel-336'><div class="theorem_item"><span class="theorem_label">Theorem 33.</span>
+<div class="theorem" id='magicparlabel-340'><div class="theorem_item"><span class="theorem_label">Theorem 33.</span>
 If the Bayes rule associated with a prior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &pi; </mi>
  </mrow></math> is unique, it is admissible.</div>
 </div>
 
-<div class="proof" id='magicparlabel-337'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-341'><div class="proof_item"><span class="proof_label">Proof.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
@@ -2819,11 +2817,11 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> must be admissible.</div>
 </div>
 
-<div class="standard" id='magicparlabel-342'><br />
+<div class="standard" id='magicparlabel-346'><br />
 
 </div>
 
-<div class="theorem" id='magicparlabel-343'><div class="theorem_item"><span class="theorem_label">Theorem 34.</span>
+<div class="theorem" id='magicparlabel-347'><div class="theorem_item"><span class="theorem_label">Theorem 34.</span>
 <a id="If_a_prior" />
 If a prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &pi; </mi>
@@ -2853,7 +2851,7 @@ If a prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> is admissible.</div>
 
 
-<div class="proof" id='magicparlabel-358'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-362'><div class="proof_item"><span class="proof_label">Proof.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
@@ -3042,7 +3040,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 
   </mrow>
  </mrow></math> is continues as well, and hence 
-<div style = "text-align: center;"><img src="lyxpreviewqSYvWs1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewnuKftZ1.png" alt="Mathematical Equation" />
 </div>
  which implies <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -3346,11 +3344,11 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-387'><br />
+<div class="standard" id='magicparlabel-391'><br />
 
 </div>
 
-<div class="theorem" id='magicparlabel-388'><div class="theorem_item"><span class="theorem_label">Theorem 35.</span>
+<div class="theorem" id='magicparlabel-392'><div class="theorem_item"><span class="theorem_label">Theorem 35.</span>
 <a id="thm_Assume_that_rfsgrasgfratgf" />
 Assume that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo> &Theta; </mo>
@@ -3389,7 +3387,7 @@ Assume that <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> is admissible.</div>
 </div>
 
-<div class="proof" id='magicparlabel-389'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-393'><div class="proof_item"><span class="proof_label">Proof.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
@@ -3819,10 +3817,10 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </msup>
  </mrow></math> must be admissible.</div>
 </div>
-<h3 class="subsection_" id='magicparlabel-394'>Admissibility in Generalised Bayesian rules </h3>
-<div class="standard" id='magicparlabel-395'>Generalized Bayes rules (Definition <a href="#_Generalized_Bayes_estimator_">28</a>) may be or may not be admissible. </div>
+<h3 class="subsection_" id='magicparlabel-398'>Admissibility in Generalised Bayesian rules </h3>
+<div class="standard" id='magicparlabel-399'>Generalized Bayes rules (Definition <a href="#_Generalized_Bayes_estimator_">28</a>) may be or may not be admissible. </div>
 
-<div class="remark" id='magicparlabel-396'><div class="remark_item"><span class="remark_label">Remark 36.</span>
+<div class="remark" id='magicparlabel-400'><div class="remark_item"><span class="remark_label">Remark 36.</span>
 When the loss is positive and <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -3897,11 +3895,11 @@ When the loss is positive and <math display="block" xmlns="http://www.w3.org/199
  </mrow></math> and it can be shown (similar to the Bayes rule) that generalized Bayes rule must be admissible under suitable conditions.</div>
 </div>
 
-<div class="standard" id='magicparlabel-397'><br />
+<div class="standard" id='magicparlabel-401'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-398'><div class="remark_item"><span class="remark_label">Remark 37.</span>
+<div class="remark" id='magicparlabel-402'><div class="remark_item"><span class="remark_label">Remark 37.</span>
 When <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -3957,11 +3955,11 @@ When <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, hence they are evil.... </div>
 </div>
 
-<div class="standard" id='magicparlabel-399'><br />
+<div class="standard" id='magicparlabel-403'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-400'><div class="example_item"><span class="example_label">Example 38.</span>
+<div class="example" id='magicparlabel-404'><div class="example_item"><span class="example_label">Example 38.</span>
 <a id="exa_Consider_the_Bayesianfargarfgraegarehg" />
 Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
@@ -4020,7 +4018,7 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
   </mrow>
  </mrow></math> is known.</div>
 
-<ol class="enumerate" id='magicparlabel-401'><li class="enumerate_item">Check if prior <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-405'><li class="enumerate_item">Check if prior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi>b</mi>
@@ -4060,13 +4058,13 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
  </mrow></math> for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>c</mi><mo> &isin; </mo>
-   <mstyle mathvariant='double-struck'><mi>R</mi>
+   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
    </mstyle>
   </mrow>
  </mrow></math>.</li>
 </ol>
 
-<dl class='description' id='magicparlabel-404'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-408'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> Gamma distr.: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -4265,10 +4263,10 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
  </mrow></math>.</dd>
 </dl>
 
-<div class="solution_" id='magicparlabel-406'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-410'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ol class="enumerate" id='magicparlabel-407'><li class="enumerate_item">It is <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-411'><li class="enumerate_item">It is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msubsup>
@@ -4703,7 +4701,7 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
 
   </mrow>
  </mrow></math>.
-<div class="standard" id='magicparlabel-410'>Consider the decision rule <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-414'>Consider the decision rule <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -5572,7 +5570,7 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
   </mrow>
  </mrow></math> is inadmissible ...</div>
 
-<div class="standard" id='magicparlabel-411'>From <a href="#eq_srgadfgadfg">(9)</a>, we see that the risk of <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-415'>From <a href="#eq_srgadfgadfg">(9)</a>, we see that the risk of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msup>
@@ -5613,7 +5611,7 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
 
 
 
-<h5 class="paragraph_" id='magicparlabel-435'>Long run analysis of the behavior of Generalised Bayesian estimator <math xmlns="http://www.w3.org/1998/Math/MathML">
+<h5 class="paragraph_" id='magicparlabel-439'>Long run analysis of the behavior of Generalised Bayesian estimator <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
    <mrow><mi> &delta; </mi>
@@ -5622,11 +5620,11 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
    </mrow>
   </msup>
  </mrow></math>.</h5>
-<div class="standard" id='magicparlabel-436'>Consider the case that an objective Bayesian uses non-informative priors (improper in this case) automatically on a routine bases because he/she does not want to contaminate his/her statistical analysis with subjective elements. Due to this repeated use, the Bayesian enters into the frequentist domain; hence it is reasonable to investigate how repeated use of this prior actually performs.</div>
+<div class="standard" id='magicparlabel-440'>Consider the case that an objective Bayesian uses non-informative priors (improper in this case) automatically on a routine bases because he/she does not want to contaminate his/her statistical analysis with subjective elements. Due to this repeated use, the Bayesian enters into the frequentist domain; hence it is reasonable to investigate how repeated use of this prior actually performs.</div>
 
-<div class="standard" id='magicparlabel-437'>Consider</div>
+<div class="standard" id='magicparlabel-441'>Consider</div>
 
-<ul class="itemize" id='magicparlabel-438'><li class="itemize_item">a sequence of independent problems <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-442'><li class="itemize_item">a sequence of independent problems <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
   <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -5846,7 +5844,7 @@ Consider the Bayesian model <math display="block" xmlns="http://www.w3.org/1998/
  </mrow></math> as we will see.</li>
 </ul>
 
-<div class="theorem" id='magicparlabel-441'><div class="theorem_item"><span class="theorem_label">Theorem 39.</span>
+<div class="theorem" id='magicparlabel-445'><div class="theorem_item"><span class="theorem_label">Theorem 39.</span>
 <a id="Consider__to" />
 Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -6112,7 +6110,7 @@ Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</div>
 </div>
 
-<div class="proof" id='magicparlabel-450'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-454'><div class="proof_item"><span class="proof_label">Proof.</span>
 &nbsp;It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -6303,11 +6301,11 @@ Consider <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, <a href="#eq_inadmiss">(10)</a> is implied.</div>
 </div>
 
-<div class="standard" id='magicparlabel-451'><br />
+<div class="standard" id='magicparlabel-455'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-452'><div class="remark_item"><span class="remark_label">Remark 40.</span>
+<div class="remark" id='magicparlabel-456'><div class="remark_item"><span class="remark_label">Remark 40.</span>
 Theorem <a href="#Consider__to">39</a> implies that if our generalized Bayes rule (let's say <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -6335,11 +6333,11 @@ Theorem <a href="#Consider__to">39</a> implies that if our generalized Bayes rul
  </mrow></math> in actual practical use. </div>
 </div>
 
-<div class="standard" id='magicparlabel-457'><br />
+<div class="standard" id='magicparlabel-461'><br />
 
 </div>
 
-<div class="remark" id='magicparlabel-458'><div class="remark_item"><span class="remark_label">Remark 41.</span>
+<div class="remark" id='magicparlabel-462'><div class="remark_item"><span class="remark_label">Remark 41.</span>
 If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &epsi; </mi>
  </mrow></math> is too small in <a href="#eq_inadmiss">(10)</a>, we may tolerate to use inadmissible <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -6361,7 +6359,7 @@ If <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>; eg, a computer package.</div>
 </div>
 
-<div class="question" id='magicparlabel-517'><div class="question_item"><span class="question_label">Question 42.</span>
+<div class="question" id='magicparlabel-521'><div class="question_item"><span class="question_label">Question 42.</span>
 Practice with Exercise <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1</a> from the Exercise sheet, and the proof of Theorem <a href="#If_a_prior">34</a>.</div>
 </div>
 </body>
