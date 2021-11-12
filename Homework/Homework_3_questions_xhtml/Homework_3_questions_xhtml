@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="LyX 2.3.6.1" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>LyX Document</title>
+<style type='text/css'>
+/* Layout-provided Styles */
+div.standard {
+	margin-bottom: 2ex;
+}
+div.plain_layout {
+text-align: left;
+
+}
+div.theorem {
+font-style: italic;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.theorem_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+div.exercise {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.exercise_label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+ol.enumerate {
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+margin-left: 3ex;
+text-align: left;
+
+}
+div.solution_ {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.solution__label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
+div.Boxed {
+	border: solid thick black;
+	padding: 0.5ex;
+}
+span.foot_label {
+	vertical-align: super;
+	font-size: smaller;
+	font-weight: bold;
+	text-decoration: underline;
+}
+div.foot {
+	display: inline;
+	font-size: small;
+	font-weight: medium;
+	font-family: serif;
+	font-variant: normal;
+	font-style: normal;
+}
+div.foot_inner { display: none; }
+div.foot:hover div.foot_inner {
+	display: block;
+	border: 1px double black;
+	margin: 0em 1em;
+	padding: 1em;
+}
+div.float {
+	border: 2px solid black;
+	text-align: center;
+}
+div.float-caption {
+	text-align: center;
+	border: 2px solid black;
+	padding: 1ex;
+	margin: 1ex;
+}
+
+
+</style>
+</head>
+<body dir="auto">
+<div class="standard" id='magicparlabel-3'><div class='Boxed'><div class="plain_layout" id='magicparlabel-7'>Bayesian Statistics III/IV (MATH3361/4071)&nbsp;&nbsp;Michaelmas term 2021<div style='height:3ex'></div></div>
+
+<div class="plain_layout" style='text-align: center;' id='magicparlabel-8'><span style='font-size:x-large;'>Homework 3: Point estimation</span><div style='height:3ex'></div></div>
+
+<div class="plain_layout" id='magicparlabel-9'>Lecturer: Georgios Karagiannis&nbsp;&nbsp; <a href="georgios.karagiannis@durham.ac.uk">georgios.karagiannis@durham.ac.uk</a></div>
+
+<div class="plain_layout" id='magicparlabel-10'>** Exercise 1 is borrowed from Dr I. H. Jermyn @ Durham U.</div>
+</div></div>
+
+<div class="standard" id='magicparlabel-11'>&nbsp;<div style='height:1ex'></div><div style='height:1ex'></div></div>
+
+<div class="standard" id='magicparlabel-12'>For Formative assessment, submit the solutions of the part 2 from the Exercise 1. </div>
+
+<div class="standard" id='magicparlabel-13'><hr />
+
+</div>
+
+
+<div class="standard" id='magicparlabel-14'><br />
+
+</div>
+
+<div class="exercise" id='magicparlabel-15'><div class="exercise_item"><span class="exercise_label">Exercise 1.</span>
+(<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo> &starf; </mo>
+ </mrow></math><math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo> &starf; </mo>
+ </mrow></math>)<div class="standard" id='magicparlabel-17'>&nbsp;<div class="foot"><span class="foot_label">1</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-21'>This exercise is a modified version of the one from Dr Jermyn's lecture notes in Bayesian statistics 2015-2016</div>
+</div></div>This exercise is based on a problem that arises in image processing. Look at the first row of Fig <a href="#fig_sunflowers">1</a>. If we were to observe the sunflower field from above, the sunflowers would be spread uniformly over it. Viewed from an angle, the sunflowers cluster at the top of the picture due to the effect of perspective. We would like to be able to tell from this clustering at what angle the camera was pointing and its height above the ground. We will not solve this problem here (it is rather difficult in general), but instead look at an idealized and simplified version of it.</div>
+
+<div class="standard" id='magicparlabel-22'>Consider the left hand image in the second row of the figure. It shows <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>200</mn>
+ </mrow></math> points sampled at random uniformly from the unit square. On the right, is a transformation of these points similar to that undergone by the sunflower image, except that here only the `<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>y</mi>
+ </mrow></math>-coordinate', the vertical position in the image, has been affected. </div>
+<div class='float-figure'><div class="plain_layout" style='text-align: center;' id='magicparlabel-26'><img style='width:40%;' src='2_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____cs_III_IV_Exercises_pool_figures_sunflowers.jpg' alt='image: 2_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____cs_III_IV_Exercises_pool_figures_sunflowers.jpg' />
+ </div>
+
+<div class="plain_layout" style='text-align: center;' id='magicparlabel-27'><img src='3_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____rcises_pool_figures_sunflowers-scatterplots.png' alt='image: 3_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____rcises_pool_figures_sunflowers-scatterplots.png' />
+</div>
+
+<div class="plain_layout" id='magicparlabel-28'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  Two sampled point patterns. (Sunflower image  Soren Breiting / Alamy.) <a id="fig_sunflowers" />
+</span></div>
+</div>
+
+
+<div class="standard" id='magicparlabel-37'>If we were asked whether the right hand image had been sampled from a uniform distribution on the unit square, I am sure we would all say `no'. The question is how we can justify this response. The first part of the exercise is an alternative to the examples given in lectures, showing the need to use Bayesian and not ad hoc methods to obtain sensible answers in many inference problems.</div>
+
+<div class="standard" id='magicparlabel-38'>The second part of the exercise is about inferring the camera angle given the data points using Bayesian methods, and tests various technical issues. </div>
+
+<ol class="enumerate" id='magicparlabel-39'><li class="enumerate_item"><b>Classical treatment.</b>
+<div class="standard" id='magicparlabel-40'>A classical statistical technique to address this problem might go like this. Let's define a `statistic', a quantity to be calculated from the data, and whose properties we will study to create a test. For example, in a coin tossing experiment, we will get some sequence of heads and tails. A statistic might be the number of heads.</div>
+
+<div class="standard" id='magicparlabel-41'>In this case, one possibility is to divide the unit square into two halves, top and bottom, and to count the number <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> of points in the bottom half.</div>
+
+<ol class="enumerate" id='magicparlabel-42'><li class="enumerate_item"><a id="enu_If_we_assume" />
+If we assume that both point patterns were sampled from a uniform distribution on the unit square, which of the two sets of points is more probable? Does this help to justify the inference that the right hand image was not sampled from a uniform distribution?</li>
+<li class="enumerate_item">If the total number of points is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>n</mi>
+ </mrow></math>, what is the probability distribution for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> (the `sampling distribution') under the assumption of sampling from the uniform distribution on the unit square?</li>
+<li class="enumerate_item">What are the mean and variance of this distribution? </li>
+<li class="enumerate_item">For the right hand image in the bottom row of Fig <a href="#fig_sunflowers">1</a>, by visual inspection, extract (approximately) the value of the statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math>.</li>
+<li class="enumerate_item">Using a normal approximation to the sampling distribution, perform a significance test under the null hypothesis <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>H</mi>
+   </mrow>
+   <mrow><mn>0</mn>
+   </mrow>
+  </msub>
+ </mrow></math> that the sampling was uniform. What is your conclusion?</li>
+<li class="enumerate_item">How do we reconcile the answer to Sub-question <a href="#enu_If_we_assume">(a)</a> with the result of the hypothesis test? When we calculate the probability of observing <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> points in the bottom half of the unit square, what are we actually calculating?</li>
+<li class="enumerate_item">What would be the result of the hypothesis test if we defined <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> as the number of points in the left half of the unit square? </li>
+<li class="enumerate_item">Is this a reasonable thing to do? Why?</li>
+</ol>
+<div class="standard" id='magicparlabel-50'>What is being introduced in the last question is a possible alternative hypothesis, specifying the nature of the non-uniformity. The problem is that this alternative hypothesis has no place in the classical statistical testing methodology: all we have is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>H</mi>
+   </mrow>
+   <mrow><mn>0</mn>
+   </mrow>
+  </msub>
+ </mrow></math>.</div>
+
+<div class="standard" id='magicparlabel-51'>As a result of this deficiency of standard hypothesis testing, other methods have been developed. Likelihood methods in classical statistics take alternatives into account by using two (or more) hypotheses and comparing the probabilities of the data under each of them.</div>
+
+<div class="standard" id='magicparlabel-52'>In our example, we could take a non-uniform model, and then compute the probabilities of the data under both uniform and non-uniform models. This would work in one sense: the probability of the data would be higher under some non-uniform models than under the uniform model. Unfortunately, there are many non-uniform models. Some of them, those with probability densities concentrated around the data points, assign very high probability to the observed data, and yet we do not accept them as valid explanations. This is a usuall phenomenon in Frequentist statistics: there are many hypotheses that predict the observed data with near certainty, and maximum likelihood is powerless to discount them.</div>
+</li><li class="enumerate_item"><b>Bayesian treatment. </b>
+<div class="standard" id='magicparlabel-54'>To disallow these extreme possibilities (if indeed they are unreasonable), we have to assign probabilities to the possible non-uniformities. One way to do this is via a choice of a parameterized family of non-uniformities. Any parameterized model implicitly assigns probability zero to any non-family member, and hence is Bayesian by default.</div>
+
+<div class="standard" id='magicparlabel-55'>In the case of the image processing problem, we know a lot about the types of distortion that arise (essentially perspective), and we can construct a reasonable family quite easily. Without going into details, and making several approximations, the coordinates <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>x</mi><mo>,</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &isin; </mo><mo>[</mo><mn>0</mn><mo>,</mo><mn>1</mn>
+   <msup>
+    <mrow><mo>]</mo>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math> of a point in the image distorted by camera viewing angle are related to the coordinates <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>u</mi><mo>,</mo><mi>v</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &isin; </mo><mo>[</mo><mn>0</mn><mo>,</mo><mn>1</mn>
+   <msup>
+    <mrow><mo>]</mo>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math> of the same point in the undistorted image that would be taken by a camera looking vertically downwards, by the following equations: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd><mi>x</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mi>u</mi>
+    </mrow>
+   </mtd>
+   <mtd>(1)
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mi>y</mi>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo>
+     <mfrac>
+      <mrow>
+       <mrow><mi>v</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+        <mrow><mn>1</mn><mo>+</mo><mi>t</mi>
+        </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+       </mrow>
+      </mrow>
+      <mrow>
+       <mrow><mn>1</mn><mo>+</mo><mi>t</mi><mi>v</mi>
+       </mrow>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </mtd>
+   <mtd>(2)
+   </mtd>
+  </mtr>
+ </mtable></math>where <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>t</mi><mo>=</mo><mo> tan </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mi> &alpha; </mi>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> is the tangent of the angle <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &alpha; </mi>
+ </mrow></math> between the camera viewing direction and vertically downwards—in fact, this was the exact transformation used to convert the left hand image in Fig <a href="#fig_sunflowers">1</a> to the right hand image. </div>
+
+<ol class="enumerate" id='magicparlabel-56'><li class="enumerate_item">Suppose we knew <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>. Derive the probability density <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>|</mo><mi>t</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> for a point <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow><mi>x</mi><mo>,</mo><mi>y</mi>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> in the distorted image, given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>, and given that the sampling density was uniform on the unit square in the undistorted image, i.e. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>|</mo><mi>t</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mn>1</mn>
+    </mrow>
+   </mtd>
+   <mtd>(3)
+   </mtd>
+  </mtr>
+ </mtable></math></li>
+<li class="enumerate_item">Write down the corresponding probability density, given <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>, of a set of points <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>x</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>x</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> sampled independently from the non-uniform density.</li>
+<li class="enumerate_item"><a id="enu_Suppose_we_have" />
+Suppose we have no reason to favour any particular value of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &alpha; </mi><mo> &isin; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>[</mo>
+
+   <mrow><mn>0</mn><mo>,</mo><mi> &pi; </mi><mo>/</mo><mn>2</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>]</mo>
+
+  </mrow>
+ </mrow></math> before we see the data. Write down the prior probability density for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &alpha; </mi>
+ </mrow></math>.</li>
+<li class="enumerate_item">From the answer to Sub-question <a href="#enu_Suppose_we_have">(c)</a>, derive the prior probability density of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>. [Hint: 
+<span style = "text-align: center;"><img src="lyxpreviewyFRYDI1.png" alt="Mathematical Equation" />
+</span>
+]</li>
+<li class="enumerate_item">Hence write down the posterior probability density for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> up to an overall normalization factor, given the data points <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>x</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>x</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math>.</li>
+<li class="enumerate_item">From this result, derive the equation satisfied by the MAP estimate of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>. (Taking logarithms makes things easier.)</li>
+<li class="enumerate_item">By expanding the log posterior probability density about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>0</mn>
+ </mrow></math> to second order in <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math>, find the MAP estimate for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> when <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>t</mi>
+ </mrow></math> is small.</li>
+<li class="enumerate_item">Find the MAP estimate of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &alpha; </mi>
+ </mrow></math> when <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &alpha; </mi>
+ </mrow></math> is small. </li>
+</ol>
+</li></ol>
+
+<div class="solution_" id='magicparlabel-64'><div class="solution__item"><span class="solution__label">Solution.</span>
+&nbsp;&nbsp;&nbsp;</div>
+
+<ol class="enumerate" id='magicparlabel-65'><li class="enumerate_item"><b>Classical treatment.</b>
+
+<ol class="enumerate" id='magicparlabel-66'><li class="enumerate_item">The probability that a single point falls in the infinitesimal element <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi>u</mi>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle><mi>v</mi>
+  </mrow>
+ </mrow></math> at point <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow><mi>u</mi><mo>,</mo><mi>v</mi>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> is: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>u</mi><mo>,</mo><mi>v</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msub>
+      <mrow><mo> Pr </mo>
+      </mrow>
+      <mrow><mi>F</mi>
+      </mrow>
+     </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>u</mi><mo> &isin; </mo>
+      <mstyle mathvariant='normal'><mi>d</mi>
+      </mstyle><mi>u</mi><mo>,</mo><mi>v</mi><mo> &isin; </mo>
+      <mstyle mathvariant='normal'><mi>d</mi>
+      </mstyle><mi>v</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle><mi>u</mi>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle><mi>v</mi>
+    </mrow>
+   </mtd>
+   <mtd>(4)
+   </mtd>
+  </mtr>
+ </mtable></math>The probability that <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>n</mi>
+ </mrow></math> points sampled independently fall in the infinitesimal elements <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle>
+   <msub>
+    <mrow><mi>u</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle>
+   <msub>
+    <mrow><mi>v</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub>
+  </mrow>
+ </mrow></math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle>
+   <msub>
+    <mrow><mi>u</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub>
+   <mstyle mathvariant='normal'><mi>d</mi>
+   </mstyle>
+   <msub>
+    <mrow><mi>v</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub>
+  </mrow>
+ </mrow></math> at points <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>u</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>v</mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>u</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>v</mi>
+    </mrow>
+    <mrow><mi>n</mi>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> is therefore <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>u</mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub><mo>,</mo>
+      <msub>
+       <mrow><mi>v</mi>
+       </mrow>
+       <mrow><mn>1</mn>
+       </mrow>
+      </msub><mo>,</mo>
+      <mi>&hellip;
+      </mi><mo>,</mo>
+      <msub>
+       <mrow><mi>u</mi>
+       </mrow>
+       <mrow><mi>n</mi>
+       </mrow>
+      </msub><mo>,</mo>
+      <msub>
+       <mrow><mi>v</mi>
+       </mrow>
+       <mrow><mi>n</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow>
+      <msub>
+       <mrow><mi>u</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub><mo>,</mo>
+      <msub>
+       <mrow><mi>v</mi>
+       </mrow>
+       <mrow><mi>i</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo>
+     <msubsup>
+      <mrow><mo> &prod; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+       </mrow>
+      </mrow>
+      <mrow><mi>n</mi>
+      </mrow>
+     </msubsup>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle>
+     <msub>
+      <mrow><mi>u</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+     <mstyle mathvariant='normal'><mi>d</mi>
+     </mstyle>
+     <msub>
+      <mrow><mi>v</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+    </mrow>
+   </mtd>
+   <mtd>(5)
+   </mtd>
+  </mtr>
+ </mtable></math>This does not depend on the data points <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>u</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi>v</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> and so is the same for both patterns.<div class="foot"><span class="foot_label">2</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-70'>There is a subtlety here. The above probability is that the points fall in the given elements with the given labelling. Because there are <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo>!</mo>
+  </mrow>
+ </mrow></math> ways to label <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>n</mi>
+ </mrow></math> points, strictly speaking, the probability of a configuration is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo>!</mo>
+  </mrow>
+ </mrow></math> times the above, with the understanding that now the distribution is defined on sets of unlabelled points.</div>
+</div></div>
+<div class="standard" id='magicparlabel-71'>If we want to justify the idea that the set of points in the right hand image did not come from a uniform distribution, this obviously does not help, since both cases are the same.</div>
+</li><li class="enumerate_item">The probability of one point landing in the bottom half of the square is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mfrac>
+   <mrow><mn>1</mn>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </mfrac>
+ </mrow></math> for a uniform distribution. The probability of any  given set of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> points lying in the bottom half (and thus <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+  </mrow>
+ </mrow></math> lying in the top half) is then <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo>(</mo>
+   <mfrac>
+    <mrow><mn>1</mn>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </mfrac>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow><mi>r</mi>
+    </mrow>
+   </msup><mo>(</mo>
+   <mfrac>
+    <mrow><mn>1</mn>
+    </mrow>
+    <mrow><mn>2</mn>
+    </mrow>
+   </mfrac>
+   <msup>
+    <mrow><mo>)</mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>n</mi><mo>-</mo><mi>r</mi>
+     </mrow>
+    </mrow>
+   </msup>
+  </mrow>
+ </mrow></math>. The probability of some set of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> points lying in the bottom half is thus given by the binomial distribution: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mtable>
+  <mtr>
+   <mtd>
+    <mrow><mo> Pr </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>r</mi><mo>|</mo><mi>n</mi><mo>,</mo>
+      <mstyle mathvariant='normal'>
+       <mrow><mi>u</mi><mi>n</mi><mi>i</mi><mi>f</mi><mi>o</mi><mi>r</mi><mi>m</mi>
+       </mrow>
+      </mstyle>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>=</mo><mo fence='true' stretchy='true' form='prefix'>(</mo><mfrac linethickness='0'><mi>n</mi><mi>r</mi></mfrac><mo fence='true' stretchy='true' form='postfix'>)</mo>
+     <mfrac>
+      <mrow><mn>1</mn>
+      </mrow>
+      <mrow>
+       <msup>
+        <mrow><mn>2</mn>
+        </mrow>
+        <mrow><mi>n</mi>
+        </mrow>
+       </msup>
+      </mrow>
+     </mfrac>
+    </mrow>
+   </mtd>
+   <mtd>(6)
+   </mtd>
+  </mtr>
+ </mtable></math></li>
+<li class="enumerate_item">The mean of a binomial distribution is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mi>p</mi>
+  </mrow>
+ </mrow></math> and the variance is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>n</mi><mi>p</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mn>1</mn><mo>-</mo><mi>p</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, meaning, in this case, that the mean is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mfrac>
+   <mrow><mi>n</mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </mfrac>
+ </mrow></math> and the variance is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mfrac>
+   <mrow><mi>n</mi>
+   </mrow>
+   <mrow><mn>4</mn>
+   </mrow>
+  </mfrac>
+ </mrow></math>. For the given example, these are mean <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>100</mn>
+ </mrow></math> and standard deviation <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msqrt><mn>50</mn>
+   </msqrt><mo> &sime; </mo><mn>7</mn>
+  </mrow>
+ </mrow></math>.</li>
+<li class="enumerate_item">There are about <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>r</mi><mo>=</mo><mn>30</mn>
+  </mrow>
+ </mrow></math> points in the bottom half of the square. (The exact number is not so relevant here.) </li>
+<li class="enumerate_item">The standardized value of the statistic <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>z</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>r</mi><mo>-</mo><mn>100</mn>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>/</mo><mn>7</mn>
+  </mrow>
+ </mrow></math>, so for <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>r</mi><mo>=</mo><mn>30</mn>
+  </mrow>
+ </mrow></math> we get <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>z</mi><mo>=</mo><mo>-</mo><mn>10</mn>
+  </mrow>
+ </mrow></math>, i.e. <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mn>10</mn>
+ </mrow></math> standard deviations below the mean. The probability of finding this or a more extreme value in the bottom half of the square is then <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mn>2</mn><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mn>1</mn><mo>-</mo><mo> &Phi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+<mn>10</mn>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>, a number that is vanishingly small. The null hypothesis is thus convincingly rejected.</li>
+<li class="enumerate_item">Superficially there seems to be a contradiction between the fact that the probabilities of the two sets of data are the same, but the hypothesis test so strongly rejects the null hypothesis. In fact, of course, the probability of the data and the probability computed in the hypothesis test are completely different. The former is the probability of a particular set of positions for points. The latter is a different in two ways. Remember that the probability of an individual configuration is constant under the uniform hypothesis. Then first, the probability of a particular value of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> is given by the integral of this constant over all possible positions of the points that keeps the same number in the bottom half of the square. Second, the probability in the hypothesis test is then the sum of these probabilities for all values of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>r</mi>
+ </mrow></math> `more extreme', i.e. further from the mean, than the value we observe. For the hypothesis test, then, we calculate the probability of a large, indeed in this case infinite, set of conceivable data sets, none of which we have actually observed.
+<div class="standard" id='magicparlabel-94'>Naturally, with such a difference in the probabilities, the conclusions to be drawn are different.</div>
+</li><li class="enumerate_item">The test does not justify rejecting the null hypothesis.</li>
+<li class="enumerate_item">It seems unreasonable because we know or suspect that the non-uniformity is in the vertical direction, and the statistic should be some measure of this non-uniformity. However, this alternative hypothesis has no place in the classical statistical testing methodology: all we have is <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>H</mi>
+   </mrow>
+   <mrow><mn>0</mn>
+   </mrow>
+  </msub>
+ </mrow></math>.</li>
+</ol>
+</li><li class="enumerate_item"><b>Bayesian treatment.&nbsp; </b></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div class="standard" id='magicparlabel-171'><br />
+
+</div>
+
+<div class="standard" id='magicparlabel-172'><hr />
+
+</div>
+
+</body>
+</html>
