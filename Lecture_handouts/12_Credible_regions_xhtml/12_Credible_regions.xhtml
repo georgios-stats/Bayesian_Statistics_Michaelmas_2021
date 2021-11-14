@@ -265,6 +265,18 @@ font-size: medium;
 span.flex_url {
 font-family: monospace;
 }
+div.marginal {
+	border: 2px solid black;
+	padding: 1ex;
+	margin: 1ex;
+	background-color: #F0F0F0;
+	float:right;
+	font-size: small;
+	font-weight: medium;
+	font-family: serif;
+	font-variant: normal;
+	font-style: normal;
+}
 span.foot_label {
 	vertical-align: super;
 	font-size: smaller;
@@ -285,18 +297,6 @@ div.foot:hover div.foot_inner {
 	border: 1px double black;
 	margin: 0em 1em;
 	padding: 1em;
-}
-div.marginal {
-	border: 2px solid black;
-	padding: 1ex;
-	margin: 1ex;
-	background-color: #F0F0F0;
-	float:right;
-	font-size: small;
-	font-weight: medium;
-	font-family: serif;
-	font-variant: normal;
-	font-style: normal;
 }
 div.float {
 	border: 2px solid black;
@@ -912,10 +912,9 @@ Note that different sets may satisfy Definition <a href="#_Posterior_Credible_Re
 <div class="standard" id='magicparlabel-93'><br />
 
 </div>
-<h2 class="section" id='magicparlabel-94'><span class="section_label">3</span> Highest probability density Credible sets<div class="foot"><span class="foot_label">1</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-98'>Web applet: <span class="flex_url">https://georgios-stats-1.shinyapps.io/demo_CredibleSets/</span></div>
-</div></div></h2>
+<h2 class="section" id='magicparlabel-94'><span class="section_label">3</span> Highest probability density Credible sets</h2>
 
-<div class="note" id='magicparlabel-103'><div class="note_item"><span class="note_label">Note 7.</span>
+<div class="note" id='magicparlabel-95'><div class="note_item"><span class="note_label">Note 7.</span>
 Often it is useful to consider credible sets <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -976,11 +975,11 @@ Often it is useful to consider credible sets <math xmlns="http://www.w3.org/1998
  </mrow></math> in Definition <a href="#_Posterior_Credible_Region_">4</a> which leads to Definition <a href="#_Posterior_highest_probability">8</a>, the definition of the highest probability density (HPD) set.</div>
 </div>
 
-<div class="standard" id='magicparlabel-113'><br />
+<div class="standard" id='magicparlabel-105'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-114'><div class="definition_item"><span class="definition_label">Definition 8.</span>
+<div class="definition" id='magicparlabel-106'><div class="definition_item"><span class="definition_label">Definition 8.</span>
 <a id="_Posterior_highest_probability" />
  The <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1018,7 +1017,7 @@ Often it is useful to consider credible sets <math xmlns="http://www.w3.org/1998
  <mrow><mo> &Theta; </mo>
  </mrow></math> such that</div>
 
-<ol class="enumerate" id='magicparlabel-115'><li class="enumerate_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-107'><li class="enumerate_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -1080,22 +1079,21 @@ Often it is useful to consider credible sets <math xmlns="http://www.w3.org/1998
 </ol>
 </div>
 
-<div class="standard" id='magicparlabel-125'><br />
+<div class="standard" id='magicparlabel-117'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-126'><div class="note_item"><span class="note_label">Note 9.</span>
+<div class="note" id='magicparlabel-118'><div class="note_item"><span class="note_label">Note 9.</span>
 Credible sets are considered as `set estimators', and hence, they can be produced as Bayes decision rules under a specified loss function. See Examples <a href="#fact__Minimal_size_region">10</a> and <a href="#exa_Assume_a__dimensional">19</a>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-132'><br />
+<div class="standard" id='magicparlabel-124'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-133'><div class="example_item"><span class="example_label">Example 10.</span>
+<div class="example" id='magicparlabel-125'><div class="example_item"><span class="example_label">Example 10.</span>
 <a id="fact__Minimal_size_region" />
-[Minimal size region property]<div class="marginal"><div class="plain_layout" id='magicparlabel-137'>No need to memorise</div>
-</div> Let random quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
+[Minimal size region property] Let random quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> follows <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1132,7 +1130,8 @@ Credible sets are considered as `set estimators', and hence, they can be produce
 
  </mrow></math> credible sets of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
- </mrow></math>, and let the loss function be<a id="eq__cxhjhs" />
+ </mrow></math>, and let the loss function be<div class="marginal"><div class="plain_layout" id='magicparlabel-129'>No need to memorize Eq. <a href="#eq__cxhjhs">1</a></div>
+</div><a id="eq__cxhjhs" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -1169,7 +1168,7 @@ Credible sets are considered as `set estimators', and hence, they can be produce
 
  </mrow></math> denotes a size of an area. Then:</div>
 
-<ol class="enumerate" id='magicparlabel-138'><li class="enumerate_item">The Bayes rule (estimator) <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-130'><li class="enumerate_item">The Bayes rule (estimator) <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mover>
    <mrow><mi>C</mi>
@@ -1198,12 +1197,12 @@ Credible sets are considered as `set estimators', and hence, they can be produce
  </mrow></math> highest probability density (HPD) set as defined in Definition <a href="#_Posterior_highest_probability">8</a>.</li>
 </ol>
 
-<div class="solution_" id='magicparlabel-140'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-132'><div class="solution__item"><span class="solution__label">Solution.</span>
 The proof is omitted as too technical. (1.) is straightforward; while (2.) is just tricky calculus.</div>
 </div>
 </div>
 
-<div class="note_" id='magicparlabel-141'><div class="note__item"><span class="note__label">Note.</span>
+<div class="note_" id='magicparlabel-133'><div class="note__item"><span class="note__label">Note.</span>
 HPD credible sets are credible sets with the minimum size (by Example <a href="#fact__Minimal_size_region">10</a>). Clearly, loss <a href="#eq__cxhjhs">(1)</a> considers a trade off between two components: <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>&par;</mo>
 <mi>C</mi>
@@ -1223,7 +1222,7 @@ HPD credible sets are credible sets with the minimum size (by Example <a href="#
  </mrow></math> indicating coverage of the credible set.</div>
 </div>
 
-<div class="remark" id='magicparlabel-142'><div class="remark_item"><span class="remark_label">Remark 11.</span>
+<div class="remark" id='magicparlabel-134'><div class="remark_item"><span class="remark_label">Remark 11.</span>
 HPD credible sets are not, in general, invariant to transformations. If one has computed the HPD set for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo><mi>Q</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -1316,15 +1315,15 @@ HPD credible sets are not, in general, invariant to transformations. If one has 
   </mrow>
  </mrow></math>and then compute the HPD set by implementing Definition <a href="#_Posterior_highest_probability">8</a>.</div>
 </div>
-<h3 class="subsection" id='magicparlabel-164'><span class="subsection_label">3.1</span> General discussions </h3>
-<div class="standard" id='magicparlabel-165'>Definition <a href="#_Posterior_highest_probability">8</a> can be re-written equivalently as in Corollary <a href="#prop_The__highest">12</a>, which provides a easier manner to compute credible regions in practice.</div>
+<h3 class="subsection" id='magicparlabel-156'><span class="subsection_label">3.1</span> General discussions</h3>
+<div class="standard" id='magicparlabel-157'>Definition <a href="#_Posterior_highest_probability">8</a> can be re-written equivalently as in Corollary <a href="#prop_The__highest">12</a>, which provides a easier manner to compute credible regions in practice.</div>
 
 
-<div class="standard" id='magicparlabel-166'><br />
+<div class="standard" id='magicparlabel-158'><br />
 
 </div>
 
-<div class="corollary" id='magicparlabel-167'><div class="corollary_item"><span class="corollary_label">Corollary 12.</span>
+<div class="corollary" id='magicparlabel-159'><div class="corollary_item"><span class="corollary_label">Corollary 12.</span>
 <a id="prop_The__highest" />
 The <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1421,28 +1420,31 @@ The <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></div>
 
-<div class="proof" id='magicparlabel-168'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-160'><div class="proof_item"><span class="proof_label">Proof.</span>
 It is straightforward to show equivalence of <a href="#eq_rsogifasghh">(2)</a> and Definition <a href="#_Posterior_highest_probability">8</a>(2).</div>
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-169'><br />
+<div class="standard" id='magicparlabel-161'><br />
 
 </div>
 
-<div class="algorithm" id='magicparlabel-170'><div class="algorithm_item"><span class="algorithm_label">Algorithm 13.</span>
+<div class="algorithm" id='magicparlabel-162'><div class="algorithm_item"><span class="algorithm_label">Algorithm 13.</span>
 <a id="note_A__not_that_efficient__algorithm" />
- Based on Corollary <a href="#prop_The__highest">12</a>, a (not-that-efficient) algorithm to compute HPD credible sets with a computer<div class="foot"><span class="foot_label">2</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-178'>Web-applet <span class="flex_url">https://georgios-stats-1.shinyapps.io/demo_CredibleSets/</span></div>
+ Based on Corollary <a href="#prop_The__highest">12</a>, a (not-that-efficient) algorithm to compute HPD credible sets with a computer<div class="foot"><span class="foot_label">1</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-170'>Web-applet <span class="flex_url">https://georgios-stats-1.shinyapps.io/demo_CredibleSets/</span></div>
 </div></div></div>
 
-<ul class="itemize" id='magicparlabel-183'><li class="itemize_item"><i><span style='font-family:monospace;'>Create a routine which computes all the solutions <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
+<ul class="itemize" id='magicparlabel-175'><li class="itemize_item"><i><span style='font-family:monospace;'>Create a routine which computes all the solutions <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+
   <msup>
    <mrow><mi>x</mi>
    </mrow>
    <mrow><mo>*</mo>
    </mrow>
   </msup>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>}</mo>
+
  </mrow></math> to the equation <a id="eq_fsgadfghdafgjtrtw" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -1479,7 +1481,18 @@ It is straightforward to show equivalence of <a href="#eq_rsogifasghh">(2)</a> a
    <mrow><mi>a</mi>
    </mrow>
   </msub>
- </mrow></math>. Typically, <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>. Typically, these solutions <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+
+  <msup>
+   <mrow><mi>x</mi>
+   </mrow>
+   <mrow><mo>*</mo>
+   </mrow>
+  </msup>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>}</mo>
+
+ </mrow></math> are the boundaries of the set <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -1502,8 +1515,8 @@ It is straightforward to show equivalence of <a href="#eq_rsogifasghh">(2)</a> a
     </mrow>
    </msub>}
   </mrow>
- </mrow></math> can be constructed from those solutions.</span></i></li>
-<li class="itemize_item"><i><span style='font-family:monospace;'>Create a routine which computes <a id="eq_gewrgerg" />
+ </mrow></math>.</span></i></li>
+<li class="itemize_item"><i><span style='font-family:monospace;'>Create a routine which computes the probability <a id="eq_gewrgerg" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -1552,15 +1565,36 @@ It is straightforward to show equivalence of <a href="#eq_rsogifasghh">(2)</a> a
    </mtd>
   </mtr>
  </mtable></math></span></i></li>
-<li class="itemize_item"><i><span style='font-family:monospace;'>By incrementally increasing <math xmlns="http://www.w3.org/1998/Math/MathML">
+<li class="itemize_item"><i><span style='font-family:monospace;'>Sequentially solve Equation </span><a href="#eq_fsgadfghdafgjtrtw">3</a><span style='font-family:monospace;'> and obtain all the solutions <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+
+  <msup>
+   <mrow><mi>x</mi>
+   </mrow>
+   <mrow><mo>*</mo>
+   </mrow>
+  </msup>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>}</mo>
+
+ </mrow></math>, by incrementally increasing <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
-  <msub>
-   <mrow><mi>k</mi>
-   </mrow>
-   <mrow><mi>a</mi>
-   </mrow>
-  </msub>
- </mrow></math> from zero to larger values, sequentially solve the Equation </span><a href="#eq_fsgadfghdafgjtrtw">3</a><span style='font-family:monospace;'> and stop just before the probability in Equation </span><a href="#eq_gewrgerg">4</a> drops below <math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+   <msub>
+    <mrow><mi>k</mi>
+    </mrow>
+    <mrow><mi>a</mi>
+    </mrow>
+   </msub><mo>=</mo>{<mi> &epsi; </mi><mo>,</mo><mi> &epsi; </mi><mo>+</mo><mi> &tau; </mi><mo>,</mo><mi> &epsi; </mi><mo>+</mo><mn>2</mn><mi> &tau; </mi><mo>,</mo><mi> &epsi; </mi><mo>+</mo><mn>3</mn><mi> &tau; </mi><mn>....</mn>}
+  </mrow>
+ </mrow></math> (such as starting from a tiny value <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &epsi; </mi><mo>&gt;</mo><mn>0</mn>
+  </mrow>
+ </mrow></math> close to zero and recursively adding a tiny increments <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi> &tau; </mi><mo>&gt;</mo><mn>0</mn>
+  </mrow>
+ </mrow></math>). Stop just before the probability in Equation </span><a href="#eq_gewrgerg">4</a> drops below <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mn>1</mn><mo>-</mo><mi>a</mi>
   </mrow>
@@ -1568,14 +1602,14 @@ It is straightforward to show equivalence of <a href="#eq_rsogifasghh">(2)</a> a
 </ul>
 </div>
 
-<div class="standard" id='magicparlabel-186'><br />
+<div class="standard" id='magicparlabel-178'><br />
 
 </div>
 
-<div class="standard" id='magicparlabel-187'><br />
+<div class="standard" id='magicparlabel-179'><br />
 </div>
 
-<div class="note" id='magicparlabel-188'><div class="note_item"><span class="note_label">Note 14.</span>
+<div class="note" id='magicparlabel-180'><div class="note_item"><span class="note_label">Note 14.</span>
 For the simple 1D case, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &isin; </mo>
@@ -1594,11 +1628,11 @@ For the simple 1D case, <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, the following theorem can be used to compute HPD credible sets.</div>
 </div>
 
-<div class="standard" id='magicparlabel-193'><br />
+<div class="standard" id='magicparlabel-185'><br />
 
 </div>
 
-<div class="theorem" id='magicparlabel-194'><div class="theorem_item"><span class="theorem_label">Theorem 15.</span>
+<div class="theorem" id='magicparlabel-186'><div class="theorem_item"><span class="theorem_label">Theorem 15.</span>
 <a id="Let__be" />
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1641,7 +1675,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math> satisfies </div>
 
-<ol class="enumerate" id='magicparlabel-195'><li class="enumerate_item"><i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-187'><li class="enumerate_item"><i><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msubsup>
@@ -1714,7 +1748,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>,</i></li>
 </ol>
-<div class="standard" id='magicparlabel-198'><i>then it is the HPD interval of <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-190'><i>then it is the HPD interval of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>x</mi>
  </mrow></math> with respect to <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1727,12 +1761,12 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.</i></div>
 
-<div class="proof" id='magicparlabel-199'><div class="proof_item"><span class="proof_label">Proof.</span>
+<div class="proof" id='magicparlabel-191'><div class="proof_item"><span class="proof_label">Proof.</span>
 Use of the mean values theorem to prove. See, Casella, G., &amp; Berger, R. L. (2002; pp. 441-443). Statistical inference (Vol. 2). Pacific Grove, CA: Duxbury.</div>
 </div>
 </div>
 
-<div class="remark" id='magicparlabel-200'><div class="remark_item"><span class="remark_label">Remark 16.</span>
+<div class="remark" id='magicparlabel-192'><div class="remark_item"><span class="remark_label">Remark 16.</span>
 Theorem <a href="#Let__be">15</a> suggests a procedure to find the boundaries of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -1754,10 +1788,10 @@ Theorem <a href="#Let__be">15</a> suggests a procedure to find the boundaries of
   <mrow><mn>1</mn><mo>-</mo><mi>a</mi>
   </mrow>
  </mrow></math>. This mechanism is also described in the algorithm in suggested in Algorithm <a href="#note_A__not_that_efficient__algorithm">13</a> and hence can also be used in multimodal densities (Figure <a href="#fig_Multimodal">b</a>) or multivariate ones. 
-<div class='float-figure'><div class='float-figure'><div class="plain_layout" id='magicparlabel-208'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/unimodal.pdf' alt='image: ' />
+<div class='float-figure'><div class='float-figure'><div class="plain_layout" id='magicparlabel-200'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/unimodal.pdf' alt='image: ' />
 </div>
 
-<div class="plain_layout" id='magicparlabel-209'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure a:  <a id="fig_Unimodal_case" />
+<div class="plain_layout" id='magicparlabel-201'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure a:  <a id="fig_Unimodal_case" />
 Unimodal case; <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -1775,7 +1809,7 @@ Unimodal case; <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></span></div>
 </div>
-<div class='float-figure'><div class="plain_layout" id='magicparlabel-217'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/multimodal.pdf' alt='image: ' />
+<div class='float-figure'><div class="plain_layout" id='magicparlabel-209'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/multimodal.pdf' alt='image: ' />
 <span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure b:  <a id="fig_Multimodal" />
 Multimodal ; <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1825,7 +1859,7 @@ Multimodal ; <math xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 
 
-<div class="plain_layout" id='magicparlabel-222'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  <a id="fig_Schematic_of_Theorem" />
+<div class="plain_layout" id='magicparlabel-214'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  <a id="fig_Schematic_of_Theorem" />
 Schematic of Theorem <a href="#Let__be">15</a> (in Fig. <a href="#fig_Schematic_of_Theorem">1</a>(<a href="#fig_Unimodal_case">a</a>)) and Algorithm <a href="#note_A__not_that_efficient__algorithm">13</a> (in Fig. <a href="#fig_Schematic_of_Theorem">1</a>(<a href="#fig_Unimodal_case">a</a>) &amp; Fig. <a href="#fig_Schematic_of_Theorem">1</a>(<a href="#fig_Multimodal">b</a>))</span></div>
 </div>
 </div>
@@ -1833,15 +1867,15 @@ Schematic of Theorem <a href="#Let__be">15</a> (in Fig. <a href="#fig_Schematic_
 
 
 
-<div class="standard" id='magicparlabel-233'><br />
+<div class="standard" id='magicparlabel-225'><br />
 
 </div>
 
-<div class="standard" id='magicparlabel-234'><br />
+<div class="standard" id='magicparlabel-226'><br />
 </div>
-<h2 class="section" id='magicparlabel-235'><span class="section_label">4</span> Examples</h2>
+<h2 class="section" id='magicparlabel-227'><span class="section_label">4</span> Examples</h2>
 
-<div class="example" id='magicparlabel-236'><div class="example_item"><span class="example_label">Example 17.</span>
+<div class="example" id='magicparlabel-228'><div class="example_item"><span class="example_label">Example 17.</span>
 Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
@@ -1958,7 +1992,7 @@ Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Mat
  <mrow><mi> &mu; </mi>
  </mrow></math>.</div>
 
-<dl class='description' id='magicparlabel-237'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-229'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>z</mi><mo>=</mo><mo>(</mo>
@@ -2423,10 +2457,10 @@ Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Mat
  </mtable></math></dd>
 </dl>
 
-<div class="solution_" id='magicparlabel-239'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-231'><div class="solution__item"><span class="solution__label">Solution.</span>
 I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
 
-<ul class="itemize" id='magicparlabel-240'><li class="itemize_item">First, I compute the posterior of <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-232'><li class="itemize_item">First, I compute the posterior of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &mu; </mi>
  </mrow></math>. It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -3392,7 +3426,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
    </msup><mi>L</mi>
   </mrow>
  </mrow></math>.
-<div class="standard" id='magicparlabel-247'>Hence Eq. <a href="#eq_post_eq_exalmple">6</a>, (due to Eqs. <a href="#eq_zdfgadf">5</a>, <a href="#eq_dfhdg">7</a>) becomes<a id="eq_sdfgsdgu" />
+<div class="standard" id='magicparlabel-239'>Hence Eq. <a href="#eq_post_eq_exalmple">6</a>, (due to Eqs. <a href="#eq_zdfgadf">5</a>, <a href="#eq_dfhdg">7</a>) becomes<a id="eq_sdfgsdgu" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -3479,7 +3513,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
   </mtr>
  </mtable></math></div>
 
-<div class="standard" id='magicparlabel-255'>which means that, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-247'>which means that, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow>
@@ -3533,7 +3567,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
 </li></ul>
 </div>
 
-<ul class="itemize" id='magicparlabel-256'><li class="itemize_item">Hence, the <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-248'><li class="itemize_item">Hence, the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>C</mi>
@@ -3620,11 +3654,11 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
 </ul>
 </div>
 
-<div class="standard" id='magicparlabel-257'><br />
+<div class="standard" id='magicparlabel-249'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-258'><div class="example_item"><span class="example_label">Example 18.</span>
+<div class="example" id='magicparlabel-250'><div class="example_item"><span class="example_label">Example 18.</span>
 <a id="Consider_an_exchangeable_22" />
 Consider an exchangeable sequence of observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -3747,10 +3781,10 @@ Consider an exchangeable sequence of observables <math xmlns="http://www.w3.org/
   </mrow>
  </mrow></math>. </div>
 
-<div class="solution_" id='magicparlabel-259'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-251'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;</div>
 
-<ul class="itemize" id='magicparlabel-260'><li class="itemize_item">The posterior distribution of <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-252'><li class="itemize_item">The posterior distribution of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &theta; </mi>
  </mrow></math> is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -3930,7 +3964,7 @@ Consider an exchangeable sequence of observables <math xmlns="http://www.w3.org/
   </mrow>
  </mrow></math>.
 
-<ul class="itemize" id='magicparlabel-261'><li class="itemize_item">To find the 2-sides <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-253'><li class="itemize_item">To find the 2-sides <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>C</mi>
@@ -4249,26 +4283,26 @@ Consider an exchangeable sequence of observables <math xmlns="http://www.w3.org/
    </comment>
   </mrow>
  </mrow></math> credible interval is narrower than the corresponding posterior one. (Try to check it in R).
-<div class="standard" id='magicparlabel-267'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-271'><span style='font-family:monospace;'>&gt; install.packages('HDInterval')</span></div>
+<div class="standard" id='magicparlabel-259'><div class="flex_color_box"><div class="plain_layout" id='magicparlabel-263'><span style='font-family:monospace;'>&gt; install.packages('HDInterval')</span></div>
 
-<div class="plain_layout" id='magicparlabel-272'><span style='font-family:monospace;'>&gt; library('HDInterval')</span></div>
+<div class="plain_layout" id='magicparlabel-264'><span style='font-family:monospace;'>&gt; library('HDInterval')</span></div>
 
-<div class="plain_layout" id='magicparlabel-273'><span style='font-family:monospace;'>&gt; hdi(qbeta, 0.95, shape1=17, shape2=17)</span></div>
+<div class="plain_layout" id='magicparlabel-265'><span style='font-family:monospace;'>&gt; hdi(qbeta, 0.95, shape1=17, shape2=17)</span></div>
 
-<div class="plain_layout" id='magicparlabel-274'><span style='font-family:monospace;'>lower upper</span></div>
+<div class="plain_layout" id='magicparlabel-266'><span style='font-family:monospace;'>lower upper</span></div>
 
-<div class="plain_layout" id='magicparlabel-275'><span style='font-family:monospace;'>0.3354445 0.6645555</span></div>
+<div class="plain_layout" id='magicparlabel-267'><span style='font-family:monospace;'>0.3354445 0.6645555</span></div>
 </div></div>
 </li></ul>
-<div class="standard" id='magicparlabel-281'>&nbsp;</div>
+<div class="standard" id='magicparlabel-273'>&nbsp;</div>
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-282'><br />
+<div class="standard" id='magicparlabel-274'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-283'><div class="example_item"><span class="example_label">Example 19.</span>
+<div class="example" id='magicparlabel-275'><div class="example_item"><span class="example_label">Example 19.</span>
 <a id="exa_Assume_a__dimensional" />
 Assume a <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>1</mn>
@@ -4419,7 +4453,7 @@ Assume a <math xmlns="http://www.w3.org/1998/Math/MathML">
 <div class="example_item">Discuss known properties of the derived credible interval.</div>
 </div>
 
-<div class="solution_" id='magicparlabel-285'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-277'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;The decision space is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -5302,11 +5336,11 @@ Assume a <math xmlns="http://www.w3.org/1998/Math/MathML">
 <div class="solution__item">Based on Theorem <a href="#Let__be">15</a>, it is the HPD credible interval and in fact the shorter length credible interval. </div>
 </div>
 
-<div class="standard" id='magicparlabel-288'><br />
+<div class="standard" id='magicparlabel-280'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-289'><div class="example_item"><span class="example_label">Example 20.</span>
+<div class="example" id='magicparlabel-281'><div class="example_item"><span class="example_label">Example 20.</span>
 <a id="Consider_an_exchangeable_22_1" />
 Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>1</mn>
@@ -5321,7 +5355,7 @@ Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. In the Lecture Handout (Handout 11: Bayesian point estimation), discussed the follwoing Hint:</div>
 
-<dl class='description' id='magicparlabel-290'><dt class="description_label">Hint:</dt>
+<dl class='description' id='magicparlabel-282'><dt class="description_label">Hint:</dt>
 <dd class="description_item"> The Bayes estimate <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mover>
@@ -5404,7 +5438,7 @@ Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</dd>
 </dl>
 
-<ol class="enumerate" id='magicparlabel-291'><li class="enumerate_item">Derive the <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-283'><li class="enumerate_item">Derive the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
   <mrow><mn>1</mn><mo>-</mo><mi>a</mi>
@@ -5553,7 +5587,7 @@ Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</li>
 </ol>
 
-<div class="solution_" id='magicparlabel-298'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-290'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;It is given that<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -5723,7 +5757,7 @@ Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math></div>
 
-<ol class="enumerate" id='magicparlabel-299'><li class="enumerate_item">The decision space is <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-291'><li class="enumerate_item">The decision space is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='script'><mi>D</mi>
@@ -6559,9 +6593,9 @@ Assume an <math xmlns="http://www.w3.org/1998/Math/MathML">
 </ol>
 </div>
 </div>
-<h2 class="section_" id='magicparlabel-302'>Practice</h2>
+<h2 class="section_" id='magicparlabel-294'>Practice</h2>
 
-<div class="question" id='magicparlabel-303'><div class="question_item"><span class="question_label">Question 21.</span>
+<div class="question" id='magicparlabel-295'><div class="question_item"><span class="question_label">Question 21.</span>
 To practice try to work on the Exercises <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_1">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-1</a>, and <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_2_2_1_1_1_1_1_1">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-2-2-1-1-1-1-1-1</a> from the Exercise sheet.</div>
 </div>
 </body>
