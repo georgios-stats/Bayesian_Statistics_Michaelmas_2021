@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.5-1" />
+<meta name="GENERATOR" content="LyX 2.3.6.1" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -144,10 +144,10 @@ div.float-caption {
  </mrow></math> points sampled at random uniformly from the unit square. On the right, is a transformation of these points similar to that undergone by the sunflower image, except that here only the `<math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
  </mrow></math>-coordinate', the vertical position in the image, has been affected. </div>
-<div class='float-figure'><div class="plain_layout" style='text-align: center;' id='magicparlabel-26'><img style='width:40%;' src='2_home_georgios_Dropbox_Teaching_2021_term1_Bay___cs_III_IV_Exercises_pool_figures_sunflowers.jpg' alt='image: 2_home_georgios_Dropbox_Teaching_2021_term1_Bay___cs_III_IV_Exercises_pool_figures_sunflowers.jpg' />
+<div class='float-figure'><div class="plain_layout" style='text-align: center;' id='magicparlabel-26'><img style='width:40%;' src='2_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____cs_III_IV_Exercises_pool_figures_sunflowers.jpg' alt='image: 2_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____cs_III_IV_Exercises_pool_figures_sunflowers.jpg' />
  </div>
 
-<div class="plain_layout" style='text-align: center;' id='magicparlabel-27'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Exercises/pool/figures/sunflowers-scatterplots.pdf' alt='image: ' />
+<div class="plain_layout" style='text-align: center;' id='magicparlabel-27'><img src='3_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____rcises_pool_figures_sunflowers-scatterplots.png' alt='image: 3_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____rcises_pool_figures_sunflowers-scatterplots.png' />
 </div>
 
 <div class="plain_layout" id='magicparlabel-28'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  Two sampled point patterns. (Sunflower image  Soren Breiting / Alamy.) <a id="fig_sunflowers" />
@@ -381,7 +381,7 @@ Suppose we have no reason to favour any particular value of <math xmlns="http://
 <li class="enumerate_item">From the answer to Sub-question <a href="#enu_Suppose_we_have">(c)</a>, derive the prior probability density of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>t</mi>
  </mrow></math>. [Hint: 
-<span style = "text-align: center;"><img src="lyxprevieweJMtRs1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewmwCcqM1.png" alt="Mathematical Equation" />
 </span>
 ]</li>
 <li class="enumerate_item">Hence write down the posterior probability density for <math xmlns="http://www.w3.org/1998/Math/MathML">

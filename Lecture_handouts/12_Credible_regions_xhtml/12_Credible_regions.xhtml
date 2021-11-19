@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.5-1" />
+<meta name="GENERATOR" content="LyX 2.3.6.1" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -538,7 +538,7 @@ Recall that </div>
   <mrow><mi> &theta; </mi><mo> &isin; </mo><mo> &Theta; </mo><mo> &sube; </mo>
    <msup>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mi>d</mi>
@@ -679,7 +679,7 @@ We present the parametric and predictive credible intervals in a unified framewo
    </mstyle><mo> &sube; </mo>
    <msup>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mi>k</mi>
@@ -1637,7 +1637,7 @@ For the simple 1D case, <math xmlns="http://www.w3.org/1998/Math/MathML">
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &isin; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+   <mstyle mathvariant='double-struck'><mi>R</mi>
    </mstyle>
   </mrow>
  </mrow></math> be a continuous random variable following distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1788,7 +1788,7 @@ Theorem <a href="#Let__be">15</a> suggests a procedure to find the boundaries of
   <mrow><mn>1</mn><mo>-</mo><mi>a</mi>
   </mrow>
  </mrow></math>. This mechanism is also described in the algorithm in suggested in Algorithm <a href="#note_A__not_that_efficient__algorithm">13</a> and hence can also be used in multimodal densities (Figure <a href="#fig_Multimodal">b</a>) or multivariate ones. 
-<div class='float-figure'><div class='float-figure'><div class="plain_layout" id='magicparlabel-200'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/unimodal.pdf' alt='image: ' />
+<div class='float-figure'><div class='float-figure'><div class="plain_layout" id='magicparlabel-200'><img style='width:48%;' src='0_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____statistics_III_IV_Handouts_figures_unimodal.png' alt='image: 0_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____statistics_III_IV_Handouts_figures_unimodal.png' />
 </div>
 
 <div class="plain_layout" id='magicparlabel-201'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure a:  <a id="fig_Unimodal_case" />
@@ -1809,7 +1809,7 @@ Unimodal case; <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></span></div>
 </div>
-<div class='float-figure'><div class="plain_layout" id='magicparlabel-209'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/multimodal.pdf' alt='image: ' />
+<div class='float-figure'><div class="plain_layout" id='magicparlabel-209'><img style='width:48%;' src='1_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____atistics_III_IV_Handouts_figures_multimodal.png' alt='image: 1_extra_tmp_mffk55_Dropbox_Teaching_2021_term1____atistics_III_IV_Handouts_figures_multimodal.png' />
 <span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure b:  <a id="fig_Multimodal" />
 Multimodal ; <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1951,7 +1951,7 @@ Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Mat
   <mrow><mi> &mu; </mi><mo> &isin; </mo>
    <msup>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mi>d</mi>
@@ -1963,7 +1963,9 @@ Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Mat
   <mrow><mi>d</mi><mo> &ge; </mo><mn>1</mn>
   </mrow>
  </mrow></math>, and known <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mo> &Sigma; </mo>
+ <mrow>
+  <mrow><mo> &Sigma; </mo><mo>&gt;</mo><mn>0</mn>
+  </mrow>
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -1974,12 +1976,14 @@ Consider a Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Mat
   </msub>
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
-  <msub>
-   <mrow><mo> &Sigma; </mo>
-   </mrow>
-   <mrow><mn>0</mn>
-   </mrow>
-  </msub>
+  <mrow>
+   <msub>
+    <mrow><mo> &Sigma; </mo>
+    </mrow>
+    <mrow><mn>0</mn>
+    </mrow>
+   </msub><mo>&gt;</mo><mn>0</mn>
+  </mrow>
  </mrow></math>. Find the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -2915,7 +2919,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
      <mrow><mi> &mu; </mi><mo> &isin; </mo>
       <msup>
        <mrow>
-        <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+        <mstyle mathvariant='double-struck'><mi>R</mi>
         </mstyle>
        </mrow>
        <mrow><mi>d</mi>
@@ -2949,7 +2953,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
      <mrow><mi> &mu; </mi><mo> &isin; </mo>
       <msup>
        <mrow>
-        <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+        <mstyle mathvariant='double-struck'><mi>R</mi>
         </mstyle>
        </mrow>
        <mrow><mi>d</mi>
@@ -3013,7 +3017,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
      <mrow><mi> &mu; </mi><mo> &isin; </mo>
       <msup>
        <mrow>
-        <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+        <mstyle mathvariant='double-struck'><mi>R</mi>
         </mstyle>
        </mrow>
        <mrow><mi>d</mi>
@@ -3066,9 +3070,26 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
 <mo> &le; </mo><munder accent='false'>
       <munder>
        <mrow>
-        <mrow><mo>-</mo><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+        <mrow><mo>-</mo><mn>2</mn><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
-         <mrow><mn>2</mn><mi> &pi; </mi><mo> det </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+         <mrow>
+          <msup>
+           <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+            <mrow><mn>2</mn><mi> &pi; </mi>
+            </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+           </mrow>
+           <mrow>
+            <mfrac>
+             <mrow><mi>d</mi>
+             </mrow>
+             <mrow><mn>2</mn>
+             </mrow>
+            </mfrac>
+           </mrow>
+          </msup><mo> det </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
           <msub>
            <mrow>
@@ -3082,15 +3103,15 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
           </msub>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
+          <msub>
+           <mrow><mi>k</mi>
+           </mrow>
+           <mrow><mi>a</mi>
+           </mrow>
+          </msub>
          </mrow>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo>)</mo>
-         <msub>
-          <mrow><mi>k</mi>
-          </mrow>
-          <mrow><mi>a</mi>
-          </mrow>
-         </msub>
+
         </mrow>
        </mrow><mo stretchy="true">&UnderBrace;</mo>
       </munder>
@@ -3588,7 +3609,7 @@ I will use the Definition <a href="#_Posterior_highest_probability">8</a>.</div>
    </msub><mo>=</mo>{<mi> &mu; </mi><mo> &isin; </mo>
    <msup>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mi>d</mi>
@@ -3682,7 +3703,7 @@ Consider an exchangeable sequence of observables <math xmlns="http://www.w3.org/
 <mo> &isin; </mo>
    <msup>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     <mstyle mathvariant='double-struck'><mi>R</mi>
      </mstyle>
     </mrow>
     <mrow><mi>n</mi>
@@ -4398,7 +4419,7 @@ Assume a <math xmlns="http://www.w3.org/1998/Math/MathML">
      </mrow>
      <mrow>
       <mrow><mi> &forall; </mi><mi>x</mi><mo> &isin; </mo>
-       <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+       <mstyle mathvariant='double-struck'><mi>R</mi>
        </mstyle>
       </mrow>
      </mrow>

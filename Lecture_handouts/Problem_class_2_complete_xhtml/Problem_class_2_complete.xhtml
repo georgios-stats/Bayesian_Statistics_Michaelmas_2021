@@ -1021,7 +1021,7 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
   </mtr>
  </mtable></math></li>
 <li class="itemize_item">I will minimize the posterior expected risk to find the Bayes estimator (rule). So, it is 
-<div style = "text-align: center;"><img src="lyxpreviewHpmsbz1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewVzdDCM1.png" alt="Mathematical Equation" />
 </div>
 </li>
 <li class="itemize_item">By using the Bayes theorem, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1400,7 +1400,7 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
   </mrow>
  </mrow></math>. </li>
 <li class="itemize_item">Then 
-<span style = "text-align: center;"><img src="lyxpreviewQjkhja1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewjvspfh1.png" alt="Mathematical Equation" />
 </span>
  (as an expected value of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -2201,7 +2201,9 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
   <mrow><mi>d</mi><mo> &ge; </mo><mn>1</mn>
   </mrow>
  </mrow></math>, and known <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mo> &Sigma; </mo>
+ <mrow>
+  <mrow><mo> &Sigma; </mo><mo>&gt;</mo><mn>0</mn>
+  </mrow>
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -2212,12 +2214,14 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
   </msub>
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
-  <msub>
-   <mrow><mo> &Sigma; </mo>
-   </mrow>
-   <mrow><mn>0</mn>
-   </mrow>
-  </msub>
+  <mrow>
+   <msub>
+    <mrow><mo> &Sigma; </mo>
+    </mrow>
+    <mrow><mn>0</mn>
+    </mrow>
+   </msub><mo>&gt;</mo><mn>0</mn>
+  </mrow>
  </mrow></math>. Find the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -3307,9 +3311,26 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
 <mo> &le; </mo><munder accent='false'>
       <munder>
        <mrow>
-        <mrow><mo>-</mo><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+        <mrow><mo>-</mo><mn>2</mn><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
-         <mrow><mn>2</mn><mi> &pi; </mi><mo> det </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+         <mrow>
+          <msup>
+           <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+            <mrow><mn>2</mn><mi> &pi; </mi>
+            </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+           </mrow>
+           <mrow>
+            <mfrac>
+             <mrow><mi>d</mi>
+             </mrow>
+             <mrow><mn>2</mn>
+             </mrow>
+            </mfrac>
+           </mrow>
+          </msup><mo> det </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
           <msub>
            <mrow>
@@ -3323,15 +3344,15 @@ Bayesian point estimation, and Credible sets </span><div style='height:3ex'></di
           </msub>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
+          <msub>
+           <mrow><mi>k</mi>
+           </mrow>
+           <mrow><mi>a</mi>
+           </mrow>
+          </msub>
          </mrow>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo>)</mo>
-         <msub>
-          <mrow><mi>k</mi>
-          </mrow>
-          <mrow><mi>a</mi>
-          </mrow>
-         </msub>
+
         </mrow>
        </mrow><mo stretchy="true">&UnderBrace;</mo>
       </munder>
