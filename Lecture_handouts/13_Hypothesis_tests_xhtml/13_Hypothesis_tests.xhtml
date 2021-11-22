@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.5-1" />
+<meta name="GENERATOR" content="LyX 2.3.6.1" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -2744,19 +2744,7 @@ For Hypothesis pair <a href="#eq_simplegeneralhypothesis">(2)</a> and Bayes mode
 <mo>=</mo>
    <mfrac>
     <mrow>
-     <mrow>
-      <msub>
-       <mrow><mo> &int; </mo>
-       </mrow>
-       <mrow>
-        <msub>
-         <mrow><mo> &Theta; </mo>
-         </mrow>
-         <mrow><mn>0</mn>
-         </mrow>
-        </msub>
-       </mrow>
-      </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+     <mrow><mo> &int; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
       <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
       </mrow>
@@ -2776,19 +2764,7 @@ For Hypothesis pair <a href="#eq_simplegeneralhypothesis">(2)</a> and Bayes mode
      </mrow>
     </mrow>
     <mrow>
-     <mrow>
-      <msub>
-       <mrow><mo> &int; </mo>
-       </mrow>
-       <mrow>
-        <msub>
-         <mrow><mo> &Theta; </mo>
-         </mrow>
-         <mrow><mn>1</mn>
-         </mrow>
-        </msub>
-       </mrow>
-      </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+     <mrow><mo> &int; </mo><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
       <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
       </mrow>
@@ -2909,48 +2885,50 @@ It results by showing that for <math xmlns="http://www.w3.org/1998/Math/MathML">
       </mrow>
       <mrow><mo> &Pi; </mo>
       </mrow>
-     </msub><mo>(</mo>
+     </msub><mo>(</mo><mi> &theta; </mi>
     </mrow>
    </mtd>
    <mtd>
-    <mrow><mi> &theta; </mi><mo> &isin; </mo>
+    <mrow><mo> &isin; </mo>
      <msub>
       <mrow><mo> &Theta; </mo>
       </mrow>
       <mrow><mi>j</mi>
       </mrow>
-     </msub><mo>|</mo><mi>y</mi><mo>)</mo><mo>=</mo>
-     <msub>
-      <mrow><mo> &int; </mo>
-      </mrow>
-      <mrow>
-       <msub>
-        <mrow><mo> &Theta; </mo>
-        </mrow>
-        <mrow><mi>j</mi>
-        </mrow>
-       </msub>
-      </mrow>
-     </msub>
+     </msub><mo>|</mo><mi>y</mi><mo>)</mo><mo>=</mo><mo> &int; </mo>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo> &isin; </mo>
+      <msub>
+       <mrow><mo> &Theta; </mo>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
      <mstyle mathvariant='normal'><mi>d</mi>
      </mstyle><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
      <mrow><mi> &theta; </mi><mo>|</mo><mi>y</mi>
      </mrow>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mspace width="20px" /><mo>=</mo>
-     <msub>
-      <mrow><mo> &int; </mo>
-      </mrow>
-      <mrow>
-       <msub>
-        <mrow><mo> &Theta; </mo>
-        </mrow>
-        <mrow><mi>j</mi>
-        </mrow>
-       </msub>
-      </mrow>
-     </msub>
+<mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mo>=</mo><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mspace width="6px" /><mo> &int; </mo>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo> &isin; </mo>
+      <msub>
+       <mrow><mo> &Theta; </mo>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
      <mfrac>
       <mrow>
        <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2986,19 +2964,28 @@ It results by showing that for <math xmlns="http://www.w3.org/1998/Math/MathML">
 
        </mrow>
       </mrow>
-     </mfrac><mspace width="10px" /><mo>=</mo>
-     <msub>
-      <mrow><mo> &int; </mo>
-      </mrow>
-      <mrow>
-       <msub>
-        <mrow><mo> &Theta; </mo>
-        </mrow>
-        <mrow><mi>j</mi>
-        </mrow>
-       </msub>
-      </mrow>
-     </msub>
+     </mfrac>
+    </mrow>
+   </mtd>
+  </mtr>
+  <mtr>
+   <mtd><mrow/>
+   </mtd>
+   <mtd>
+    <mrow><mo>=</mo><mo> &int; </mo>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo> &isin; </mo>
+      <msub>
+       <mrow><mo> &Theta; </mo>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
      <mfrac>
       <mrow>
        <mrow><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -3102,19 +3089,20 @@ It results by showing that for <math xmlns="http://www.w3.org/1998/Math/MathML">
 
        </mrow>
       </mrow>
-     </mfrac>
-     <msub>
-      <mrow><mo> &int; </mo>
-      </mrow>
-      <mrow>
-       <msub>
-        <mrow><mo> &Theta; </mo>
-        </mrow>
-        <mrow><mi>j</mi>
-        </mrow>
-       </msub>
-      </mrow>
-     </msub><mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+     </mfrac><mo> &int; </mo>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo> &isin; </mo>
+      <msub>
+       <mrow><mo> &Theta; </mo>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi>f</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
      <mrow><mi>y</mi><mo>|</mo><mi> &theta; </mi>
      </mrow>
@@ -3147,19 +3135,20 @@ It results by showing that for <math xmlns="http://www.w3.org/1998/Math/MathML">
 
        </mrow>
       </mrow>
-     </mfrac>
-     <msub>
-      <mrow><mo> &int; </mo>
-      </mrow>
-      <mrow>
-       <msub>
-        <mrow><mo> &Theta; </mo>
-        </mrow>
-        <mrow><mi>j</mi>
-        </mrow>
-       </msub>
-      </mrow>
-     </msub>
+     </mfrac><mo> &int; </mo>
+     <mstyle mathvariant='normal'><mn>1</mn>
+     </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi> &theta; </mi><mo> &isin; </mo>
+      <msub>
+       <mrow><mo> &Theta; </mo>
+       </mrow>
+       <mrow><mi>j</mi>
+       </mrow>
+      </msub>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
      <msub>
       <mrow><mi> &pi; </mi>
       </mrow>
@@ -5011,7 +5000,7 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub><mo>=</mo>{
    <mstyle mathvariant='normal'><mi>N</mi>
    </mstyle>}<mo> &cup; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+   <mstyle mathvariant='double-struck'><mi>R</mi>
    </mstyle><mo> &cup; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
    <mrow><mn>0</mn><mo>,</mo><mi> &infin; </mi>
@@ -5157,7 +5146,7 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub><mo>=</mo>{
    <mstyle mathvariant='normal'><mi>T</mi>
    </mstyle>}<mo> &cup; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+   <mstyle mathvariant='double-struck'><mi>R</mi>
    </mstyle>
   </mrow>
  </mrow></math>. Here <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -5314,14 +5303,25 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi>A</mi>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo>=</mo>
-   <mstyle mathvariant='normal'><mn>1</mn>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>x</mi><mo> &isin; </mo><mi>A</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
+<mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+   <mtable>
+    <mtr>
+     <mtd><mn>1</mn>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo><mi>x</mi><mo> &isin; </mo><mi>A</mi>
+      </mrow>
+     </mtd>
+    </mtr>
+    <mtr>
+     <mtd><mn>0</mn>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo><mi>x</mi><mo> &notin; </mo><mi>A</mi>
+      </mrow>
+     </mtd>
+    </mtr>
+   </mtable>
   </mrow>
  </mrow></math>. If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -5353,14 +5353,25 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi>a</mi>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo>=</mo>
-   <mstyle mathvariant='normal'><mn>1</mn>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>x</mi><mo>=</mo><mi>a</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
+<mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+   <mtable>
+    <mtr>
+     <mtd><mn>1</mn>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo><mi>x</mi><mo>=</mo><mi>a</mi>
+      </mrow>
+     </mtd>
+    </mtr>
+    <mtr>
+     <mtd><mn>0</mn>
+     </mtd>
+     <mtd>
+      <mrow><mo>,</mo><mi>x</mi><mo> &ne; </mo><mi>a</mi>
+      </mrow>
+     </mtd>
+    </mtr>
+   </mtable>
   </mrow>
  </mrow></math>.</div>
 </div></div> prior distribution with concentration point at <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -5545,14 +5556,12 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
       <mrow><mi> &delta; </mi>
       </mrow>
       <mrow>
-       <mrow>{
-        <msub>
-         <mrow><mi> &theta; </mi>
-         </mrow>
-         <mrow><mn>0</mn>
-         </mrow>
-        </msub>}
-       </mrow>
+       <msub>
+        <mrow><mi> &theta; </mi>
+        </mrow>
+        <mrow><mn>0</mn>
+        </mrow>
+       </msub>
       </mrow>
      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mi> &theta; </mi>
@@ -5673,7 +5682,7 @@ Traditionally, hypotheses, <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math>
 
-<div class="example_" id='magicparlabel-500'><div class="example__item"><span class="example__label">Example.</span>
+<div class="example_" id='magicparlabel-508'><div class="example__item"><span class="example__label">Example.</span>
 The standard two side test <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -5915,7 +5924,7 @@ The standard two side test <math xmlns="http://www.w3.org/1998/Math/MathML">
     <mrow><mn>1</mn>
     </mrow>
    </msub><mo>=</mo>{<mi> &theta; </mi><mo> &isin; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+   <mstyle mathvariant='double-struck'><mi>R</mi>
    </mstyle><mo>:</mo><mi> &theta; </mi><mo> &ne; </mo>
    <msub>
     <mrow><mi> &theta; </mi>
@@ -6325,7 +6334,7 @@ The standard two side test <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math>
 
-<div class="note" id='magicparlabel-506'><div class="note_item"><span class="note_label">Note 17.</span>
+<div class="note" id='magicparlabel-514'><div class="note_item"><span class="note_label">Note 17.</span>
 In this case, Bayes factor is the likelihood ratio of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -6361,11 +6370,11 @@ In this case, Bayes factor is the likelihood ratio of <math xmlns="http://www.w3
  </mrow></math> that are given by the data. </div>
 </div>
 
-<div class="standard" id='magicparlabel-536'><br />
+<div class="standard" id='magicparlabel-544'><br />
 
 </div>
 
-<div class="example_" id='magicparlabel-537'><div class="example__item"><span class="example__label">Example.</span>
+<div class="example_" id='magicparlabel-545'><div class="example__item"><span class="example__label">Example.</span>
 Given the statistical model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -6480,11 +6489,11 @@ Given the statistical model <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-542'><br />
+<div class="standard" id='magicparlabel-550'><br />
 
 </div>
 
-<div class="example_" id='magicparlabel-543'><div class="example__item"><span class="example__label">Example.</span>
+<div class="example_" id='magicparlabel-551'><div class="example__item"><span class="example__label">Example.</span>
 The model comparison <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -6617,7 +6626,7 @@ The model comparison <math display="block" xmlns="http://www.w3.org/1998/Math/Ma
 </div>
 </li></ol>
 
-<div class="example" id='magicparlabel-582'><div class="example_item"><span class="example_label">Example 18.</span>
+<div class="example" id='magicparlabel-590'><div class="example_item"><span class="example_label">Example 18.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -6701,7 +6710,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>, a priori following a uniform distribution.</div>
 
-<ol class="enumerate" id='magicparlabel-583'><li class="enumerate_item">By using Jeffreys' scaling rule, perform the following hypothesis test for <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-591'><li class="enumerate_item">By using Jeffreys' scaling rule, perform the following hypothesis test for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -6751,7 +6760,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 <li class="enumerate_item">Compute the posterior probability of the NULL hypothesis.</li>
 </ol>
 
-<div class="solution_" id='magicparlabel-585'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-593'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;This is a simple vs. general alternative hypothesis. I specify the overall prior with pdf<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -6826,7 +6835,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.</div>
 
-<ol class="enumerate" id='magicparlabel-590'><li class="enumerate_item">The Bayes factor is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-598'><li class="enumerate_item">The Bayes factor is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -7324,11 +7333,11 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-593'><br />
+<div class="standard" id='magicparlabel-601'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-594'><div class="example_item"><span class="example_label">Example 19.</span>
+<div class="example" id='magicparlabel-602'><div class="example_item"><span class="example_label">Example 19.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -7514,7 +7523,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></div>
 
-<ol class="enumerate" id='magicparlabel-595'><li class="enumerate_item">Perform the test for <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-603'><li class="enumerate_item">Perform the test for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>n</mi><mo>=</mo><mn>2</mn>
   </mrow>
@@ -7558,7 +7567,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, by using Jeffrey's scaling.</li>
 </ol>
 
-<dl class='description' id='magicparlabel-597'><dt class="description_label">Hint-1</dt>
+<dl class='description' id='magicparlabel-605'><dt class="description_label">Hint-1</dt>
 <dd class="description_item"> Poisson distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -7607,7 +7616,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+     <mstyle mathvariant='double-struck'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -7618,7 +7627,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -7674,7 +7683,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+     <mstyle mathvariant='double-struck'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -7694,13 +7703,13 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo> &isin; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>-</mo>{<mn>0</mn>}
   </mrow>
  </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math>.</dd>
@@ -7869,7 +7878,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</dd>
 </dl>
 
-<div class="solution_" id='magicparlabel-609'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-617'><div class="solution__item"><span class="solution__label">Solution.</span>
 This is a Composite vs composite hypotheses. The overall a priori distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -8611,7 +8620,7 @@ This is a Composite vs composite hypotheses. The overall a priori distribution <
   </mrow>
  </mrow></math></div>
 
-<ol class="enumerate" id='magicparlabel-614'><li class="enumerate_item">&nbsp;Then <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-622'><li class="enumerate_item">&nbsp;Then <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -8713,11 +8722,11 @@ This is a Composite vs composite hypotheses. The overall a priori distribution <
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-617'><br />
+<div class="standard" id='magicparlabel-625'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-618'><div class="example_item"><span class="example_label">Example 20.</span>
+<div class="example" id='magicparlabel-626'><div class="example_item"><span class="example_label">Example 20.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -8801,7 +8810,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></div>
 
-<ol class="enumerate" id='magicparlabel-619'><li class="enumerate_item">Perform the test for <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-627'><li class="enumerate_item">Perform the test for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>n</mi><mo>=</mo><mn>2</mn>
   </mrow>
@@ -8845,7 +8854,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, by using Jeffreys' scaling.</li>
 </ol>
 
-<dl class='description' id='magicparlabel-621'><dt class="description_label">Hint-1</dt>
+<dl class='description' id='magicparlabel-629'><dt class="description_label">Hint-1</dt>
 <dd class="description_item"> Poisson distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>x</mi><mo> &sim; </mo>
@@ -8894,7 +8903,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+     <mstyle mathvariant='double-struck'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -8905,7 +8914,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -8961,7 +8970,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+     <mstyle mathvariant='double-struck'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -8981,19 +8990,19 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo> &isin; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>-</mo>{<mn>0</mn>}
   </mrow>
  </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
+   <mstyle mathvariant='double-struck'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math>.</dd>
 </dl>
 
-<div class="solution_" id='magicparlabel-623'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-631'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;This is a simple vs simple hypothesis test. I specify priors <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -9176,7 +9185,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math></div>
 
-<ol class="enumerate" id='magicparlabel-624'><li class="enumerate_item">Then <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-632'><li class="enumerate_item">Then <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -9282,12 +9291,12 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 </div>
 </div>
 
-<div class="standard" id='magicparlabel-626'><br />
+<div class="standard" id='magicparlabel-634'><br />
 
 </div>
-<h2 class="section_" id='magicparlabel-627'>Practice</h2>
+<h2 class="section_" id='magicparlabel-635'>Practice</h2>
 
-<div class="question" id='magicparlabel-628'><div class="question_item"><span class="question_label">Question 21.</span>
+<div class="question" id='magicparlabel-636'><div class="question_item"><span class="question_label">Question 21.</span>
 To practice try to work on the Exercise <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_2">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-2</a> from the Exercise sheet.</div>
 <div class="question_item"></div>
 </div>
