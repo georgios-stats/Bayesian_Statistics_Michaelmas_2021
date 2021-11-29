@@ -189,6 +189,22 @@ li.labeling_item {
 span.lyxlist {
 	margin-right: 1em;
 }
+div.solution_ {
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+span.solution__label {
+font-weight: bold;
+font-style: normal;
+font-variant: normal;
+font-size: medium;
+
+}
 dl.description dt { font-weight: bold; }
 div.question {
 font-style: italic;
@@ -200,38 +216,6 @@ text-align: left;
 
 }
 span.question_label {
-font-weight: bold;
-font-style: normal;
-font-variant: normal;
-font-size: medium;
-
-}
-div.exercise {
-font-style: normal;
-font-variant: normal;
-font-size: medium;
-margin-top: 0.7ex;
-margin-bottom: 0.7ex;
-text-align: left;
-
-}
-span.exercise_label {
-font-weight: bold;
-font-style: normal;
-font-variant: normal;
-font-size: medium;
-
-}
-div.solution_ {
-font-style: normal;
-font-variant: normal;
-font-size: medium;
-margin-top: 0.7ex;
-margin-bottom: 0.7ex;
-text-align: left;
-
-}
-span.solution__label {
 font-weight: bold;
 font-style: normal;
 font-variant: normal;
@@ -303,18 +287,22 @@ div.float-caption {
 </div>
 <h2 class="section" id='magicparlabel-60'><span class="section_label">1</span> Model uncertainty problem</h2>
 
-<div class="note" id='magicparlabel-61'><div class="note_item"><span class="note_label">Note 1.</span>
+<div class="standard" id='magicparlabel-61'><br />
+
+</div>
+
+<div class="note" id='magicparlabel-62'><div class="note_item"><span class="note_label">Note 1.</span>
 All (statistical/mathematical) models are approximations/simplifications of the reality. They are arguable. Their purpose is to allow You draw conclusions about reality and take decisions. </div>
 
-<ul class="itemize" id='magicparlabel-62'><li class="itemize_item">&ldquo;All models are wrong, but some are useful&rdquo;. –George Box's quote</li>
+<ul class="itemize" id='magicparlabel-63'><li class="itemize_item">&ldquo;All models are wrong, but some are useful&rdquo;. –George Box's quote</li>
 </ul>
 </div>
 
-<div class="standard" id='magicparlabel-63'><br />
+<div class="standard" id='magicparlabel-64'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-64'><div class="note_item"><span class="note_label">Note 2.</span>
+<div class="note" id='magicparlabel-65'><div class="note_item"><span class="note_label">Note 2.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -378,12 +366,12 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>. </div>
 </div>
 
-<div class="standard" id='magicparlabel-65'><br />
+<div class="standard" id='magicparlabel-66'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-66'><div class="note_item"><span class="note_label">Note 3.</span>
-Statistician may be unsure of the proper way to formulate the statistical model <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="note" id='magicparlabel-67'><div class="note_item"><span class="note_label">Note 3.</span>
+'Model uncertainty' is the problem where the statistician is uncertain about the proper way to formulate the statistical model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>M</mi><mo>=</mo>{<mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -395,21 +383,21 @@ Statistician may be unsure of the proper way to formulate the statistical model 
  </mrow></math> in order to acceptably represent the data-generating process <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>R</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-<mi>y</mi>
+<mo> &sdot; </mo>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
   </mrow>
- </mrow></math>. We call this situation 'model uncertainty'.</div>
+ </mrow></math>. </div>
 </div>
 
-<div class="standard" id='magicparlabel-67'><br />
+<div class="standard" id='magicparlabel-68'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-68'><div class="note_item"><span class="note_label">Note 4.</span>
-To address problems under model uncertainty, often </div>
+<div class="note" id='magicparlabel-69'><div class="note_item"><span class="note_label">Note 4.</span>
+In problems under model uncertainty, often </div>
 
-<ul class="itemize" id='magicparlabel-69'><li class="itemize_item">the statistician initially considers a restricted set <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-70'><li class="itemize_item">the statistician initially considers a restricted set <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>{
    <msub>
@@ -460,8 +448,8 @@ To address problems under model uncertainty, often </div>
     </mrow>
    </msub>}
   </mrow>
- </mrow></math>;</li>
-<li class="itemize_item">then interest lies in learning a model <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>; then</li>
+<li class="itemize_item">interest lies in learning a model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>M</mi>
  </mrow></math> which `best' represents <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -470,39 +458,13 @@ To address problems under model uncertainty, often </div>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
   </mrow>
- </mrow></math>, performing inference (predictive or parametric), and drawing conclusions under the pretense of model uncertainty. </li>
+ </mrow></math>, performing (predictive or parametric) inference, and drawing conclusions under the pretense of model uncertainty. </li>
 </ul>
 </div>
 
-<div class="example" id='magicparlabel-84'><div class="example_item"><span class="example_label">Example 5.</span>
+<div class="example" id='magicparlabel-85'><div class="example_item"><span class="example_label">Example 5.</span>
 <a id="exa_Consider_the_Normal" />
-&nbsp;Consider the Normal linear regression problem. Let <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow>{
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow><mn>0</mn>
-    </mrow>
-   </msub><mo>,</mo>
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow><mn>1</mn>
-    </mrow>
-   </msub><mo>,</mo><mn>...</mn><mo>,</mo>
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow>
-     <mrow><mi>d</mi><mo>-</mo><mn>1</mn>
-     </mrow>
-    </mrow>
-   </msub>}
-  </mrow>
- </mrow></math> be a set of <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mi>d</mi>
- </mrow></math> possible regressor variables, which may affect the values of the response variable <math xmlns="http://www.w3.org/1998/Math/MathML">
+&nbsp;[Variable selection in the Normal linear regression]. Consider a random quantity <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>y</mi><mo> &isin; </mo>
    <mstyle mathvariant='script'><mi>Y</mi>
@@ -510,85 +472,70 @@ To address problems under model uncertainty, often </div>
    <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
    </mstyle>
   </mrow>
- </mrow></math>. We are interested in learning the mapping 
-<div style = "text-align: center;"><img src="lyxpreviewpgDkRm1.png" alt="Mathematical Equation" />
+ </mrow></math> which may depend on some of the variables of the set <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>{
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow><mn>0</mn>
+    </mrow>
+   </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow>
+     <mrow><mi>d</mi><mo>-</mo><mn>1</mn>
+     </mrow>
+    </mrow>
+   </msub>}
+  </mrow>
+ </mrow></math>. We are interested in learning the mapping <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>M</mi>
+ </mrow></math>:
+<div style = "text-align: center;"><img src="lyxpreviewVEQkzQ1.png" alt="Mathematical Equation" />
 </div>
- Assume there are available <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mi>n</mi>
- </mrow></math> pairs of observations: <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-  <mrow>
-   <msub>
-    <mrow><mo> &Phi; </mo>
-    </mrow>
-    <mrow><mn>1</mn>
-    </mrow>
-   </msub><mo>,</mo>
-   <msub>
-    <mrow><mi>y</mi>
-    </mrow>
-    <mrow><mn>1</mn>
-    </mrow>
-   </msub>
-  </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
- </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-  <mrow>
-   <msub>
-    <mrow><mo> &Phi; </mo>
-    </mrow>
-    <mrow><mn>2</mn>
-    </mrow>
-   </msub><mo>,</mo>
-   <msub>
-    <mrow><mi>y</mi>
-    </mrow>
-    <mrow><mn>2</mn>
-    </mrow>
-   </msub>
-  </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
- </mrow></math>, ..., <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-  <mrow>
-   <msub>
-    <mrow><mo> &Phi; </mo>
-    </mrow>
-    <mrow><mi>n</mi>
-    </mrow>
-   </msub><mo>,</mo>
-   <msub>
-    <mrow><mi>y</mi>
-    </mrow>
-    <mrow><mi>n</mi>
-    </mrow>
-   </msub>
-  </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
- </mrow></math>. </div>
-<div class="example_item">Consider the following approximations of the real mapping 
-<span style = "text-align: center;"><img src="lyxpreviewTioaeg1.png" alt="Mathematical Equation" />
-</span>
-: Assume that observables <math xmlns="http://www.w3.org/1998/Math/MathML">
+We restrict the mapping to those of the linear form <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
-  <msub>
-   <mrow><mi>y</mi>
-   </mrow>
-   <mrow><mi>i</mi>
-   </mrow>
-  </msub>
- </mrow></math> are Normally distributed and independent for <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>i</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>n</mi>
+  <mrow><mi>y</mi><mo>=</mo>
+   <msub>
+    <mrow><mo> &sum; </mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>j</mi><mo> &isin; </mo><mi>k</mi>
+     </mrow>
+    </mrow>
+   </msub>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>
+   <msub>
+    <mrow><mi> &beta; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo>+</mo><mi> &epsi; </mi>
   </mrow>
- </mrow></math>, with unknown variance <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math> with unknown sub-set of indexes <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>k</mi><mo> &sube; </mo>{<mn>0</mn><mo>,</mo><mn>...</mn><mo>,</mo><mi>d</mi><mo>-</mo><mn>1</mn>}
+  </mrow>
+ </mrow></math>, unknown coefficients <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>{
+   <msub>
+    <mrow><mi> &beta; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>}
+  </mrow>
+ </mrow></math>, and additive error <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &epsi; </mi>
+ </mrow></math> I.I.D. according to the Normal distribution with zero mean and unknown variance <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
    <mrow><mi> &sigma; </mi>
@@ -596,65 +543,119 @@ To address problems under model uncertainty, often </div>
    <mrow><mn>2</mn>
    </mrow>
   </msup>
- </mrow></math>, and unknown mean which can be parametrised as a linear combination of some of the regressors <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow>{
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow><mn>0</mn>
-    </mrow>
-   </msub><mo>,</mo><mn>...</mn><mo>,</mo>
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow>
-     <mrow><mi>d</mi><mo>-</mo><mn>1</mn>
-     </mrow>
-    </mrow>
-   </msub>}
-  </mrow>
- </mrow></math> with unknown coefficients <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi> &beta; </mi><mo> &isin; </mo>
-   <msup>
-    <mrow>
-     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
-     </mstyle>
-    </mrow>
-    <mrow><mi>d</mi>
-    </mrow>
-   </msup>
-  </mrow>
- </mrow></math>. Finally, consider, we are uncertain which set of <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow>{
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow><mn>0</mn>
-    </mrow>
-   </msub><mo>,</mo><mn>...</mn><mo>,</mo>
-   <msub>
-    <mrow><mi> &phi; </mi>
-    </mrow>
-    <mrow>
-     <mrow><mi>d</mi><mo>-</mo><mn>1</mn>
-     </mrow>
-    </mrow>
-   </msub>}
-  </mrow>
- </mrow></math> actually affects values of <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow><mi>y</mi>
  </mrow></math>. </div>
+<div class="example_item">Unknowns are the sub-set <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>k</mi>
+ </mrow></math> indexing the <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi> &phi; </mi>
+ </mrow></math>'s included in the mapping, associated coefficients <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>{
+   <msub>
+    <mrow><mi> &beta; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>}
+  </mrow>
+ </mrow></math>, and variance <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msup>
+   <mrow><mi> &sigma; </mi>
+   </mrow>
+   <mrow><mn>2</mn>
+   </mrow>
+  </msup>
+ </mrow></math>.</div>
+<div class="example_item">We collect observables <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msubsup>
+   <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
+<mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow>
+     <msub>
+      <mrow><mi>y</mi>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub><mo>,</mo>
+     <msub>
+      <mrow><mstyle mathvariant='bold'><mi> &phi; </mi></mstyle>
+      </mrow>
+      <mrow><mi>i</mi>
+      </mrow>
+     </msub>
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>}</mo>
+
+   </mrow>
+   <mrow>
+    <mrow><mi>i</mi><mo>=</mo><mn>1</mn>
+    </mrow>
+   </mrow>
+   <mrow><mi>n</mi>
+   </mrow>
+  </msubsup>
+ </mrow></math> where <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow>
+   <msub>
+    <mrow><mi>y</mi>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mstyle mathvariant='bold'><mi> &phi; </mi></mstyle>
+    </mrow>
+    <mrow><mi>i</mi>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math> is the <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mi>i</mi>
+ </mrow></math>-th realization of vector <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+  <mrow><mi>y</mi><mo>,</mo>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow><mn>0</mn>
+    </mrow>
+   </msub><mo>,</mo>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow><mn>1</mn>
+    </mrow>
+   </msub><mo>,</mo><mn>...</mn><mo>,</mo>
+   <msub>
+    <mrow><mi> &phi; </mi>
+    </mrow>
+    <mrow>
+     <mrow><mi>d</mi><mo>-</mo><mn>1</mn>
+     </mrow>
+    </mrow>
+   </msub>
+  </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+ </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-86'><br />
+<div class="standard" id='magicparlabel-92'><br />
 
 </div>
-<h2 class="section" id='magicparlabel-87'><span class="section_label">2</span> Standard framework </h2>
+<h2 class="section" id='magicparlabel-93'><span class="section_label">2</span> Standard framework </h2>
 
-<div class="note" id='magicparlabel-92'><div class="note_item"><span class="note_label">Note 6.</span>
+<div class="note" id='magicparlabel-98'><div class="note_item"><span class="note_label">Note 6.</span>
 Consider a collection of statistical models <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -788,16 +789,16 @@ Consider a collection of statistical models <math xmlns="http://www.w3.org/1998/
  </mrow></math>. </div>
 </div>
 
-<div class="standard" id='magicparlabel-93'><br />
+<div class="standard" id='magicparlabel-99'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-94'><div class="definition_item"><span class="definition_label">Definition 7.</span>
+<div class="definition" id='magicparlabel-100'><div class="definition_item"><span class="definition_label">Definition 7.</span>
 The encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mstyle mathvariant='script'><mi>M</mi>
   </mstyle>
- </mrow></math> is defined as the collection of statistical models <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math> is defined as the collection of statistical models<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='script'><mi>M</mi>
@@ -895,9 +896,13 @@ The encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="example" id='magicparlabel-99'><div class="example_item"><span class="example_label">Example 8.</span>
+<div class="standard" id='magicparlabel-101'><br />
+
+</div>
+
+<div class="example" id='magicparlabel-102'><div class="example_item"><span class="example_label">Example 8.</span>
 <a id="exa__Cont__Example__" />
-(Cont...) We set-up the encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
+(Cont...) We specify encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <mstyle mathvariant='script'><mi>M</mi>
@@ -1026,7 +1031,7 @@ The encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
    <mrow><mi>k</mi>
    </mrow>
   </msub>
- </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math>. <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mstyle mathvariant='script'><mi>K</mi>
   </mstyle>
@@ -1216,17 +1221,23 @@ The encompassing model <math xmlns="http://www.w3.org/1998/Math/MathML">
      </msub>
     </mrow>
    </msup><mo> &times; </mo>
-   <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
-   </mstyle>
+   <msub>
+    <mrow>
+     <mstyle class='mathbb' mathvariant='bold'><mi>R</mi>
+     </mstyle>
+    </mrow>
+    <mrow><mo>+</mo>
+    </mrow>
+   </msub>
   </mrow>
  </mrow></math>. </div>
 </div>
 
-<div class="standard" id='magicparlabel-104'><br />
+<div class="standard" id='magicparlabel-112'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-105'><div class="note_item"><span class="note_label">Note 9.</span>
+<div class="note" id='magicparlabel-113'><div class="note_item"><span class="note_label">Note 9.</span>
 To complete the Bayesian model we specify prior distributions on the joint parametric space <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> varTheta </mi>
  </mrow></math>. Consider a collection of conditional priors on <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1427,11 +1438,11 @@ To complete the Bayesian model we specify prior distributions on the joint param
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-114'><br />
+<div class="standard" id='magicparlabel-122'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-115'><div class="note_item"><span class="note_label">Note 10.</span>
+<div class="note" id='magicparlabel-123'><div class="note_item"><span class="note_label">Note 10.</span>
 <a id="note_Specifying_the_prior" />
 Specifying the prior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1456,7 +1467,7 @@ Specifying the prior distribution <math xmlns="http://www.w3.org/1998/Math/MathM
   </mrow>
  </mrow></math> is a delicate matter. </div>
 
-<ol class="enumerate" id='magicparlabel-116'><li class="enumerate_item">Within model priors <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-124'><li class="enumerate_item">Within model priors <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
    <msub>
@@ -1540,7 +1551,7 @@ Common parameters between models (e.g. <math xmlns="http://www.w3.org/1998/Math/
   </msup>
  </mrow></math> in Example <a href="#exa__Cont__Example__">8</a>) may be treated as separate parameters. However, it is common to be regarded as the same parameter and be assigned the same prior; this is an additional approximation/simplification that modeler does for computational convenience –less parameters to learn ;-).
 
-<ul class="itemize" id='magicparlabel-123'><li class="itemize_item">In Example <a href="#exa__Cont__Example__">8</a>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-131'><li class="itemize_item">In Example <a href="#exa__Cont__Example__">8</a>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
    <mrow><mi> &sigma; </mi>
@@ -1579,11 +1590,11 @@ Common parameters between models (e.g. <math xmlns="http://www.w3.org/1998/Math/
 </li></ol>
 </div>
 
-<div class="standard" id='magicparlabel-128'><br />
+<div class="standard" id='magicparlabel-136'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-129'><div class="note_item"><span class="note_label">Note 11.</span>
+<div class="note" id='magicparlabel-137'><div class="note_item"><span class="note_label">Note 11.</span>
 <a id="note_The_encompassing_Bayesian" />
 The full Bayesian model can be summarized as <a id="eq_rtgasgf" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1786,11 +1797,11 @@ The full Bayesian model can be summarized as <a id="eq_rtgasgf" />
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-139'><br />
+<div class="standard" id='magicparlabel-147'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-140'><div class="example_item"><span class="example_label">Example 12.</span>
+<div class="example" id='magicparlabel-148'><div class="example_item"><span class="example_label">Example 12.</span>
 (Cont...) One can specify the following Bayesian linear regression model<a id="eq_fgadfgasdg" />
 <a id="eq_dhsdthadhasdhadf" />
 <a id="eq_adgadrgsrfg" />
@@ -2175,11 +2186,11 @@ The full Bayesian model can be summarized as <a id="eq_rtgasgf" />
  </mrow></math> possible combinations or regressors).</div>
 </div>
 
-<div class="standard" id='magicparlabel-150'><br />
+<div class="standard" id='magicparlabel-158'><br />
 
 </div>
 
-<div class="notation" id='magicparlabel-151'><div class="notation_item"><span class="notation_label">Notation 13.</span>
+<div class="notation" id='magicparlabel-159'><div class="notation_item"><span class="notation_label">Notation 13.</span>
 To make the notation easier, we will denote <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -2192,7 +2203,7 @@ To make the notation easier, we will denote <math xmlns="http://www.w3.org/1998/
  <mrow><mi>k</mi>
  </mrow></math> and the probability measures as</div>
 
-<ul class="itemize" id='magicparlabel-152'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-160'><li class="itemize_item"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>F</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -2373,18 +2384,18 @@ To make the notation easier, we will denote <math xmlns="http://www.w3.org/1998/
 </ul>
 </div>
 
-<div class="standard" id='magicparlabel-159'><br />
+<div class="standard" id='magicparlabel-167'><br />
 
 </div>
-<h2 class="section" id='magicparlabel-160'><span class="section_label">3</span> Posterior distributions</h2>
-<div class="standard" id='magicparlabel-161'>According to the Bayesian, the following posteriors can be derived.</div>
+<h2 class="section" id='magicparlabel-168'><span class="section_label">3</span> Posterior distributions</h2>
+<div class="standard" id='magicparlabel-169'>According to the Bayesian, the following posteriors can be derived.</div>
 
 
-<div class="standard" id='magicparlabel-162'><br />
+<div class="standard" id='magicparlabel-170'><br />
 
 </div>
 
-<div class="proposition" id='magicparlabel-163'><div class="proposition_item"><span class="proposition_label">Proposition 14.</span>
+<div class="proposition" id='magicparlabel-171'><div class="proposition_item"><span class="proposition_label">Proposition 14.</span>
 Given the Bayesian model <a href="#eq_rtgasgf">(2)</a>, the joint posterior distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> &Pi; </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -2530,11 +2541,11 @@ Given the Bayesian model <a href="#eq_rtgasgf">(2)</a>, the joint posterior dist
  </mtable></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-168'><br />
+<div class="standard" id='magicparlabel-176'><br />
 
 </div>
 
-<div class="proposition" id='magicparlabel-169'><div class="proposition_item"><span class="proposition_label">Proposition 15.</span>
+<div class="proposition" id='magicparlabel-177'><div class="proposition_item"><span class="proposition_label">Proposition 15.</span>
 The joint posterior density <a href="#eq_srtgsdfg">(7)</a> can be factorized as <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -2970,13 +2981,13 @@ The joint posterior density <a href="#eq_srtgsdfg">(7)</a> can be factorized as 
  </mrow></math></i></div>
 </div>
 
-<div class="standard" id='magicparlabel-170'><br />
+<div class="standard" id='magicparlabel-178'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-171'><div class="example_item"><span class="example_label">Example 16.</span>
+<div class="example" id='magicparlabel-179'><div class="example_item"><span class="example_label">Example 16.</span>
 <a id="exa_To_calculate_the_1" />
-<div class="marginal"><div class="plain_layout" id='magicparlabel-175'>Appendix <a href="#sec_Solution_to_Example_1">A</a></div>
+<div class="marginal"><div class="plain_layout" id='magicparlabel-183'>Appendix <a href="#sec_Solution_to_Example_1">A</a></div>
 </div>To calculate the conditional posterior pdf <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -3455,13 +3466,7 @@ The joint posterior density <a href="#eq_srtgsdfg">(7)</a> can be factorized as 
       </msubsup><mi>y</mi>
      </mrow>
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-     <msub>
-      <mrow><mi>M</mi>
-      </mrow>
-      <mrow><mi>k</mi>
-      </mrow>
-     </msub><mo>;</mo><mspace width="20px" />
+<mo>;</mo><mspace width="20px" />
      <msup>
       <mrow><mi>a</mi>
       </mrow>
@@ -3686,11 +3691,11 @@ The joint posterior density <a href="#eq_srtgsdfg">(7)</a> can be factorized as 
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-180'><br />
+<div class="standard" id='magicparlabel-188'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-181'><div class="example_item"><span class="example_label">Example 17.</span>
+<div class="example" id='magicparlabel-189'><div class="example_item"><span class="example_label">Example 17.</span>
 <a id="exa_To_calculate_the_1_1" />
 To calculate the model evidence / conditional marginal likelihood for <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -3700,7 +3705,7 @@ To calculate the model evidence / conditional marginal likelihood for <math xmln
    <mrow><mi>k</mi>
    </mrow>
   </msub>
- </mrow></math>, we integrate<div class="marginal"><div class="plain_layout" id='magicparlabel-185'>Appendix B</div>
+ </mrow></math>, we integrate<div class="marginal"><div class="plain_layout" id='magicparlabel-193'>Appendix B</div>
 </div><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -4353,11 +4358,11 @@ To calculate the model evidence / conditional marginal likelihood for <math xmln
  </mtable></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-190'><br />
+<div class="standard" id='magicparlabel-198'><br />
 
 </div>
 
-<div class="proposition" id='magicparlabel-191'><div class="proposition_item"><span class="proposition_label">Proposition 18.</span>
+<div class="proposition" id='magicparlabel-199'><div class="proposition_item"><span class="proposition_label">Proposition 18.</span>
 <a id="prop_Regarding_the_predictive" />
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -4384,16 +4389,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
   </mrow>
- </mrow></math> be a sequence of future outcomes. The conditional predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mrow></math> be a sequence of future outcomes. The conditional predictive distribution of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>z</mi>
  </mrow></math> given observables and model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -4484,16 +4480,7 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
    <mtd>(10)
    </mtd>
   </mtr>
- </mtable></math>The marginal predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>z</mi><mo>|</mo><mi>y</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math> of <math xmlns="http://www.w3.org/1998/Math/MathML">
+ </mtable></math>The marginal predictive distribution of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>z</mi>
  </mrow></math> given the observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
@@ -4568,18 +4555,9 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="example" id='magicparlabel-192'><div class="example_item"><span class="example_label">Example 19.</span>
+<div class="example" id='magicparlabel-200'><div class="example_item"><span class="example_label">Example 19.</span>
 <a id="exa_To_calculate_the" />
-The predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math> of future observables <math xmlns="http://www.w3.org/1998/Math/MathML">
+The predictive distribution of future observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>z</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -4673,7 +4651,7 @@ The predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
   </mrow>
- </mrow></math>, has pdf<div class="marginal"><div class="plain_layout" id='magicparlabel-200'>Appendix C</div>
+ </mrow></math>, has pdf/pmf<div class="marginal"><div class="plain_layout" id='magicparlabel-208'>Appendix C</div>
 </div> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -4917,21 +4895,12 @@ The predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mtable></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-201'><br />
+<div class="standard" id='magicparlabel-209'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-202'><div class="example_item"><span class="example_label">Example 20.</span>
-The marginal predictive distribution <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>G</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>z</mi><mo>|</mo><mi>k</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math> of future observables <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="example" id='magicparlabel-210'><div class="example_item"><span class="example_label">Example 20.</span>
+The marginal predictive distribution of future observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>z</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -4972,7 +4941,7 @@ The marginal predictive distribution <math xmlns="http://www.w3.org/1998/Math/Ma
   </msubsup>
  </mrow></math> given the observables <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
- </mrow></math> has pdf<a id="eq_xvgfv" />
+ </mrow></math> has pdf/pmf<a id="eq_xvgfv" />
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -5256,10 +5225,10 @@ The marginal predictive distribution <math xmlns="http://www.w3.org/1998/Math/Ma
   </mtr>
  </mtable></math></div>
 </div>
-<h2 class="section" id='magicparlabel-208'><span class="section_label">4</span> Inference based on a single Best model</h2>
-<div class="standard" id='magicparlabel-209'>For parametric or predictive inference, the statistician may proceed as follows:</div>
+<h2 class="section" id='magicparlabel-216'><span class="section_label">4</span> Inference based on a single Best model</h2>
+<div class="standard" id='magicparlabel-217'>For parametric or predictive inference, the statistician may proceed as follows:</div>
 
-<ol class="enumerate" id='magicparlabel-210'><li class="enumerate_item">select a single 'Best' model <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-218'><li class="enumerate_item">select a single 'Best' model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi>M</mi>
@@ -5445,7 +5414,7 @@ The marginal predictive distribution <math xmlns="http://www.w3.org/1998/Math/Ma
   </mtable>
  </mrow></math></li>
 </ol>
-<h3 class="subsection" id='magicparlabel-231'><span class="subsection_label">4.1</span> <a id="subsec_Bayesian_model_selection_" />
+<h3 class="subsection" id='magicparlabel-239'><span class="subsection_label">4.1</span> <a id="subsec_Bayesian_model_selection_" />
 Bayesian model selection: How to select the single 'Best' model <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -5462,7 +5431,7 @@ Bayesian model selection: How to select the single 'Best' model <math xmlns="htt
   </msub>
  </mrow></math>.</h3>
 
-<div class="note" id='magicparlabel-232'><div class="note_item"><span class="note_label">Note 21.</span>
+<div class="note" id='magicparlabel-240'><div class="note_item"><span class="note_label">Note 21.</span>
 Model selection/choice is the selection of the &ldquo;Best&rdquo; statistical model from a set of competing statistical models <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -5480,11 +5449,11 @@ Model selection/choice is the selection of the &ldquo;Best&rdquo; statistical mo
  </mrow></math> . It can be naturally performed as a parametric point estimation problem, statistical decision problem, or hypothesis test (all equivalent). See Criteria <a href="#cri_Model_selection_can">22</a> and <a href="#cri_Under_the_">23</a>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-237'><br />
+<div class="standard" id='magicparlabel-245'><br />
 
 </div>
 
-<div class="criterion" id='magicparlabel-238'><div class="criterion_item"><span class="criterion_label">Criterion 22.</span>
+<div class="criterion" id='magicparlabel-246'><div class="criterion_item"><span class="criterion_label">Criterion 22.</span>
 <a id="cri_Model_selection_can" />
 We produce the Bayes estimator (of Bayes rule) <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -5652,11 +5621,11 @@ We produce the Bayes estimator (of Bayes rule) <math xmlns="http://www.w3.org/19
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-239'><br />
+<div class="standard" id='magicparlabel-247'><br />
 
 </div>
 
-<div class="criterion" id='magicparlabel-240'><div class="criterion_item"><span class="criterion_label">Criterion 23.</span>
+<div class="criterion" id='magicparlabel-248'><div class="criterion_item"><span class="criterion_label">Criterion 23.</span>
 <a id="cri_Under_the_" />
 Under the <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -5765,9 +5734,9 @@ Under the <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>.</i></div>
 </div>
-<div class="standard" id='magicparlabel-254'>Bayes factors can be used for model selection; here we re-form them suitably for the model selection framework.</div>
+<div class="standard" id='magicparlabel-262'>Bayes factors can be used for model selection; here we re-form them suitably for the model selection framework.</div>
 
-<div class="definition" id='magicparlabel-260'><div class="definition_item"><span class="definition_label">Definition 24.</span>
+<div class="definition" id='magicparlabel-268'><div class="definition_item"><span class="definition_label">Definition 24.</span>
 Bayes factor <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -5865,11 +5834,11 @@ Bayes factor <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-261'><br />
+<div class="standard" id='magicparlabel-269'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-262'><div class="example_item"><span class="example_label">Example 25.</span>
+<div class="example" id='magicparlabel-270'><div class="example_item"><span class="example_label">Example 25.</span>
 <a id="exa_For_the_regression" />
 (Cont.) The marginal model posterior <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -5920,7 +5889,7 @@ Bayes factor <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>y</mi>
  </mrow></math> 'Ozone (ppb) ' and the possible regressors </div>
 
-<ol class='lyxlist' id='magicparlabel-264'><li class="labeling_item"><span class='lyxlist'><math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class='lyxlist' id='magicparlabel-272'><li class="labeling_item"><span class='lyxlist'><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi> &phi; </mi>
@@ -6115,20 +6084,20 @@ Bayes factor <math xmlns="http://www.w3.org/1998/Math/MathML">
    <mrow><mn>6</mn>
    </mrow>
   </msub>
- </mrow></math>. <div class='float-figure'><div class="plain_layout" id='magicparlabel-273'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-<div class='float-figure'><div class="plain_layout" id='magicparlabel-285'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/airquality 6 .pdf' alt='image: ' />
+ </mrow></math>. <div class='float-figure'><div class="plain_layout" id='magicparlabel-281'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div class='float-figure'><div class="plain_layout" id='magicparlabel-293'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/airquality 6 .pdf' alt='image: ' />
 &nbsp;</div>
 
-<div class="plain_layout" id='magicparlabel-286'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure a:  Marginal model prior probabilities</span></div>
+<div class="plain_layout" id='magicparlabel-294'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure a:  Marginal model prior probabilities</span></div>
 </div>
-<div class='float-figure'><div class="plain_layout" id='magicparlabel-294'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/airquality 5 .pdf' alt='image: ' />
-</div>
-
-<div class="plain_layout" id='magicparlabel-295'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure b:  Marginal model posterior probabilities</span></div>
+<div class='float-figure'><div class="plain_layout" id='magicparlabel-302'><img src='/home/georgios/Dropbox/Teaching/2021.term1.Bayesian_statistics_III_IV/Handouts/figures/airquality 5 .pdf' alt='image: ' />
 </div>
 
+<div class="plain_layout" id='magicparlabel-303'><span class='float-caption-Standard float-caption float-caption-standard'>Sub-Figure b:  Marginal model posterior probabilities</span></div>
+</div>
 
-<div class="plain_layout" id='magicparlabel-300'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  <a id="fig_Marginal_model_prior" />
+
+<div class="plain_layout" id='magicparlabel-308'><span class='float-caption-Standard float-caption float-caption-standard'>Figure 1:  <a id="fig_Marginal_model_prior" />
  Marginal model prior and posterior probabilities produced in Example <a href="#exa_For_the_regression">25</a>.
 <br />
 
@@ -6294,10 +6263,10 @@ Bayes factor <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math></div>
 </div>
-<h3 class="subsection" id='magicparlabel-318'><span class="subsection_label">4.2</span> <a id="subsec_Within_model_inference" />
+<h3 class="subsection" id='magicparlabel-326'><span class="subsection_label">4.2</span> <a id="subsec_Within_model_inference" />
 Within model inference</h3>
 
-<div class="note" id='magicparlabel-319'><div class="note_item"><span class="note_label">Note 26.</span>
+<div class="note" id='magicparlabel-327'><div class="note_item"><span class="note_label">Note 26.</span>
 Given that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -6499,7 +6468,7 @@ Given that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtable>
  </mrow></math></div>
 
-<ul class="itemize" id='magicparlabel-339'><li class="itemize_item">Parametric inference about <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-347'><li class="itemize_item">Parametric inference about <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
    <mrow><mi> &theta; </mi>
@@ -6671,27 +6640,27 @@ Given that <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></li>
 </ul>
 </div>
-<h2 class="section" id='magicparlabel-345'><span class="section_label">5</span> Bayesian model averaging (BMA)</h2>
+<h2 class="section" id='magicparlabel-353'><span class="section_label">5</span> Bayesian model averaging (BMA)</h2>
 
-<div class="note" id='magicparlabel-346'><div class="note_item"><span class="note_label">Note 27.</span>
+<div class="note" id='magicparlabel-354'><div class="note_item"><span class="note_label">Note 27.</span>
 Selecting a single (best) model from a set of available models and then proceeding as if the selected model had generated the observables may not be optimal. It ignores the uncertainty due to model selection, which leads to over-confident inferences and decisions. BMA offers a coherent mechanism to account model uncertainty. </div>
 </div>
 
-<div class="standard" id='magicparlabel-351'><br />
+<div class="standard" id='magicparlabel-359'><br />
 
 </div>
 
-<div class="definition" id='magicparlabel-352'><div class="definition_item"><span class="definition_label">Definition 28.</span>
+<div class="definition" id='magicparlabel-360'><div class="definition_item"><span class="definition_label">Definition 28.</span>
 Model averaging is called the process where a posterior summary is obtained as a weighted mean of the summaries under each model with weights given by the marginal model posterior probability. </div>
 </div>
 
-<div class="standard" id='magicparlabel-353'><br />
+<div class="standard" id='magicparlabel-361'><br />
 
 </div>
-<h5 class="paragraph_" id='magicparlabel-354'>Parametric inference</h5>
-<div class="standard" id='magicparlabel-355'>There may be certain model parameters or functions of model parameters which are present in all available models and retain a consistent interpretation across all models. Interesting may be to average out all the models.</div>
+<h5 class="paragraph_" id='magicparlabel-362'>Parametric inference</h5>
+<div class="standard" id='magicparlabel-363'>There may be certain model parameters or functions of model parameters which are present in all available models and retain a consistent interpretation across all models. Interesting may be to average out all the models.</div>
 
-<div class="note" id='magicparlabel-356'><div class="note_item"><span class="note_label">Note 29.</span>
+<div class="note" id='magicparlabel-364'><div class="note_item"><span class="note_label">Note 29.</span>
 Let partition <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
@@ -6801,11 +6770,11 @@ Let partition <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-357'><br />
+<div class="standard" id='magicparlabel-365'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-358'><div class="note_item"><span class="note_label">Note 30.</span>
+<div class="note" id='magicparlabel-366'><div class="note_item"><span class="note_label">Note 30.</span>
 Then any moment (expectation, variance, probability, etc...) of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &psi; </mi><mo> &isin; </mo><mo> &Psi; </mo>
@@ -6910,11 +6879,11 @@ Then any moment (expectation, variance, probability, etc...) of <math xmlns="htt
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-363'><br />
+<div class="standard" id='magicparlabel-371'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-364'><div class="example_item"><span class="example_label">Example 31.</span>
+<div class="example" id='magicparlabel-372'><div class="example_item"><span class="example_label">Example 31.</span>
 (Cont.) The sampling distribution variance <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msup>
@@ -7581,10 +7550,10 @@ Then any moment (expectation, variance, probability, etc...) of <math xmlns="htt
   </mtr>
  </mtable></math></div>
 </div>
-<h5 class="paragraph_" id='magicparlabel-365'>Predictive inference</h5>
-<div class="standard" id='magicparlabel-366'>BMA plays an important role in the predictive inference.</div>
+<h5 class="paragraph_" id='magicparlabel-373'>Predictive inference</h5>
+<div class="standard" id='magicparlabel-374'>BMA plays an important role in the predictive inference.</div>
 
-<div class="note" id='magicparlabel-367'><div class="note_item"><span class="note_label">Note 32.</span>
+<div class="note" id='magicparlabel-375'><div class="note_item"><span class="note_label">Note 32.</span>
 Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>z</mi><mo>=</mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -7704,19 +7673,19 @@ Let <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-368'><br />
+<div class="standard" id='magicparlabel-376'><br />
 
 </div>
 
-<div class="example" id='magicparlabel-369'><div class="example_item"><span class="example_label">Example 33.</span>
+<div class="example" id='magicparlabel-377'><div class="example_item"><span class="example_label">Example 33.</span>
 The BMA predictive distribution for the Normal linear regression model has been calculated in Example <a href="#exa_To_calculate_the">19</a>, Eq. <a href="#eq_xvgfv">11</a>.</div>
 </div>
 
-<div class="standard" id='magicparlabel-370'><br />
+<div class="standard" id='magicparlabel-378'><br />
 
 </div>
 
-<div class="note" id='magicparlabel-371'><div class="note_item"><span class="note_label">Note 34.</span>
+<div class="example" id='magicparlabel-379'><div class="example_item"><span class="example_label">Example 34.</span>
 By averaging out all models in this fashion, BMA provides better predictive ability as measured by the logarithmic scoring rule <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo>-</mo><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -7741,16 +7710,228 @@ By averaging out all models in this fashion, BMA provides better predictive abil
  <mrow>
   <mstyle mathvariant='script'><mi>M</mi>
   </mstyle>
- </mrow></math>. See the exercise below.</div>
+ </mrow></math>. In particular, show that for any <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mi>k</mi><mo> &isin; </mo>
+   <mstyle mathvariant='script'><mi>K</mi>
+   </mstyle>
+  </mrow>
+ </mrow></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo>-</mo>
+   <mstyle mathvariant='normal'><mi>E</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow>
+     <msub>
+      <mrow><mo> &sum; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>k</mi><mo> &isin; </mo>
+        <mstyle mathvariant='script'><mi>K</mi>
+        </mstyle>
+       </mrow>
+      </mrow>
+     </msub><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &le; </mo><mo>-</mo>
+   <mstyle mathvariant='normal'><mi>E</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> where the expectations are with respect to <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mo> &sum; </mo>
+    </mrow>
+    <mrow>
+     <mrow><mi>k</mi><mo> &isin; </mo>
+      <mstyle mathvariant='script'><mi>K</mi>
+      </mstyle>
+     </mrow>
+    </mrow>
+   </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math>. </div>
+
+<div class="solution_" id='magicparlabel-380'><div class="solution__item"><span class="solution__label">Solution.</span>
+It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow><mo>-</mo>
+   <mstyle mathvariant='normal'><mi>E</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow>
+     <msub>
+      <mrow><mo> &sum; </mo>
+      </mrow>
+      <mrow>
+       <mrow><mi>k</mi><mo> &isin; </mo>
+        <mstyle mathvariant='script'><mi>K</mi>
+        </mstyle>
+       </mrow>
+      </mrow>
+     </msub><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &le; </mo><mo>-</mo>
+   <mstyle mathvariant='normal'><mi>E</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo> &#x27fa; </mo><mn>0</mn><mo> &le; </mo><munder accent='false'>
+   <munder>
+    <mrow>
+     <mrow><mo>-</mo>
+      <mstyle mathvariant='normal'><mi>E</mi>
+      </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+      <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+       <mfrac>
+        <mrow>
+         <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+        <mrow>
+         <mrow>
+          <msub>
+           <mrow><mo> &sum; </mo>
+           </mrow>
+           <mrow>
+            <mrow><mi>k</mi><mo> &isin; </mo>
+             <mstyle mathvariant='script'><mi>K</mi>
+             </mstyle>
+            </mrow>
+           </mrow>
+          </msub><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+          <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
+          </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+         </mrow>
+        </mrow>
+       </mfrac>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+      </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+     </mrow>
+    </mrow><mo stretchy="true">&UnderBrace;</mo>
+   </munder>
+   <mrow><mo>=</mo>
+    <mstyle mathvariant='normal'>
+     <mrow><mi>K</mi><mi>L</mi>
+     </mrow>
+    </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+    <mrow><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+<mo>|</mo><mo>|</mo><mi>g</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
+     </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+    </mrow>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+   </mrow></munder>
+  </mrow>
+ </mrow></math></div>
+</div>
 </div>
 
-<div class="standard" id='magicparlabel-372'><br />
+<div class="standard" id='magicparlabel-381'><br />
 
 </div>
-<h2 class="section" id='magicparlabel-373'><span class="section_label">6</span> Discussion</h2>
-<div class="standard" id='magicparlabel-374'>If we think the model uncertainty concept broader, we may see that we often meet one of the following two situations:</div>
+<h2 class="section" id='magicparlabel-382'><span class="section_label">6</span> Discussion</h2>
+<div class="standard" id='magicparlabel-383'>If we think the model uncertainty concept broader, we may see that we often meet one of the following two situations:</div>
 
-<dl class='description' id='magicparlabel-375'><dt class="description_label"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<dl class='description' id='magicparlabel-384'><dt class="description_label"><math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mstyle mathvariant='script'><mi>M</mi>
   </mstyle>
@@ -7790,7 +7971,7 @@ By averaging out all models in this fashion, BMA provides better predictive abil
   </mrow>
  </mrow></math> does not make sense to exist.</dd>
 </dl>
-<div class="standard" id='magicparlabel-377'>What do we do? This is a rather open problem, and may depend on the application under consideration. Advise: Try to set-up an encompassing Bayesian model which is rich enough to include a model that acceptably approximates the real data generating process <math xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-386'>What do we do? This is a rather open problem, and may depend on the application under consideration. Advise: Try to set-up an encompassing Bayesian model which is rich enough to include a model that acceptably approximates the real data generating process <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>R</mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 <mo> &sdot; </mo>
@@ -7806,243 +7987,23 @@ By averaging out all models in this fashion, BMA provides better predictive abil
   </mrow>
  </mrow></math> for instance by BMA.</div>
 
-<div class="standard" id='magicparlabel-378'><hr />
+<div class="standard" id='magicparlabel-387'><hr />
 
 </div>
 
 
-<div class="standard" id='magicparlabel-379'><br />
+<div class="standard" id='magicparlabel-388'><br />
 
 </div>
 
-<div class="question" id='magicparlabel-380'><div class="question_item"><span class="question_label">Question 35.</span>
+<div class="question" id='magicparlabel-389'><div class="question_item"><span class="question_label">Question 35.</span>
 For practice address the Exercises <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_2_2">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-2-2</a>, <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_2_2_1">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-2-2-1</a>, and <a href="#exer____9_1_2_1_1_1_1_1_1_3_1_1_1_1_8_2_1_1_2_1_2_2_2_1_1">exer:()-9-1-2-1-1-1-1-1-1-3-1-1-1-1-8-2-1-1-2-1-2-2-2-1-1</a>, from the Exercise sheet.</div>
 </div>
-
-<div class="standard" id='magicparlabel-385'><br />
-
+<div class="standard" id='magicparlabel-394'><br />
 </div>
-
-<div class="exercise" id='magicparlabel-386'><div class="exercise_item"><span class="exercise_label">Exercise 36.</span>
-Show that for any <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mi>k</mi><mo> &isin; </mo>
-   <mstyle mathvariant='script'><mi>K</mi>
-   </mstyle>
-  </mrow>
- </mrow></math><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mo>-</mo>
-   <mstyle mathvariant='normal'><mi>E</mi>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-    <mrow>
-     <msub>
-      <mrow><mo> &sum; </mo>
-      </mrow>
-      <mrow>
-       <mrow><mi>k</mi><mo> &isin; </mo>
-        <mstyle mathvariant='script'><mi>K</mi>
-        </mstyle>
-       </mrow>
-      </mrow>
-     </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-    </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo> &le; </mo><mo>-</mo>
-   <mstyle mathvariant='normal'><mi>E</mi>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-    </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math> where the expectations are with respect to <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow>
-   <msub>
-    <mrow><mo> &sum; </mo>
-    </mrow>
-    <mrow>
-     <mrow><mi>k</mi><mo> &isin; </mo>
-      <mstyle mathvariant='script'><mi>K</mi>
-      </mstyle>
-     </mrow>
-    </mrow>
-   </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-  </mrow>
- </mrow></math>. </div>
-
-<div class="solution_" id='magicparlabel-387'><div class="solution__item"><span class="solution__label">Solution.</span>
-It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
-  <mrow><mo>-</mo>
-   <mstyle mathvariant='normal'><mi>E</mi>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-    <mrow>
-     <msub>
-      <mrow><mo> &sum; </mo>
-      </mrow>
-      <mrow>
-       <mrow><mi>k</mi><mo> &isin; </mo>
-        <mstyle mathvariant='script'><mi>K</mi>
-        </mstyle>
-       </mrow>
-      </mrow>
-     </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-    </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo> &le; </mo><mo>-</mo>
-   <mstyle mathvariant='normal'><mi>E</mi>
-   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-   <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-    </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-   </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo> &#x27fa; </mo><mn>0</mn><mo> &le; </mo><munder accent='false'>
-   <munder>
-    <mrow>
-     <mrow><mo>-</mo>
-      <mstyle mathvariant='normal'><mi>E</mi>
-      </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-      <mrow><mo> log </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-       <mfrac>
-        <mrow>
-         <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-          <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-          </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-         </mrow>
-        </mrow>
-        <mrow>
-         <mrow>
-          <msub>
-           <mrow><mo> &sum; </mo>
-           </mrow>
-           <mrow>
-            <mrow><mi>k</mi><mo> &isin; </mo>
-             <mstyle mathvariant='script'><mi>K</mi>
-             </mstyle>
-            </mrow>
-           </mrow>
-          </msub><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-          <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-          </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-          <mrow><mi>k</mi><mo>|</mo><mi>y</mi>
-          </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-         </mrow>
-        </mrow>
-       </mfrac>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-      </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-     </mrow>
-    </mrow><mo stretchy="true">&UnderBrace;</mo>
-   </munder>
-   <mrow><mo>=</mo>
-    <mstyle mathvariant='normal'>
-     <mrow><mi>K</mi><mi>L</mi>
-     </mrow>
-    </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-    <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-<mo>|</mo><mo>|</mo><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow><mi>z</mi><mo>|</mo><mi>y</mi><mo>,</mo><mi>k</mi>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-    </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
-   </mrow></munder>
-  </mrow>
- </mrow></math></div>
-</div>
-</div>
-<div class="standard" id='magicparlabel-388'><br />
-</div>
-<h2 class="section" id='magicparlabel-389'><span class="section_label">A</span> <a id="sec_Solution_to_Example_1" />
+<h2 class="section" id='magicparlabel-395'><span class="section_label">A</span> <a id="sec_Solution_to_Example_1" />
 Solution to Example <a href="#exa_To_calculate_the_1">16</a></h2>
-<div class="standard" id='magicparlabel-390'>Use the following identity<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-396'>Use the following identity<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -8262,7 +8223,7 @@ Solution to Example <a href="#exa_To_calculate_the_1">16</a></h2>
   </mtr>
  </mtable></math></div>
 
-<div class="solution_" id='magicparlabel-412'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-418'><div class="solution__item"><span class="solution__label">Solution.</span>
 For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -9970,11 +9931,11 @@ For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Mat
   </mrow>
  </mrow></math></div>
 </div>
-<div class="standard" id='magicparlabel-413'><br />
+<div class="standard" id='magicparlabel-419'><br />
 </div>
-<h2 class="section" id='magicparlabel-414'><span class="section_label">B</span> <a id="sec_Solution_to_Example" />
+<h2 class="section" id='magicparlabel-420'><span class="section_label">B</span> <a id="sec_Solution_to_Example" />
 Solution to Example <a href="#exa_To_calculate_the_1_1">17</a></h2>
-<div class="standard" id='magicparlabel-415'>Use the following identity<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-421'>Use the following identity<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -10194,7 +10155,7 @@ Solution to Example <a href="#exa_To_calculate_the_1_1">17</a></h2>
   </mtr>
  </mtable></math></div>
 
-<div class="solution_" id='magicparlabel-437'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-443'><div class="solution__item"><span class="solution__label">Solution.</span>
 For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
@@ -12315,14 +12276,14 @@ For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Mat
  </mrow></math></div>
 </div>
 
-<div class="standard" id='magicparlabel-451'><br />
+<div class="standard" id='magicparlabel-457'><br />
 
 </div>
 
-<div class="standard" id='magicparlabel-452'><br />
+<div class="standard" id='magicparlabel-458'><br />
 </div>
-<h2 class="section" id='magicparlabel-453'><span class="section_label">C</span> Solution to Example <a href="#exa_To_calculate_the">19</a></h2>
-<div class="standard" id='magicparlabel-454'>Use the following identity:<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<h2 class="section" id='magicparlabel-459'><span class="section_label">C</span> Solution to Example <a href="#exa_To_calculate_the">19</a></h2>
+<div class="standard" id='magicparlabel-460'>Use the following identity:<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
@@ -12495,11 +12456,11 @@ For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Mat
  </mtable></math></div>
 
 
-<div class="standard" id='magicparlabel-455'><br />
+<div class="standard" id='magicparlabel-461'><br />
 
 </div>
 
-<div class="solution_" id='magicparlabel-456'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-462'><div class="solution__item"><span class="solution__label">Solution.</span>
 For simplicity, we suppress the indexing <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <msub>
