@@ -1,0 +1,377 @@
+%% LyX 2.3.6.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt,english]{extarticle}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{fancybox}
+\usepackage{calc}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{url}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+\usepackage{setspace}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\onehalfspacing
+\usepackage[unicode=true]
+ {hyperref}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{definition}
+\newtheorem{xca}[thm]{\protect\exercisename}
+\theoremstyle{definition}
+\newtheorem*{sol*}{\protect\solutionname}
+\theoremstyle{plain}
+\newtheorem*{thm*}{\protect\theoremname}
+\theoremstyle{plain}
+\newtheorem*{lem*}{\protect\lemmaname}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\PassOptionsToPackage{verbose=true,letterpaper}{geometry}
+\usepackage{arxiv}
+\usepackage{standalone}
+
+\usepackage{fullpage}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{by Georgios Karagiannis}
+\cfoot{Created on \today\ at \currenttime}
+\lfoot{Page \thepage}
+\rhead{}
+\lhead{}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{cancel}
+
+\raggedbottom
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
+
+%% REDIFINE / DEFINE VARIABLES %%%%%%%%%%
+\renewcommand*{\Pr}{\mathsf{P}}
+
+ 
+%\usepackage{graphicx}
+%\usepackage{mathabx}
+%\usepackage{bbm}
+%\usepackage[font=small]{caption}
+%\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The excercise environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Qsol}{0}
+
+% CHANGE THE PRESETNATION OF CHAPTER
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\Huge}
+  {\thechapter }
+  {20pt}
+  {\Huge\textbf}
+
+
+
+\newcommand{\drv}{\textup{d} } 
+\newcommand{\E}{\textup{E} } 
+\newcommand{\Var}{\textup{Var} } 
+\newcommand{\Cov}{\textup{Cov} }
+\newcommand{\mode}{\textup{mode} }
+\newcommand{\median}{\textup{median} }  
+\newcommand{\transpose}{\intercal} 
+\newcommand{\indicator}{\mathbbm{1}}
+\newcommand{\eye}{\mathbb{I}}
+\newcommand{\diag}{\textup{diag}}
+\newcommand{\logit}{\textup{logit}}
+\newcommand{\tr}{\textup{tr} } 
+
+
+%% REDIFINE / DEFINE VARIABLES %%%%%%%%%%
+\renewcommand*{\Pr}{\mathsf{P}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Crapy Definitions of Ian
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsbsy}
+\usepackage{amscd}
+\usepackage{amsgen}
+\usepackage{amsopn}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amsxtra}
+%\usepackage{cmmib57}
+%\usepackage[mathscr]{eucal}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{slashbox}
+\usepackage{multirow}
+\usepackage{xargs}
+\usepackage{ifthen}
+%\usepackage{xypic}
+%\xyoption{curve}
+
+%\newcommand{\middlemid}{\;\vert\;} % stretchable \mid
+\newcommand{\middlemid}{\;\vert\;}
+\newcommand{\given}{\middlemid}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\vert#1\vert}
+\newcommand{\pr}[2][]{\Pr_{#1}(#2)}
+%\newcommand{\pdfunc}[2][]{\rho_{#1}(#2)}
+\newcommand{\pdfunc}[2][]{\pi_{#1}(#2)}
+
+
+\newcommand{\prsymbol}{\operatorname{P}}
+\newcommand{\lprsymbol}{\operatorname{\underline{P}}}
+\newcommand{\uprsymbol}{\operatorname{\overline{P}}}
+\newcommand{\expecsymbol}{\operatorname{E}}
+\newcommand{\lexpecsymbol}{\operatorname{\underline{E}}}
+\newcommand{\uexpecsymbol}{\operatorname{\overline{E}}}
+\newcommand{\mediansymbol}{\operatorname{Median}}
+\newcommand{\varsymbol}{\operatorname{Var}}
+\newcommand{\sdsymbol}{\operatorname{SD}}
+\newcommand{\covsymbol}{\operatorname{Cov}}
+\newcommand{\pmfsymbol}{p}
+\newcommand{\pdfsymbol}{f}
+\newcommand{\cdfsymbol}{\operatorname{F}}
+\newcommand{\risksymbol}{\rho}
+\newcommand{\helper}[3]{
+  \ifthenelse{\equal{#3}{}}{%
+    {#1}_{#2}}{%
+    {#1}_{#2}\left[{#3}\right]}{%
+  }
+}
+%\newcommand{\pr}[2][]{\helper{\prsymbol}{#1}{#2}}
+\newcommand{\lpr}[2][]{\helper{\lprsymbol}{#1}{#2}}
+\newcommand{\upr}[2][]{\helper{\uprsymbol}{#1}{#2}}
+\newcommand{\expec}[2][]{\helper{\expecsymbol}{#1}{#2}}
+\newcommand{\Median}[2][]{\helper{\mediansymbol}{#1}{#2}}
+\newcommand{\var}[2][]{\helper{\varsymbol}{#1}{#2}}
+\newcommand{\sd}[2][]{\helper{\sdsymbol}{#1}{#2}}
+\newcommand{\cov}[2][]{\helper{\covsymbol}{#1}{#2}}
+\newcommand{\risk}[2][]{\helper{\risksymbol}{#1}{#2}}
+\newcommand{\pmf}[2][]{\helper{\pmfsymbol}{#1}{#2}}
+\newcommand{\pdf}[2][]{\helper{\pdfsymbol}{#1}{#2}}
+\newcommand{\cdf}[2][]{\helper{\cdfsymbol}{#1}{#2}}
+\newcommand{\chelper}[5]{
+  \ifthenelse{\equal{#3}{}}{%
+    {#1}_{#2}\left[#4 \middlemid #5 \right]}{%
+    {#1}_{#2\mid #3}\left[#4 \middlemid #5 \right]}{%
+  }
+}
+\newcommand{\cpr}[2]{\chelper{\prsymbol}{}{}{#1}{#2}}
+\newcommand{\clpr}[2]{\chelper{\lprsymbol}{}{}{#1}{#2}}
+\newcommand{\cupr}[2]{\chelper{\uprsymbol}{}{}{#1}{#2}}
+\newcommand{\cexpec}[2]{\chelper{\expecsymbol}{}{}{#1}{#2}}
+\newcommand{\clexpec}[2]{\chelper{\lexpecsymbol}{}{}{#1}{#2}}
+\newcommand{\cuexpec}[2]{\chelper{\uexpecsymbol}{}{}{#1}{#2}}
+\newcommand{\cmedian}[2]{\chelper{\mediansymbol}{}{}{#1}{#2}}
+\newcommand{\cvar}[2]{\chelper{\varsymbol}{}{}{#1}{#2}}
+\newcommand{\ccov}[2]{\chelper{\covsymbol}{}{}{#1}{#2}}
+\newcommand{\csd}[2]{\chelper{\sdsymbol}{}{}{#1}{#2}}
+\newcommand{\crisk}[2]{\chelper{\risksymbol}{}{}{#1}{#2}}
+\newcommandx{\cpmf}[4][1=,2=]{\chelper{\pmfsymbol}{#1}{#2}{#3}{#4}}
+\newcommandx{\cpdf}[4][1=,2=]{\chelper{\pdfsymbol}{#1}{#2}{#3}{#4}}
+\newcommandx{\ccdf}[4][1=,2=]{\chelper{\cdfsymbol}{#1}{#2}{#3}{#4}}
+\newcommand{\cdfinv}[2][]{\cdfsymbol^{-1}_{#1}\left(#2\right)}
+
+
+\newcommand{\distbeta}{\operatorname{Beta}}
+\newcommand{\distbinom}{\operatorname{Bi}}
+\newcommand{\distnormal}{\operatorname{N}}
+\newcommand{\distpoisson}{\operatorname{Po}}
+\newcommand{\distuniform}{\operatorname{U}}
+\newcommand{\distexp}{\operatorname{Exp}}
+\newcommand{\distgamma}{\operatorname{Gamma}}
+\newcommand{\distexpfam}{\operatorname{Ef}}
+
+
+
+\newcommand{\ud}{\,\textup{d}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Crapy Definitions of the Book of Lee
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+\usepackage{times}
+%\usepackage{makeidx}
+\usepackage{epsf}
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{euscript}
+
+
+% Notation for vectors, matrices, estimates, random variables and sample means
+\newcommand{\vect}{\boldsymbol}
+\newcommand{\matr}{\boldsymbol}
+\newcommand{\est}{\widehat}
+\newcommand{\random}{\widetilde}
+\newcommand{\mean}{\overline}
+
+% Define differentials with roman d and thin space before
+\renewcommand{\d}{\mbox{d}}
+\newcommand{\dF}{\,\mbox{\d$F$}}
+\newcommand{\dt}{\,\mbox{\d$t$}}
+\newcommand{\du}{\,\mbox{\d$u$}}
+\newcommand{\dU}{\,\mbox{\d$U$}}
+\newcommand{\dx}{\,\mbox{\d$x$}}
+\newcommand{\dy}{\,\mbox{\d$y$}}
+\newcommand{\dz}{\,\mbox{\d$z$}}
+\newcommand{\dgamma}{\,\mbox{\d$\gamma$}}
+\newcommand{\dzeta}{\,\mbox{\d$\zeta$}}
+\newcommand{\deta}{\,\mbox{d$\eta$}}
+\newcommand{\dtheta}{\,\mbox{\d$\theta$}}
+\newcommand{\dbtheta}{\,\mbox{\d$\boldsymbol\theta$}}
+\newcommand{\dkappa}{\,\mbox{\d$\kappa$}}
+\newcommand{\dlambda}{\,\mbox{\d$\lambda$}}
+\newcommand{\dLambda}{\,\mbox{\d$\Lambda$}}
+\newcommand{\dmu}{\,\mbox{\d$\mu$}}
+\newcommand{\dbmu}{\,\mbox{\d$\bmu$}}
+\newcommand{\drho}{\,\mbox{\d$\rho$}}
+\newcommand{\dpi}{\,\mbox{\d$\pi$}}
+\newcommand{\dxi}{\,\mbox{\d$\xi$}}
+\newcommand{\dphi}{\,\mbox{\d$\phi$}}
+\newcommand{\dpsi}{\,\mbox{\d$\psi$}}
+\newcommand{\domega}{\,\mbox{\d$\omega$}}
+
+% Define some common bold symbols
+\newcommand{\balpha}{\mbox{$\boldsymbol\alpha$}}
+\newcommand{\bbeta}{\mbox{$\boldsymbol\beta$}}
+\newcommand{\beeta}{\mbox{$\boldsymbol\eta$}}
+\newcommand{\btheta}{\mbox{$\boldsymbol\theta$}}
+\newcommand{\bkappa}{\mbox{$\boldsymbol\kappa$}}
+\newcommand{\blambda}{\mbox{$\boldsymbol\lambda$}}
+\newcommand{\bmu}{\mbox{$\boldsymbol\mu$}}
+\newcommand{\bnu}{\mbox{$\boldsymbol\nu$}}
+\newcommand{\bpi}{\mbox{$\boldsymbol\pi$}}
+\newcommand{\btau}{\mbox{$\boldsymbol\tau$}}
+\newcommand{\bzero}{\mbox{$\boldsymbol0$}}
+\newcommand{\BOmega}{\mbox{$\boldsymbol\Omega$}}
+
+% Define small common fractions for use in display formulae
+\newcommand{\half}{\mbox{$\frac{1}{2}$}}
+\newcommand{\smallhalf}{\mbox{\small$\frac{1}{2}$}}
+\newcommand{\quarter}{\mbox{$\frac{1}{4}$}}
+%\newcommand{\third}{\mbox{$\frac{1}{3}$}}
+\newcommand{\twothirds}{\mbox{$\frac{2}{3}$}}
+\newcommand{\ninth}{\mbox{$\frac{1}{9}$}}
+\newcommand{\twofifths}{\mbox{$\frac{2}{5}$}}
+ 
+\newcommand{\N}{\textup{N}}              % A.1
+\ifdefined\G
+\renewcommand{\G}{\textup{Ga}}              % A.4
+\else
+\newcommand{\G}{\textup{Ga}}              % A.4
+\fi
+\newcommand{\Ex}{\textup{Ex}}             % A.4
+\renewcommand{\t}{\textup{t}}            % A.8
+\newcommand{\Be}{\textup{Be}}            % A.10
+\newcommand{\B}{\textup{B}}              % A.11
+\renewcommand{\P}{\textup{Pn}}            % A.12
+\newcommand{\NB}{\textup{Nb}}            % A.13
+\renewcommand{\H}{\textup{Hy}}            % A.14
+
+\ifdefined\U
+\renewcommand{\U}{\textup{Un}}              % A.15
+\else
+\newcommand{\U}{\textup{Un}}              % A.15
+\fi
+ 
+\newcommand{\UD}{\textup{UD}}            % A.15
+\newcommand{\Pa}{\textup{Pa}}            % A.16
+\newcommand{\Pabb}{\textup{Pabb}}        % A.16
+\newcommand{\M}{\textup{M}}              % A.17
+\newcommand{\BF}{\textup{BF}}            % A.18
+\newcommand{\F}{\textup{F}}              % A.19
+\newcommand{\z}{\textup{z}}              % A.20
+
+\ifdefined\C
+\renewcommand{\C}{\textup{C}}              % A.21
+\else
+\newcommand{\C}{\textup{C}}              % A.21
+\fi
+ 
+
+%\newcommand{\E}{\mbox{$\mathsf E$}}
+%\newcommand{\Var}{\mbox{$\mathcal V$}}
+
+
+
+%% BEGIN ADD LINE NUMBERS %%%%%%%%%%
+
+\def\Qlinenumb{1}
+\if\Qlinenumb1
+\usepackage[mathlines]{lineno}
+\renewcommand{\linenumberfont}{\normalfont\tiny\color{lightgray}}
+\usepackage{etoolbox} %% <- for \pretocmd, \apptocmd and \patchcmd
+%% Patch 'normal' math environment: (currently unused, but good to have)
+% \newcommand*\linenomathpatch[1]{%
+%   \expandafter\pretocmd\csname #1\endcsname {\linenomath}{}{}%
+%   \expandafter\pretocmd\csname #1*\endcsname{\linenomath}{}{}%
+%   \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}%
+%   \expandafter\apptocmd\csname end#1*\endcsname{\endlinenomath}{}{}%
+% }
+%% Patch AMS math environment:
+\newcommand*\linenomathpatchAMS[1]{%
+  \expandafter\pretocmd\csname #1\endcsname {\linenomathAMS}{}{}%
+  \expandafter\pretocmd\csname #1*\endcsname{\linenomathAMS}{}{}%
+  \expandafter\apptocmd\csname end#1\endcsname {\endlinenomath}{}{}%
+  \expandafter\apptocmd\csname end#1*\endcsname{\endlinenomath}{}{}%
+}
+%% Definition of \linenomathAMS depends on whether the mathlines option is provided
+\expandafter\ifx\linenomath\linenomathWithnumbers
+  \let\linenomathAMS\linenomathWithnumbers
+  %% The following line gets rid of an extra line numbers at the bottom:
+  \patchcmd\linenomathAMS{\advance\postdisplaypenalty\linenopenalty}{}{}{}
+\else
+  \let\linenomathAMS\linenomathNonumbers
+\fi
+% \linenomathpatch{equation} %% <- unnecessary, equation is already patched
+\linenomathpatchAMS{gather}
+\linenomathpatchAMS{multline}
+\linenomathpatchAMS{align}
+\linenomathpatchAMS{alignat}
+\linenomathpatchAMS{flalign}
+\linenumbers
+\fi
+ 
+
+\makeatother
+
+\providecommand{\exercisename}{Exercise}
+\providecommand{\lemmaname}{Lemma}
+\providecommand{\solutionname}{Solution}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\input{Exercise_sheet_complete.tex}
+\end{document}

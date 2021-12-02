@@ -95,6 +95,27 @@ div.Boxed {
 	border: solid thick black;
 	padding: 0.5ex;
 }
+span.foot_label {
+	vertical-align: super;
+	font-size: smaller;
+	font-weight: bold;
+	text-decoration: underline;
+}
+div.foot {
+	display: inline;
+	font-size: small;
+	font-weight: medium;
+	font-family: serif;
+	font-variant: normal;
+	font-style: normal;
+}
+div.foot_inner { display: none; }
+div.foot:hover div.foot_inner {
+	display: block;
+	border: 1px double black;
+	margin: 0em 1em;
+	padding: 1em;
+}
 
 
 </style>
@@ -2391,7 +2412,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 &nbsp;<div style='height:5ex'></div>&nbsp;<div class='Boxed'><div class="plain_layout" style='text-align: center;' id='magicparlabel-71'><u>Regarding the statistical model: Long story short (supplementary material)</u></div>
 
 <div class="plain_layout" id='magicparlabel-72'>Consider that we are interested in recovering the mapping 
-<div style = "text-align: center;"><img src="lyxpreviewsKXzfp1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewzYDfCR1.png" alt="Mathematical Equation" />
 </div>
 in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -2807,7 +2828,8 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
    </msup>
   </mrow>
  </mrow></math> is an unknown vector. </div>
-</div> <div style='height:5ex'></div> Consider the following Bayesian model<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+</div> <div style='height:5ex'></div> Consider the following Bayesian model<div class="foot"><span class="foot_label">1</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-79'>Dixit, A., &amp; Roy, V. (2021). Posterior impropriety of some sparse Bayesian learning models. Statistics &amp; Probability Letters, 171, 109039.</div>
+</div></div><math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>{</mo>
   <mtable>
    <mtr>
@@ -3188,7 +3210,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math> are considered as fixed.</div>
 
-<ol class="enumerate" id='magicparlabel-76'><li class="enumerate_item">When <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-80'><li class="enumerate_item">When <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>b</mi><mo>=</mo><mn>0</mn>
   </mrow>
@@ -3242,7 +3264,7 @@ in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. Show that <a href="#enu_if__and">((a))</a> and <a href="#enu_if__and_1">((b))</a> are sufficient conditions for the Bayesian model to lead to a valid posterior inference 
 
-<ol class="enumerate" id='magicparlabel-82'><li class="enumerate_item"><a id="enu_if__and" />
+<ol class="enumerate" id='magicparlabel-86'><li class="enumerate_item"><a id="enu_if__and" />
 if <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn>
@@ -3356,7 +3378,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math> lead to a valid inference?</li>
 </ol>
 
-<dl class='description' id='magicparlabel-86'><dt class="description_label">Hint-1:</dt>
+<dl class='description' id='magicparlabel-90'><dt class="description_label">Hint-1:</dt>
 <dd class="description_item"> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
@@ -3834,7 +3856,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
 </dl>
 
 
-<div class="solution_" id='magicparlabel-99'><div class="solution__item"><span class="solution__label">Solution.</span>
+<div class="solution_" id='magicparlabel-103'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp;&nbsp;&nbsp;The posterior pdf is given by <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi> &pi; </mi><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -5028,7 +5050,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mtable></math></div>
 </div>
 
-<ol class="enumerate" id='magicparlabel-100'><li class="enumerate_item">I have<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-104'><li class="enumerate_item">I have<math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -5279,7 +5301,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mtr>
  </mtable></math>
 
-<ul class="itemize" id='magicparlabel-101'><li class="itemize_item">It is <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ul class="itemize" id='magicparlabel-105'><li class="itemize_item">It is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mo> exp </mo><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
 
@@ -5609,7 +5631,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
   </mrow>
  </mrow></math>. </li>
 </ul>
-<div class="standard" id='magicparlabel-104'>Then <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+<div class="standard" id='magicparlabel-108'>Then <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
   <mtr>
    <mtd>
@@ -6336,7 +6358,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
  </mrow></math>.</div>
 </li><li class="enumerate_item">&nbsp; 
 
-<ol class="enumerate" id='magicparlabel-106'><li class="enumerate_item">&nbsp;If <math xmlns="http://www.w3.org/1998/Math/MathML">
+<ol class="enumerate" id='magicparlabel-110'><li class="enumerate_item">&nbsp;If <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>a</mi><mo>&gt;</mo><mn>0</mn>
   </mrow>
@@ -7114,7 +7136,7 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
 
 </div>
 </div>
-<div class="standard" id='magicparlabel-115'><hr />
+<div class="standard" id='magicparlabel-119'><hr />
 
 </div>
 

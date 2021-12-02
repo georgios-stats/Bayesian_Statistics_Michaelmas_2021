@@ -1,0 +1,3657 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\PassOptionsToPackage{verbose=true,letterpaper}{geometry}
+\usepackage{arxiv}
+\usepackage{standalone}
+
+
+%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%
+
+\usepackage[cm]{fullpage}
+\usepackage{amsmath}
+
+\raggedbottom
+
+%\usepackage{tcolorbox}
+%\tcbuselibrary{breakable}
+%\usepackage{graphicx}
+%\usepackage{mathabx}
+%\usepackage{bbm}
+%\usepackage[font=small]{caption}
+%\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The excercise environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My crapy standard definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\drv}{\textup{d} } 
+\newcommand{\E}{\textup{E} } 
+\newcommand{\Var}{\textup{Var} } 
+\newcommand{\Cov}{\textup{Cov} }
+\newcommand{\Mode}{\textup{mode} }
+\newcommand{\Median}{\textup{median} }  
+\newcommand{\transpose}{\intercal} 
+\newcommand{\indicator}{\mathbbm{1}}
+\newcommand{\eye}{\mathbb{I}}
+\newcommand{\diag}{\textup{diag}}
+\newcommand{\logit}{\textup{logit}}
+\newcommand{\tr}{\textup{tr} }  
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Crapy Definitions of the Book of Lee
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{times}
+%\usepackage{makeidx}
+\usepackage{epsf}
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{euscript}
+
+
+\newcommand{\random}{\widetilde}
+%\newcommand{\random}{\textsc}
+
+% Define differentials with roman d and thin space before
+\renewcommand{\d}{\mbox{d}}
+\newcommand{\dF}{\,\mbox{\d$F$}}
+\newcommand{\dt}{\,\mbox{\d$t$}}
+\newcommand{\du}{\,\mbox{\d$u$}}
+\newcommand{\dU}{\,\mbox{\d$U$}}
+\newcommand{\dx}{\,\mbox{\d$x$}}
+\newcommand{\dy}{\,\mbox{\d$y$}}
+\newcommand{\dz}{\,\mbox{\d$z$}}
+\newcommand{\dgamma}{\,\mbox{\d$\gamma$}}
+\newcommand{\dzeta}{\,\mbox{\d$\zeta$}}
+\newcommand{\deta}{\,\mbox{d$\eta$}}
+\newcommand{\dtheta}{\,\mbox{\d$\theta$}}
+\newcommand{\dbtheta}{\,\mbox{\d$\boldsymbol\theta$}}
+\newcommand{\dkappa}{\,\mbox{\d$\kappa$}}
+\newcommand{\dlambda}{\,\mbox{\d$\lambda$}}
+\newcommand{\dLambda}{\,\mbox{\d$\Lambda$}}
+\newcommand{\dmu}{\,\mbox{\d$\mu$}}
+\newcommand{\dbmu}{\,\mbox{\d$\bmu$}}
+\newcommand{\drho}{\,\mbox{\d$\rho$}}
+\newcommand{\dpi}{\,\mbox{\d$\pi$}}
+\newcommand{\dxi}{\,\mbox{\d$\xi$}}
+\newcommand{\dphi}{\,\mbox{\d$\phi$}}
+\newcommand{\dpsi}{\,\mbox{\d$\psi$}}
+\newcommand{\domega}{\,\mbox{\d$\omega$}}
+
+% Define small common fractions for use in display formulae
+\newcommand{\half}{\mbox{$\frac{1}{2}$}}
+\newcommand{\smallhalf}{\mbox{\small$\frac{1}{2}$}}
+\newcommand{\quarter}{\mbox{$\frac{1}{4}$}}
+%\newcommand{\third}{\mbox{$\frac{1}{3}$}}
+\newcommand{\twothirds}{\mbox{$\frac{2}{3}$}}
+\newcommand{\ninth}{\mbox{$\frac{1}{9}$}}
+\newcommand{\twofifths}{\mbox{$\frac{2}{5}$}}
+ 
+\newcommand{\N}{\textup{N}}              % A.1
+\renewcommand{\G}{\textup{Ga}}              % A.4
+\newcommand{\Ex}{\textup{Ex}}             % A.4
+\renewcommand{\t}{\textup{t}}            % A.8
+\newcommand{\Be}{\textup{Be}}            % A.10
+\newcommand{\B}{\textup{B}}              % A.11
+\renewcommand{\P}{\textup{Pn}}            % A.12
+\newcommand{\NB}{\textup{Nb}}            % A.13
+\renewcommand{\H}{\textup{Hy}}            % A.14
+\renewcommand{\U}{\textup{Un}}              % A.15
+\newcommand{\UD}{\textup{UD}}            % A.15
+\newcommand{\Pa}{\textup{Pa}}            % A.16
+\newcommand{\Pabb}{\textup{Pabb}}        % A.16
+\newcommand{\M}{\textup{M}}              % A.17
+\newcommand{\BF}{\textup{BF}}            % A.18
+\newcommand{\F}{\textup{F}}              % A.19
+\newcommand{\z}{\textup{z}}              % A.20
+\renewcommand{\C}{\textup{C}}              % A.21
+
+
+%\newcommand{\E}{\mbox{$\mathsf E$}}
+%\newcommand{\Var}{\mbox{$\mathcal V$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Crapy Definitions of Ian
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsbsy}
+\usepackage{amscd}
+\usepackage{amsgen}
+\usepackage{amsopn}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amsxtra}
+%\usepackage{cmmib57}
+%\usepackage[mathscr]{eucal}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{slashbox}
+\usepackage{multirow}
+\usepackage{xargs}
+\usepackage{ifthen}
+\usepackage{xypic}
+\xyoption{curve}
+
+
+%\newcommand{\middlemid}{\;\vert\;} % stretchable \mid
+\newcommand{\middlemid}{\;\vert\;}
+\newcommand{\given}{\middlemid}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\vert#1\vert}
+\newcommand{\pr}[2][]{\Pr_{#1}(#2)}
+%\newcommand{\pdfunc}[2][]{\rho_{#1}(#2)}
+\newcommand{\pdfunc}[2][]{\pi_{#1}(#2)}
+
+
+\newcommand{\prsymbol}{\operatorname{P}}
+\newcommand{\lprsymbol}{\operatorname{\underline{P}}}
+\newcommand{\uprsymbol}{\operatorname{\overline{P}}}
+\newcommand{\expecsymbol}{\operatorname{E}}
+\newcommand{\lexpecsymbol}{\operatorname{\underline{E}}}
+\newcommand{\uexpecsymbol}{\operatorname{\overline{E}}}
+\newcommand{\mediansymbol}{\operatorname{Median}}
+\newcommand{\varsymbol}{\operatorname{Var}}
+\newcommand{\sdsymbol}{\operatorname{SD}}
+\newcommand{\covsymbol}{\operatorname{Cov}}
+\newcommand{\pmfsymbol}{p}
+\newcommand{\pdfsymbol}{f}
+\newcommand{\cdfsymbol}{\operatorname{F}}
+\newcommand{\risksymbol}{\rho}
+\newcommand{\helper}[3]{
+  \ifthenelse{\equal{#3}{}}{%
+    {#1}_{#2}}{%
+    {#1}_{#2}\left[{#3}\right]}{%
+  }
+}
+%\newcommand{\pr}[2][]{\helper{\prsymbol}{#1}{#2}}
+\newcommand{\lpr}[2][]{\helper{\lprsymbol}{#1}{#2}}
+\newcommand{\upr}[2][]{\helper{\uprsymbol}{#1}{#2}}
+\newcommand{\expec}[2][]{\helper{\expecsymbol}{#1}{#2}}
+\newcommand{\median}[2][]{\helper{\mediansymbol}{#1}{#2}}
+\newcommand{\var}[2][]{\helper{\varsymbol}{#1}{#2}}
+\newcommand{\sd}[2][]{\helper{\sdsymbol}{#1}{#2}}
+\newcommand{\cov}[2][]{\helper{\covsymbol}{#1}{#2}}
+\newcommand{\risk}[2][]{\helper{\risksymbol}{#1}{#2}}
+\newcommand{\pmf}[2][]{\helper{\pmfsymbol}{#1}{#2}}
+\newcommand{\pdf}[2][]{\helper{\pdfsymbol}{#1}{#2}}
+\newcommand{\cdf}[2][]{\helper{\cdfsymbol}{#1}{#2}}
+\newcommand{\chelper}[5]{
+  \ifthenelse{\equal{#3}{}}{%
+    {#1}_{#2}\left[#4 \middlemid #5 \right]}{%
+    {#1}_{#2\mid #3}\left[#4 \middlemid #5 \right]}{%
+  }
+}
+\newcommand{\cpr}[2]{\chelper{\prsymbol}{}{}{#1}{#2}}
+\newcommand{\clpr}[2]{\chelper{\lprsymbol}{}{}{#1}{#2}}
+\newcommand{\cupr}[2]{\chelper{\uprsymbol}{}{}{#1}{#2}}
+\newcommand{\cexpec}[2]{\chelper{\expecsymbol}{}{}{#1}{#2}}
+\newcommand{\clexpec}[2]{\chelper{\lexpecsymbol}{}{}{#1}{#2}}
+\newcommand{\cuexpec}[2]{\chelper{\uexpecsymbol}{}{}{#1}{#2}}
+\newcommand{\cmedian}[2]{\chelper{\mediansymbol}{}{}{#1}{#2}}
+\newcommand{\cvar}[2]{\chelper{\varsymbol}{}{}{#1}{#2}}
+\newcommand{\ccov}[2]{\chelper{\covsymbol}{}{}{#1}{#2}}
+\newcommand{\csd}[2]{\chelper{\sdsymbol}{}{}{#1}{#2}}
+\newcommand{\crisk}[2]{\chelper{\risksymbol}{}{}{#1}{#2}}
+\newcommandx{\cpmf}[4][1=,2=]{\chelper{\pmfsymbol}{#1}{#2}{#3}{#4}}
+\newcommandx{\cpdf}[4][1=,2=]{\chelper{\pdfsymbol}{#1}{#2}{#3}{#4}}
+\newcommandx{\ccdf}[4][1=,2=]{\chelper{\cdfsymbol}{#1}{#2}{#3}{#4}}
+\newcommand{\cdfinv}[2][]{\cdfsymbol^{-1}_{#1}\left(#2\right)}
+
+
+
+
+
+
+\newcommand{\ud}{\,\textup{d}}
+\end_preamble
+\use_default_options true
+\begin_modules
+eqs-within-sections
+figs-within-sections
+tcolorbox
+theorems-ams
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style chicago
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Bayesian Statistics III/IV (MATH3361/4071)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+Michaelmas term 2021
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+Large
+\backslash
+bf 
+\end_layout
+
+\end_inset
+
+ Exercise Sheet Handout (additional): Probability and random variables
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Lecturer: Georgios P.
+ Karagiannis
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "georgios.karagiannis@durham.ac.uk"
+target "georgios.karagiannis@durham.ac.uk"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Adapted from Lee, P.
+ M.
+ (1997).
+ Bayesian statistics.
+ Arnold Publication, and from I.
+ Jermyn's lecture notes in 2014.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ are random quantities with joint probability density function 
+\begin_inset Formula 
+\[
+f(x_{1},x_{2},x_{3})=\begin{cases}
+3x_{1}^{2}(x_{2}x_{3}+x_{1}) & \text{if \ensuremath{x_{i}\in[0,1]} (\ensuremath{i=1,2,3})}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculate the probability that 
+\begin_inset Formula $X_{1}<X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}<\tfrac{1}{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Find the joint pdf of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+.
+ Are 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ independent? 
+\end_layout
+
+\begin_layout Enumerate
+Find the pdf of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Find the conditional pdf of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ given 
+\begin_inset Formula $X_{1}=x_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Find the conditional pdf of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ given 
+\begin_inset Formula $X_{2}=x_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}=x_{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Calculate the expectation of 
+\begin_inset Formula $3X_{2}^{2}X_{3}/X_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Calculate the expectation 
+\begin_inset Formula $3X_{2}^{2}X_{3}$
+\end_inset
+
+ given that 
+\begin_inset Formula $X_{1}=x_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Just integrate the pdf over the required subset of 
+\begin_inset Formula $\mathbb{R}^{3}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+\pr{\text{\ensuremath{X_{1}<X_{2}}, \ensuremath{X_{3}<\tfrac{1}{2}}}} & =\int_{0}^{1}\int_{x_{1}}^{1}\int_{0}^{\frac{1}{2}}3x_{1}^{2}(x_{2}x_{3}+x_{1})\,dx_{3}dx_{2}dx_{1}\\
+ & =\int_{0}^{1}3x_{1}^{2}\int_{x_{1}}^{1}[x_{2}x_{3}^{2}/2+x_{1}x_{3}]_{x_{3}=0}^{\frac{1}{2}}\,dx_{2}dx_{1}\\
+ & =\int_{0}^{1}3x_{1}^{2}\int_{x_{1}}^{1}(x_{2}/8+x_{1}/2)dx_{2}\,dx_{1}\\
+ & =\int_{0}^{1}3x_{1}^{2}[x_{2}^{2}/16+x_{1}x_{2}/2]_{x_{2}=x_{1}}^{1}\,dx_{1}\\
+ & =\int_{0}^{1}3x_{1}^{2}((1-x_{1}^{2})/16+x_{1}(1-x_{1})/2)\,dx_{1}\\
+ & =\int_{0}^{1}(3x_{1}^{2}/16+3x_{1}^{3}/2-27x_{1}^{4}/16)\,dx_{1}\\
+ & =1/16+3/8-27/80\\
+ & =1/10
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the definition of marginalization: 
+\begin_inset Formula 
+\begin{align*}
+f(x_{2},x_{3}) & =\int f(x_{1},x_{2},x_{3})\,dx_{1}\\
+ & =\int_{0}^{1}3x_{1}^{2}(x_{2}x_{3}+x_{1})\,dx_{1}\\
+ & =x_{2}x_{3}+3/4
+\end{align*}
+
+\end_inset
+
+To examine the independence, let's find 
+\begin_inset Formula $f(x_{2}|x_{3})$
+\end_inset
+
+.
+ Marginalizing again, we find 
+\begin_inset Formula 
+\begin{align*}
+f(x_{3}) & =\int f(x_{2},x_{3})\,dx_{2}\\
+ & =\int_{0}^{1}(x_{2}x_{3}+3/4)\,dx_{2}\\
+ & =x_{3}/2+3/4
+\end{align*}
+
+\end_inset
+
+and so 
+\begin_inset Formula 
+\begin{align*}
+f(x_{2}|x_{3}) & =f(x_{2},x_{3})/f(x_{3})\\
+ & =(x_{2}x_{3}+3/4)/(x_{3}/2+3/4)
+\end{align*}
+
+\end_inset
+
+which does not simplify.
+ Hence the conditional distribution of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ given 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ depends on the value of 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+ and so they are not independent.
+\end_layout
+
+\begin_layout Enumerate
+From the definition of marginalization: 
+\begin_inset Formula 
+\begin{align*}
+f(x_{1}) & =\int\int f(x_{1},x_{2},x_{3})\,dx_{2}dx_{3}\\
+ & =\int_{0}^{1}\int_{0}^{1}3x_{1}^{2}(x_{2}x_{3}+x_{1})\,dx_{2}dx_{3}\\
+ & =3x_{1}^{2}\int_{0}^{1}(x_{3}/2+x_{1})\,dx_{3}\\
+ & =3x_{1}^{2}(1/4+x_{1})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the definition of conditioning: 
+\begin_inset Formula 
+\begin{align*}
+f(x_{2},x_{3}|x_{1}) & =f(x_{1},x_{2},x_{3})/f(x_{1})\\
+ & =\frac{3x_{1}^{2}(x_{2}x_{3}+x_{1})}{3x_{1}^{2}(1/4+x_{1})}\\
+ & =\frac{x_{2}x_{3}+x_{1}}{1/4+x_{1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the definition of conditioning: 
+\begin_inset Formula 
+\begin{align*}
+f(x_{1}|x_{2},x_{3}) & =f(x_{1},x_{2},x_{3})/f(x_{2},x_{3})\\
+ & =\frac{3x_{1}^{2}(x_{2}x_{3}+x_{1})}{x_{2}x_{3}+3/4}
+\end{align*}
+
+\end_inset
+
+which does not simplify further.
+\end_layout
+
+\begin_layout Enumerate
+From the definition of expectation: 
+\begin_inset Formula 
+\begin{align*}
+E[3X_{2}^{2}X_{3}/X_{1}] & =\int\int\int(3x_{2}^{2}x_{3}/x_{1})f(x_{1},x_{2},x_{3})\,dx_{1}dx_{2}dx_{3}\\
+ & =\int_{0}^{1}\int_{0}^{1}\int_{0}^{1}(3x_{2}^{2}x_{3}/x_{1})3x_{1}^{2}(x_{2}x_{3}+x_{1})\,dx_{1}dx_{2}dx_{3}\\
+ & =9\int_{0}^{1}\int_{0}^{1}\int_{0}^{1}(x_{1}x_{2}^{3}x_{3}^{2}+x_{1}^{2}x_{2}^{2}x_{3})\,dx_{1}dx_{2}dx_{3}\\
+ & =9([1/2][1/4][1/3]+[1/3][1/3][1/2])\\
+ & =63/72
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+This part requires the insight that 
+\begin_inset Formula $f(x_{2},x_{3}|x_{1})$
+\end_inset
+
+ is (for each possible value of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+) a standard pdf for the two variables 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{3}$
+\end_inset
+
+.
+ Hence the answer to the question is 
+\begin_inset Formula 
+\begin{align*}
+E[3X_{2}^{2}X_{3}|X_{1}=x_{1}] & =\int\int3x_{2}^{2}x_{3}f(x_{2},x_{3}|x_{1})\,dx_{2}dx_{3}\\
+ & =\int_{0}^{1}\int_{0}^{1}3x_{2}^{2}x_{3}\frac{x_{2}x_{3}+x_{1}}{1/4+x_{1}}\,dx_{2}dx_{3}\\
+ & =3(1/4+x_{1})^{-1}\int_{0}^{1}\int_{0}^{1}(x_{2}^{3}x_{3}^{2}+x_{1}x_{2}^{2}x_{3})\,dx_{2}dx_{3}\\
+ & =3(1/4+x_{1})^{-1}([1/4][1/3]+x_{1}[1/3][1/2])\\
+ & =\frac{1+2x_{1}}{1+4x_{1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ have joint probability density function 
+\begin_inset Formula 
+\[
+f(x_{1},x_{2})=\begin{cases}
+\pi^{-1} & \text{if \ensuremath{x_{1}^{2}+x_{2}^{2}\le1}}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\pr{|X_{1}|\le0.5\text{ and }|X_{2}|\le0.5}$
+\end_inset
+
+ and 
+\begin_inset Formula $\pr{0<X_{1}<X_{2}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ has pdf: 
+\begin_inset Formula 
+\[
+f(x_{1})=\begin{cases}
+2\pi^{-1}\sqrt{1-x_{1}^{2}} & \text{if \ensuremath{x_{1}\in[1,1]}}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+What is the pdf of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Enumerate
+Calculate the conditional pdf of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ given 
+\begin_inset Formula $X_{1}=x_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Are 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ independent? 
+\end_layout
+
+\begin_layout Enumerate
+By using a suitable change of variables, find the pdf of 
+\begin_inset Formula $R=\sqrt{X_{1}^{2}+X_{2}^{2}}$
+\end_inset
+
+.
+ Can you give an intuitive explanation of the result? 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\pr{\abs{X_{1}}\le0.5\text{ and }\abs{X_{2}}\le0.5} & =\int_{-0.5}^{0.5}\int_{-0.5}^{0.5}f(x_{1},x_{2})\,dx_{1}dx_{2}\\
+ & =\int_{-0.5}^{0.5}\int_{-0.5}^{0.5}\pi^{-1}\,dx_{1}dx_{2}\\
+ & =\pi^{-1}
+\end{align*}
+
+\end_inset
+
+Note that 
+\begin_inset Formula $\pr{0<X_{1}<X_{2}}=\int_{0}^{\infty}\int_{0}^{x_{2}}f(x_{1},x_{2})\,dx_{1}dx_{2}$
+\end_inset
+
+.
+ However, the pdf is zero outside the unit disk centred at the origin.
+ Hence the probability is 
+\begin_inset Formula $\int_{S}\pi^{-1}\,dx=\text{area}(S)/\pi$
+\end_inset
+
+ where 
+\begin_inset Formula $S$
+\end_inset
+
+ is the part of the unit disk where 
+\begin_inset Formula $\pi/4<\theta<=\pi/2$
+\end_inset
+
+, which is one-eighth of the total area of the disk.
+ Hence the answer is 
+\begin_inset Formula $1/8=0.125$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+From the definition of marginalization, 
+\begin_inset Formula $f(x_{1})=\int f(x_{1},x_{2})\,dx_{2}$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\abs{x_{1}}>1$
+\end_inset
+
+ the joint pdf is zero for all 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ and so 
+\begin_inset Formula $f(x_{1})=0$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\abs{x_{1}}\le1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\int f(x_{1},x_{2})\,dx_{2} & =\int_{-\sqrt{1-x_{1}^{2}}}^{\sqrt{1-x_{1}^{2}}}\pi^{-1}\,dx\\
+ & =2\pi^{-1}\sqrt{1-x_{1}^{2}}
+\end{align*}
+
+\end_inset
+
+as required.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The joint pdf 
+\begin_inset Formula $f(x_{1},x_{2})$
+\end_inset
+
+ is symmetric in the two variables.
+ Hence the pdf of 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ is the same as that of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+From the definition of conditioning: 
+\begin_inset Formula 
+\[
+f(x_{2}|x_{1})=f(x_{1},x_{2})/f(x_{1})=\begin{cases}
+\frac{1}{2\sqrt{1-x_{1}^{2}}} & \text{\ensuremath{\abs{x_{2}}\leq\sqrt{1-x_{1}^{2}}} and \ensuremath{\abs{x_{1}}<1}}\\
+0 & \text{\ensuremath{\abs{x_{2}}>\sqrt{1-x_{1}^{2}}} and \ensuremath{\abs{x_{1}}<1}}\\
+\text{undefined} & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+No.
+ The value of 
+\begin_inset Formula $f(x_{2}|x_{1})$
+\end_inset
+
+ depends on the value of 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Put 
+\begin_inset Formula $X_{1}=R\cos\Theta$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}=R\sin\Theta$
+\end_inset
+
+.
+ Then the determinant of the Jacobian of the transformation is 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ The constraint 
+\begin_inset Formula $X_{1}^{2}+X_{2}^{2}\le1$
+\end_inset
+
+ becomes 
+\begin_inset Formula $R\le1$
+\end_inset
+
+ and 
+\begin_inset Formula $\Theta\in[0,2\pi)$
+\end_inset
+
+.
+ Hence the joint pdf of 
+\begin_inset Formula $R$
+\end_inset
+
+ and 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+f(r,\theta)=\begin{cases}
+r/\pi & \text{where \ensuremath{0\le r\le1} and \ensuremath{\theta\in[0,2\pi)}}\\
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We now find the pdf of 
+\begin_inset Formula $R$
+\end_inset
+
+ by marginalization: 
+\begin_inset Formula 
+\[
+f(r)=\int f(r,\theta)\,d\theta=\int_{0}^{2\pi}r/\pi\,d\theta=2r
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Intuitively, 
+\begin_inset Formula $f(r)\propto r$
+\end_inset
+
+ since any particular value of 
+\begin_inset Formula $R$
+\end_inset
+
+ corresponds to all the points on the circle of that radius centred at the
+ origin and the circumference of the circle is proportional to 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+ have joint probability density function 
+\begin_inset Formula 
+\[
+f(x_{1},x_{2})=\frac{1}{\pi\sqrt{3}}\exp\{-\tfrac{2}{3}(x_{1}^{2}+x_{2}^{2}-x_{1}x_{2})\}
+\]
+
+\end_inset
+
+for all real 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $W=X_{1}+X_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y=X_{1}-X_{2}$
+\end_inset
+
+.
+ Show that 
+\begin_inset Formula $W$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent.
+\end_layout
+
+\begin_layout Solution
+This question requires the use of a change of variable to find the joint
+ pdf of 
+\begin_inset Formula $W$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Inverting the relationship, 
+\begin_inset Formula $X_{1}=(W+Y)/2$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2}=(W-Y)/2$
+\end_inset
+
+.
+ Thus the Jacobian is 
+\begin_inset Formula $\begin{pmatrix}\frac{1}{2} & \frac{1}{2}\\
+\frac{1}{2} & -\frac{1}{2}
+\end{pmatrix}$
+\end_inset
+
+ with absolute value of the determinant being 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+.
+ Moreover, 
+\begin_inset Formula $x_{1}^{2}+x_{2}^{2}-x_{1}x_{2}=\tfrac{1}{4}w^{2}+\tfrac{3}{4}y^{2}$
+\end_inset
+
+.
+ Thus the pdf of 
+\begin_inset Formula $W$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+f(w,y)=\frac{1}{2\pi\sqrt{3}}\exp\{-\tfrac{2}{3}(\tfrac{1}{4}w^{2}+\tfrac{3}{4}y^{2}\}=\frac{1}{\sqrt{6\pi}}\exp\{-\tfrac{1}{6}w^{2}\}\frac{1}{\sqrt{2\pi}}\exp\{-\tfrac{1}{2}y^{2})\}
+\]
+
+\end_inset
+
+ Since the joint pdf factorises, it is easy to show that 
+\begin_inset Formula $f(w|y)=f(w)$
+\end_inset
+
+, i.e.
+ that 
+\begin_inset Formula $W$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $X$
+\end_inset
+
+ has a normal distribution with mean 0 and standard deviation 2 and that
+ given 
+\begin_inset Formula $X=x$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+ has a normal distribution with mean 
+\begin_inset Formula $x$
+\end_inset
+
+ and standard deviation 1.
+ What is the distribution of 
+\begin_inset Formula $X$
+\end_inset
+
+ given that 
+\begin_inset Formula $Y=y$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+Question gives you 
+\begin_inset Formula $p(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $p(y|x)$
+\end_inset
+
+ from which 
+\begin_inset Formula $p(x,y)=p(x)p(y|x)$
+\end_inset
+
+; from that, use 
+\begin_inset Formula $p(x|y)\propto p(x,y)$
+\end_inset
+
+; recognize the form for fixed 
+\begin_inset Formula $y$
+\end_inset
+
+ as normal; and write down the mean and standard deviation as functions
+ of
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $y$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $x|y\sim\text{N}(\tfrac{4}{5}{y},\tfrac{4}{5})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+A mobile phone network base station receives and transmits mobile phone
+ calls in an area of a city.
+ The mobile phone company has observed the base station to fail 
+\begin_inset Formula $n$
+\end_inset
+
+ times, with times (in days) between failure 
+\begin_inset Formula $t_{1},t_{2},\ldots,t_{n}$
+\end_inset
+
+, and models the time between failure of the base stations with a distribution
+ called the lognormal distribution.
+ The lognormal distribution for 
+\begin_inset Formula $t$
+\end_inset
+
+ has probability density function with respect to 
+\begin_inset Formula $dt$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+p(t|\mu,\sigma^{2})=\frac{1}{\sqrt{2\pi\sigma^{2}}t}\exp\bigl((-\frac{1}{2\sigma^{2}}(\ln(t)-\mu)^{2}\bigr),\quad\text{\ensuremath{t>0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The lognormal distribution has two parameters: 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that the mean and variance of 
+\begin_inset Formula $t$
+\end_inset
+
+ are 
+\begin_inset Formula $e^{\mu+\frac{\sigma^{2}}{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $(e^{\sigma^{2}}-1)e^{2\mu+\sigma^{2}}$
+\end_inset
+
+ respectively.
+ Use the change of variables 
+\begin_inset Formula $x=\ln(t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $x_{i}=\ln(t_{i})$
+\end_inset
+
+, for 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+.
+ Write down the probability density for the 
+\begin_inset Formula $\set{x_{i}}$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\prod_{i}dx_{i}$
+\end_inset
+
+.
+ Make a comment here about what you are doing.
+ Does it make a difference to the rest of the question?
+\end_layout
+
+\begin_layout Enumerate
+By completing the square, or otherwise, show that the likelihood can be
+ written as a function of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, as 
+\begin_inset Formula 
+\[
+p(\set{x_{i}}|\mu,\sigma^{2})\propto\exp\bigl(-\frac{n}{2\sigma^{2}}(\mu-\bar{x})^{2}\bigr)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{x}=\frac{1}{n}\sum_{i}x_{i}$
+\end_inset
+
+ is the average of the 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Assume that 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is known exactly and that the prior distribution of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a normal distribution with mean 
+\begin_inset Formula $m$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\kappa^{2}$
+\end_inset
+
+.
+ Show, by completing the square or otherwise, that the posterior distribution
+ of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a normal distribution with precision (reciprocal of the variance) 
+\begin_inset Formula $R$
+\end_inset
+
+ and mean 
+\begin_inset Formula $M$
+\end_inset
+
+, where 
+\begin_inset Formula 
+\begin{align*}
+R & =nP+Q\\
+M & =\frac{nP\bar{x}+Qm}{nP+Q}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $P=\frac{1}{\sigma^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q=\frac{1}{\kappa^{2}}$
+\end_inset
+
+.
+ What interpretation can you place on these equations? How many data points
+ is the prior `worth'? 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\cexpec{T}{\mu,\sigma^{2}} & =\int_{0}^{\infty}t\frac{1}{t\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}(\ln(t)-\mu)^{2}\right)\ud t\\
+\intertext{so\,with\,\ensuremath{x=\ln t},\ensuremath{t=e^{x}},\ensuremath{\,dt=e^{x}\,dx},} & =\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}(x-\mu)^{2}\right)e^{x}\ud x\\
+ & =\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left[(x-\mu)^{2}-2\sigma^{2}x\right]\right)\ud x
+\end{align*}
+
+\end_inset
+
+Now completing the square, 
+\begin_inset Formula 
+\begin{align*}
+(x-\mu)^{2}-2\sigma^{2}x & =x^{2}-2x\mu+\mu^{2}-2\sigma^{2}x\\
+ & =x^{2}-2x(\mu+\sigma^{2})+\mu^{2}\\
+ & =(x-(\mu+\sigma^{2}))^{2}-(\mu+\sigma^{2})^{2}+\mu^{2}
+\end{align*}
+
+\end_inset
+
+it follows that 
+\begin_inset Formula 
+\begin{align*}
+\cexpec{T}{\mu,\sigma^{2}} & =\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left[(x-(\mu+\sigma^{2}))^{2}-(\mu+\sigma^{2})^{2}+\mu^{2}\right]\right)\ud x\\
+ & =\int_{-\infty}^{+\infty}\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left(-\frac{1}{2\sigma^{2}}\left[(x-(\mu+\sigma^{2}))^{2}\right]\right)\\
+ & \qquad\qquad\qquad\qquad\exp\left(\frac{1}{2\sigma^{2}}\left[(\mu+\sigma^{2})^{2}-\mu^{2}\right]\right)\ud x\\
+\intertext{and\,because\,the\,normal\,density,\,with\,mean\,\ensuremath{\mu+\sigma^{2}}\,and\,variance\,\ensuremath{\sigma^{2}},\,integrates\,to\,one,} & =\exp\left(\frac{1}{2\sigma^{2}}\left[(\mu+\sigma^{2})^{2}-\mu^{2}\right]\right)=e^{\mu+\frac{\sigma^{2}}{2}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+The formula for the variance follows similarly.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Note that 
+\begin_inset Formula 
+\begin{align*}
+\pr{T\in[t,t+dt]|\mu,\sigma^{2}} & =\frac{dt}{t\sqrt{2\pi\sigma^{2}}}\exp\biggl(-\frac{1}{2\sigma^{2}}(\ln(t)-\mu)^{2}\biggr)\\
+\pr{X\in[x,x+dx]|\mu,\sigma^{2}} & =\frac{dx}{\sqrt{2\pi\sigma^{2}}}\exp\biggl(-\frac{1}{2\sigma^{2}}(x-\mu)^{2}\biggr)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So for 
+\begin_inset Formula $n$
+\end_inset
+
+ points, with independence, we have that 
+\begin_inset Formula 
+\begin{align*}
+\pr{\set{X_{i}\in[x_{i},x_{i}+dx_{i}]}|\mu,\sigma^{2}} & =\prod_{i}\frac{dx_{i}}{\sqrt{2\pi\sigma^{2}}}\exp\biggl(-\frac{1}{2\sigma^{2}}(x_{i}-\mu)^{2}\biggr)\\
+ & =\frac{\prod_{i}dx_{i}}{(2\pi\sigma^{2})^{\frac{n}{2}}}\exp\biggl(-\frac{1}{2\sigma^{2}}\sum_{i}(x_{i}-\mu)^{2}\biggr)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The pdf with respect to 
+\begin_inset Formula $\prod_{i}dx_{i}$
+\end_inset
+
+ is thus 
+\begin_inset Formula 
+\[
+\pdfunc[dx]{\set{x_{i}}|\mu,\sigma^{2}}=\frac{1}{(2\pi\sigma^{2})^{\frac{n}{2}}}\exp\biggl(-\frac{1}{2\sigma^{2}}\sum_{i}(x_{i}-\mu)^{2}\biggr)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+whereas the pdf with respect to 
+\begin_inset Formula $\prod_{i}dt_{i}$
+\end_inset
+
+, written in terms of the 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, is 
+\begin_inset Formula 
+\[
+\pdfunc[dt]{\set{x_{i}}|\mu,\sigma^{2}}=\frac{1}{(2\pi\sigma^{2})^{\frac{n}{2}}}\exp\bigl(-\sum_{i}x_{i}\bigr)\exp\biggl(-\frac{1}{2\sigma^{2}}\sum_{i}(x_{i}-\mu)^{2}\biggr)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+They are different, as one might expect, but this difference will make no
+ difference to maximum likelihood, since the two densities are proportional
+ as functions of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+; the `constant' of proportionality is a function of the data only.
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula 
+\begin{align*}
+\sum_{i=1}^{n}(x_{i}-\mu)^{2}=n\mu^{2}-2\mu n\bar{x}+\sum_{i=1}^{n}x_{i}^{2}
+\end{align*}
+
+\end_inset
+
+we find that 
+\begin_inset Formula 
+\begin{align*}
+\pdfunc[dx]{\set{x_{i}}|\mu,\sigma^{2}} & \propto\exp\left(-\frac{1}{2\sigma^{2}}(n\mu^{2}-2\mu n\bar{x})\right)\propto\exp\left(-\frac{n}{2\sigma^{2}}(\mu-\bar{x})^{2}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We want 
+\begin_inset Formula 
+\begin{align*}
+\pdfunc{\mu|\set{x_{i}},\sigma^{2},m,\kappa^{2}} & \propto\pdfunc{\set{x_{i}}|\mu,\sigma^{2}}\pdfunc{\mu|m,\kappa^{2}}\\
+ & \propto\exp\left(-\frac{n}{2\sigma^{2}}(\mu-\bar{x})^{2}\right)\exp\left(-\frac{1}{2\kappa^{2}}(\mu-m)^{2}\right)\\
+ & =\exp\left(-\frac{1}{2}(nP(\mu-\bar{x})^{2}+Q(\mu-m)^{2})\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $P=\frac{1}{\sigma^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q=\frac{1}{\kappa^{2}}$
+\end_inset
+
+.
+ Now simply note that 
+\begin_inset Formula 
+\begin{align*}
+nP(\mu-\bar{x})^{2}+Q(\mu-m)^{2} & =(nP+Q)\mu^{2}-2(nP\bar{x}+Qm)\mu+\text{constant independent of \ensuremath{\mu}}\\
+ & =(nP+Q)\left[\mu-\frac{nP\bar{x}+Qm}{nP+Q}\right]^{2}+\text{constant independent of \ensuremath{\mu}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ so indeed 
+\begin_inset Formula $\mu|\set{x_{i}},\sigma^{2}\sim\text{N}(\frac{nP\bar{x}+Qm}{nP+Q},\frac{1}{nP+Q})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+These equations compute a `weighted average' precision and convex combination
+ of the means.
+ The prior is `worth' one data point.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Six packs of 52 cards are in a box.
+ Packs 1, 2 and 3 are ordinary packs, containing 4 suits (club, hearts,
+ spades and diamonds) of 13 cards labelled A, 2, \SpecialChar ldots
+, 10, J, Q, K.
+ Pack 4 consists of 2 complete suits of diamonds and 2 complete suits of
+ hearts.
+ Pack 5 contains 4 complete suits of spades.
+ Pack 6 consists of 52 aces of spades.
+ A die is thrown, and the pack corresponding to the number thrown on the
+ die is taken from the box.
+ One card is then randomly picked from that pack and given to you.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What does it mean to pick a card randomly? Is it a statement about the picking
+ method? What if the person picking knows in advance which card they will
+ pick but you do not?
+\end_layout
+
+\begin_layout Enumerate
+What is the probability that a heart is given to you?
+\end_layout
+
+\begin_layout Enumerate
+What is the probability that an ace of spades is given to you?
+\end_layout
+
+\begin_layout Enumerate
+Suppose that you do not know which pack has been selected, but you are given
+ an ace of spades.
+ What is the probability that the number thrown on the die was 1? What is
+ the probability that the number thrown on the die was 6?
+\end_layout
+
+\begin_layout Enumerate
+The ace of spades that was given to you in previous part is returned to
+ the pack.
+ Assume that you still do not know which pack has been selected.
+ Another card is then randomly picked from this same pack and given to you.
+ What is the probability that it is an ace of spades?
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+`Randomly' here means that one cannot predict which card will be drawn with
+ any degree of accuracy.
+ The picker may have have a pre-determined sequence in mind: it would not
+ matter.
+ In fact, this is the case with the Markov chain Monte Carlo algorithms
+ that we will look at later.
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ denote `pack 
+\begin_inset Formula $i$
+\end_inset
+
+ is taken from the box', and let 
+\begin_inset Formula $\heartsuit$
+\end_inset
+
+ denote `a heart is drawn'.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\pr{\heartsuit}=\sum_{i=1}^{6}\pr{\heartsuit|B_{i}}\pr{B_{i}}=\frac{1}{6}\left(\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{2}+0+0\right)=\frac{5}{24}=0.208
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $A\spadesuit$
+\end_inset
+
+ denote `an ace of spades is drawn'.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\pr{A\spadesuit} & =\sum_{i=1}^{6}\pr{A\spadesuit|B_{i}}\pr{B_{i}}=\frac{1}{6}\left(\frac{1}{52}+\frac{1}{52}+\frac{1}{52}+0+\frac{4}{52}+1\right)=\frac{59}{312}=0.1891
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+By Bayes's theorem and the above result: 
+\begin_inset Formula 
+\begin{align*}
+\pr{B_{1}|A\spadesuit} & =\frac{\pr{A\spadesuit|B_{1}}\pr{B_{1}}}{\pr{A\spadesuit}}=\frac{\frac{1}{52}\times\frac{1}{6}}{\frac{59}{312}}=\frac{1}{59}=0.017
+\end{align*}
+
+\end_inset
+
+Similarly: 
+\begin_inset Formula 
+\begin{align*}
+\pr{B_{6}|A\spadesuit} & =\frac{\pr{A\spadesuit|B_{6}}\pr{B_{6}}}{\pr{A\spadesuit}}=\frac{1\times\frac{1}{6}}{\frac{59}{312}}=\frac{52}{59}=0.881
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We will need all 
+\begin_inset Formula $\pr{B_{i}|A\spadesuit}$
+\end_inset
+
+ below, so whilst at it, let's quickly calculate them here.
+ First, note that by symmetry: 
+\begin_inset Formula 
+\begin{align*}
+\pr{B_{2}|A\spadesuit} & =\pr{B_{3}|A\spadesuit}=\frac{1}{59}
+\end{align*}
+
+\end_inset
+
+Clearly, we also have that 
+\begin_inset Formula $\pr{B_{4}\given A\spadesuit}=0$
+\end_inset
+
+.
+ Finally, because the 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ are mutually exclusive and exhaustive, now we actually also know: 
+\begin_inset Formula 
+\begin{align*}
+\pr{B_{5}|A\spadesuit} & =1-\sum_{\substack{i=1\\
+i\neq5
+}
+}^{6}\pr{B_{i}|A\spadesuit}=1-\left(\frac{1}{59}+\frac{1}{59}+\frac{1}{59}+0+\frac{52}{59}\right)=\frac{4}{59}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ denote `the first card is an 
+\begin_inset Formula $A\spadesuit$
+\end_inset
+
+'.
+ Similarly, 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ denotes `the second card is an 
+\begin_inset Formula $A\spadesuit$
+\end_inset
+
+'.
+ Let 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ denote `the first 
+\begin_inset Formula $A\spadesuit$
+\end_inset
+
+ was picked from pack 
+\begin_inset Formula $i$
+\end_inset
+
+'.
+ Clearly, 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ are conditionally independent given 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+: if we knew 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+, learning about 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ would not tell us anything about 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+.
+ (But if we do not know 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+, as is the case here, then 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ does tell us something about 
+\begin_inset Formula $B_{i}$
+\end_inset
+
+ and therefore also about 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ are not unconditionally independent!)
+\end_layout
+
+\begin_layout Standard
+Putting everything together, we have, 
+\begin_inset Formula 
+\begin{align*}
+\pr{A_{2}|A_{1}} & =\sum_{i=1}^{6}\pr{A_{2},B_{i}|A_{1}}\\
+ & =\sum_{i=1}^{6}\pr{A_{2}|B_{i},A_{1}}\pr{B_{i}|A_{1}}\\
+\intertext{and\,by\,conditional\,independence\,of\,\ensuremath{A_{1}}and\,\ensuremath{A_{2}}\,given\,\ensuremath{B_{i}},} & =\sum_{i=1}^{6}\pr{A_{2}|B_{i}}\pr{B_{i}|A_{1}}\\
+ & =\frac{1}{52}\times\frac{1}{59}+\frac{1}{52}\times\frac{1}{59}+\frac{1}{52}\times\frac{1}{59}+0\times0+\frac{4}{52}\times\frac{4}{59}+1\times\frac{52}{59}\\
+ & =0.888
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+A Pound coin has a probability 
+\begin_inset Formula $p$
+\end_inset
+
+ of turning up heads when tossed.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What does this mean? Is 
+\begin_inset Formula $p$
+\end_inset
+
+ a property of the coin, like its mass? Is it a property of the coin-tossing
+ mechanism? How might 
+\begin_inset Formula $p$
+\end_inset
+
+ change? Can it change without the coin changing? Can it change without
+ the coin-tossing mechanism changing? We will continue with the standard
+ interpretation regardless of the answer to this part.
+ Note, though, the answer is critical to how you think about probabilities.
+\end_layout
+
+\begin_layout Enumerate
+To find out more about 
+\begin_inset Formula $p$
+\end_inset
+
+, we run an experiment where we fix a positive integer 
+\begin_inset Formula $k$
+\end_inset
+
+ and observe the number of throws 
+\begin_inset Formula $X$
+\end_inset
+
+ that it takes in order to observe 
+\begin_inset Formula $k$
+\end_inset
+
+ heads.
+ Write down the probability distribution for 
+\begin_inset Formula $X$
+\end_inset
+
+ and argue for its correctness.
+\end_layout
+
+\begin_layout Enumerate
+This experiment is repeated 
+\begin_inset Formula $N$
+\end_inset
+
+ times and data 
+\begin_inset Formula $\set{x_{i}}_{i\in[1..N]}$
+\end_inset
+
+ are recorded.
+ Write down the likelihood of 
+\begin_inset Formula $p$
+\end_inset
+
+ for these data, ie, the probability of the data conditioned on 
+\begin_inset Formula $p$
+\end_inset
+
+ (and 
+\begin_inset Formula $k$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+A uniform prior distribution on 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ is assumed for 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ Compute the posterior distribution for 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Show that the maximum likelihood estimate of 
+\begin_inset Formula $p$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\hat{p}=\frac{k}{\bar{x}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{x}=\frac{1}{N}\sum_{i}x_{i}$
+\end_inset
+
+ is the sample average of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+What is the posterior mean of 
+\begin_inset Formula $p$
+\end_inset
+
+? Show that it can be written as a weighted sum of the prior mean and 
+\begin_inset Formula $\hat{p}$
+\end_inset
+
+.
+ What is the posterior mean in the limit as 
+\begin_inset Formula $N\rightarrow\infty$
+\end_inset
+
+.
+ You may use the fact that the mean of a beta distribution with parameters
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is 
+\begin_inset Formula $\alpha/(\alpha+\beta)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+I will replace 
+\begin_inset Formula $p$
+\end_inset
+
+ by 
+\begin_inset Formula $q$
+\end_inset
+
+ to avoid notational problems in the following.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Imagine that we knew all the workings, say, of the machine that throws the
+ coin, the air temperature and currents, etc.
+ Surely we can predict with near certainty which way the coin will land.
+ (Actually controlling the toss of a coin is much easier than this makes
+ it sound.) So therefore, 
+\begin_inset Formula $q=1$
+\end_inset
+
+ if we design the mechanism in the right way.
+ But what about someone who does not know all this? For them, 
+\begin_inset Formula $q<1$
+\end_inset
+
+.
+ Nothing physical changed, yet 
+\begin_inset Formula $q$
+\end_inset
+
+ did.
+ Clearly, 
+\begin_inset Formula $q$
+\end_inset
+
+ is not a physical quantity, still less a property of the coin.
+\end_layout
+
+\begin_layout Enumerate
+The number of throws 
+\begin_inset Formula $X$
+\end_inset
+
+ required is the number of throws in a sequence that has a head as the final
+ toss and 
+\begin_inset Formula $k-1$
+\end_inset
+
+ heads up to that point.
+ 
+\begin_inset Formula 
+\begin{align*}
+\pr{X=x|q} & =q\pr{\text{\ensuremath{k-1} heads in \ensuremath{x-1} tosses}|q}\\
+ & =q\binom{x-1}{k-1}y^{k-1}(1-y)^{x-k}=\binom{x-1}{k-1}y^{k}(1-y)^{x-k}
+\end{align*}
+
+\end_inset
+
+ So 
+\begin_inset Formula $X$
+\end_inset
+
+ has a 
+\emph on
+negative binomial distribution
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+By conditional independence of 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+, …, 
+\begin_inset Formula $X_{N}$
+\end_inset
+
+ given 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\pr{\set{X_{i}=x_{i}}|q} & =\prod_{i=1}^{N}\binom{x_{i}-1}{k-1}q^{k}(1-q)^{x_{i}-k}\\
+ & =\left[\prod_{i=1}^{N}\binom{x_{i}-1}{k-1}\right]q^{Nk}(1-q)^{\sum_{i=1}^{N}x_{i}-Nk}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Because 
+\begin_inset Formula $q$
+\end_inset
+
+ is uniformly distributed, 
+\begin_inset Formula $\pr{Q\in dq}=dq$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\pr{Q\in dq|\set{X_{i}=x_{i}}} & \propto\pr{\set{X_{i}=x_{i}|y}}\pr{Q\in dq}\\
+ & \propto q^{Nk}(1-q)^{\sum_{i=1}^{N}x_{i}-Nk}dq
+\end{align*}
+
+\end_inset
+
+Therefore 
+\begin_inset Formula 
+\begin{align*}
+%\label{eq:calc:coins1:posterior}
+\pr{Q\in dq|\set{X_{i}=x_{i}}}=\text{Be}(q;Nk+1,N(\bar{x}-k)+1)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{x}$
+\end_inset
+
+ is the sample average 
+\begin_inset Formula $\frac{1}{N}\sum_{i=1}^{N}x_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The log-likelihood is 
+\begin_inset Formula 
+\begin{align*}
+\log\pdfunc{x_{1},\dots,x_{N}|q} & =\text{constant}+Nk\ln q+N(\bar{x}-k)\ln(1-q)
+\end{align*}
+
+\end_inset
+
+so 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial q}\log\pr{\set{X_{i}=x_{i}}|q} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+if and only if 
+\begin_inset Formula 
+\begin{align*}
+Nk/q-N(\bar{x}-k)/(1-q)=0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This has a unique solution at 
+\begin_inset Formula $\hat{q}=k/\bar{x}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Given the Beta distribution result, the prior (
+\begin_inset Formula $N=0$
+\end_inset
+
+) mean of 
+\begin_inset Formula $q$
+\end_inset
+
+ is 
+\begin_inset Formula $1/2$
+\end_inset
+
+, while the posterior mean is 
+\begin_inset Formula 
+\begin{align*}
+\cexpec{Q}{x_{1},\dots,x_{n}}=\frac{1+Nk}{2+N\bar{x}}=\frac{2}{2+N\bar{x}}\expec{Q}+\frac{N\bar{x}}{2+N\bar{x}}\hat{q}
+\end{align*}
+
+\end_inset
+
+ This is a convex combination of the prior mean 
+\begin_inset Formula $1/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{q}$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+, the weight for the prior goes to zero, and the weight for 
+\begin_inset Formula $\hat{q}$
+\end_inset
+
+ goes to one, so the posterior mean converges to 
+\begin_inset Formula $\hat{q}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Let the probability that a coin turns up heads when tossed be 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The coin is tossed ten times producing seven heads.
+ Write down the likelihood of 
+\begin_inset Formula $p$
+\end_inset
+
+ for these data.
+\end_layout
+
+\begin_layout Enumerate
+Assuming a uniform distribution on 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ as a prior for 
+\begin_inset Formula $p$
+\end_inset
+
+, compute the posterior distribution of 
+\begin_inset Formula $p$
+\end_inset
+
+ given the above data.
+\end_layout
+
+\begin_layout Enumerate
+Discuss how you would compute a point estimate and credible interval for
+ 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The coin is to be thrown another five times.
+ Let 
+\begin_inset Formula $R$
+\end_inset
+
+ be the number of heads that are obtained.
+ Compute the probability distribution for 
+\begin_inset Formula $R$
+\end_inset
+
+ conditioned on the data, ie the fact that seven heads were obtained in
+ ten tosses (but not conditioned on 
+\begin_inset Formula $p$
+\end_inset
+
+, which you do not know).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+Let 
+\begin_inset Formula $K$
+\end_inset
+
+ denote the number of heads in 10 tosses, and replace 
+\begin_inset Formula $p$
+\end_inset
+
+ by 
+\begin_inset Formula $q$
+\end_inset
+
+ as before.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\pr{K=7|q}=\binom{10}{7}q^{7}(1-q)^{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Because 
+\begin_inset Formula $Q$
+\end_inset
+
+ a uniform distribution, 
+\begin_inset Formula $\pr{Q\in dq}=dq$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\pr{Q\in dq|K=7} & \propto\pr{K=7|q}dq\propto q^{7}(1-q)^{3}dq
+\end{align*}
+
+\end_inset
+
+ Thus 
+\begin_inset Formula $Q|K=7\sim\text{Be}(8,4)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Two possible point estimates: 
+\begin_inset Formula 
+\begin{align*}
+\text{posterior expectation }\cexpec{Q}{K=7} & =\frac{8}{8+4}=\frac{2}{3}\\
+\text{posterior mode of \ensuremath{Q}} & =\frac{7}{7+3}=0.7
+\end{align*}
+
+\end_inset
+
+To get an idea of the error, the posterior variance and standard deviation
+ are: 
+\begin_inset Formula 
+\begin{align*}
+\cvar{Q}{K=7} & =\frac{8\times4}{(8+4)^{2}\times(8+4+1)}=0.0171\\
+\csd{Q}{K=7} & =\sqrt{0.0171}=0.131
+\end{align*}
+
+\end_inset
+
+A 
+\begin_inset Formula $95\%$
+\end_inset
+
+ credible interval could be found, for instance by numerically solving the
+ posterior cumulative distribution function 
+\begin_inset Formula $\ccdf{q}{K=7}=\pr{Q\le q|K=7}$
+\end_inset
+
+ for 
+\begin_inset Formula $\ccdf{q}{K=7}=0.025$
+\end_inset
+
+ and 
+\begin_inset Formula $\ccdf{q}{K=7}=0.0975$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\pr{R=r|K=7} & =\int_{q\in[0,1]}\pr{Q\in dq,R=r|K=7}\\
+ & =\int_{q\in[0,1]}\pr{R=r|Q=q,K=7}\pr{Q\in dq|K=7}\\
+ & =\int_{0}^{1}\pr{R=r|Q=q}|\pdfunc{q|K=7}dq\\
+ & =\int_{0}^{1}\binom{5}{r}q^{r}(1-q)^{5-r}\frac{\Gamma(12)}{\Gamma(8)\Gamma(4)}q^{7}(1-q)^{3}dq\\
+ & =\binom{5}{r}\frac{\Gamma(12)}{\Gamma(8)\Gamma(4)}\frac{\Gamma(8+r)\Gamma(9-r)}{\Gamma(17)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Further exercises
+\end_layout
+
+\begin_layout Exercise
+Suppose a red and a blue die are tossed.
+ Let 
+\begin_inset Formula $x$
+\end_inset
+
+ be the sum of the number showing on the red die and twice the number showing
+ on the blue die.
+ Find the density function and the distribution function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $p(3)=p(4)=1/36$
+\end_inset
+
+, 
+\begin_inset Formula $p(5)=p(6)=2/36$
+\end_inset
+
+, 
+\begin_inset Formula $p(7)=\dots=p(14)=3/36$
+\end_inset
+
+, 
+\begin_inset Formula $p(15)=p(16)=2/36$
+\end_inset
+
+, 
+\begin_inset Formula $p(17)=p(18)=1/36$
+\end_inset
+
+.
+ As for the distribution function, 
+\begin_inset Formula 
+\[
+F(x)=\left\{ \begin{array}{ll}
+0 & \text{for \ensuremath{x<3};}\\
+1/36 & \text{for \ensuremath{3\leqslant x<4};}\\
+2/36 & \text{for \ensuremath{4\leqslant x<5};}\\
+4/36 & \text{for \ensuremath{5\leqslant x<6};}\\
+6/36 & \text{for \ensuremath{6\leqslant x<7};}\\
+(3[x]-12)/36 & \text{for \ensuremath{n\leqslant x<n+1} where \ensuremath{7\leqslant n<15};}\\
+32/36 & \text{for \ensuremath{15\leqslant x<16};}\\
+34/36 & \text{for \ensuremath{16\leqslant x<17};}\\
+35/36 & \text{for \ensuremath{17\leqslant x<18};}\\
+1 & \text{for \ensuremath{x\geqslant18}}
+\end{array}\right.
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $[x]$
+\end_inset
+
+ denotes the integer part of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $k\sim\text{Bn}(n,\pi)$
+\end_inset
+
+ where 
+\begin_inset Formula $n$
+\end_inset
+
+ is large and 
+\begin_inset Formula $\pi$
+\end_inset
+
+ is small but 
+\begin_inset Formula $n\pi=\lambda$
+\end_inset
+
+ has an intermediate value.
+ Use the exponential limit 
+\begin_inset Formula $(1+x/n)^{n}\to\text{e}^{x}$
+\end_inset
+
+ to show that 
+\begin_inset Formula $\Pr(k=0)\cong\text{e}^{-\lambda}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pr(k=1)\cong\lambda\text{e}^{-\lambda}$
+\end_inset
+
+.
+ Extend this result to show that 
+\begin_inset Formula $k$
+\end_inset
+
+ is such that 
+\begin_inset Formula 
+\[
+p(k)\cong\frac{\lambda^{k}}{k!}\exp(-\lambda)
+\]
+
+\end_inset
+
+that is, 
+\begin_inset Formula $k$
+\end_inset
+
+ is approximately distributed as a Poisson variable of mean 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $\Pr(k=0)=(1-\pi)^{n}=(1-\lambda/n)^{n}\to\text{e}^{-\lambda}$
+\end_inset
+
+.
+ More generally 
+\begin_inset Formula 
+\begin{align*}
+p(k) & =\binom{n}{k}\pi^{k}(1-\pi)^{n-k}\\
+ & =\frac{\lambda^{k}}{k!}\left(1-\frac{\lambda}{n}\right)^{n}\frac{n}{n}\frac{n-1}{n}\dots\frac{n-k+1}{n}\left(1-\frac{\lambda}{n}\right)^{-k}\\
+ & \to\frac{\lambda^{k}}{k!}\exp(-\lambda).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $m$
+\end_inset
+
+ and 
+\begin_inset Formula $n$
+\end_inset
+
+ have independent Poisson distributions of means 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ respectively and that 
+\begin_inset Formula $k=m+n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\Pr(k=0)=e^{-(\lambda+\mu)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Pr(k=1)=(\lambda+\mu)e^{-(\lambda+\mu)}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Generalise by showing that 
+\begin_inset Formula $k$
+\end_inset
+
+ has Poisson distribution of mean 
+\begin_inset Formula $\lambda+\mu$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that conditional on 
+\begin_inset Formula $k$
+\end_inset
+
+, the distribution of 
+\begin_inset Formula $m$
+\end_inset
+
+ is binomial of index 
+\begin_inset Formula $k$
+\end_inset
+
+ and parameter 
+\begin_inset Formula $\lambda/(\lambda+\mu)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+We use the tilde symbol to distinguish between the random variable and the
+ constants., eg.
+ 
+\begin_inset Formula $\random k,k$
+\end_inset
+
+ in 
+\begin_inset Formula $\Pr\bigl(\,\random k=k\bigr)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\Pr\bigl(\,\random k=0\bigr)=\Pr(\random m=\random n=0)=\Pr(\random m=0)\,\Pr(\random n=0)=\text{e}^{-\lambda}\text{e}^{-\mu}=\text{e}^{-(\lambda+\mu)}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align*}
+\Pr(\,\random k=1\bigr) & =\Pr\bigl(\{\random m=1,\,\random n=0\}\ \text{or}\ \{\random m=0,\,\random n=1\}\bigr)\\
+ & =\lambda\text{e}^{-(\lambda+\mu)}+\mu\text{e}^{-(\lambda+\mu)}=(\lambda+\mu)\text{e}^{-(\lambda+\mu)}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+More generally 
+\begin_inset Formula 
+\begin{align*}
+\Pr\bigl(\,\random k=k\bigr) & =\sum_{m=0}^{k}\Pr(\random m=m,\,\random n=k-m)=\sum_{m=0}^{k}\Pr(\random m=m)\,\Pr(\random n=k-m)\\
+ & =\sum_{m=0}^{k}\frac{\lambda^{k}}{k!}\exp(-\lambda)\frac{\mu^{k-m}}{(k-m)!}\exp(-\mu)\\
+ & =\frac{1}{k!}\exp(-(\lambda+\mu))\sum_{m=0}^{k}\binom{k}{m}\lambda^{m}\mu^{k-m}=\frac{(\lambda+\mu)^{k}}{k!}\exp(-(\lambda+\mu)).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+By definition of conditional probability 
+\begin_inset Formula 
+\begin{align*}
+\Pr\bigl(\random m=m\,|\,\random k=k\bigr) & =\frac{\Pr\bigl(\random m=m,\,\random k=k\bigr)}{\Pr\bigl(\random k=k\bigr)}=\frac{\Pr\bigl(\random m=m,\phantom{\random k}\random n=k-m\bigr)}{\Pr\bigl(\,\random k=k\bigr)}\\
+ & =\frac{\frac{\lambda^{m}}{m!}\exp(-\lambda))\,\frac{\mu^{k-m}}{(k-m)!}\exp(-\mu)}{\frac{(\lambda+\mu)^{k}}{k!}\exp(-(\lambda+\mu))}\\
+ & =\binom{k}{m}\left(\frac{\lambda}{\lambda+\mu}\right)^{m}\left(1-\frac{\lambda}{\lambda+\mu}\right)^{k-m}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Exercise
+Modify the formula for the density of a one-to-one funtion 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ of a random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ to find an expression for the density of 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ in terms of that of 
+\begin_inset Formula $x$
+\end_inset
+
+, in both the continuous and discrete case.
+ Hence show that the square of a standard normal distribution has a chi-squared
+ distribution on one degree of freedom.
+\end_layout
+
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+Let 
+\begin_inset Formula $y=x^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $x\sim\text{N}(0,1)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\Pr\left(\random y\leqslant y\right) & =\Pr\left(\random x^{2}\leqslant y\right)=\Pr\left(-\sqrt{y}\leqslant\random x\leqslant\sqrt{y}\,\right)\\
+ & =\Pr\left(\random x\leqslant\sqrt{y}\,)-\Pr(\random x<-\sqrt{x}\,\right)
+\end{align*}
+
+\end_inset
+
+so that (because 
+\begin_inset Formula $\Pr(\random x=-\sqrt{y})=0$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+F_{\random y}(y)=F_{\random x}\left(\sqrt{y}\,\right)-F_{\random x}\left(-\sqrt{y}\,\right)
+\]
+
+\end_inset
+
+and on differentiation 
+\begin_inset Formula 
+\[
+p_{\random y}(y)=\frac{1}{2}y^{-\frac{1}{2}}p_{\random x}\left(\sqrt{y}\,\right)+\frac{1}{2}y^{-\frac{1}{2}}p_{\random x}\left(-\sqrt{y}\,\right).
+\]
+
+\end_inset
+
+Alternatively, you could argue that 
+\begin_inset Formula 
+\[
+\Pr(y<\random y\leqslant y+\dy)=\Pr(x<\random x\leqslant x+\dx)+\Pr(-x-\dx\leqslant\random x<-x)
+\]
+
+\end_inset
+
+implying 
+\begin_inset Formula 
+\[
+p_{\random y}(y)\dy=p_{\random x}(x)\dx+p_{\random x}(-x)\dx
+\]
+
+\end_inset
+
+which as 
+\begin_inset Formula $\dy/\dx=2x=2\sqrt{y}$
+\end_inset
+
+ leads to the same conclusion.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+In the case where 
+\begin_inset Formula $x\sim\text{N}(0,1)$
+\end_inset
+
+ this gives 
+\begin_inset Formula 
+\[
+p_{\random y}(y)=(2\pi y)^{-\frac{1}{2}}\exp\left(-\half y\right)
+\]
+
+\end_inset
+
+which is the density of 
+\begin_inset Formula $\chi_{1}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $x_{1},x_{2},\dots,x_{n}$
+\end_inset
+
+ are independently and all have the same continuous distribution, with density
+ 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and distribution function 
+\begin_inset Formula $F(x)$
+\end_inset
+
+.
+ Find the distribution functions of 
+\begin_inset Formula 
+\[
+M=\max\{x_{1},x_{2},\dots,x_{n}\}\quad\text{and}\quad m=\min\{x_{1},x_{2},\dots,x_{n}\}
+\]
+
+\end_inset
+
+in terms of 
+\begin_inset Formula $F(x)$
+\end_inset
+
+, and so find expressions for the density functions of 
+\begin_inset Formula $M$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution
+By independence, since 
+\begin_inset Formula $\random M\leqslant M$
+\end_inset
+
+ iff every one of the individual 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+ are less than or equal to 
+\begin_inset Formula $M$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{array}{ll}
+F_{M}(M)=\Pr(X_{i}\leqslant M\quad\forall i)=(F(M))^{n}; & F_{m}(m)=1-(1-F(m))^{n};\\
+p_{M}(M)=nf(M)(F(M))^{n-1}; & p_{m}(m)=nf(m)(1-F(m))^{n-1}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that the random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ has a negative binomial distribution 
+\begin_inset Formula $\NB(n,\pi)$
+\end_inset
+
+ of index 
+\begin_inset Formula $n$
+\end_inset
+
+ and parameter 
+\begin_inset Formula $\pi$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\[
+p(x)=\binom{n+x-1}{x}\pi^{n}(1-\pi)^{x}
+\]
+
+\end_inset
+
+Find the mean and variance of 
+\begin_inset Formula $x$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $\E X=n(1-\pi)/\pi;\ \ \Var X=n(1-\pi)\pi^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+A random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ is said to have a chi-squared distribution on 
+\begin_inset Formula $\nu$
+\end_inset
+
+ degrees of freedom if it has the same distribution as 
+\begin_inset Formula 
+\[
+Z_{1}^{2}+Z_{2}^{2}+\dots+Z_{\nu}^{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $Z_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $Z_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\dots$
+\end_inset
+
+, 
+\begin_inset Formula $Z_{\nu}$
+\end_inset
+
+ are independent standard normal variates.
+ Use the facts that 
+\begin_inset Formula $\E Z_{i}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\E Z_{i}^{2}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\E Z_{i}^{4}=3$
+\end_inset
+
+ to find the mean and variance of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Confirm these values using the probability density of 
+\begin_inset Formula $X$
+\end_inset
+
+, which is 
+\begin_inset Formula 
+\[
+p(X)=\frac{1}{2^{\nu/2}\Gamma(\nu/2)}X^{\nu/2-1}\exp(-\half X)\qquad(0<X<\infty)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $\E X=\sum\E Z_{i}^{2}=\sum1=\nu$
+\end_inset
+
+, while 
+\begin_inset Formula $\E X^{2}=\sum\E Z_{i}^{4}+\sum_{i\ne j}\E X_{i}^{2}X_{j}^{2}=3\nu+\nu(\nu-1)$
+\end_inset
+
+ so that 
+\begin_inset Formula $\Var Z=\E X^{2}-(\E X)^{2}=2\nu$
+\end_inset
+
+.
+ Similarly by integration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+The 
+\shape italic
+skewness
+\shape default
+ of a random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $\gamma_{1}=\mu_{3}/(\mu_{2})^{\frac{3}{2}}$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+\mu_{n}=\E(x-\E x)^{n}
+\]
+
+\end_inset
+
+(but note that some authors work in terms of 
+\begin_inset Formula $\beta_{1}=\gamma_{1}^{2}$
+\end_inset
+
+).
+ Find the skewness of a random variable 
+\begin_inset Formula $X$
+\end_inset
+
+ with a binomial distribution 
+\begin_inset Formula $B(n,\pi)$
+\end_inset
+
+ of index 
+\begin_inset Formula $n$
+\end_inset
+
+ and parameter 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $\E X=n\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\E X(X-1)=n(n-1)\pi^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\E X(X-1)(X-2)=n(n-1)(n-2)\pi^{3}$
+\end_inset
+
+, so 
+\begin_inset Formula $\E X=n\pi$
+\end_inset
+
+, 
+\begin_inset Formula $\E X^{2}=\E X(X-1)+\E X=n(n-1)\pi+n\pi$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+\E(X-\E X)^{3} & =\E X^{3}-3(\E X^{2})(\E X)+2(\E X)^{3}\\
+ & =\E X(X-1)(X-2)-3(\E X^{2})(\E X)+3\E X^{2}+2(\E X)^{3}-2\E X\\
+ & =n\pi(1-\pi)(1-2\pi),
+\end{align*}
+
+\end_inset
+
+and thus 
+\begin_inset Formula $\gamma_{1}=(1-2\pi)/\sqrt{[n\pi(1-\pi)]}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are such that 
+\begin_inset Formula 
+\[
+\Pr(x=0,y=1)=\Pr(x=0,y=-1)=\Pr(x=1,y=0)=\Pr(x=-1,y=0)=\quarter.
+\]
+
+\end_inset
+
+Show that 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ are uncorrelated but that they are 
+\shape italic
+not
+\shape default
+ independent.
+\end_layout
+
+\begin_layout Solution
+By symmetry 
+\begin_inset Formula $\E x=\E y=\E xy=0$
+\end_inset
+
+ so 
+\begin_inset Formula $\Cov(x,y)=\E xy-\E x\E y=0$
+\end_inset
+
+.
+ However 
+\begin_inset Formula $0=\Pr(x=0,\,y=0)\ne\Pr(x=0)\,\Pr(y=0)=\half\times\half=\quarter$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Let 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ have a bivariate normal distribution and suppose that 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ both have mean 0 and variance 1, so that their marginal distributions are
+ standard normal and their joint density is 
+\begin_inset Formula 
+\[
+p(x,y)=\left\{ 2\pi\sqrt{(1-\rho^{2})}\right\} ^{-1}\exp\left\{ -\half(x^{2}-2\rho xy+y^{2})/(1-\rho^{2})\right\} .
+\]
+
+\end_inset
+
+Show that if the correlation coefficient between 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ is 
+\begin_inset Formula $\rho$
+\end_inset
+
+, then that between 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $y^{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $\rho^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Solution
+\begin_inset Formula $p(y|x)=\{2\pi(1-\rho^{2})\}^{-\frac{1}{2}}\exp\{-\half(y-\rho x)^{2}/(1-\rho^{2})\}$
+\end_inset
+
+ so conditional on 
+\begin_inset Formula $\random x=x$
+\end_inset
+
+ we have 
+\begin_inset Formula $y\sim\N(\rho x,1-\rho^{2})$
+\end_inset
+
+, so 
+\begin_inset Formula $\E(y|x)=\rho x$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\E(y^{2}|x)=\Var(y|x)+\{\E(y|x)\}^{2}=1-\rho^{2}+\rho^{2}x^{2}$
+\end_inset
+
+, hence 
+\begin_inset Formula $\E(xy|x)=\rho x^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\E(x^{2}y^{2}|x)=x^{2}-\rho^{2}x^{2}+\rho^{2}x^{4}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\E xy=\rho$
+\end_inset
+
+ and (as 
+\begin_inset Formula $\E x^{4}=3$
+\end_inset
+
+) 
+\begin_inset Formula $\E x^{2}y^{2}=1+2\rho^{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $\E xy-(\E x)(\E y)=\rho$
+\end_inset
+
+ and 
+\begin_inset Formula $\E x^{2}y^{2}-(\E x^{2})(\E y^{2})=2\rho^{2}$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\Var x=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\Var x^{2}=\E x^{4}-(\E x^{2})^{2}=3-1=2=\Var y$
+\end_inset
+
+, the result follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Suppose that 
+\begin_inset Formula $x$
+\end_inset
+
+ has a Poisson distribution (see question 6) 
+\begin_inset Formula $\P(\lambda)$
+\end_inset
+
+ of mean 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and that, for given 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $y$
+\end_inset
+
+ has a binomial distribution 
+\begin_inset Formula $\B(x,\pi)$
+\end_inset
+
+ of index 
+\begin_inset Formula $x$
+\end_inset
+
+ and parameter 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that the unconditional distribution of 
+\begin_inset Formula $y$
+\end_inset
+
+ is Poisson of mean 
+\begin_inset Formula 
+\[
+\lambda\pi=\E_{\random x}\E_{\random y|\random x}(\random y|\random x).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Verify that the formula 
+\begin_inset Formula 
+\[
+\Var\,\random y=\E_{\random x}\Var_{\random y|\random x}(\random y|\random x)+\Var_{\random x}\E_{\random y|\random x}(\random y|\random x)
+\]
+
+\end_inset
+
+derived in Section 1.5 holds in this case.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Solution
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $p(x,y)=(\lambda^{x}\text{e}^{-x}/x!)\binom{x}{y}\pi^{y}(1-\pi)^{x-y}$
+\end_inset
+
+ so adding over 
+\begin_inset Formula $x=y,y+1,\dots$
+\end_inset
+
+ and using 
+\begin_inset Formula $\sum\lambda^{x-y}(1-\pi)^{x-y}=\text{e}^{\lambda(1-\pi)}$
+\end_inset
+
+ we get 
+\begin_inset Formula $p(y)=(\lambda\pi)^{y}\text{e}^{-\lambda\pi}/y!$
+\end_inset
+
+ so that 
+\begin_inset Formula $\random y\sim\P(\lambda\pi)$
+\end_inset
+
+.
+ Now note that 
+\begin_inset Formula $\E_{\random y|\random x}(\random y|\random x)=x\pi$
+\end_inset
+
+ and this has expectation 
+\begin_inset Formula $\lambda\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Note that 
+\begin_inset Formula $\Var_{\random y|\random x}(\random y|\random x)=x\pi(1-\pi)$
+\end_inset
+
+ which has expectation 
+\begin_inset Formula $\lambda\pi(1-\pi)$
+\end_inset
+
+ and that 
+\begin_inset Formula $\E_{\random y|\random x}(\random y|\random x)=x\pi$
+\end_inset
+
+ which has variance 
+\begin_inset Formula $\lambda\pi^{2}$
+\end_inset
+
+ so that the right hand side adds to 
+\begin_inset Formula $\lambda\pi$
+\end_inset
+
+, the variance of 
+\begin_inset Formula $\random y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Define 
+\begin_inset Formula 
+\[
+I=\int_{0}^{\infty}\exp(-\half z^{2})\,dz
+\]
+
+\end_inset
+
+and show (by setting 
+\begin_inset Formula $z=xy$
+\end_inset
+
+ and then substituting 
+\begin_inset Formula $z$
+\end_inset
+
+ for 
+\begin_inset Formula $y$
+\end_inset
+
+) that 
+\begin_inset Formula 
+\[
+I=\int_{0}^{\infty}\exp(-\half(xy)^{2})\,y\,dx=\int_{0}^{\infty}\exp(-\half(zx)^{2})\,z\,dx.
+\]
+
+\end_inset
+
+Deduce that 
+\begin_inset Formula 
+\[
+I^{2}=\int_{0}^{\infty}\int_{0}^{\infty}\exp\{-\half(x^{2}+1)z^{2}\}\,z\,dz\,dx.
+\]
+
+\end_inset
+
+By substituting 
+\begin_inset Formula $(1+x^{2})z^{2}=2t$
+\end_inset
+
+ so that 
+\begin_inset Formula $z\,dz=dt/(1+x^{2})$
+\end_inset
+
+ show that 
+\begin_inset Formula $I=\sqrt{\pi/2}$
+\end_inset
+
+ so that the density of the standard normal distribution as defined in Section
+ 1.3 does integrate to unity and so is indeed a density.
+ 
+\end_layout
+
+\begin_layout Solution
+We note that 
+\begin_inset Formula 
+\[
+I=\int_{0}^{\infty}\exp(-\half z^{2})\,dz=\int_{0}^{\infty}\exp(-\half(xy)^{2})\,y\,dx
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $y$
+\end_inset
+
+ (on setting 
+\begin_inset Formula $z=xy$
+\end_inset
+
+).
+ Putting 
+\begin_inset Formula $z$
+\end_inset
+
+ in place of 
+\begin_inset Formula $y$
+\end_inset
+
+, it follows that for any 
+\begin_inset Formula $z$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+I=\int_{0}^{\infty}\exp(-\half(zx)^{2})\,z\,dx
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+I^{2}=\left(\int_{0}^{\infty}\exp(-\half z^{2})\,dz\right)\left(\int_{0}^{\infty}\exp(-\half(zx)^{2})\,dx\right)=\int_{0}^{\infty}\int_{0}^{\infty}\exp\{-\half(x^{2}+1)z^{2}\}\,z\,dz\,dx.
+\]
+
+\end_inset
+
+Now set 
+\begin_inset Formula $(1+x^{2})z^{2}=2t$
+\end_inset
+
+ so that 
+\begin_inset Formula $z\,dz=dt/(1+x^{2})$
+\end_inset
+
+ to get 
+\begin_inset Formula 
+\begin{align*}
+I^{2} & =\int_{0}^{\infty}\int_{0}^{\infty}\exp(-t)\,\frac{dt}{(1+x^{2})}\,dx=\left(\int_{0}^{\infty}\exp(-t)\,dt\right)\left(\int_{0}^{\infty}\frac{dx}{(1+x^{2})}\right)\\
+ & =\left[-\exp(-t)\right]_{0}^{\infty}\,\left[\tan^{-1}x\right]_{0}^{\infty}=\bigl[1\bigr]\bigl[\half\pi\bigr]\\
+ & =\frac{\pi}{2}
+\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $I=\sqrt{\pi/2}$
+\end_inset
+
+ so that the integral of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ from 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ to 
+\begin_inset Formula $\infty$
+\end_inset
+
+ is 1, and hence 
+\begin_inset Formula $\phi$
+\end_inset
+
+ 
+\shape italic
+is
+\shape default
+ a probability density function.
+ This method is apparently due to Laplace (1812, Section 24, pages 94–95
+ in the first edition).
+\end_layout
+
+\end_body
+\end_document

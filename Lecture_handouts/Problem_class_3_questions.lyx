@@ -1,0 +1,167 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\PassOptionsToPackage{verbose=true,letterpaper}{geometry}
+\usepackage{arxiv}
+\usepackage{standalone}
+
+\usepackage{fullpage}
+
+\usepackage[yyyymmdd,hhmmss]{datetime}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{by Georgios Karagiannis}
+\cfoot{Created on \today\ at \currenttime}
+\lfoot{Page \thepage}
+\rhead{}
+\lhead{}
+\renewcommand{\headrulewidth}{0pt}
+
+%%%%%%%%%%
+% PACKAGES
+%%%%%%%%%%
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+\raggedbottom
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
+
+
+ 
+%\usepackage{graphicx}
+%\usepackage{mathabx}
+%\usepackage{bbm}
+%\usepackage[font=small]{caption}
+%\usepackage{setspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The excercise environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Qsol}{0}
+
+% CHANGE THE PRESETNATION OF CHAPTER
+\usepackage{titlesec}
+\titleformat{\chapter}
+  {\normalfont\Huge}
+  {\thechapter }
+  {20pt}
+  {\Huge\textbf}
+
+
+\newcommand{\drv}{\textup{d} } 
+\newcommand{\E}{\textup{E} } 
+\newcommand{\Var}{\textup{Var} } 
+\newcommand{\Cov}{\textup{Cov} }
+\newcommand{\mode}{\textup{mode} }
+\newcommand{\median}{\textup{median} }  
+\newcommand{\transpose}{\intercal} 
+\newcommand{\indicator}{\mathbbm{1}}
+\newcommand{\eye}{\mathbb{I}}
+\newcommand{\diag}{\textup{diag}}
+\newcommand{\logit}{\textup{logit}}
+\newcommand{\tr}{\textup{tr} } 
+
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+tcolorbox
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Problem_class_3_complete.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
