@@ -177,13 +177,13 @@ hierarhicalmodel <- "
 
   model {
 
-  # this is related tot he sampling distribution
+  # sampling distribution
     
     for ( i in 1 : n ) {
       y[ i ] ~ dbern( p )
     }
     
-   # this is related to the prior distributions
+   #  prior distribution 
     
     p ~ dbeta( a_0 , b_0 )
     

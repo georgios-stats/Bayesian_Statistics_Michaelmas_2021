@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.6.1" />
+<meta name="GENERATOR" content="LyX 2.3.6" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -389,7 +389,36 @@ Hypothesis tests ; Inference under model uncertainty ; Hierarchical Bayes</span>
    <mrow><mn>0</mn>
    </mrow>
   </msub>
- </mrow></math> is a fixed known number), or not. </div>
+ </mrow></math> is a fixed known number), or not. Let <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <mrow>
+   <msub>
+    <mrow><mi> &pi; </mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub><mo>=</mo>
+   <mstyle mathvariant='normal'><mi>P</mi>
+   </mstyle><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
+
+   <msub>
+    <mrow><mi>H</mi>
+    </mrow>
+    <mrow><mi>j</mi>
+    </mrow>
+   </msub>
+<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
+
+  </mrow>
+ </mrow></math> be the marginal prior probability of hypothesis <math xmlns="http://www.w3.org/1998/Math/MathML">
+ <mrow>
+  <msub>
+   <mrow><mi>H</mi>
+   </mrow>
+   <mrow><mi>j</mi>
+   </mrow>
+  </msub>
+ </mrow></math>.</div>
 
 <ol class="enumerate" id='magicparlabel-15'><li class="enumerate_item">Design the test of hypotheses in Bayesian framework: Namely, set pair of hypotheses, specify priors, and compute the associated Bayes Factor.</li>
 <li class="enumerate_item">Compute the posterior probability that <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -980,7 +1009,7 @@ Hypothesis tests ; Inference under model uncertainty ; Hierarchical Bayes</span>
 
   </mrow>
  </mrow></math> and 
-<div style = "text-align: center;"><img src="lyxpreviewbGYBjP1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewInZnSg1.png" alt="Mathematical Equation" />
 </div>
  So <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -1717,16 +1746,6 @@ Hypothesis tests ; Inference under model uncertainty ; Hierarchical Bayes</span>
 
 <ul class="itemize" id='magicparlabel-33'><li class="itemize_item">Based on the prior information, it is <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
-  <mrow>
-   <msub>
-    <mrow><mi> &pi; </mi>
-    </mrow>
-    <mrow><mn>0</mn>
-    </mrow>
-   </msub><mo>=</mo><mn>0.5</mn>
-  </mrow>
- </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
- <mrow>
   <mrow><mi>a</mi><mo>=</mo><mn>4</mn>
   </mrow>
  </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -2414,7 +2433,7 @@ It is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
 &nbsp;<div style='height:5ex'></div>&nbsp;<div class='Boxed'><div class="plain_layout" style='text-align: center;' id='magicparlabel-69'><u>Regarding the statistical model: Long story short (supplementary material)</u></div>
 
 <div class="plain_layout" id='magicparlabel-70'>Consider that we are interested in recovering the mapping 
-<div style = "text-align: center;"><img src="lyxpreviewLPMpis1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxprevieweMXwNV1.png" alt="Mathematical Equation" />
 </div>
 in the sense that <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -5500,52 +5519,17 @@ if <math xmlns="http://www.w3.org/1998/Math/MathML">
     </mrow>
     <mrow><mn>2</mn>
     </mrow>
-   </msup><mo> &le; </mo>
-   <msubsup>
-    <mrow><mo> &prod; </mo>
+   </msup><mo> &le; </mo><mi>I</mi>
+   <msub>
+    <mrow><mi>e</mi>
     </mrow>
-    <mrow>
-     <mrow><mi>j</mi><mo>=</mo><mn>0</mn>
-     </mrow>
+    <mrow><mo> max </mo>
     </mrow>
-    <mrow><mi>n</mi>
-    </mrow>
-   </msubsup>
+   </msub><mo>+</mo><mi>D</mi>
    <msup>
-    <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
-
-     <mrow>
-      <msub>
-       <mrow><mi> &lambda; </mi>
-       </mrow>
-       <mrow><mi>j</mi>
-       </mrow>
-      </msub>
-      <msup>
-       <mrow><mi> &sigma; </mi>
-       </mrow>
-       <mrow><mn>2</mn>
-       </mrow>
-      </msup><mo>+</mo>
-      <msub>
-       <mrow><mi>e</mi>
-       </mrow>
-       <mrow><mo> max </mo>
-       </mrow>
-      </msub>
-     </mrow>
-<mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
-
+    <mrow><mi> &sigma; </mi>
     </mrow>
-    <mrow>
-     <mrow><mo>-</mo>
-      <mfrac>
-       <mrow><mn>1</mn>
-       </mrow>
-       <mrow><mn>2</mn>
-       </mrow>
-      </mfrac>
-     </mrow>
+    <mrow><mn>2</mn>
     </mrow>
    </msup>
   </mrow>

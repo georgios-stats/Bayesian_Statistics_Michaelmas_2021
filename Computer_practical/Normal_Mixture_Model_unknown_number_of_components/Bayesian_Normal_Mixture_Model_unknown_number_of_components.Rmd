@@ -1,0 +1,460 @@
+---
+title: "Bayesian Normal mixture model"
+subtitle: "Case study: enzyme data-set"
+author: "Georgios P. Karagiannis @ MATH3341/4031 Bayesian statistics III/IV"
+output:
+  html_document:
+    df_print: paged
+    number_sections: true
+  word_document: default
+  html_notebook: 
+    number_sections: true
+  pdf_document: default
+header-includes: 
+  - \usepackage{tikz}
+  - \usepackage{pgfplots}
+---
+
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Copyright 2019 Georgios Karagiannis -->
+
+<!-- georgios.karagiannis@durham.ac.uk -->
+<!-- Assistant Professor -->
+<!-- Department of Mathematical Sciences, Durham University, Durham,  UK  -->
+
+<!-- This file is part of Bayesian_Statistics (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- which is the material of the course (MATH3341/4031 Bayesian Statistics III/IV) -->
+<!-- taught by Georgios P. Katagiannis in the Department of Mathematical Sciences   -->
+<!-- in the University of Durham  in Michaelmas term in 2019 -->
+
+<!-- Bayesian_Statistics is free software: you can redistribute it and/or modify -->
+<!-- it under the terms of the GNU General Public License as published by -->
+<!-- the Free Software Foundation version 3 of the License. -->
+
+<!-- Bayesian_Statistics is distributed in the hope that it will be useful, -->
+<!-- but WITHOUT ANY WARRANTY; without even the implied warranty of -->
+<!-- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the -->
+<!-- GNU General Public License for more details. -->
+
+<!-- You should have received a copy of the GNU General Public License -->
+<!-- along with Bayesian_Statistics  If not, see <http://www.gnu.org/licenses/>. -->
+
+<!-- -------------------------------------------------------------------------------- -->
+
+
+
+[Back to README](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Computer_practical#aim)
+
+```{r, results="hide"}
+rm(list=ls())
+```
+
+
+---
+
+***Aim***
+
+Students will become able to:  
+
++ produce Monte Carlo approximations of posterior quantities required for Bayesian analysis with the RJAGS R package  
+
++ implement Bayesian posterior analysis in R with RJAGS package  
+
+Students are not required to learn by heart any of the concepts discussed
+
+---
+
+***Reading material***
+
+*The material about RJAGS package is not examinable material, but it is provided for the interested student. It contains references that students can follow if they want to further explore the concepts introdced.*
+
++ Lecture notes:  
+    + the examples and exercises related to the Bernoulli model with conjugate prior  
+
++ References for *rjags*:  
+    + [JAGS homepage](http://mcmc-jags.sourceforge.net)  
+    + [JAGS R CRAN Repository](https://cran.r-project.org/web/packages/rjags/index.html)  
+    + [JAGS Reference Manual](https://cran.r-project.org/web/packages/rjags/rjags.pdf)  
+    + [JAGS user manual](https://sourceforge.net/projects/mcmc-jags/files/Manuals/4.x/jags_user_manual.pdf/download) 
+
++ Reference for *R*:  
+    + [Cheat sheet with basic commands](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf)   
+
++ Reference of *rmarkdown* (optional):  
+    + [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
+    + [R Markdown Reference Guide](http://442r58kc8ke1y38f62ssb208-wpengine.netdna-ssl.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)  
+    + [knitr options](https://yihui.name/knitr/options)
+
++ Reference for *Latex* (optional):  
+    + [Latex Cheat Sheet](https://wch.github.io/latexsheet/latexsheet-a4.pdf)  
+
+---
+
+***New software***   
+
++ R package `rjags` functions:    
+    + `jags.model{rjags}`  
+    + `jags.samples{rjags}` 
+    + `update{rjags}` 
+
+---
+
+
+```{r, results="hide"}
+# Load R package for printing
+library(knitr)
+library(kableExtra)
+```
+
+
+# Application: Bayesian mixture model    {-}
+
+Consider the following application where our concern is the distribution of enzymatic activity in the blood, for an enzyme involved in the metabolism of carcinogenic substances, among a group of n=245 unrelated individuals; aka cluster analysis.
+
+As for the sampling model, we can assume that the i-th observation $y_{i}$ is randomly drawn from the $j$-th group which has proportion $\varpi_{j}$ in the population and which is distributed according to the sampling distribution $$y_{i}|\theta_{j}\sim f_{j}(y_{i}|\theta_{j}).$$
+
+For simplicity, let's assume that all groups are Normally distributed but with different parameter values $\{\theta_{j}\}$; hence j-th group is $y_{i}|\mu_{j},\sigma_{j}^{2}\sim\text{N}(y_{i}|\mu_{j},\sigma_{j}^{2})$ with  $\theta_{j}=(\mu_{j},\sigma_{j}^{2})$.
+
+```{r}
+# load the data
+mydata <- scan('https://raw.githubusercontent.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/main/Computer_practical/Normal_Mixture_model/enz.dat')
+y_obs <- mydata
+```
+
+We can apply a histogram to represent the distribution of the observations. 
+
+```{r}
+# plot observations
+fntsz <- 1.5
+hist(y_obs,
+     freq = FALSE,
+     breaks = 12,
+     main = ' ',
+     xlab = 'values', 
+     ylab = 'pdf estimation', 
+     cex.lab=fntsz, 
+     cex.axis=fntsz, 
+     cex.main=fntsz, 
+     cex.sub=fntsz)
+```
+
+
+---
+
+# Model specification & posterior sampling  {-}
+
+It is natural to regard the group label $z_{i}$ for the $i$th observation
+as a latent allocation variable: then $z_{i}$ is supposed to be distributed
+as $z_{i}\sim f(z_{i})=\varpi_{z_{i}}$ for $z_{i}\in\{1,...,k\}$,
+and $y_{i}$ is supposed to be distributed as $y_{i}|z_{i},\theta_{z_{i}}\sim f_{z_{i}}(y_{i}|z_{i},\theta_{z_{i}}):=\text{N}(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})$,
+for $i=1,...,n$; i.e.
+$$
+\begin{cases}
+y_{i}|z_{i},\mu_{z_{i}},\sigma_{z_{i}}^{2} & \sim f_{j}(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})\\
+z_{i} & \sim f(z_{i})
+\end{cases}\implies\begin{cases}
+y_{i}|z_{i},\mu_{z_{i}},\sigma_{z_{i}}^{2} & \sim\text{N}(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})\\
+z_{i} & \sim f(z_{i}):=\varpi_{z_{i}}
+\end{cases} 
+$$ 
+
+To complete the Bayesian model, we specify priors on the unknown quantities:
+Given there are $k$ groups, $\varpi_{1:k}\sim\text{Di}(\delta)$
+for the group proportions, $\mu_{j}\sim\text{N}(\xi_{j},\sigma_{j}^{2}/\kappa)$
+for the mean, and $\sigma_{j}^{2}\sim\text{Ga}(\alpha,\beta)$ for
+the variances. Assume we wish a more spread prior for $\sigma_{j}^{2}$
+(for some reason), and hence we specify a hyper-prior on $\beta$
+as $\beta\sim\text{Ga}(g,h)$. As the number of the groups is unknown,
+we assign prior $k\sim\pi(k)\in\text{U}_{\text{discr}}(1,k_{\max})$.
+
+$$
+\begin{cases}
+\quad\quad y_{i}|k,z_{i},\varpi,\mu,\sigma^{2} & \sim f_{z_{i}}(y_{i}|\varpi_{z_{i}},\mu_{z_{i}},\sigma_{z_{i}}^{2})\quad\quad\text{for}\;i=1,...,n\\
+\quad\quad z_{i}|k & \sim f(z_{i}):=\varpi_{z_{i}}\quad\quad\quad\quad\text{for}\;i=1,...,n\\
+\quad\quad\varpi_{1:k}|k & \sim\text{Di}(\delta_{1:k})\\
+\\
+\quad\quad\mu_{j}|k,\sigma_{j}^{2} & \sim\text{N}(\xi,\sigma_{j}^{2}/\kappa)\quad\quad\quad\quad\text{for}\;j=1,...,k\\
+\quad\quad\sigma_{j}^{2}|k,\beta & \sim\text{IG}(\alpha,\beta)\quad\quad\quad\quad\quad\text{for}\;j=1,...,k\\
+\quad\quad\beta & \sim\text{Ga}(g,h)\\
+\quad\quad k & \sim\text{U}_{\text{discr}}(1,k_{\max})
+\end{cases}
+$$
+
+
+The joint distribution has pdf 
+\begin{align*}
+p(y_{1:n},z_{1:n},k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},k)	=\overset{f(y_{1:n}|z_{1:n},\mu_{1:k},\sigma_{1:k}^{2},k)}{\overbrace{\prod_{i=1}^{n}\text{N}(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})}}\overset{f(z_{1:n}|k)}{\overbrace{\prod_{i=1}^{n}\varpi_{z_{i}}}}\overset{\pi(\varpi_{1:k}|k)}{\overbrace{\text{Di}(\varpi_{1:k}|\delta)}}\overset{\pi(\mu_{1:k}|\sigma_{1:k}^{2},k)}{\overbrace{\prod_{j=1}^{k}\text{N}(\mu_{k}|\xi_{k},\sigma_{k}^{2}/\kappa)}}\overset{\pi(\sigma_{1:k}^{2}|\beta,k)}{\overbrace{\prod_{j=1}^{k}\text{Ga}(\sigma_{k}^{2}|\alpha,\beta)}}\overset{\pi(\beta)}{\overbrace{\text{Ga}(\beta|g,h)}}\overset{\pi(k)}{\overbrace{\frac{1}{|k_{\max}|}}}
+\end{align*}
+
+The posterior $\pi(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z|y)$ can be computed
+by the Bayesian theorem as 
+\begin{align}
+\pi(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},\beta,z|y) & \quad=\frac{p(y,z,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},\beta,k)}{\sum_{\forall k}\int p(y,z,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},\beta,k)\text{d}(z,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},\beta)}
+\end{align}
+ where to infer the proportions
+in each group from $\pi(\varpi_{1:k}|y)$, the moments of each group
+from $\pi(\mu_{1:k},\sigma_{1:k}^{2}|y)$, and the allocation of
+each observation to each group with $\pi(z|y,\varpi,\mu,\sigma^{2}).$  
+
+As the required integrals are intractable, we can resolve to numerical methods, etc... Monte Carlo e.g. via JAGS....  
+
+**Computational trick by augmentation: The augmented Bayesian hierarchical model** 
+
+Notice that the length of the join unknown parameter vector  $\vartheta_{k}=\left(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z \right)$ changes when the model $k$ changes.  
+
+Current versions of JAGS work only when the join unknown parameter vector $\vartheta_{k}$ has a fixed length.  
+
+To make JAGS work on our problem we 'cheat' by augmenting $\vartheta_{k}$ with additional random variables $(\varpi_{(k+1):K_{\max}},\mu_{(k+1):K_{\max}},\sigma_{(k+1):K_{\max}}^{2})$.   Precisely, we consider the augmented Bayesian hierarchical model
+\[
+\begin{cases}
+\quad\quad y_{i}|k,z_{i},\varpi,\mu,\sigma^{2} & \sim f_{z_{i}}(y_{i}|\varpi_{z_{i}},\mu_{z_{i}},\sigma_{z_{i}}^{2})\quad\quad\text{for}\;i=1,...,n\\
+\quad\quad z_{i}|k & \sim f(z_{i}):=\varpi_{z_{i}}\quad\quad\quad\quad\text{for}\;i=1,...,n\\
+\quad\quad\varpi_{1:k}|k & =\left(\frac{x_{1}}{\sum_{j'=1}^{k}x_{j'}},...,\frac{x_{k-1}}{\sum_{j'=1}^{k}x_{j'}},\frac{x_{k}}{\sum_{j'=1}^{k}x_{j'}}\right)^{\top}\\
+\\
+\quad\quad\mu_{j}|k,\sigma_{j}^{2} & \sim\text{N}(\xi,\sigma_{j}^{2}/\kappa)\quad\quad\quad\quad\text{for}\;j=1,...,k\\
+\quad\quad\sigma_{j}^{2}|k,\beta & \sim\text{IG}(\alpha,\beta)\quad\quad\quad\quad\quad\text{for}\;j=1,...,k\\
+\\
+\quad\quad x_{j}|k & \sim\text{Ga}(\delta,1)\quad\quad\quad\quad\text{for}\;j=1,...,k\\
+\quad\quad x_{j}|k & \sim\text{Ga}(\delta,1)\quad\quad\quad\quad\text{for}\;j=k+1,...,k_{\max}\\
+\quad\quad\mu_{j}|k & \sim\text{N}(\xi,\sigma_{j}^{2}/\kappa)\quad\quad\quad\quad\text{for}\;j=k+1,...,k_{\max}\\
+\quad\quad\sigma_{j}^{2}|k & \sim\text{IG}(\alpha,\beta)\quad\quad\quad\quad\quad\text{for}\;j=k+1,...,k_{\max}\\
+\\
+\quad\quad\beta & \sim\text{Ga}(g,h)\\
+\quad\quad k & \sim\text{U}_{\text{discr}}(1,k_{\max})
+\end{cases}
+\]
+Now we work on $\tilde{\theta}_{k}=\left(\theta_{k},\theta_{k^{\complement}}\right)$. Notice that:  
+
++ If $x_j\sim \text{Ga}(\delta_j,1)$ for $j=1,...,k$ then $$\varpi_{1:k}=\left(\frac{x_{1}}{\sum_{j'=1}^{k}x_{j'}},...,\frac{x_{k-1}}{\sum_{j'=1}^{k}x_{j'}},\frac{x_{k}}{\sum_{j'=1}^{k}x_{j'}}\right)^{\top}$$.  See <https://en.wikipedia.org/wiki/Dirichlet_distribution#Computational_methods>.
+
++ The augmented hierarchical model admits the hierarchical model as its marginal because
+\[
+\pi\left( k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z|y\right)=\int\pi\left(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z,x_{k+1:k_\max}|y\right)\text{d}x_{k+1:k_\max}
+\]
+What we do:  
+
+1. Run RJAGS against the augmented Bayesian hierarchical model and generate samples of   $\tilde{\theta}_{k}=\left(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z,x_{k+1:k_\max}\right)$.  
+
+2. To generate the samples from $\pi\left(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},z|y\right)$, you just need to ignore the generated values of $x_{k+1:k_\max}$.   
+
+
+# JAGS {-}
+
+
+***step 1***
+
+Load the library
+
+```{r, results="hide"}
+# Load rjags
+library("rjags") 
+```
+
+***step 2***
+
+Create an input script, for rjags, containing the Bayesian hierarchical model
+
+```{r}
+# Input parameters  :  
+# output parameters :  
+jags_model <- "
+    model{
+    
+     
+    # sampling distribution
+    
+      for (i in 1:n) {
+      
+        y[i] ~ dnorm(mu[zeta[i]], tau[zeta[i]])
+        
+        zeta[i] ~ dcat( varpi )
+      }
+      
+    # within model parameter priors  
+  
+    for (i in 1:length(pk) ) {
+    
+        x[i] ~ dgamma(delta[i],1) 
+        ind[i] <- (i<=k)
+    }
+    varpi <- (x*ind)/sum(x*ind)
+  
+  
+      for (i in 1:length(pk) ) {
+      
+      
+        mu[i] ~ dnorm(xi,kappa)
+      
+        tau[i] ~ dgamma(alpha,beta)
+      
+        sigma[i] <- 1/sqrt(tau[i])
+      }
+      
+      beta ~ dgamma(g,h)
+      
+      
+       k~dcat(pk)
+       
+    }
+"
+```
+
+***step 3***
+
+Create an input list, for jags, containing the data and fixed  parameters of the model 
+
+```{r, results="hide"}
+# set observations
+y_obs <- y_obs 
+n_obs <- length( y_obs )
+# set priors
+k_max <- 15
+delta_fix <- rep(1,k_max)
+xi_fix <- 0.5*(max(y_obs)+min(y_obs))
+kappa_fix <- 1.0 /(max(y_obs)-min(y_obs))^2
+alpha_fix <- 2.0
+h_fix <- 10.0 /(max(y_obs)-min(y_obs))^2
+g_fix <- 0.2
+# set the list for inputing in the function
+data.bayes <- list(y = y_obs, 
+                   n = n_obs, 
+                   pk = rep(1.0/k_max,k_max),
+                   delta = delta_fix,
+                   xi = xi_fix,
+                   kappa = kappa_fix, 
+                   alpha = alpha_fix,
+                   h = h_fix,
+                   g = g_fix
+                   )
+# set the JAGS model
+model.smpl <- jags.model( file = textConnection(jags_model),
+                          data = data.bayes, 
+                          n.chains = 1)
+# tune the JAGS MCCM sampler
+adapt(object = model.smpl, 
+      n.iter = 10^5 )
+# Generate a posterior sample of size $N=100000$.
+Nsample = 10^5              # the size of the sample we ll gona get
+n.thin = 10^1               # the thining (improving) the sample quality
+n.iter = Nsample * n.thin   # the number of the total iterations performed
+output = jags.samples( model = model.smpl,                          # the model
+                       variable.names = c('k','varpi','mu','sigma','zeta'),    # names of variables to be sampled
+                       n.iter = n.iter,                             # size of sample
+                       thin = n.thin
+                       ) 
+# save the sample
+save.image(file="BayesianNormalMixtureModelUnknownNUmberOfComponents.RData") 
+# Check the names of the variables sampled 
+names(output)
+```
+
+
+# Prediction {-}
+
+### Fitting/prediction {-}
+
+We estimate the pdf of the distribution of enzyme. 
+
+Recall that the compound distribution of 
+\[
+\begin{cases}
+y_{i}|z_{i},\mu_{z_{i}},\sigma_{z_{i}}^{2} & \sim f(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})\\
+z_{i} & \sim f(z_{i})
+\end{cases}\implies\begin{cases}
+y_{i}|z_{i},\mu_{z_{i}},\sigma_{z_{i}}^{2} & \sim\text{N}(y_{i}|\mu_{z_{i}},\sigma_{z_{i}}^{2})\\
+z_{i} & \sim f(z_{i}):=\varpi_{z_{i}}
+\end{cases}
+\]
+ when $z$ is discrete is 
+\begin{align*}
+\text{E}_{\Pi(z|y,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2},k)}\left(f\left(y^{*}|\mu_{z},\sigma_{z}^{2}\right)|y\right) & =\sum_{j=1}^{k}\varpi_{j}f\left(y^{*}|\mu_{j},\sigma_{j}^{2}\right)\\
+ & =\sum_{j=1}^{k}\varpi_{j}\text{N}\left(y^{*}|\mu_{j},\sigma_{j}^{2}\right)
+\end{align*}
+ Hence   the predictor under the quadratic loss is the posterior mean:
+\begin{align*}
+\text{E}_{\Pi}\left(f\left(y^{*}|\mu_{z},\sigma_{z}^{2}\right)|y\right) & =\text{E}_{\Pi\left(k,\varpi,\mu,\sigma^{2}|y\right)}\left(\text{E}_{\Pi(z|y,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2})}\left(f\left(y^{*}|\mu_{z},\sigma_{z}^{2}\right)|y\right)\right)\\
+ & =\text{E}_{\Pi\left(k,\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2}|y\right)}\left(\sum_{j=1}^{k}\varpi_{j}f\left(y^{*}|\mu_{j},\sigma_{j}^{2}\right)|y\right)\\
+ & \approx\frac{1}{T}\sum_{t=1}^{T}\left[\sum_{j=1}^{k^{t}}\varpi_{j}^{(t)}f\left(y^{*}|\mu_{j}^{(t)},\left(\sigma_{j}^{(t)}\right)^{2}\right)\right]\\
+ & \approx\frac{1}{T}\sum_{t=1}^{T}\left[\sum_{j=1}^{k^{t}}\varpi_{j}^{(t)}\text{N}\left(y^{*}|\mu_{j}^{(t)},\left(\sigma_{j}^{(t)}\right)^{2}\right)\right]
+\end{align*}
+
+The credible intervals at each $y_{new}$ can be approximated by the quantiles of the MCMC sample (as in the computer practical).  
+
+Now operationally:
+
+Copy the sample of each variable in a vector with a more friendly name...
+
+```{r}
+# just store them as vectors
+k_vec <- output$k[,,]
+varpi_vec <-output$varpi[,,1]
+mu_vec <-output$mu[,,1]
+sigma_vec <-output$sigma[,,1]
+zeta_vec <- output$zeta[,,1]
+for (t in 1:Nsample) {
+  ind <- sort(mu_vec[1:k_vec[t],t],index.return=TRUE)$ix
+  varpi_vec[1:k_vec[t],t] <- varpi_vec[ind,t]
+  mu_vec[1:k_vec[t],t] <- mu_vec[ind,t]
+  sigma_vec[1:k_vec[t],t] <- sigma_vec[ind,t]
+}
+```
+
+Define the required functions; i.e. $f\left(y^{*}|\varpi_{1:k},\mu_{1:k},\sigma_{1:k}^{2}\right)=\sum_{j=1}^{k}\varpi_{j}f\left(y^{*}|\mu_{j},\sigma_{j}^{2}\right)$
+
+```{r}
+# pdf of sampling distribution
+fmix <- function(y, varpi, mu, sigma) {
+  f <- sum( varpi*dnorm(y, mean = mu, sd = sigma) ) ;
+  return ( f  )
+}
+```
+
+Compute the Monte carlo proxy of the estimate 
+
+```{r}
+# set the horizontal axis values
+ynew_min = 0.0
+ynew_max = 3.2
+ynew_size = 100
+ynew = seq(from = ynew_min, to = ynew_max, length.out = ynew_size) 
+# compute the estimates at ynew
+fest_mean = rep(NaN, times = ynew_size)
+fest_low = rep(NaN, times = ynew_size)
+fest_upper = rep(NaN, times = ynew_size)
+vec <- rep(NaN, times = Nsample)
+for (i in 1: length(ynew)) {
+  for (t in 1:Nsample) {
+    vec[t] <- fmix(ynew[i], varpi_vec[1:k_vec[t],t], mu_vec[1:k_vec[t],t], sigma_vec[1:k_vec[t],t])
+  }
+  fest_low[i] <-  quantile(vec, probs = 0.025)
+  fest_upper[i] <-  quantile(vec, probs = 0.975)
+  fest_mean[i] <- mean(vec)
+}
+# print the prediction and the predictive intervals
+fntsz <- 1.5
+plot(ynew,
+     fest_mean,
+     main = "predictive distribution",
+     xlab = "enzyme",
+     ylab = "pdf",
+     type = 'l',
+     col = 'black',
+     cex.lab=fntsz, 
+     cex.axis=fntsz, 
+     cex.main=fntsz, 
+     cex.sub=fntsz
+     )
+lines (ynew,
+     fest_low,
+     col = 'blue'
+     )
+lines (ynew,
+     fest_upper,
+     col = 'blue'
+     )
+```
+
+
+---
+

@@ -159,21 +159,22 @@
 ------------------------------------------------------------------------
 
 
-### Problem classes
+### Problem classes  
 
- 
+Problem class exercises are from the Exercise sheet  
 
--   [Problem_class_1_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_complete.pdf)  &   [Problem_class_1_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_questions.pdf):
+-   Problem class 1; Nuisance parameters, conjugate priors, Jeffreys priors:
 
-    Problem class 1; Nuisance parameters, and Priors
+    [Problem_class_1_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_complete.pdf)  &   [Problem_class_1_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_1_questions.pdf)  
 
--   [Problem_class_2_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_2_complete.pdf) &  [Problem_class_2_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_2_questions.pdf):
+-   Problem class 2; Bayesian point estimation, and Credible sets:
 
-    Problem class 2;  
+    [Problem_class_2_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_2_complete.pdf) &  [Problem_class_2_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_2_questions.pdf)  
 
-... Problem class exercises are from the Exercise sheet
+-   Problem class 3; Hypothesis tests ; Inference under model uncertainty ; Hierarchical Bayes:
 
- 
+    [Problem_class_3_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_3_complete.pdf) &  [Problem_class_3_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_3_questions.pdf)  
+
 
 ------------------------------------------------------------------------
 

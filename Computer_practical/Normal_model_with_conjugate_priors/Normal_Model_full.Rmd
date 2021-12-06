@@ -203,7 +203,7 @@ hierarhicalmodel <- "
 
   model {
 
-  # this is related tot he sampling distribution
+  # sampling distribution
     
     tau_0 = lam_0 / sigma2
     
@@ -211,7 +211,7 @@ hierarhicalmodel <- "
       y[ i ] ~ dnorm( mu, tau )
     }
     
-   # this is related to the prior distributions
+   # prior distribution 
     
     mu ~ dnorm( mu_0 , tau*lam_0 )
     sigma2 = 1 / tau

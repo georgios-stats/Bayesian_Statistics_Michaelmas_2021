@@ -165,8 +165,7 @@ for the group proportions, $\mu_{j}\sim\text{N}(\xi_{j},\sigma_{j}^{2}/\kappa)$
 for the mean, and $\sigma_{j}^{2}\sim\text{Ga}(\alpha,\beta)$ for
 the variances. Assume we wish a more spread prior for $\sigma_{j}^{2}$
 (for some reason), and hence we specify a hyper-prior on $\beta$
-as $\beta\sim\text{Ga}(g,h)$. As the number of the groups is unknown,
-we assign prior $k\sim\pi(k)\in\text{U}_{\text{discr}}(1,k_{\max})$.
+as $\beta\sim\text{Ga}(g,h)$. I assume that the number of the groups is known and equal to a specific fixed value $k$.  
 
 $$
 \begin{cases}
@@ -221,12 +220,18 @@ Create an input script, for rjags, containing the Bayesian hierarchical model
 jags_model <- "
     model{
     
+    # sampling distribution
+    
       for (i in 1:n) {
       
         y[i] ~ dnorm(mu[zeta[i]], tau[zeta[i]])
         
-        zeta[i] ~ dcat(varpi[])
+        zeta[i] ~ dcat(varpi[1:k])
       }
+      
+    # within model parameter priors  
+  
+      varpi ~ ddirich(delta[1:k])
   
       for (i in 1:k) {
       
@@ -238,8 +243,6 @@ jags_model <- "
       }
       
       beta ~ dgamma(g,h)
-      
-      varpi ~ ddirich(delta)
     }
 "
 ```

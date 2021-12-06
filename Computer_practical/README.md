@@ -99,6 +99,9 @@ Preview:
     -   [Normal Mixture model
         (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_Mixture_model/Bayesian_Normal_Mixture_Model.nb.html)
 
+    -   [Normal Mixture model with unknown number of components
+        (solutions)](http://htmlpreview.github.io/?https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/main/Computer_practical/Normal_Mixture_Model_unknown_number_of_components/Bayesian_Normal_Mixture_Model_unknown_number_of_components.nb.html)
+
 -   Exercises for practise :
 
     -   [Normal model

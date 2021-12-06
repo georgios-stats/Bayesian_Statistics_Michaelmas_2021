@@ -219,12 +219,16 @@ hierarhicalmodel <- "
 
   model {
     
+    # sampling distribution
+    
     for ( i in 1 : n ) {
     
       p[ i ] <- exp(inprod(X[i,],beta)) / (1+exp(inprod(X[i,],beta)))
       
       y[ i ] ~ dbern( p[ i ] )
     }
+    
+    # a priori distribution
     
     beta ~ dmnorm( b_0 , invB_0 )
     

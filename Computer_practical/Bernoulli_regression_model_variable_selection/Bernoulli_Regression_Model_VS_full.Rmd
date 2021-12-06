@@ -5,13 +5,13 @@ author: "Georgios P. Karagiannis @ MATH3341/4031 Bayesian statistics III/IV (pra
 header-includes:
    - \usepackage{mathrsfs}
 output:
-  html_notebook: 
-    number_sections: true
-  word_document: default
-  pdf_document: default
   html_document:
     df_print: paged
     number_sections: true
+  word_document: default
+  html_notebook: 
+    number_sections: true
+  pdf_document: default
 ---
 
 <!-- -------------------------------------------------------------------------------- -->
@@ -196,30 +196,57 @@ In the models above, we consider standardise the input variables as  $$t_{i}\lef
 
 Hmmmm... we could use other priors too ... I just picked one ...   
 
-**The Bayesian hierarchical model** under consideration is:  
+**The Bayesian hierarchical model** under consideration is: 
+
 \[
 \begin{cases}
-y_{i}|\mathscr{M},\beta_\mathscr{M}
-&\sim  
-\text{Bernoulli}(p(x_i;\mathscr{M},\beta_\mathscr{M})),\quad\text{for, }i=1,...,n\\
-& \\
-p(x_{i};\mathscr{M},\beta_\mathscr{M}) 
-&=
-\frac{\exp(x_{i}^\top \beta_\mathscr{M})}{1+\exp(x_{i}^\top \beta_\mathscr{M})} \\
-& \\
-\beta_{j}|\mathscr{M}
-&\sim 
-(1-\mathscr{M}_j)\text{1}_{0}(\beta_j)+\mathscr{M}_j\text{N}(\beta_j|\mu_0,\sigma^2_0), \  \  j=1,...,d \\
-& \\
-\mathscr{M}
-&= (\gamma_1,...,\gamma_d  ) \\
-& \\
-\gamma_j 
-&\sim 
-\text{Bernoulli}(\varpi_0), \  \  j=1,...,d
+y_{i}|\mathscr{M},\beta_{\mathscr{M}} & \sim\text{Bernoulli}(p(x_{i};\mathscr{M},\beta_{\mathscr{M}})),\quad\text{for, }i=1,...,n\\
+\\
+p(x_{i};\mathscr{M},\beta_{\mathscr{M}}) & =\frac{\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})}{1+\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})};\,\,\text{where}\,\,x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}}=\sum_{j\in\mathscr{M}}x_{i,j}\beta_{j}\\
+\\
+\beta_{j}|j\in\mathscr{M} & \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2}),\ \ j=1,...,d\\
+\\
+\mathscr{M} & =\left\{ j\in\left\{ 1,...,d\right\} ,\,\text{s.t.}\,\gamma_{j}=1\right\} \\
+\\
+\gamma_{j} & \sim\text{Bernoulli}(\varpi),\ \ j=1,...,d\\
+\\
+\varpi & \sim\text{Be}(a_{0},b_{0})
 \end{cases}
 \]
 with hyper-parameter values $\mu_0=0.0$, $\sigma_0^2=100.0$, and $\varpi_0=0.5$.   
+
+**Computational trick by augmentation: The augmented Bayesian hierarchical model** 
+
+Notice that the length of the join unknown parameter vector  $\vartheta_{k}=\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi\right)$ changes when $\mathscr{M}$.  
+
+Current versions of JAGS work only when the join unknown parameter vector $\vartheta_{k}$ has a fixed length.  
+
+To make JAGS work on our problem we 'cheat' by augmenting $\vartheta_{k}$ with additional random variables $\beta_{j}|j\notin\mathscr{M}  \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2})$.   Precisely, we consider the augmented Bayesian hierarchical model
+\[
+\begin{cases}
+y_{i}|\mathscr{M},\beta_{\mathscr{M}} & \sim\text{Bernoulli}(p(x_{i};\mathscr{M},\beta_{\mathscr{M}})),\quad\text{for, }i=1,...,n\\
+\\
+p(x_{i};\mathscr{M},\beta_{\mathscr{M}}) & =\frac{\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})}{1+\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})};\,\,\text{where}\,\,x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}}=\sum_{j\in\mathscr{M}}x_{i,j}\beta_{j}\\
+\\
+\beta_{j}|j\in\mathscr{M} & \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2}),\ \ j=1,...,d\\
+\beta_{j}|j\notin\mathscr{M} & \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2}),\ \ j=1,...,d\\
+\\
+\mathscr{M} & =\left\{ j\in\left\{ 1,...,d\right\} ,\,\text{s.t.}\,\gamma_{j}=1\right\} \\
+\\
+\gamma_{j} & \sim\text{Bernoulli}(\varpi),\ \ j=1,...,d\\
+\\
+\varpi & \sim\text{Be}(a_{0},b_{0})
+\end{cases}
+\]
+Now we work on $\tilde{\theta}_{k}=\left(\theta_{k},\beta_{\mathscr{M}^{\complement}}\right)=\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi\right)$. The augmented hierarchical model admits the hierarchical model as its marginal because
+\[
+\pi\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi|y\right)=\int\pi\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi|y\right)\text{d}\beta_{\mathscr{M}^{\complement}}
+\]
+What we do:  
+
+1. Run RJAGS against the augmented Bayesian hierarchical model and generate samples of   $\tilde{\theta}_{k}=\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi\right)$.  
+
+2. To gen the samples from $\pi\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi|y\right)$, you just need to ignore the generated values of $\beta_{\mathscr{M}^{\complement}}$.   
 
 
 # Task
@@ -240,24 +267,38 @@ Create an input script, for rjags, containing the Bayesian hierarchical model
 
 ```{r}
 
-# init <- list( betaT = rep(0,dmax), 
-#               ind = rep(0,dmax-1),
+# init <- list( beta = rep(0,dmax), 
+#               ind = rep(0,dmax),
 #               pp = 0.5)
 
 hierarhicalmodel="
   model {
+    
+    # sampling distribution
+    
     for (i in 1:n) {
-      mean[i] <- exp(inprod(X[i,],beta)) / (1+exp(inprod(X[i,],beta)))
+      eta[i] <- inprod(X[i,],beta*ind)
+      mean[i] <- exp( eta[i] ) / ( 1 + exp( eta[i] ) )
       y[i] ~ dbern(mean[i])
     }
-    betaT[1] ~ dnorm( 0 , 0.1 )
-    beta[1] <- betaT[1]
-    pp ~ dbeta(1.0,1.0)
-    for (j in 1:(dmax-1)) {
-      ind[j] ~ dbern( pp )
-      betaT[j+1] ~ dnorm( 0 , 0.1 )
-      beta[j+1] <- ind[j] * betaT[j+1]
+    
+    # within model prior + augmantation
+    
+    for ( j in 1:dmax ) {
+      beta[j] ~ dnorm( 0 , 0.1 )
     }
+    
+    # marginal model prior
+    
+    ind[1] <- 1
+    for (j in 2:dmax) {
+
+      ind[j] ~ dbern( pp )
+    }
+    
+    # hyper-prior
+    
+    pp ~ dbeta(1.0,1.0)
   }
 "
 ```
@@ -305,7 +346,7 @@ Initialize the sampler with $N_{\text{adapt}}=1000$ iterations.
 
 ```{r, results="hide"}
 adapt(object = model.smpl, 
-      n.iter = 10^5)
+      n.iter = 10^3)
 ```
 
 
@@ -313,7 +354,7 @@ Generate a posterior sample of size $N=10000$.
 
 
 ```{r, results="hide"}
-N = 10^5      
+N = 10^4      
 n.thin = 10^2     
 n.iter = N * n.thin  
 output = jags.samples( model = model.smpl,    
@@ -349,43 +390,43 @@ beta.smpl <-output$beta
 
 # Task
 
-Calculate the marginal posterior model probabilities of models $\mathscr{M}^{I}=(0,0,0)$, $\mathscr{M}^{II}=(1,0,0)$, $\mathscr{M}^{III}=(0,1,0)$,  $\mathscr{M}^{IV}=(1,1,0)$, $\mathscr{M}^{V}=(1,1,1)$ $\mathscr{M}^{VI}=(0,0,1)$,  $\mathscr{M}^{VII}=(1,0,1)$, and $\mathscr{M}^{VIII}=(0,1,1)$  :
+Calculate the marginal posterior model probabilities of models $\mathscr{M}^{I}=(1,0,0,0)$, $\mathscr{M}^{II}=(1,1,0,0)$, $\mathscr{M}^{III}=(1,0,1,0)$,  $\mathscr{M}^{IV}=(1,1,1,0)$, $\mathscr{M}^{V}=(1,1,1,1)$, $\mathscr{M}^{VI}=(1,0,0,1)$,  $\mathscr{M}^{VII}=(1,1,0,1)$, and $\mathscr{M}^{VIII}=(1,0,1,1)$  :
 
 $$
 \Pi(\mathscr{M}^{I}|y_{1:n})=
-\Pi(\mathscr{M}^{I}=(0,0,0)|y_{1:n})
+\Pi(\mathscr{M}^{I}=(1,0,0,0)|y_{1:n})
 $$
 
 $$
 \Pi(\mathscr{M}^{II}|y_{1:n})=
-\Pi(\mathscr{M}^{II}=(1,0,0)|y_{1:n})
+\Pi(\mathscr{M}^{II}=(1,1,0,0)|y_{1:n})
 $$
 
 $$
 \Pi(\mathscr{M}^{III}|y_{1:n})=
-\Pi(\mathscr{M}^{III}=(0,1,0)|y_{1:n})
+\Pi(\mathscr{M}^{III}=(1,0,1,0)|y_{1:n})
 $$
 $$
 \Pi(\mathscr{M}^{IV}|y_{1:n})=
-\Pi(\mathscr{M}^{IV}=(1,1,0)|y_{1:n})
+\Pi(\mathscr{M}^{IV}=(1,1,1,0)|y_{1:n})
 $$
 $$
 \Pi(\mathscr{M}^{V}|y_{1:n})=
-\Pi(\mathscr{M}^{V}=(1,1,1)|y_{1:n})
+\Pi(\mathscr{M}^{V}=(1,1,1,1)|y_{1:n})
 $$
 
 $$
 \Pi(\mathscr{M}^{VI}|y_{1:n})=
-\Pi(\mathscr{M}^{VI}=(0,0,1)|y_{1:n})
+\Pi(\mathscr{M}^{VI}=(1,0,0,1)|y_{1:n})
 $$
 $$
 \Pi(\mathscr{M}^{VII}|y_{1:n})=
-\Pi(\mathscr{M}^{VII}=(1,0,1)|y_{1:n})
+\Pi(\mathscr{M}^{VII}=(1,1,0,1)|y_{1:n})
 $$
 
 $$
 \Pi(\mathscr{M}^{VII}|y_{1:n})=
-\Pi(\mathscr{M}^{VII}=(0,1,1)|y_{1:n})
+\Pi(\mathscr{M}^{VII}=(1,0,1,1)|y_{1:n})
 $$
 
 
@@ -394,14 +435,14 @@ $$
 It is 
 ```{r}
 # Compute the marginal distributions
-pr_1 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==0))
-pr_2 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==0))
-pr_3 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==0))
-pr_4 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==0))
-pr_5 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==1))
-pr_6 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==1))
-pr_7 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==1))
-pr_8 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==1))
+pr_1 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==0))
+pr_2 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==0))
+pr_3 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==0))
+pr_4 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==0))
+pr_5 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==1))
+pr_6 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==1))
+pr_7 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==1))
+pr_8 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==1))
 # Print the marginal distributions
 pr_1
 pr_2
@@ -426,31 +467,31 @@ barplot(Pr,
 
 Assume that only one of the model in the set $$\mathcal{M}=\{\mathscr{M}^{I}, \mathscr{M}^{II}, \mathscr{M}^{III}, \mathscr{M}^{IV}, \mathscr{M}^{V}\}$$ is of interest. This is because it is 
 
-Calculate the posterior model probabilities of models $\mathscr{M}^{I}=(0,0,0)$, $\mathscr{M}^{II}=(1,0,0)$, $\mathscr{M}^{III}=(0,1,0)$,  $\mathscr{M}^{IV}=(1,1,0)$, $\mathscr{M}^{V}=(1,1,1)$, given the model collection $\mathcal{M}$.
+Calculate the posterior model probabilities of models $\mathscr{M}^{I}=(1,0,0,0)$, $\mathscr{M}^{II}=(1,1,0,0)$, $\mathscr{M}^{III}=(1,0,1,0)$,  $\mathscr{M}^{IV}=(1,1,1,0)$, $\mathscr{M}^{V}=(1,1,1,1)$, given the model collection $\mathcal{M}$.
 
 
 
 $$
 \Pi(\mathscr{M}^{I}|y_{1:n},\mathcal{M})=
-\Pi(\mathscr{M}^{I}=(0,0,0)|y_{1:n},\mathcal{M})
+\Pi(\mathscr{M}^{I}=(1,0,0,0)|y_{1:n},\mathcal{M})
 $$
 
 $$
 \Pi(\mathscr{M}^{II}|y_{1:n},\mathcal{M})=
-\Pi(\mathscr{M}^{II}=(1,0,0)|y_{1:n},\mathcal{M})
+\Pi(\mathscr{M}^{II}=(1,1,0,0)|y_{1:n},\mathcal{M})
 $$
 
 $$
 \Pi(\mathscr{M}^{III}|y_{1:n},\mathcal{M})=
-\Pi(\mathscr{M}^{III}=(0,1,0)|y_{1:n},\mathcal{M})
+\Pi(\mathscr{M}^{III}=(1,0,1,0)|y_{1:n},\mathcal{M})
 $$
 $$
 \Pi(\mathscr{M}^{IV}|y_{1:n},\mathcal{M})=
-\Pi(\mathscr{M}^{IV}=(1,1,0)|y_{1:n},\mathcal{M})
+\Pi(\mathscr{M}^{IV}=(1,1,1,0)|y_{1:n},\mathcal{M})
 $$
 $$
 \Pi(\mathscr{M}^{V}|y_{1:n},\mathcal{M})=
-\Pi(\mathscr{M}^{V}=(1,1,1)|y_{1:n},\mathcal{M})
+\Pi(\mathscr{M}^{V}=(1,1,1,1)|y_{1:n},\mathcal{M})
 $$
 
 
@@ -464,11 +505,11 @@ Which model is a posteriori the most probabile?
 It is 
 ```{r}
 # Compute the marginal distributions
-pr_1 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==0))
-pr_2 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==0)* as.numeric(ind.smpl[3,,]==0))
-pr_3 = mean(as.numeric(ind.smpl[1,,]==0) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==0))
-pr_4 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==0))
-pr_5 = mean(as.numeric(ind.smpl[1,,]==1) * as.numeric(ind.smpl[2,,]==1)* as.numeric(ind.smpl[3,,]==1))
+pr_1 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==0))
+pr_2 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==0)* as.numeric(ind.smpl[4,,]==0))
+pr_3 = mean(as.numeric(ind.smpl[2,,]==0) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==0))
+pr_4 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==0))
+pr_5 = mean(as.numeric(ind.smpl[2,,]==1) * as.numeric(ind.smpl[3,,]==1)* as.numeric(ind.smpl[4,,]==1))
 pr_12345 = pr_1+pr_2+pr_3+pr_4+pr_5
 # Compute the conditional distributions
 pr_1 = pr_1/pr_12345
