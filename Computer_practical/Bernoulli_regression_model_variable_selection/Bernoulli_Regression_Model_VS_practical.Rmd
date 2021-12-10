@@ -221,32 +221,46 @@ Notice that the length of the join unknown parameter vector  $\vartheta_{k}=\lef
 
 Current versions of JAGS work only when the join unknown parameter vector $\vartheta_{k}$ has a fixed length.  
 
-To make JAGS work on our problem we 'cheat' by augmenting $\vartheta_{k}$ with additional random variables $\beta_{j}|j\notin\mathscr{M}  \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2})$.   Precisely, we consider the augmented Bayesian hierarchical model
+To make JAGS work on our problem we 'trick' by augmenting $\vartheta_{k}$ with additional random variables $\beta_{j}|j\notin\mathscr{M}  \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2})$.   Precisely, we consider the augmented Bayesian hierarchical model
 \[
 \begin{cases}
-y_{i}|\mathscr{M},\beta_{\mathscr{M}} & \sim\text{Bernoulli}(p(x_{i};\mathscr{M},\beta_{\mathscr{M}})),\quad\text{for, }i=1,...,n\\
+\begin{cases}
+y_{i}|\mathscr{M},\beta_{\mathscr{M}}\sim\text{Br}\left(\left.y_{i}\right|\frac{\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})}{1+\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})}\right),\:x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}}=\sum_{j\in\mathscr{M}}x_{i,j}^{\top}\beta_{j}\quad\text{for }\;i=1,...,n\end{cases}\\
 \\
-p(x_{i};\mathscr{M},\beta_{\mathscr{M}}) & =\frac{\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})}{1+\exp(x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}})};\,\,\text{where}\,\,x_{i,\mathscr{M}}^{\top}\beta_{\mathscr{M}}=\sum_{j\in\mathscr{M}}x_{i,j}\beta_{j}\\
+\begin{cases}
+\beta_{j}|\mathscr{M}\sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2})\ \ \text{for all}\:j\notin\mathscr{M}\end{cases}\\
 \\
-\beta_{j}|j\in\mathscr{M} & \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2}),\ \ j=1,...,d\\
-\beta_{j}|j\notin\mathscr{M} & \sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2}),\ \ j=1,...,d\\
+\begin{cases}
+\beta_{j}|\mathscr{M}\sim\text{N}(\beta_{j}|\mu_{0},\sigma_{0}^{2})\ \ \text{for all}\:j\in\mathscr{M}\\
 \\
-\mathscr{M} & =\left\{ j\in\left\{ 1,...,d\right\} ,\,\text{s.t.}\,\gamma_{j}=1\right\} \\
+\begin{cases}
+\mathscr{M} & =\left\{ j\in\{1,...,d\},\,\text{s.t.}\,\gamma_{j}=1\right\} \\
+\gamma_{j}|\varpi & \sim\text{Br}(\varpi),\ \ j=1,...,d
+\end{cases}\\
 \\
-\gamma_{j} & \sim\text{Bernoulli}(\varpi),\ \ j=1,...,d\\
+\end{cases}\\
 \\
-\varpi & \sim\text{Be}(a_{0},b_{0})
+\begin{cases}
+\varpi & \sim\text{Be}(a_{0},b_{0})\end{cases}
 \end{cases}
 \]
-Now we work on $\tilde{\theta}_{k}=\left(\theta_{k},\beta_{\mathscr{M}^{\complement}}\right)=\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi\right)$. The augmented hierarchical model admits the hierarchical model as its marginal because
+Now we work on $\tilde{\theta}_{k}=\left(\theta_{k},\beta_{\mathscr{M}^{\complement}}\right)=\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi\right)$. The augmented hierarchical model admits the hierarchical model as its marginal because  
+\[
+p(y,\beta_{\mathscr{M}}\beta_{-\mathscr{M}},\mathscr{M},\varpi)=p(y,\beta_{\mathscr{M}},\mathscr{M},\varpi)\prod_{j\notin\mathscr{M}}\text{N}\left(\beta_{j}|\mu_{0},\sigma_{0}^{2}\right)
+\]  
+and  
+\[
+\int p(y,\beta_{\mathscr{M}}\beta_{-\mathscr{M}},\mathscr{M},\varpi)\text{d} \beta_{-\mathscr{M}}=p(y,\beta_{\mathscr{M}},\mathscr{M},\varpi)\int\prod_{j\notin\mathscr{M}}\text{N}\left(\beta_{j}|\mu_{0},\sigma_{0}^{2}\right)\text{d} \beta_{-\mathscr{M}}=p(y,\beta_{\mathscr{M}},\mathscr{M},\varpi)
+\]
+So
 \[
 \pi\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi|y\right)=\int\pi\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi|y\right)\text{d}\beta_{\mathscr{M}^{\complement}}
 \]
-What we do:  
+General recipe; we do the following trick:  
 
 1. Run RJAGS against the augmented Bayesian hierarchical model and generate samples of   $\tilde{\theta}_{k}=\left(\mathscr{M},\beta_{\mathscr{M}},\beta_{\mathscr{M}^{\complement}},\gamma_{1:d},\varpi\right)$.  
 
-2. To gen the samples from $\pi\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi|y\right)$, you just need to ignore the generated values of $\beta_{\mathscr{M}^{\complement}}$.   
+2. To gen the samples from $\pi\left(\mathscr{M},\beta_{\mathscr{M}},\gamma_{1:d},\varpi|y\right)$, you just need to ignore the generated values of $\beta_{\mathscr{M}^{\complement}}$. 
 
 
 ### ... your answer {-}
