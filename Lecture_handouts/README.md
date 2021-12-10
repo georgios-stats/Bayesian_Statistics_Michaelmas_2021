@@ -150,7 +150,7 @@
 
 -   [17_Empirical_Bayes.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/17_Empirical_Bayes.pdf):
 
-    Asymptotic behavior of the posterior (descrete and continuous case)
+    Empirical Bayes; Non-parametric and parametric
 
 -   [18_Asymptotic_posterior.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/18_Asymptotic_posterior.pdf):
 
