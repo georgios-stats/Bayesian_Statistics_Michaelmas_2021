@@ -77,6 +77,10 @@ This repository contains the teaching material for the module ***MATH3341/4031 B
 
 -   '[Homework](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/master/Homework#details-about-exercise-material)' folder contains the material used for your practice at home
 
+### Additional reading material
+
+-   '[Additional reading material](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/main/Additional_reading_material#additional-reading-material)' folder contains the additional reading material that students at Level IV and master level are required to independently study.
+
 ### Web-applets
 
 -   '[Shiny_applets](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/tree/master/Shiny_applets#shiny-applets)' folder contains the source code of the web applets used in the lectures.
