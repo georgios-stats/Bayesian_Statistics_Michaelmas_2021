@@ -381,7 +381,7 @@ Suppose we have no reason to favour any particular value of <math xmlns="http://
 <li class="enumerate_item">From the answer to Sub-question <a href="#enu_Suppose_we_have">(c)</a>, derive the prior probability density of <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>t</mi>
  </mrow></math>. [Hint: 
-<span style = "text-align: center;"><img src="lyxpreviewupkafJ1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewltruRZ1.png" alt="Mathematical Equation" />
 </span>
 ]</li>
 <li class="enumerate_item">Hence write down the posterior probability density for <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -931,7 +931,7 @@ Suppose we have no reason to favour any particular value of <math xmlns="http://
    </mtd>
   </mtr>
  </mtable></math>which is an 1-1 transformation. Thus the Jacobian is <div class="foot"><span class="foot_label">3</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-107'> Remember how to calculate the PDF or PMF when we perform transformation of random variables (in multivariate case). 
-<span style = "text-align: center;"><img src="lyxpreviewtJUpTX1.png" alt="Mathematical Equation" />
+<span style = "text-align: center;"><img src="lyxpreviewMOYusa1.png" alt="Mathematical Equation" />
 </span>
  is an informal way of writing a transformed infinitesimal area, i.e. it denotes the area of the parallelogram covered by <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -969,7 +969,7 @@ Suppose we have no reason to favour any particular value of <math xmlns="http://
 <mo form='postfix' fence='true' stretchy='true' symmetric='true'>)</mo>
 
  </mrow></math>: 
-<div style = "text-align: center;"><img src="lyxpreviewFgCSRQ1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewTjPFis1.png" alt="Mathematical Equation" />
 </div>
 </div>
 </div></div> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -1403,10 +1403,10 @@ Suppose we have no reason to favour any particular value of <math xmlns="http://
   </mrow>
  </mrow></math>, we have<div class="foot"><span class="foot_label">4</span><div class="foot_inner"><div class="plain_layout" id='magicparlabel-142'>Remember how we can calculate the PDF or the PMF when we perform a transformation of random variables</div>
 </div></div> 
-<div style = "text-align: center;"><img src="lyxpreviewWuaJlf1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewlbJjPA1.png" alt="Mathematical Equation" />
 </div>
 so the pdf is
-<div style = "text-align: center;"><img src="lyxpreviewMnLboP1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewxbsvSn1.png" alt="Mathematical Equation" />
 </div>
 and the distribution such that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
  <mtable>
@@ -1816,12 +1816,12 @@ and the distribution such that <math display="block" xmlns="http://www.w3.org/19
 
   </mrow>
  </mrow></math> then 
-<div style = "text-align: center;"><img src="lyxpreviewvqiAyW1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewiftHeQ1.png" alt="Mathematical Equation" />
 </div>
  Then by using Taylor expansion of 2nd order around <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>0</mn>
  </mrow></math>, it is
-<div style = "text-align: center;"><img src="lyxpreviewRsjnJs1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewuPMYsS1.png" alt="Mathematical Equation" />
 </div>
 So, I will try to find the MAP estimate <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
@@ -1840,7 +1840,7 @@ So, I will try to find the MAP estimate <math xmlns="http://www.w3.org/1998/Math
  </mrow></math> around zero <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mn>0</mn>
  </mrow></math>, right... it is
-<div style = "text-align: center;"><img src="lyxpreviewUWMNgQ1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewDMlNpV1.png" alt="Mathematical Equation" />
 </div>
 Hence the MAP estimate is for small <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi>t</mi>
@@ -2249,7 +2249,7 @@ Hence the MAP estimate is for small <math xmlns="http://www.w3.org/1998/Math/Mat
  </mtable></math>and differentiate with respect to <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow><mi> &alpha; </mi>
  </mrow></math>. By the chain rule, the derivative is zero when 
-<div style = "text-align: center;"><img src="lyxpreviewdFjHOn1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewttztoS1.png" alt="Mathematical Equation" />
 </div>
 On first order expansion, now also using first order approximation <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
