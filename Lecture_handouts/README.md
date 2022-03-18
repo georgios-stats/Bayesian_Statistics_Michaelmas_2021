@@ -184,9 +184,9 @@ Problem class exercises are from the Exercise sheet
 
     Implementation of Gibbs sampler for the Bayesian univariate Normal mixture model
 
--   [Gibbs_example_1.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_1.R)  
+    -   [Gibbs_example_1.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_1.R)  
 
--   [Gibbs_example_2.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_2.R)  
+    -   [Gibbs_example_2.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_2.R)  
 
 ------------------------------------------------------------------------
 
