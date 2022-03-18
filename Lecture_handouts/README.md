@@ -175,6 +175,14 @@ Problem class exercises are from the Exercise sheet
 
     [Problem_class_3_complete.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_3_complete.pdf) &  [Problem_class_3_questions.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Problem_class_3_questions.pdf)  
 
+------------------------------------------------------------------------
+
+
+### Miscelaneas  
+
+-   [Gibbs_example_1.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_1.R)  
+
+-   [Gibbs_example_2.R](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Rscripts/Gibbs_on_Bayesian_univariate_Normal_mixture_model/Gibbs_example_2.R)  
 
 ------------------------------------------------------------------------
 
