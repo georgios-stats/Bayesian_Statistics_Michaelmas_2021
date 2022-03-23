@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="GENERATOR" content="LyX 2.3.6.1" />
+<meta name="GENERATOR" content="LyX 2.3.5-1" />
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 <title>LyX Document</title>
 <style type='text/css'>
@@ -220,7 +220,7 @@ div.Boxed {
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle mathvariant='double-struck'><mi>N</mi>
+     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -231,7 +231,7 @@ div.Boxed {
  </mrow></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle mathvariant='double-struck'><mi>N</mi>
+   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -369,7 +369,7 @@ div.Boxed {
      </mstyle>
     </mrow>
     <mrow>
-     <mstyle mathvariant='double-struck'><mi>N</mi>
+     <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
      </mstyle>
     </mrow>
    </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -389,13 +389,13 @@ div.Boxed {
  </mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow><mi>r</mi><mo> &isin; </mo>
-   <mstyle mathvariant='double-struck'><mi>N</mi>
+   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
    </mstyle><mo>-</mo>{<mn>0</mn>}
   </mrow>
  </mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
   <mrow>
-   <mstyle mathvariant='double-struck'><mi>N</mi>
+   <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
    </mstyle><mo>=</mo>{<mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>...</mn>}
   </mrow>
  </mrow></math>.</dd>
@@ -720,7 +720,7 @@ div.Boxed {
        </mstyle>
       </mrow>
       <mrow>
-       <mstyle mathvariant='double-struck'><mi>N</mi>
+       <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
        </mstyle>
       </mrow>
      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -754,7 +754,7 @@ div.Boxed {
        </mstyle>
       </mrow>
       <mrow>
-       <mstyle mathvariant='double-struck'><mi>N</mi>
+       <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
        </mstyle>
       </mrow>
      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -803,7 +803,7 @@ div.Boxed {
        </mstyle>
       </mrow>
       <mrow>
-       <mstyle mathvariant='double-struck'><mi>N</mi>
+       <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
        </mstyle>
       </mrow>
      </msub><mo form='prefix' fence='true' stretchy='true' symmetric='true'>(</mo>
@@ -997,7 +997,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2111,7 +2111,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2223,7 +2223,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2357,7 +2357,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2450,7 +2450,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2582,7 +2582,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2684,7 +2684,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2787,7 +2787,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2874,7 +2874,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -2957,7 +2957,7 @@ div.Boxed {
       </mrow>
       <mrow>
        <mrow>
-        <mstyle mathvariant='double-struck'><mi>N</mi>
+        <mstyle class='mathbb' mathvariant='bold'><mi>N</mi>
         </mstyle><mo>-</mo>{<mn>0</mn>}
        </mrow>
       </mrow>
@@ -3107,7 +3107,7 @@ div.Boxed {
 
 <div class="solution_" id='magicparlabel-68'><div class="solution__item"><span class="solution__label">Solution.</span>
 &nbsp; &nbsp;It is 
-<div style = "text-align: center;"><img src="lyxpreviewdOBedV1.png" alt="Mathematical Equation" />
+<div style = "text-align: center;"><img src="lyxpreviewnbgBXP1.png" alt="Mathematical Equation" />
 </div>
 Hence, we take <math xmlns="http://www.w3.org/1998/Math/MathML">
  <mrow>
