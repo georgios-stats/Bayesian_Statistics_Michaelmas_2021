@@ -191,15 +191,10 @@ Problem class exercises are from the Exercise sheet
 ------------------------------------------------------------------------
 
 
-### Revision
-
-<!--
+### Revision  
 
 -   [Revision.pdf](https://github.com/georgios-stats/Bayesian_Statistics_Michaelmas_2021/blob/master/Lecture_handouts/Revision.pdf):  
 
-... Revision exercises are appended in the Exercise sheet
-
--->
 
 ------------------------------------------------------------------------
 
